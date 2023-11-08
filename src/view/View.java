@@ -1,4 +1,4 @@
-package Controller.viewpackage;
+package view;
 
 import java.util.Scanner;
 import java.io.Console;

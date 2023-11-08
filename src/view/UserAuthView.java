@@ -1,4 +1,4 @@
-package Controller.viewpackage;
+package view;
 
 public class UserAuthView extends View{
     
