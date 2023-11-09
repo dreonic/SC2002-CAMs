@@ -3,18 +3,31 @@ package view;
 import java.util.Scanner;
 
 public class WelcomeMenu extends Menu {
-    public WelcomeMenu(Scanner scanner) {
-        super("Welcome to CAMS menu demo!", scanner);
+    private String header = """
+             ██████╗ █████╗ ███╗   ███╗███████╗
+            ██╔════╝██╔══██╗████╗ ████║██╔════╝
+            ██║     ███████║██╔████╔██║███████╗
+            ██║     ██╔══██║██║╚██╔╝██║╚════██║
+            ╚██████╗██║  ██║██║ ╚═╝ ██║███████║
+             ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+                       """;
 
-        addItem(new MenuItem("Login", new MenuItemAction() {
+    private String separator = String.format("%040d", 0).replace("0", "═") + "\n";
+
+    public WelcomeMenu(Scanner scanner) {
+        super(scanner);
+
+        setPrompt(separator + "\n" + header + "\n" + separator
+                + "Welcome to Camp Application and Management System (CAMs).\n");
+
+        addItem(new ActionableItem("Login", new ItemAction() {
             public void execute() {
-                MenuController menuController = MenuController.getInstance();
-                menuController.setCurrentMenu(new LoginMenu(scanner));
-                menuController.displayCurrentMenu();
+                DisplayController menuController = DisplayController.getInstance();
+                menuController.setNextDisplay(new LoginMenu(scanner));
             }
         }));
 
-        addItem(new MenuItem("Exit", new MenuItemAction() {
+        addItem(new ActionableItem("Exit", new ItemAction() {
             public void execute() {
                 return;
             }

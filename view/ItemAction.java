@@ -1,5 +1,5 @@
 package view;
 
-public interface MenuItemAction {
+public interface ItemAction {
     public void execute();
 }

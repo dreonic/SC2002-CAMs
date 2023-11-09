@@ -1,10 +1,10 @@
 package view;
 
-public class MenuItem {
+public class ActionableItem {
     private String content;
-    private MenuItemAction action;
+    private ItemAction action;
 
-    public MenuItem(String content, MenuItemAction action) {
+    public ActionableItem(String content, ItemAction action) {
         this.content = content;
         this.action = action;
     }

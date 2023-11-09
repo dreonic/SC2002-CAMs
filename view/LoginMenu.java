@@ -6,7 +6,7 @@ public class LoginMenu extends Menu {
     public LoginMenu(Scanner scanner) {
         super("Login to CAMS", scanner);
 
-        addItem(new MenuItem("Exit", new MenuItemAction() {
+        addItem(new ActionableItem("Exit", new ItemAction() {
             public void execute() {
                 return;
             }
