@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 import view.DisplayController;
-import view.WelcomeMenu;
+import view.components.WelcomeMenu;
 
 public class CAMs {
     public static void main(String[] args) {

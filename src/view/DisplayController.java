@@ -1,15 +1,17 @@
 package view;
 
+import view.base.Displayable;
+
 /**
  * Singleton class for managing and navigating all user interface elements.
  * 
- * @author  Gillbert Susilo Wong
- * @author  Juan Frederick
- * @author  Karl Devlin Chau
- * @author  Pascalis Pandey
- * @author  Trang Nguyen
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
  * @version 1.0
- * @since   2023-11-09
+ * @since 2023-11-09
  */
 public class DisplayController {
     private static DisplayController displayController;
@@ -20,7 +22,7 @@ public class DisplayController {
     }
 
     /**
-     * Instantiates singleton with inital user interface element. 
+     * Instantiates singleton with inital user interface element.
      * 
      * @param initialDisplay initial user interface element
      * @return singleton instance
@@ -36,7 +38,8 @@ public class DisplayController {
      * Gets singleton instance.
      * 
      * @return singleton instance
-     * @throws IllegalStateException when singleton has not yet been initialized with an initial user interface element
+     * @throws IllegalStateException when singleton has not yet been initialized
+     *                               with an initial user interface element
      */
     public static DisplayController getInstance() throws IllegalStateException {
         if (displayController == null) {

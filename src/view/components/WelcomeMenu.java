@@ -1,19 +1,24 @@
-package view;
+package view.components;
 
 import java.util.Scanner;
+
+import view.DisplayController;
+import view.base.ActionableItem;
+import view.base.ItemAction;
+import view.base.SelectionMenu;
 
 /**
  * Initial user interface element displayed to the user.
  * 
- * @author  Gillbert Susilo Wong
- * @author  Juan Frederick
- * @author  Karl Devlin Chau
- * @author  Pascalis Pandey
- * @author  Trang Nguyen
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
  * @version 1.0
- * @since   2023-11-09
+ * @since 2023-11-09
  */
-public class WelcomeMenu extends Menu {
+public class WelcomeMenu extends SelectionMenu {
     private String header = """
              ██████╗ █████╗ ███╗   ███╗███████╗
             ██╔════╝██╔══██╗████╗ ████║██╔════╝
@@ -39,7 +44,7 @@ public class WelcomeMenu extends Menu {
         addItem(new ActionableItem("Login", new ItemAction() {
             public void execute() {
                 DisplayController menuController = DisplayController.getInstance();
-                menuController.setNextDisplay(new LoginMenu(scanner));
+                menuController.setNextDisplay(new LoginForm(scanner));
             }
         }));
 

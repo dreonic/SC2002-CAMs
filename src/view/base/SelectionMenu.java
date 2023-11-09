@@ -1,22 +1,26 @@
-package view;
+package view.base;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import view.DisplayController;
+import view.components.InvalidAlert;
 
 /**
  * Base class for all user interface elements with actionable selections.
  * 
- * @author  Gillbert Susilo Wong
- * @author  Juan Frederick
- * @author  Karl Devlin Chau
- * @author  Pascalis Pandey
- * @author  Trang Nguyen
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
  * @version 1.0
- * @since   2023-11-09
+ * @since 2023-11-09
  */
-public class Menu implements Displayable {
+public class SelectionMenu implements Displayable {
     private String prompt;
-    private ArrayList<ActionableItem> items;
+    private List<ActionableItem> items;
     private Scanner scanner;
 
     /**
@@ -24,19 +28,20 @@ public class Menu implements Displayable {
      * 
      * @param scanner scanner for this menu
      */
-    public Menu(Scanner scanner) {
+    public SelectionMenu(Scanner scanner) {
         prompt = "";
         this.scanner = scanner;
         items = new ArrayList<ActionableItem>();
     }
 
     /**
-     * Class constructor specifying the displayed prompt and the scanner to be used to receive user input.
+     * Class constructor specifying the displayed prompt and the scanner to be used
+     * to receive user input.
      * 
-     * @param prompt displayed prompt
+     * @param prompt  displayed prompt
      * @param scanner scanner for this menu
      */
-    public Menu(String prompt, Scanner scanner) {
+    public SelectionMenu(String prompt, Scanner scanner) {
         this.prompt = prompt;
         this.scanner = scanner;
         items = new ArrayList<ActionableItem>();
@@ -70,7 +75,8 @@ public class Menu implements Displayable {
     }
 
     /**
-     * Clears stdout and displays prompt and selections to stdout. Gets user selection choice and executes the action of the selected item.
+     * Clears stdout and displays prompt and selections to stdout. Gets user
+     * selection choice and executes the action of the selected item.
      */
     public void display() {
         int choice = 0;
@@ -83,7 +89,8 @@ public class Menu implements Displayable {
         }
         System.out.print("Choice: ");
         try {
-        choice = scanner.nextInt();
+            choice = scanner.nextInt();
+            scanner.nextLine();
         } catch (Exception e) {
             DisplayController displayController = DisplayController.getInstance();
             displayController.setNextDisplay(new InvalidAlert(this, scanner));
