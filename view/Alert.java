@@ -5,8 +5,13 @@ import java.util.Scanner;
 public class Alert extends ActionableItem implements Displayable {
     private Scanner scanner;
 
-    public Alert(String content, ItemAction action, Scanner scanner) {
-        super(content, action);
+    public Alert(String content, Displayable previousDisplayable, Scanner scanner) {
+        super(content, new ItemAction() {
+            public void execute() {
+                DisplayController displayController = DisplayController.getInstance();
+                displayController.setNextDisplay(previousDisplayable);
+            }
+        });
         this.scanner = scanner;
     }
 

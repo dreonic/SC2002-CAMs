@@ -34,22 +34,25 @@ public class Menu implements Displayable {
 
     public void display() {
         int choice = 0;
-        do {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-            System.out.println(getPrompt());
-            for (int i = 0; i < items.size(); i++) {
-                System.out.printf("(%d) ", i + 1);
-                System.out.println(items.get(i).getContent());
-            }
-            System.out.print("Choice: ");
-            choice = scanner.nextInt();
-            if (choice > 0 && choice <= items.size()) {
-                items.get(choice - 1).runAction();
-                break;
-            } else {
-                System.out.println("Invalid choice!");
-            }
-        } while (choice <= 0 || choice > items.size());
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        System.out.println(getPrompt());
+        for (int i = 0; i < items.size(); i++) {
+            System.out.printf("(%d) ", i + 1);
+            System.out.println(items.get(i).getContent());
+        }
+        System.out.print("Choice: ");
+        try {
+        choice = scanner.nextInt();
+        } catch (Exception e) {
+            DisplayController displayController = DisplayController.getInstance();
+            displayController.setNextDisplay(new InvalidAlert(this, scanner));
+        }
+        if (choice > 0 && choice <= items.size()) {
+            items.get(choice - 1).runAction();
+        } else {
+            DisplayController displayController = DisplayController.getInstance();
+            displayController.setNextDisplay(new InvalidAlert(this, scanner));
+        }
     }
 }
