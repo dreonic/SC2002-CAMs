@@ -1,11 +1,10 @@
 package cams.user;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class UserController {
     private static UserController userController;
-    private Map<String, User> userTable;
+    private HashMap<String, User> userTable = new HashMap<>();
 
     private UserController() {
         userTable = new HashMap<String, User>();
@@ -23,6 +22,7 @@ public class UserController {
     }
 
     public void addUser(User user) {
+        //after deserialize
         userTable.put(user.getUserID(), user);
     }
 }

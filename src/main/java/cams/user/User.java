@@ -16,6 +16,14 @@ public class User {
         return userID;
     }
 
+    public String getHashedPassword() {
+        return this.passwordHash;
+    }
+
+    public void setHashedPassword(String hashedPassword) {
+        this.passwordHash = hashedPassword;
+    }
+
     public String getFaculty() {
         return this.faculty;
     }
@@ -32,11 +40,4 @@ public class User {
         this.name = name;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
 }

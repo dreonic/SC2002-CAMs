@@ -6,8 +6,7 @@ public class AuthController {
     private static AuthController authController;
     private final HashMap<String, User> users = new HashMap<>();
 
-    private AuthController() {
-    }
+    private AuthController() {}
 
     public static AuthController getAuthController() {
         if (authController == null) {
@@ -24,7 +23,7 @@ public class AuthController {
 
     public User login(String userID, String password) {
         User user = users.get(userID);
-        if (user == null || !user.getPasswordHash().equals(hashPassword(password))) {
+        if (user == null || !user.getHashedPassword().equals(hashPassword(password))) {
             // TODO: throw exception instead to notify caller that login failed because user
             // ID or password was incorrect
             return null;
@@ -43,6 +42,6 @@ public class AuthController {
             throw new IllegalArgumentException("Invalid old password");
         }
 
-        user.setPasswordHash(hashPassword(newPassword));
+        user.setHashedPassword(hashPassword(newPassword));
     }
 }

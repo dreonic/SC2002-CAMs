@@ -10,10 +10,16 @@ public class StudentController {
     }
 
     public void register(Camp camp) {
-        // TODO
+        //also need to check for conflicting dates
+        if(!student.getCamps().contains(camp)) {
+            student.addCamp(camp);
+        }
     }
 
     public void withdraw(Camp camp) {
-        // TODO
+        if(student.getCommitteeFor() != camp && student.getCamps().contains(camp)) {
+            student.removeCamp(camp);
+        }
     }
+
 }
