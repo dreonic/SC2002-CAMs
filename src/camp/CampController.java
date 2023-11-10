@@ -1,7 +1,11 @@
 package camp;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
+
+import domain.Student;
 
 /**
  * The {@code CampController} class manages camps and provides functionality
@@ -58,14 +62,16 @@ public class CampController {
         campTable.put(campName, newCamp);
     }
 
-    /**
-     * Retrieves an array of all camps in the camp table.
-     *
-     * @return An array of {@code Camp} objects.
-     */
-    public Camp[] getAllCamps() {
-        return campTable.values().toArray(new Camp[0]);
-    }
+    // /**
+    //  * Retrieves an array of all camps in the camp table.
+    //  *
+    //  * @return An array of {@code Camp} objects.
+    //  */
+    // public ArrayList<Camp> getAllCamps() {
+    //     ArrayList<Camp> campList = new ArrayList<Camp>();
+
+    //     }
+    // }
 
     /**
      * Retrieves a specific camp by name.
@@ -83,7 +89,8 @@ public class CampController {
      * @param name The name of the camp to delete.
      */
     public void deleteCamp(String name) {
-        campTable.remove(name);
+        if(campTable.get(name).getAttendees().isEmpty())
+            campTable.remove(name);
     }
 
     /**
@@ -100,21 +107,23 @@ public class CampController {
         }
     }
 
-    // /**
-    //  * Gets a performance report for all students in the camps.
-    //  *
-    //  * @return A {@code HashMap} containing the performance report.
-    //  */
-    // public HashMap<Student, Integer> getPerformanceReport() {
-    //     return new HashMap<>();
-    // }
+    /**
+     * Gets a performance report for all students in the camps.
+     *
+     * @return A {@code HashMap} containing the performance report.
+     */
+    public HashMap<Student, Integer> getPerformanceReport() {
+        return new HashMap<>();
+    }
 
-    // /**
-    //  * Gets the attendance list for all students in the camps.
-    //  *
-    //  * @return A {@code Set} containing the attendance list.
-    //  */
-    // public Set<Student> getAttendanceList() {
-    //     return new HashSet<>();
-    // }
+    /**
+     * Gets the attendance list for all students in the camps.
+     *
+     * @return A {@code Set} containing the attendance list.
+     */
+    public ArrayList<Student> getAttendanceList(String campName) {
+        Camp camp = campTable.get(campName);
+        ArrayList<Student> attendanceList = camp.getAttendees();
+        return attendanceList;
+    }
 }

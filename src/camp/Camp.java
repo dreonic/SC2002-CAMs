@@ -1,8 +1,14 @@
 package camp;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 import domain.Staff;
+import domain.Student;
+import repliable.Enquiry;
+import repliable.Suggestion;
 
 /**
  * Main entity class representing a camp.
@@ -20,6 +26,10 @@ import domain.Staff;
  */
 public class Camp {
     private Staff staffInCharge;
+    private Set<Enquiry> enquiries;
+    private Set<Suggestion> suggestions;
+    private Set<Student> attendees;
+    private HashMap<Student, Integer> committee;
     private CampInfo campInfo;
     private CampDate campDate;
     private String userGroup;
@@ -81,75 +91,99 @@ public class Camp {
         return userGroup;
     }
 
-    // /**
-    //  * Retrieves the set of enquiries associated with the camp.
-    //  *
-    //  * @return A {@code Set} containing the enquiries for the camp.
-    //  */
-    // public Set<Enquiry> getEnquiries() {
-    //     return enquiries;
-    // }
+    /**
+     * Retrieves the set of enquiries associated with the camp.
+     *
+     * @return A {@code Set} containing the enquiries for the camp.
+     */
+    public Set<Enquiry> getEnquiries() {
+        return enquiries;
+    }
 
-    // /**
-    //  * Retrieves the set of suggestions associated with the camp.
-    //  *
-    //  * @return A {@code Set} containing the suggestions for the camp.
-    //  */
-    // public Set<Suggestion> getSuggestions() {
-    //     return suggestions;
-    // }
+    /**
+     * Retrieves the set of suggestions associated with the camp.
+     *
+     * @return A {@code Set} containing the suggestions for the camp.
+     */
+    public Set<Suggestion> getSuggestions() {
+        return suggestions;
+    }
 
-    // /**
-    //  * Adds an enquiry to the set of enquiries for the camp.
-    //  *
-    //  * @param enquiry The {@code Enquiry} to be added.
-    //  */
-    // public void addEnquiry(Enquiry enquiry) {
-    //     enquiries.add(enquiry);
-    // }
+    /**
+     * Adds an enquiry to the set of enquiries for the camp.
+     *
+     * @param enquiry The {@code Enquiry} to be added.
+     */
+    public void addEnquiry(Enquiry enquiry) {
+        enquiries.add(enquiry);
+    }
 
-    // /**
-    //  * Removes an enquiry from the set of enquiries for the camp.
-    //  *
-    //  * @param enquiry The {@code Enquiry} to be removed.
-    //  */
-    // public void removeEnquiry(Enquiry enquiry) {
-    //     enquiries.remove(enquiry);
-    // }
+    /**
+     * Removes an enquiry from the set of enquiries for the camp.
+     *
+     * @param enquiry The {@code Enquiry} to be removed.
+     */
+    public void removeEnquiry(Enquiry enquiry) {
+        enquiries.remove(enquiry);
+    }
 
-    // /**
-    //  * Retrieves an array containing all the enquiries for the camp.
-    //  *
-    //  * @return An array of {@code Enquiry} objects.
-    //  */
-    // public Enquiry[] getEnquiriesArray() {
-    //     return enquiries.toArray(new Enquiry[0]);
-    // }
+    /**
+     * Retrieves an array containing all the enquiries for the camp.
+     *
+     * @return An array of {@code Enquiry} objects.
+     */
+    public ArrayList<Enquiry> getEnquiriesArray() {
+        ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
+        for(Enquiry enquiry:enquiries) {
+            enquiryList.add(enquiry);
+        }
+        return enquiryList;
+    }
 
-    // /**
-    //  * Adds a suggestion to the set of suggestions for the camp.
-    //  *
-    //  * @param suggestion The {@code Suggestion} to be added.
-    //  */
-    // public void addSuggestion(Suggestion suggestion) {
-    //     suggestions.add(suggestion);
-    // }
+    /**
+     * Adds a suggestion to the set of suggestions for the camp.
+     *
+     * @param suggestion The {@code Suggestion} to be added.
+     */
+    public void addSuggestion(Suggestion suggestion) {
+        suggestions.add(suggestion);
+    }
 
-    // /**
-    //  * Removes a suggestion from the set of suggestions for the camp.
-    //  *
-    //  * @param suggestion The {@code Suggestion} to be removed.
-    //  */
-    // public void removeSuggestion(Suggestion suggestion) {
-    //     suggestions.remove(suggestion);
-    // }
+    /**
+     * Removes a suggestion from the set of suggestions for the camp.
+     *
+     * @param suggestion The {@code Suggestion} to be removed.
+     */
+    public void removeSuggestion(Suggestion suggestion) {
+        suggestions.remove(suggestion);
+    }
 
-    // /**
-    //  * Retrieves an array containing all the suggestions for the camp.
-    //  *
-    //  * @return An array of {@code Suggestion} objects.
-    //  */
-    // public Suggestion[] getSuggestionsArray() {
-    //     return suggestions.toArray(new Suggestion[0]);
-    // }
+    /**
+     * Retrieves an array containing all the suggestions for the camp.
+     *
+     * @return An array of {@code Suggestion} objects.
+     */
+    public ArrayList<Suggestion> getSuggestionsArray() {
+        ArrayList<Suggestion> suggestionList = new ArrayList<Suggestion>();
+        for(Suggestion suggestion:suggestions) {
+            suggestionList.add(suggestion);
+        }
+        return suggestionList;
+    }
+
+    public void addCommittee(Student student) {
+        committee.put(student, 0);
+    }
+
+    public ArrayList<Student> getAttendees() {
+        ArrayList<Student> attendeeList = new ArrayList<Student>();
+        for(Student attendee:attendees) {
+            attendeeList.add(attendee);
+        }
+        return attendeeList;
+    }
+
+    public void incrementCommitteePoint(Student student) {
+        committee.put(student, committee.get(student)+1);
+    }
 }
