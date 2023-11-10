@@ -17,18 +17,16 @@ public class AuthController {
     }
 
     public String hashPassword(String password) {
-        // implement hashing algorithm
-        return password;
+        // TODO: implement hashing algorithm
+        String hashedPassword = "";
+        return hashedPassword;
     }
 
-    public User login(String userID, String candidatePassword) {
+    public User login(String userID, String password) {
         User user = users.get(userID);
-        if (user == null) {
-            return null;
-        }
-
-        String hashedPassword = user.getPasswordHash();
-        if (!hashedPassword.equals(hashPassword(candidatePassword))) {
+        if (user == null || !user.getPasswordHash().equals(hashPassword(password))) {
+            // TODO: throw exception instead to notify caller that login failed because user
+            // ID or password was incorrect
             return null;
         }
 
@@ -36,7 +34,7 @@ public class AuthController {
     }
 
     public void logout() {
-        // implement logout logic
+        // TODO: implement logout logic
     }
 
     public void changePassword(String userID, String oldPassword, String newPassword) {
