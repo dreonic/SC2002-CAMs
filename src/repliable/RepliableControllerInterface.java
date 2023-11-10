@@ -1,5 +1,7 @@
 package repliable;
 
+import java.util.ArrayList;
+
 import domain.Student;
 
 public interface RepliableControllerInterface {
@@ -11,5 +13,5 @@ public interface RepliableControllerInterface {
 
     public void reply(Repliable repliable, Object replyMessage);
 
-    public Repliable[] view();
+    public ArrayList<Repliable> view();
 }

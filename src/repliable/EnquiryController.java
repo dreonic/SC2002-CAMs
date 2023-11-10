@@ -1,5 +1,7 @@
 package repliable;
 
+import java.util.ArrayList;
+
 import camp.Camp;
 import domain.Student;
 
@@ -12,26 +14,39 @@ public class EnquiryController implements RepliableControllerInterface {
 
     @Override
     public void create(String content, Student student) {
-        // TODO
+        Enquiry enquiry = new Enquiry(content, student);
+        camp.addEnquiry(enquiry);
     }
 
     @Override
     public void edit(Repliable repliable, String newContent) {
-        // TODO
+        Enquiry enquiry = (Enquiry) repliable;
+        if(enquiry.getReply() == "") {
+            enquiry.setQuestion(newContent);
+        }
     }
 
     @Override
     public void delete(Repliable repliable) {
-        // TODO
+        Enquiry enquiry = (Enquiry) repliable;
+        camp.removeEnquiry(enquiry);
     }
 
     @Override
     public void reply(Repliable repliable, Object replyMessage) {
-        // TODO
+        Enquiry enquiry = (Enquiry) repliable;
+        String reply = (String) replyMessage;
+        if(camp.getEnquiries().contains(enquiry)) {
+            enquiry.setReply(reply);
+        }
     }
 
     @Override
-    public Repliable[] view() {
-        // TODO
+    public ArrayList<Repliable> view() {
+        ArrayList<Repliable> enquiryList = new ArrayList<Repliable>();
+        for(Enquiry enquiry:camp.getEnquiries()) {
+            enquiryList.add(enquiry);
+        }
+        return enquiryList;
     }
 }

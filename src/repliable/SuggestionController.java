@@ -1,5 +1,7 @@
 package repliable;
 
+import java.util.ArrayList;
+
 import camp.Camp;
 import domain.Student;
 
@@ -12,26 +14,39 @@ public class SuggestionController implements RepliableControllerInterface {
 
     @Override
     public void create(String content, Student student) {
-        // TODO
+        Suggestion suggestion = new Suggestion(content, student);
+        camp.addSuggestion(suggestion);
     }
 
     @Override
     public void edit(Repliable repliable, String newContent) {
-        // TODO
+        Suggestion suggestion = (Suggestion) repliable;
+        if(suggestion.getIsApproved() == false) {
+            suggestion.setContent(newContent);
+        }
+
     }
 
     @Override
     public void delete(Repliable repliable) {
-        // TODO
+        Suggestion suggestion = (Suggestion) repliable;
+        camp.removeSuggestion(suggestion);
     }
 
     @Override
     public void reply(Repliable repliable, Object replyMessage) {
-        // TODO
+        Suggestion suggestion = (Suggestion) repliable;
+        if(camp.getSuggestions().contains(suggestion)) {
+            suggestion.setIsApproved(true);
+        }
     }
 
     @Override
-    public Repliable[] view() {
-        // TODO
+    public ArrayList<Repliable> view() {
+        ArrayList<Repliable> suggestionList = new ArrayList<Repliable>();
+        for(Suggestion suggestion:camp.getSuggestions()) {
+            suggestionList.add(suggestion);
+        }
+        return suggestionList;
     }
 }
