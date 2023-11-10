@@ -1,12 +1,14 @@
-package camp;
-import filter.FilterStrategy;
+package cams.camp;
+
+import cams.filter.FilterStrategy;
 import java.util.ArrayList;
 
 public class CampFilterController {
     private static CampFilterController campFilterController;
     private ArrayList<FilterStrategy> filterStrategies;
 
-    private CampFilterController() {}
+    private CampFilterController() {
+    }
 
     public CampFilterController getInstance() {
         campFilterController = new CampFilterController();

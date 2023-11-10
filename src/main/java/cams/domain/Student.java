@@ -27,6 +27,10 @@ public class Student extends User {
         // TODO
     }
 
+    public void removeCamp(Camp camp) {
+        // TODO
+    }
+
     public Set<Enquiry> getEnquiries() {
         return new HashSet<Enquiry>(enquiries);
     }

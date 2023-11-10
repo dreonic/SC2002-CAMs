@@ -10,16 +10,19 @@ public class Form implements Displayable {
     private String title;
     private List<TextBox> inputs;
     private Scanner scanner;
+    private ItemAction action;
 
     public Form(Scanner scanner) {
         title = "";
         this.scanner = scanner;
+        action = null;
         inputs = new ArrayList<TextBox>();
     }
 
     public Form(String title, Scanner scanner) {
         this.title = title;
         this.scanner = scanner;
+        action = null;
         inputs = new ArrayList<TextBox>();
     }
 
@@ -29,6 +32,10 @@ public class Form implements Displayable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setAction(ItemAction action) {
+        this.action = action;
     }
 
     public void addInput(TextBox input) {
@@ -48,5 +55,6 @@ public class Form implements Displayable {
         System.out.println(getTitle());
         for (int i = 0; i < inputs.size(); i++)
             inputs.get(i).display();
+        action.execute();
     }
 }

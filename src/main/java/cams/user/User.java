@@ -9,7 +9,8 @@ public class User {
     public User(String userID, String faculty) {
         this.userID = userID;
         this.faculty = faculty;
-        // TODO: set default passwordHash to the hash value of "password"
+        AuthController authController = AuthController.getInstance();
+        passwordHash = authController.getPasswordEncoder().encode("password");
     }
 
     public String getUserID() {

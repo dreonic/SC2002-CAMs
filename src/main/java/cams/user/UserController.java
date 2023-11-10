@@ -8,9 +8,10 @@ public class UserController {
 
     private UserController() {
         userTable = new HashMap<String, User>();
+        userTable.put("gillbert001", new User("gillbert001", "SCSE"));
     }
 
-    public static UserController getUserController() {
+    public static UserController getInstance() {
         if (userController == null) {
             userController = new UserController();
         }
@@ -22,7 +23,11 @@ public class UserController {
     }
 
     public void addUser(User user) {
-        //after deserialize
+        // after deserialize
         userTable.put(user.getUserID(), user);
+    }
+
+    User getUser(String userID) {
+        return userTable.get(userID);
     }
 }

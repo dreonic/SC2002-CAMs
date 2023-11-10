@@ -1,6 +1,6 @@
-package filter;
+package cams.filter;
 
-import camp.Camp;
+import cams.camp.Camp;
 
 import java.util.ArrayList;
 

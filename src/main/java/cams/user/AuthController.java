@@ -2,30 +2,38 @@ package cams.user;
 
 import java.util.HashMap;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 public class AuthController {
     private static AuthController authController;
-    private final HashMap<String, User> users = new HashMap<>();
+    BCryptPasswordEncoder passwordEncoder;
 
-    private AuthController() {}
+    private AuthController() {
+        passwordEncoder = new BCryptPasswordEncoder(16);
+    }
 
-    public static AuthController getAuthController() {
+    public static AuthController getInstance() {
         if (authController == null) {
             authController = new AuthController();
         }
         return authController;
     }
 
+    public BCryptPasswordEncoder getPasswordEncoder() {
+        return passwordEncoder;
+    }
+
     public String hashPassword(String password) {
-        // TODO: implement hashing algorithm
-        String hashedPassword = "";
-        return hashedPassword;
+        return passwordEncoder.encode(password);
     }
 
     public User login(String userID, String password) {
-        User user = users.get(userID);
-        if (user == null || !user.getHashedPassword().equals(hashPassword(password))) {
+        UserController userController = UserController.getInstance();
+        User user = userController.getUser(userID);
+        if (user == null || !passwordEncoder.matches(password, user.getHashedPassword())) {
             // TODO: throw exception instead to notify caller that login failed because user
             // ID or password was incorrect
+            System.out.println("FAIL");
             return null;
         }
 
