@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import camp.Camp;
+import repliable.Enquiry;
 import user.User;
 
 public class Student extends User {
     private Camp committeeFor;
     private Set<Camp> campsRegistered;
-    //private Set<Enquiry> enquiries;
+    private Set<Enquiry> enquiries;
 
     public Student(String userID, String faculty) {
         super(userID, faculty);
@@ -31,24 +32,23 @@ public class Student extends User {
         campsRegistered.remove(camp);
     }
 
-    // public ArrayList<Enquiry> getEnquiries() {
-    //     ArrayList<Enquiry> enquiriesList = new ArrayList<Enquiry>();
-    //     for(Enquiry enquiry:enquiries) {
-    //         enquiriesList.add(enquiry);
-    //     } 
-    //     return enquiriesList;
-    // }
+    public ArrayList<Enquiry> getEnquiries() {
+        ArrayList<Enquiry> enquiriesList = new ArrayList<Enquiry>();
+        for(Enquiry enquiry:enquiries) {
+            enquiriesList.add(enquiry);
+        } 
+        return enquiriesList;
+    }
 
-    // public void addEnquiry(Enquiry enquiry) {
-    //     enquiries.add(enquiry);
-    // }
+    public void addEnquiry(Enquiry enquiry) {
+        enquiries.add(enquiry);
+    }
 
     public Camp getCommitteeFor() {
         return committeeFor;
     }
 
-    public void setCommitteeFor(Camp committeeFor) {
-        this.committeeFor = committeeFor;
+    public void setCommitteeFor(Camp camp) {
+        committeeFor = camp;
     }
-
 }

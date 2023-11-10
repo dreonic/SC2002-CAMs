@@ -4,8 +4,8 @@ import camp.Camp;
 
 public class StudentController {
     private Student student;
-    
-    private StudentController (Student student) {
+
+    public StudentController(Student student) {
         this.student = student;
     }
 

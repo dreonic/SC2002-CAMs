@@ -2,25 +2,26 @@ package user;
 
 public class User {
     private String userID;
-    private String hashedPassword;
+    private String passwordHash;
     private String faculty;
     private String name;
 
     public User(String userID, String faculty) {
         this.userID = userID;
         this.faculty = faculty;
+        // TODO: set default passwordHash to the hash value of "password"
     }
 
     public String getUserID() {
-        return this.userID;
+        return userID;
     }
 
     public String getHashedPassword() {
-        return this.hashedPassword;
+        return this.passwordHash;
     }
 
     public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
+        this.passwordHash = hashedPassword;
     }
 
     public String getFaculty() {

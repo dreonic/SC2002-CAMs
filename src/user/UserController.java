@@ -6,7 +6,9 @@ public class UserController {
     private static UserController userController;
     private HashMap<String, User> userTable = new HashMap<>();
 
-    private UserController() {}
+    private UserController() {
+        userTable = new HashMap<String, User>();
+    }
 
     public static UserController getUserController() {
         if (userController == null) {
