@@ -20,15 +20,15 @@ import view.base.SelectionMenu;
  */
 public class WelcomeMenu extends SelectionMenu {
     private String header = """
-             ██████╗ █████╗ ███╗   ███╗███████╗
-            ██╔════╝██╔══██╗████╗ ████║██╔════╝
-            ██║     ███████║██╔████╔██║███████╗
-            ██║     ██╔══██║██║╚██╔╝██║╚════██║
-            ╚██████╗██║  ██║██║ ╚═╝ ██║███████║
-             ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
-                       """;
+                 ██████╗ █████╗ ███╗   ███╗███████╗
+                ██╔════╝██╔══██╗████╗ ████║██╔════╝
+                ██║     ███████║██╔████╔██║███████╗
+                ██║     ██╔══██║██║╚██╔╝██║╚════██║
+                ╚██████╗██║  ██║██║ ╚═╝ ██║███████║
+                 ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+            """;
 
-    private String separator = String.format("%040d", 0).replace("0", "═") + "\n";
+    private String separator = String.format("%045d", 0).replace("0", "═") + "\n";
 
     /**
      * Class constructor specifying the scanner to be used to receive user input.

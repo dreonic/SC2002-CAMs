@@ -2,11 +2,7 @@ package view.components;
 
 import java.util.Scanner;
 
-import view.DisplayController;
-import view.base.ActionableItem;
 import view.base.Form;
-import view.base.ItemAction;
-import view.base.SelectionMenu;
 import view.base.TextBox;
 
 /**
