@@ -2,6 +2,8 @@ package domain;
 
 import java.util.Set;
 import java.util.HashSet;
+import camp.Camp;
+import repliable.Enquiry;
 
 import user.User;
 

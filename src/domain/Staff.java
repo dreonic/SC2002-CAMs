@@ -2,6 +2,7 @@ package domain;
 
 import java.util.HashSet;
 import java.util.Set;
+import camp.Camp;
 
 import user.User;
 

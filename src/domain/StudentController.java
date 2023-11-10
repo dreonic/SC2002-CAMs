@@ -1,5 +1,7 @@
 package domain;
 
+import camp.Camp;
+
 public class StudentController {
     private Student student;
 
