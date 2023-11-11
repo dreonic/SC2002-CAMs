@@ -7,11 +7,12 @@ public class CampFilterController {
     private static CampFilterController campFilterController;
     private ArrayList<FilterStrategy> filterStrategies;
 
-    private CampFilterController() {
-    }
+    private CampFilterController() {}
 
-    public CampFilterController getInstance() {
-        campFilterController = new CampFilterController();
+    public static CampFilterController getInstance() {
+        if(campFilterController == null){
+            campFilterController = new CampFilterController();
+        }
         return campFilterController;
     }
 
@@ -23,8 +24,18 @@ public class CampFilterController {
         return filterStrategies;
     }
 
-    // public ArrayList<Camp> filter() {
-
-    // }
+    public ArrayList<Camp> filter(String faculty) {
+        ArrayList<Camp> filteredList = new ArrayList<Camp>();
+        CampController campController = CampController.getInstance();
+        ArrayList<Camp> allCamps = campController.getAllCamps();
+        for(Camp camp:allCamps) {
+            if(camp.getUserGroup() == faculty)
+                filteredList.add(camp);
+        }
+        for(FilterStrategy strategy:filterStrategies) {
+            strategy.filter(filteredList);
+        }
+        return filteredList;
+    }
 
 }

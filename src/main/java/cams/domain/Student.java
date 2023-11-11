@@ -1,13 +1,10 @@
 package cams.domain;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import cams.camp.Camp;
-
-import java.util.HashSet;
-
 import cams.repliable.Enquiry;
-
 import cams.user.User;
 
 public class Student extends User {
@@ -19,24 +16,32 @@ public class Student extends User {
         super(userID, faculty);
     }
 
-    public Set<Camp> getCamps() {
-        return new HashSet<Camp>(campsRegistered);
+    public ArrayList<Camp> getCamps() {
+        ArrayList<Camp> camps = new ArrayList<Camp>();
+        for(Camp camp:campsRegistered) {
+            camps.add(camp);
+        }
+        return camps;
     }
 
     public void addCamp(Camp camp) {
-        // TODO
+        campsRegistered.add(camp);
     }
 
     public void removeCamp(Camp camp) {
-        // TODO
+        campsRegistered.remove(camp);
     }
 
-    public Set<Enquiry> getEnquiries() {
-        return new HashSet<Enquiry>(enquiries);
+    public ArrayList<Enquiry> getEnquiries() {
+        ArrayList<Enquiry> enquiriesList = new ArrayList<Enquiry>();
+        for(Enquiry enquiry:enquiries) {
+            enquiriesList.add(enquiry);
+        } 
+        return enquiriesList;
     }
 
     public void addEnquiry(Enquiry enquiry) {
-        // TODO
+        enquiries.add(enquiry);
     }
 
     public Camp getCommitteeFor() {
