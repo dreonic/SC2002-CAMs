@@ -1,7 +1,9 @@
 package cams.view.base;
 
 /**
- * Interface for displaying all user interface elements.
+ * Interface for displaying all user interface elements. A
+ * <code>Displayable</code> represents a user interface element which can be
+ * displayed to the standard output.
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -13,7 +15,8 @@ package cams.view.base;
  */
 public interface Displayable {
     /**
-     * Clears stdout and displays user interface element to stdout.
+     * Clears the standard output and displays this user interface element to
+     * the standard output.
      */
     public void display();
 }
