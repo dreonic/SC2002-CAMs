@@ -1,23 +1,27 @@
 package cams.domain;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Set;
 
 import cams.camp.Camp;
 import cams.user.User;
 
-public class Staff extends User {
+public class Staff extends User{
     private Set<Camp> campsCreated;
-
+    
     public Staff(String userID, String faculty) {
         super(userID, faculty);
     }
 
-    public Set<Camp> getCamps() {
-        return new HashSet<Camp>(campsCreated);
+    public ArrayList<Camp> getCamps() {
+        ArrayList<Camp> camps = new ArrayList<Camp>();
+        for(Camp camp:campsCreated) {
+            camps.add(camp);
+        } 
+        return camps;
     }
 
     public void addCamp(Camp camp) {
-        // TODO
+        campsCreated.add(camp);
     }
 }

@@ -23,8 +23,18 @@ public class CampFilterController {
         return filterStrategies;
     }
 
-    // public ArrayList<Camp> filter() {
-
-    // }
+    public ArrayList<Camp> filter(String faculty) {
+        ArrayList<Camp> filteredList = new ArrayList<Camp>();
+        CampController campController = CampController.getInstance();
+        ArrayList<Camp> allCamps = campController.getAllCamps();
+        for(Camp camp:allCamps) {
+            if(camp.getUserGroup() == faculty)
+                filteredList.add(camp);
+        }
+        for(FilterStrategy filterCriteria:filterStrategies) {
+            filterCriteria.filter(filteredList);
+        }
+        return filteredList;
+    }
 
 }
