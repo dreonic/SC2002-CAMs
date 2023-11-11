@@ -4,13 +4,14 @@ public class User {
     private String userID;
     private String passwordHash;
     private String faculty;
-    private String name;
+    private String email;
 
-    public User(String userID, String faculty) {
+    public User(String userID, String email, String faculty, String passwordHash) {
         this.userID = userID;
         this.faculty = faculty;
+        this.email = email;
         AuthController authController = AuthController.getInstance();
-        passwordHash = authController.getPasswordEncoder().encode("password");
+        this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode("password") : passwordHash;
     }
 
     public String getUserID() {
@@ -33,12 +34,11 @@ public class User {
         this.faculty = faculty;
     }
 
-    public String getName() {
-        return this.name;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
 }

@@ -12,8 +12,8 @@ public class Student extends User {
     private Set<Camp> campsRegistered;
     private Set<Enquiry> enquiries;
 
-    public Student(String userID, String faculty) {
-        super(userID, faculty);
+    public Student(String userID, String email, String faculty, String passwordHash) {
+        super(userID, email, faculty, passwordHash);
     }
 
     public ArrayList<Camp> getCamps() {

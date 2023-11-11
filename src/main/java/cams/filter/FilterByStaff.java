@@ -11,7 +11,7 @@ public class FilterByStaff implements FilterStrategy {
 
     public ArrayList<Camp> filter(ArrayList<Camp> camps) {
         for (Camp camp : camps) {
-            if (camp.getCampInfo().getCampName().equalsIgnoreCase(staff.getName())) {
+            if (camp.getCampInfo().getCampName().equalsIgnoreCase(staff.getUserID())) {
                 campByName.add(camp);
             }
         }
