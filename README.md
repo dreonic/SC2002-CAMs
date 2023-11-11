@@ -13,7 +13,7 @@ Install the [Java Development Kit](https://www.oracle.com/java/technologies/down
 1. Run the following command in the root directory to build the application. Build files will be located in `target/` and the application will be compiled in the `.jar` file.
 
 ```bash
-mvn package
+mvn clean package
 ```
 
 2. Run the application `cams.App` inside the `.jar` file using the following command.
@@ -27,7 +27,7 @@ java -cp target/SC2002-CAMs-1.0-SNAPSHOT.jar cams.App
 1. Run the following command to generate application documentation from Javadoc comments.
 
 ```bash
-mvn site
+mvn clean site
 ```
 
 2. Access the application documentation site from `target/site/apidocs/index.html`.
