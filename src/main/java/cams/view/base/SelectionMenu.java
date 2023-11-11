@@ -8,7 +8,71 @@ import cams.view.DisplayController;
 import cams.view.components.InvalidAlert;
 
 /**
- * Base class for all user interface elements with actionable selections.
+ * Base class for all user interface elements with actionable selections. This
+ * base class enables displaying a prompt alongside several selections with
+ * distinct actions from which the user can choose one. Specific user interface
+ * components in this application like <code>WelcomeMenu</code> are implemented
+ * as extensions from this base class.
+ * <p>
+ * To use this base user interface element, extend from or construct this base
+ * class, set the prompt and add the appropriate selection items, each with
+ * their own content and action. The order of items added corresponds to the
+ * order in which they are displayed in standard output.
+ * <p>
+ * Usage example by extension:
+ * 
+ * <pre>
+ * {@code
+ * public class SpecificMenu extends SelectionMenu {
+ *     public SpecificMenu(Scanner scanner) {
+ *         super(scanner);
+ *         setPrompt("Prompt content goes here.");
+ * 
+ *         // Will appear as the first selection choice
+ *         addItem(new ActionableItem("Selection item 1", new ItemAction() {
+ *             public void execute() {
+ *                 System.out.println("Item action 1");
+ *             }
+ *         }));
+ *
+ *         // Will appear as the second selection choice
+ *         addItem(new ActionableItem("Selection item 2", new ItemAction() {
+ *             public void execute() {
+ *                 System.out.println("Item action 2");
+ *             }
+ *         }));
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Usage example by association:
+ * 
+ * <pre>
+ * {@code
+ * public class Foo {
+ *     public void bar() {
+ *         Scanner sc = new Scanner(System.in);
+ *         SelectionMenu menu = new SelectionMenu(sc);
+ *         menu.setPrompt("Prompt content goes here.");
+ * 
+ *         // Will appear as the first selection choice
+ *         menu.addItem(new ActionableItem("Selection item 1", new ItemAction() {
+ *             public void execute() {
+ *                 System.out.println("Item action 1");
+ *             }
+ *         }));
+ *
+ *         // Will appear as the second selection choice
+ *         menu.addItem(new ActionableItem("Selection item 2", new ItemAction() {
+ *             public void execute() {
+ *                 System.out.println("Item action 2");
+ *             }
+ *         }));
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -24,7 +88,7 @@ public class SelectionMenu implements Displayable {
     private Scanner scanner;
 
     /**
-     * Class constructor specifying the scanner to be used to receive user input.
+     * Constructs an empty menu with the scanner to be used to receive user input.
      * 
      * @param scanner scanner for this menu
      */
@@ -35,8 +99,8 @@ public class SelectionMenu implements Displayable {
     }
 
     /**
-     * Class constructor specifying the displayed prompt and the scanner to be used
-     * to receive user input.
+     * Constructs a menu with prompt and the scanner to be used to receive user
+     * input.
      * 
      * @param prompt  displayed prompt
      * @param scanner scanner for this menu
@@ -48,7 +112,7 @@ public class SelectionMenu implements Displayable {
     }
 
     /**
-     * Retrieves menu prompt.
+     * Retrieves this menu's prompt.
      * 
      * @return menu prompt
      */
@@ -57,7 +121,7 @@ public class SelectionMenu implements Displayable {
     }
 
     /**
-     * Assigns menu prompt.
+     * Assigns this menu's prompt.
      * 
      * @param prompt prompt to be displayed
      */
@@ -66,7 +130,8 @@ public class SelectionMenu implements Displayable {
     }
 
     /**
-     * Adds a new actionable selection to the menu.
+     * Adds a new actionable selection to the menu. Actionable selections added to
+     * the menu cannot be removed afterwards.
      * 
      * @param item actionable selection
      */
@@ -75,8 +140,10 @@ public class SelectionMenu implements Displayable {
     }
 
     /**
-     * Clears stdout and displays prompt and selections to stdout. Gets user
-     * selection choice and executes the action of the selected item.
+     * Clears the standard output and displays menu prompt and selections to the
+     * standard output. Waits and captures user selection choice and executes the
+     * action of the selected item afterwards.
+     * 
      */
     public void display() {
         int choice = 0;
