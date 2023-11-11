@@ -9,14 +9,14 @@ import java.util.Scanner;
 /**
  * Base class for all user interface elements which requires user input and runs
  * an action after retrieving them. This base class enables displaying a prompt
- * alongside several input fields which obtains user input. Specific user
- * interface components in this application like <code>LoginForm</code> are
- * implemented as extensions from this base class.
+ * alongside several input fields which obtains user input. Specific forms in
+ * this application like <code>LoginForm</code> are implemented as extensions
+ * from this base class.
  * <p>
- * To use this base user interface element, extend from or construct this base
- * class, set the prompt and add the appropriate input fields, each with their
- * own label. The order of input fields added corresponds to the order in which
- * they are displayed in standard output.
+ * To use this base form, extend from or construct this base class, set the
+ * prompt and add the appropriate input fields, each with their own label. The
+ * order of input fields added corresponds to the order in which they are
+ * displayed in the standard output.
  * <p>
  * Usage example by extension:
  * 

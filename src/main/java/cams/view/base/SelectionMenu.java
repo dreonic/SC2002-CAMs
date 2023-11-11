@@ -10,14 +10,14 @@ import cams.view.components.InvalidAlert;
 /**
  * Base class for all user interface elements with actionable selections. This
  * base class enables displaying a prompt alongside several selections with
- * distinct actions from which the user can choose one. Specific user interface
- * components in this application like <code>WelcomeMenu</code> are implemented
- * as extensions from this base class.
+ * distinct actions from which the user can choose one. Specific selection menus
+ * in this application like <code>WelcomeMenu</code> are implemented as
+ * extensions from this base class.
  * <p>
- * To use this base user interface element, extend from or construct this base
- * class, set the prompt and add the appropriate selection items, each with
- * their own content and action. The order of items added corresponds to the
- * order in which they are displayed in standard output.
+ * To use this base selection menu, extend from or construct this base class,
+ * set the prompt and add the appropriate selection items, each with their own
+ * content and action. The order of items added corresponds to the order in
+ * which they are displayed in the standard output.
  * <p>
  * Usage example by extension:
  * 
