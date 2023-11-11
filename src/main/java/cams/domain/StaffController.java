@@ -4,14 +4,22 @@ public class StaffController {
     private static StaffController staffController;
     private Staff staff;
 
-    private StaffController(Staff staff) {
-        this.staff = staff;
+    private StaffController() {
+        staff = null;
+    }
+
+    public static StaffController getInstance() {
+        if (staffController == null) {
+            staffController = new StaffController();
+        }
+        return staffController;
     }
 
     public static StaffController getInstance(Staff staff) {
-        if(staffController == null) {
-            staffController = new StaffController(staff);
+        if (staffController == null) {
+            staffController = new StaffController();
         }
+        staffController.setCurrentStaff(staff);
         return staffController;
     }
 
