@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import cams.camp.Camp;
 import cams.domain.Student;
 
-public class EnquiryController implements RepliableControllerInterface {
+public class EnquiryEditor implements RepliableEditorInterface {
     private Camp camp;
 
-    public EnquiryController(Camp camp) {
+    public EnquiryEditor(Camp camp) {
         this.camp = camp;
     }
 

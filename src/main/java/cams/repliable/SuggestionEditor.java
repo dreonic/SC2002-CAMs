@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import cams.camp.Camp;
 import cams.domain.Student;
 
-public class SuggestionController implements RepliableControllerInterface {
+public class SuggestionEditor implements RepliableEditorInterface {
     private Camp camp;
 
-    public SuggestionController(Camp camp) {
+    public SuggestionEditor(Camp camp) {
         this.camp = camp;
     }
 

@@ -9,6 +9,11 @@ public class FilterByStaff implements FilterStrategy {
     private Staff staff;
     ArrayList<Camp> campByName = new ArrayList<Camp>();
 
+    public void setCriteria(Object object) {
+        Staff staff = (Staff) object;
+        this.staff = staff;
+    }
+
     public ArrayList<Camp> filter(ArrayList<Camp> camps) {
         for (Camp camp : camps) {
             if (camp.getCampInfo().getCampName().equalsIgnoreCase(staff.getName())) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import cams.domain.Student;
 
-public interface RepliableControllerInterface {
+public interface RepliableEditorInterface {
     public void create(String content, Student student);
 
     public void edit(Repliable repliable, String newContent);

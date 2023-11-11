@@ -17,10 +17,22 @@ public class StudentController {
         return studentController;
     }
 
-    public void register(Camp camp) {
+    public Student getCurrentStudent() {
+        return student;
+    }
+
+    public void setCurrentStudent(Student student) {
+        this.student = student;
+    }
+
+    public void register(Camp camp, Boolean isCommittee) {
         //also need to check for conflicting dates
-        if(!student.getCamps().contains(camp)) {
+        if(!student.getCamps().contains(camp) && isCommittee == false) {
             student.addCamp(camp);
+        }
+        else if(!student.getCamps().contains(camp) && isCommittee == true && student.getCommitteeFor() == null) {
+            student.addCamp(camp);
+            student.setCommitteeFor(camp);
         }
     }
 
