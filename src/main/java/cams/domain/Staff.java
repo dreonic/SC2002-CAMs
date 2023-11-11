@@ -9,8 +9,8 @@ import cams.user.User;
 public class Staff extends User{
     private Set<Camp> campsCreated;
     
-    public Staff(String userID, String faculty) {
-        super(userID, faculty);
+    public Staff(String userID, String email, String faculty, String passwordHash) {
+        super(userID, email, faculty, passwordHash);
     }
 
     public ArrayList<Camp> getCamps() {

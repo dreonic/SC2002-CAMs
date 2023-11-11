@@ -9,7 +9,7 @@ public class AuthController {
     BCryptPasswordEncoder passwordEncoder;
 
     private AuthController() {
-        passwordEncoder = new BCryptPasswordEncoder(16);
+        passwordEncoder = new BCryptPasswordEncoder(4);
     }
 
     public static AuthController getInstance() {
