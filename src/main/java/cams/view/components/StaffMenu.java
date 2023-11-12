@@ -1,7 +1,10 @@
 package cams.view.components;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import cams.camp.Camp;
+import cams.camp.CampController;
 import cams.domain.Staff;
 import cams.domain.StaffController;
 import cams.view.base.ActionableItem;
@@ -40,7 +43,11 @@ public class StaffMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View Camps", new ItemAction() {
             public void execute() {
-
+                CampController campController = CampController.getInstance();
+                ArrayList<Camp> allCamps = campController.getAllCamps();
+                for(Camp camp:allCamps) {
+                    System.out.println(camp.getCampInfo().getCampName());
+                }
             }
         }));
     }
