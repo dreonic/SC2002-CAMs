@@ -6,10 +6,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class AuthController {
     private static AuthController authController;
+    private User currentUser;
     BCryptPasswordEncoder passwordEncoder;
 
     private AuthController() {
         passwordEncoder = new BCryptPasswordEncoder(4);
+        currentUser = null;
     }
 
     public static AuthController getInstance() {
@@ -30,18 +32,19 @@ public class AuthController {
     public User login(String userID, String password) {
         UserController userController = UserController.getInstance();
         User user = userController.getUser(userID);
-        if (user == null || !passwordEncoder.matches(password, user.getHashedPassword())) {
-            // TODO: throw exception instead to notify caller that login failed because user
-            // ID or password was incorrect
-            System.out.println("FAIL");
-            return null;
-        }
+        if (user == null || !passwordEncoder.matches(password, user.getHashedPassword()))
+            throw new IllegalArgumentException("Incorrect userID or password!");
 
-        return user;
+        currentUser = user;
+        return getCurrentUser();
     }
 
     public void logout() {
-        // TODO: implement logout logic
+        currentUser = null;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     public void changePassword(String userID, String oldPassword, String newPassword) {
