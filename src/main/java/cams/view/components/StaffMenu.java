@@ -55,6 +55,7 @@ public class StaffMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View All Camps", new ItemAction() {
             public void execute() {
+                //TODO add filter options
                 ArrayList<Camp> allCamps = campController.getAllCamps();
                 for(Camp camp:allCamps) {
                     campList.append(camp.getCampInfo().getCampName() + "\n");
