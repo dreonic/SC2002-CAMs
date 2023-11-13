@@ -7,7 +7,7 @@ import cams.domain.Student;
 
 public class SuggestionEditor implements RepliableEditorInterface {
     private Camp camp;
-    private Suggestion suggestion;
+    private Suggestion currentSuggestion;
 
     public SuggestionEditor(Camp camp) {
         this.camp = camp;
@@ -51,11 +51,11 @@ public class SuggestionEditor implements RepliableEditorInterface {
     }
 
     public Suggestion getCurrentSuggestion() {
-        return suggestion;
+        return currentSuggestion;
     }
 
     public void setCurrentSuggestion(Suggestion suggestion) {
-        this.suggestion = suggestion;
+        currentSuggestion = suggestion;
     }
     
 }

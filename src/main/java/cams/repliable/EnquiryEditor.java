@@ -7,7 +7,7 @@ import cams.domain.Student;
 
 public class EnquiryEditor implements RepliableEditorInterface {
     private Camp camp;
-    private Enquiry enquiry;
+    private Enquiry currentEnquiry;
 
     public EnquiryEditor(Camp camp) {
         this.camp = camp;
@@ -52,11 +52,11 @@ public class EnquiryEditor implements RepliableEditorInterface {
     }
 
     public Enquiry getCurrentEnquiry() {
-        return enquiry;
+        return currentEnquiry;
     }
 
     public void setCurrentEnquiry(Enquiry enquiry) {
-        this.enquiry = enquiry;
+        currentEnquiry = enquiry;
     }
 
 }
