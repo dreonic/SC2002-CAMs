@@ -11,7 +11,8 @@ public class User {
         this.userID = userID;
         this.faculty = faculty;
         AuthController authController = AuthController.getInstance();
-        this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode("password") : passwordHash;
+        this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode("password")
+                : passwordHash;
     }
 
     public String getUserID() {

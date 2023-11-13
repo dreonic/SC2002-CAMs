@@ -48,14 +48,14 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-        <groupId>org.apache.poi</groupId>
-        <artifactId>poi</artifactId>
-        <version>5.1.0</version>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.1.0</version>
     </dependency>
     <dependency>
-        <groupId>org.apache.poi</groupId>
-        <artifactId>poi-ooxml</artifactId>
-        <version>5.1.0</version>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.1.0</version>
     </dependency>
   </dependencies>
 
@@ -71,6 +71,14 @@
               <goals>
                 <goal>shade</goal>
               </goals>
+              <configuration>
+                <artifactSet>
+                  <excludes>
+                    <exclude>junit:junit</exclude>
+                    <exclude>log4j:log4j</exclude>
+                  </excludes>
+                </artifactSet>
+              </configuration>
             </execution>
           </executions>
         </plugin>
@@ -123,6 +131,14 @@
 
   <reporting>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.3.1</version>
+        <configuration>
+          <configLocation>google_checks.xml</configLocation>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>

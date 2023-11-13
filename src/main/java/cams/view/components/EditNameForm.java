@@ -28,14 +28,16 @@ public class EditNameForm extends Form {
                 Camp camp = campController.getCurrentCamp();
                 String newName = values.get("New Camp Name");
 
-                if(campController.getCamp(newName) != null) {
-                    displayController.setNextDisplay(new Alert("Camp with this name already exists!", new EditNameForm(scanner), scanner));
-                }
-                else {
+                if (campController.getCamp(newName) != null) {
+                    displayController.setNextDisplay(new Alert(
+                            "Camp with this name already exists!",
+                            new EditNameForm(scanner),
+                            scanner));
+                } else {
                     CampEditor campEditor = new CampEditor(camp);
                     campEditor.editName(newName);
                 }
-                
+
                 displayController.setNextDisplay(new EditCampMenu(scanner));
             }
         });

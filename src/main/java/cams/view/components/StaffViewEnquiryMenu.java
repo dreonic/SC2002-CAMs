@@ -1,6 +1,6 @@
 package cams.view.components;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import cams.camp.Camp;
@@ -19,9 +19,9 @@ public class StaffViewEnquiryMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
-        ArrayList<Enquiry> enquiriesList = camp.getEnquiriesArray();
+        List<Enquiry> enquiriesList = camp.getEnquiriesArray();
 
-        for(Enquiry enquiry:enquiriesList) {
+        for (Enquiry enquiry : enquiriesList) {
             addItem(new ActionableItem(enquiry.getQuestion(), new ItemAction() {
                 public void execute() {
                     enquiryEditor.setCurrentEnquiry(enquiry);

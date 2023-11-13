@@ -33,8 +33,8 @@ public class ChangePasswordForm extends Form {
                 User currentUser = authController.getCurrentUser();
 
                 try {
-                    authController.changePassword(currentUser.getUserID(),
-                            oldPassword, newPassword);
+                    authController.changePassword(
+                            currentUser.getUserID(), oldPassword, newPassword);
 
                     Displayable nextDisplay = null;
                     String successAlertContent = "Changed password successfully!";
@@ -47,12 +47,12 @@ public class ChangePasswordForm extends Form {
 
                     displayController.setNextDisplay(new Alert(
                             successAlertContent, nextDisplay, scanner));
+
                 } catch (IllegalArgumentException e) {
-                    displayController.setNextDisplay(
-                            new Alert(
-                                    "Wrong password! Please try again.",
-                                    new ChangePasswordForm(scanner),
-                                    scanner));
+                    displayController.setNextDisplay(new Alert(
+                            "Wrong password! Please try again.",
+                            new ChangePasswordForm(scanner),
+                            scanner));
                 }
             }
         });

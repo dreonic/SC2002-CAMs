@@ -20,8 +20,8 @@ package cams.view.base;
  */
 public interface Displayable {
     /**
-     * Clears the standard output and displays this user interface element to
-     * the standard output.
+     * Clears the standard output and displays this user interface element to the
+     * standard output.
      */
     public void display();
 }

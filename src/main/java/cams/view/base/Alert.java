@@ -83,12 +83,10 @@ public class Alert extends ActionableItem implements Displayable {
      * previous <code>Displayable</code> user interface element.
      */
     public void display() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        CommonElements.clearSystemOut();
         System.out.println(getContent());
         System.out.println("\nPress ENTER to continue...");
         try {
-            System.in.read();
             scanner.nextLine();
         } catch (Exception e) {
         }

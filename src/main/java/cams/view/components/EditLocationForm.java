@@ -29,7 +29,7 @@ public class EditLocationForm extends Form {
 
                 CampEditor campEditor = new CampEditor(camp);
                 campEditor.editLocation(newLocation);
-                
+
                 displayController.setNextDisplay(new EditCampMenu(scanner));
             }
         });

@@ -177,8 +177,7 @@ public class Form implements Displayable {
      * 
      */
     public void display() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        CommonElements.clearSystemOut();
         System.out.println(getTitle());
         for (int i = 0; i < inputs.size(); i++)
             inputs.get(i).display();

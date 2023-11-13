@@ -1,5 +1,6 @@
 package cams.domain;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -18,9 +19,9 @@ public class Student extends User {
         this.enquiries = new HashSet<Enquiry>();
     }
 
-    public ArrayList<Camp> getCamps() {
-        ArrayList<Camp> camps = new ArrayList<Camp>();
-        for(Camp camp:campsRegistered) {
+    public List<Camp> getCamps() {
+        List<Camp> camps = new ArrayList<Camp>();
+        for (Camp camp : campsRegistered) {
             camps.add(camp);
         }
         return camps;
@@ -34,11 +35,11 @@ public class Student extends User {
         campsRegistered.remove(camp);
     }
 
-    public ArrayList<Enquiry> getEnquiries() {
-        ArrayList<Enquiry> enquiriesList = new ArrayList<Enquiry>();
-        for(Enquiry enquiry:enquiries) {
+    public List<Enquiry> getEnquiries() {
+        List<Enquiry> enquiriesList = new ArrayList<Enquiry>();
+        for (Enquiry enquiry : enquiries) {
             enquiriesList.add(enquiry);
-        } 
+        }
         return enquiriesList;
     }
 

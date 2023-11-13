@@ -1,6 +1,6 @@
 package cams.view.components;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import cams.camp.Camp;
@@ -18,8 +18,9 @@ public class StaffViewCampMenu extends SelectionMenu {
         StaffController staffController = StaffController.getInstance();
         CampController campController = CampController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
+
         Staff currentUser = staffController.getCurrentStaff();
-        ArrayList<Camp> campsCreated = currentUser.getCamps();
+        List<Camp> campsCreated = currentUser.getCamps();
 
         for (Camp camp : campsCreated) {
             addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {
