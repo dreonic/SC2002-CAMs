@@ -2,6 +2,7 @@ package cams.view.components;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.StaffController;
 import cams.view.DisplayController;
+import cams.view.base.Alert;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
@@ -54,11 +56,21 @@ public class CreateCampForm extends Form {
                             Integer.parseInt(values.get("Total Slots")),
                             parseVisibility(values.get("Make visible? (Y/n)")),
                             values.get("User Group"),
-                            staffController.getCurrenStaff());
+                            staffController.getCurrentStaff());
 
                     displayController.setNextDisplay(new StaffMenu(scanner));
-                } catch (Exception e) {
-                    // TODO: handle exception
+                } catch (DateTimeParseException e) {
+                    displayController.setNextDisplay(
+                            new Alert(
+                                    "Date input format is invalid!",
+                                    new CreateCampForm(scanner),
+                                    scanner));
+                } catch (NumberFormatException e) {
+                    displayController.setNextDisplay(
+                            new Alert(
+                                    "Number input format is invalid!",
+                                    new CreateCampForm(scanner),
+                                    scanner));
                 }
             }
         });

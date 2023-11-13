@@ -9,6 +9,7 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Staff;
 import cams.domain.StaffController;
+import cams.user.AuthController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.CommonElements;
@@ -22,7 +23,7 @@ public class StaffMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         StaffController staffController = StaffController.getInstance();
         CampController campController = CampController.getInstance();
-        Staff currentUser = staffController.getCurrenStaff();
+        Staff currentUser = staffController.getCurrentStaff();
         StringBuilder campList = new StringBuilder();
 
         if (currentUser == null) {
@@ -46,7 +47,7 @@ public class StaffMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Edit Camp", new ItemAction() {
             public void execute() {
-                
+
             }
         }));
 
@@ -64,6 +65,14 @@ public class StaffMenu extends SelectionMenu {
                     campList.append(camp.getCampInfo().getCampName() + "\n");
                 }
                 displayController.setNextDisplay(new Alert(campList.toString(), new StaffMenu(scanner), scanner));
+            }
+        }));
+
+        addItem(new ActionableItem("Logout", new ItemAction() {
+            public void execute() {
+                AuthController authController = AuthController.getInstance();
+                authController.logout();
+                displayController.setNextDisplay(new LogoutAlert(scanner));
             }
         }));
     }

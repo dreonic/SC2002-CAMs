@@ -27,7 +27,7 @@ public class StaffController {
         return staffController;
     }
 
-    public Staff getCurrenStaff() {
+    public Staff getCurrentStaff() {
         return staff;
     }
 

@@ -12,16 +12,16 @@ import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
-public class StaffViewCampMenu extends SelectionMenu{
+public class StaffViewCampMenu extends SelectionMenu {
     public StaffViewCampMenu(Scanner scanner) {
         super(scanner);
         StaffController staffController = StaffController.getInstance();
         CampController campController = CampController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
-        Staff currentUser = staffController.getCurrenStaff();
+        Staff currentUser = staffController.getCurrentStaff();
         ArrayList<Camp> campsCreated = currentUser.getCamps();
 
-        for(Camp camp:campsCreated) {
+        for (Camp camp : campsCreated) {
             addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {
                 public void execute() {
                     campController.setCurrentCamp(camp);
@@ -29,7 +29,7 @@ public class StaffViewCampMenu extends SelectionMenu{
                 }
             }));
         }
-        
+
         addItem(new ActionableItem("Back", new ItemAction() {
             public void execute() {
                 displayController.setNextDisplay(new StaffMenu(scanner));
