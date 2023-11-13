@@ -23,21 +23,36 @@ public class StaffCampMenu extends SelectionMenu{
 
         addItem(new ActionableItem("View students", new ItemAction() {
             public void execute() {
-                ArrayList<Student> attendeesList = camp.getAttendees();
+                ArrayList<Student> attendeesList = new ArrayList<Student>(camp.getAttendees());
                 ArrayList<Student> committeeList = new ArrayList<Student>();
                 HashMap<Student,Integer> committee = camp.getCommittee();
+                
+                if(committee != null) {
+                    for(HashMap.Entry<Student,Integer> member:committee.entrySet()) {
+                        committeeList.add(member.getKey());
+                    }
+                }
 
-                for(HashMap.Entry<Student,Integer> member:committee.entrySet()) {
-                    committeeList.add(member.getKey());
+                if(attendeesList.isEmpty()) {
+                    studentList.append("0 Attendees");
                 }
-                studentList.append("Attendees: \n");
-                for(Student student:attendeesList) {
-                    studentList.append(student.getName() + "\n");
+                else {
+                    studentList.append("Attendees: \n");
+                    for(Student student:attendeesList) {
+                        studentList.append(student.getName() + "\n");
+                    }
                 }
+
                 studentList.append("\n");
-                studentList.append("Committee Members: \n");
-                for(Student student:committeeList) {
-                    studentList.append(student.getName() + "\n");
+
+                if(committeeList.isEmpty()) {
+                    studentList.append("0 Committee Members");
+                }
+                else {
+                    studentList.append("Committee Members: \n");
+                    for(Student student:committeeList) {
+                        studentList.append(student.getName() + "\n");
+                    }
                 }
                 displayController.setNextDisplay(new Alert(studentList.toString(), new StaffCampMenu(scanner), scanner));
             }

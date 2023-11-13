@@ -183,10 +183,14 @@ public class Camp {
 
     public ArrayList<Student> getAttendees() {
         ArrayList<Student> attendeeList = new ArrayList<Student>();
-        for (Student attendee : attendees) {
-            attendeeList.add(attendee);
+        if(attendees == null)
+            return attendeeList;
+        else {
+            for (Student attendee : attendees) {
+                attendeeList.add(attendee);
+            }
+            return attendeeList;
         }
-        return attendeeList;
     }
 
     public void incrementCommitteePoint(Student student) {
