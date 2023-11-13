@@ -3,14 +3,19 @@ package cams.view.components;
 import java.util.Map;
 import java.util.Scanner;
 
-import ams.import cams.user.AuthController;
-import cams.user.User;import ams.user.UserController;
+import cams.domain.Staff;
+import cams.user.AuthController;
+import cams.user.User;
 import cams.view.DisplayController;
 import cams.view.base.Alert;
 import cams.view.base.Displayable;
 import cams.view.base.Form;
-import cams.view.base.ItemAcimport ams.
-public class ChangePasswordForm ex    pubic ChangePasswordForm(Scanner scanner) {
+import cams.view.base.ItemAction;
+import cams.view.base.TextBox;
+
+public class ChangePasswordForm extends Form {
+
+    public ChangePasswordForm(Scanner scanner) {
         super("Change password:\n", scanner);
 
         AuthController authController = AuthController.getInstance();
