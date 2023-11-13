@@ -17,7 +17,7 @@ public class StaffCampMenu extends SelectionMenu{
     public StaffCampMenu(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();
-        DisplayController controller = DisplayController.getInstance();
+        DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         StringBuilder studentList = new StringBuilder();
 
@@ -39,19 +39,19 @@ public class StaffCampMenu extends SelectionMenu{
                 for(Student student:committeeList) {
                     studentList.append(student.getName() + "\n");
                 }
-                controller.setNextDisplay(new Alert(studentList.toString(), new StaffCampMenu(scanner), scanner));
+                displayController.setNextDisplay(new Alert(studentList.toString(), new StaffCampMenu(scanner), scanner));
             }
         }));
 
         addItem(new ActionableItem("View enquiries", new ItemAction() {
             public void execute() {
-                controller.setNextDisplay(new StaffViewEnquiryMenu(scanner));
+                displayController.setNextDisplay(new StaffViewEnquiryMenu(scanner));
             }
         }));
 
         addItem(new ActionableItem("Back", new ItemAction() {
             public void execute() {
-                controller.setNextDisplay(new StaffViewCampMenu(scanner));
+                displayController.setNextDisplay(new StaffViewCampMenu(scanner));
             }
         }));
 

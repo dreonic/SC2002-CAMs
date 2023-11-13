@@ -16,7 +16,7 @@ public class StaffViewEnquiryMenu extends SelectionMenu {
     public StaffViewEnquiryMenu(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();
-        DisplayController controller = DisplayController.getInstance();
+        DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
         ArrayList<Enquiry> enquiriesList = camp.getEnquiriesArray();
@@ -25,14 +25,14 @@ public class StaffViewEnquiryMenu extends SelectionMenu {
             addItem(new ActionableItem(enquiry.getQuestion(), new ItemAction() {
                 public void execute() {
                     enquiryEditor.setCurrentEnquiry(enquiry);
-                    controller.setNextDisplay(new StaffEnquiryMenu(scanner));
+                    displayController.setNextDisplay(new StaffEnquiryMenu(scanner));
                 }
             }));
         }
 
         addItem(new ActionableItem("Back", new ItemAction() {
             public void execute() {
-                controller.setNextDisplay(new StaffCampMenu(scanner));
+                displayController.setNextDisplay(new StaffCampMenu(scanner));
             }
         }));
     }

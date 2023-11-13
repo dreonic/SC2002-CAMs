@@ -17,7 +17,7 @@ public class StaffViewCampMenu extends SelectionMenu{
         super(scanner);
         StaffController staffController = StaffController.getInstance();
         CampController campController = CampController.getInstance();
-        DisplayController controller = DisplayController.getInstance();
+        DisplayController displayController = DisplayController.getInstance();
         Staff currentUser = staffController.getCurrenStaff();
         ArrayList<Camp> campsCreated = currentUser.getCamps();
 
@@ -25,14 +25,14 @@ public class StaffViewCampMenu extends SelectionMenu{
             addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {
                 public void execute() {
                     campController.setCurrentCamp(camp);
-                    controller.setNextDisplay(new StaffCampMenu(scanner));
+                    displayController.setNextDisplay(new StaffCampMenu(scanner));
                 }
             }));
         }
         
         addItem(new ActionableItem("Back", new ItemAction() {
             public void execute() {
-                controller.setNextDisplay(new StaffMenu(scanner));
+                displayController.setNextDisplay(new StaffMenu(scanner));
             }
         }));
     }
