@@ -1,7 +1,5 @@
 package cams.user;
 
-import java.util.HashMap;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class AuthController {

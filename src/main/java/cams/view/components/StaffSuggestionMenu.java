@@ -29,7 +29,7 @@ public class StaffSuggestionMenu extends SelectionMenu {
                     displayController.setNextDisplay(new Alert("Suggestion has been approved", new StaffViewSuggestionMenu(scanner), scanner));
                 }
                 else {
-                    displayController.setNextDisplay(new Alert("Suggestion was not approved", new StaffViewSuggestionMenu(scanner), scanner));
+                    displayController.setNextDisplay(new Alert("Suggestion pending approval", new StaffViewSuggestionMenu(scanner), scanner));
                 }
             }
         }));
