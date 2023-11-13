@@ -27,4 +27,9 @@ public class CommonElements {
             str.append("═");
         return str.toString();
     }
+
+    public static void clearSystemOut() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 }

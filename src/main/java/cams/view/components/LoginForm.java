@@ -53,8 +53,10 @@ public class LoginForm extends Form {
                         StudentController.getInstance((Student) currentUser);
                         displayController.setNextDisplay(new StudentMenu(scanner));
                     }
+
                 } catch (IllegalArgumentException e) {
-                    displayController.setNextDisplay(new LoginErrorAlert(new LoginForm(scanner), scanner));
+                    displayController.setNextDisplay(
+                            new LoginErrorAlert(new LoginForm(scanner), scanner));
                 }
             }
         });

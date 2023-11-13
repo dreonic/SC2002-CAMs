@@ -1,5 +1,6 @@
 package cams.view.components;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,16 +20,16 @@ public class StaffViewEnquiryMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
-        ArrayList<Enquiry> enquiriesList = new ArrayList<>(camp.getEnquiriesArray());
+        List<Enquiry> enquiriesList = new ArrayList<Enquiry>(camp.getEnquiriesArray());
 
-        for(Enquiry enquiry:enquiriesList) {
+        for (Enquiry enquiry : enquiriesList) {
             addItem(new ActionableItem(enquiry.getQuestion(), new ItemAction() {
                 public void execute() {
                     enquiryEditor.setCurrentEnquiry(enquiry);
                     displayController.setNextDisplay(new StaffEnquiryMenu(scanner));
                 }
             }));
-        }  
+        }
 
         addItem(new ActionableItem("Back", new ItemAction() {
             public void execute() {

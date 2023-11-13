@@ -11,7 +11,7 @@ import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
-public class EditCampMenu extends SelectionMenu{
+public class EditCampMenu extends SelectionMenu {
     public EditCampMenu(Scanner scanner) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();
@@ -42,11 +42,16 @@ public class EditCampMenu extends SelectionMenu{
             public void execute() {
                 CampEditor campEditor = new CampEditor(camp);
                 campEditor.toggleVisibility();
-                if(camp.getCampInfo().getIsVisible() == true) {
-                    displayController.setNextDisplay(new Alert("Camp is now visible", new EditCampMenu(scanner), scanner));
-                }
-                else {
-                    displayController.setNextDisplay(new Alert("Camp is now not visible", new EditCampMenu(scanner), scanner));
+                if (camp.getCampInfo().getIsVisible() == true) {
+                    displayController.setNextDisplay(new Alert(
+                            "Camp is now visible",
+                            new EditCampMenu(scanner),
+                            scanner));
+                } else {
+                    displayController.setNextDisplay(new Alert(
+                            "Camp is now not visible",
+                            new EditCampMenu(scanner),
+                            scanner));
                 }
             }
         }));
@@ -58,5 +63,5 @@ public class EditCampMenu extends SelectionMenu{
         }));
 
     }
-    
+
 }

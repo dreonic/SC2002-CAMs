@@ -156,13 +156,14 @@ public class SelectionMenu implements Displayable {
      */
     public void display() {
         int choice = 0;
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+
+        CommonElements.clearSystemOut();
         System.out.println(getPrompt());
         for (int i = 0; i < items.size(); i++) {
             System.out.printf("(%d) ", i + 1);
             System.out.println(items.get(i).getContent());
         }
+
         System.out.print("Choice: ");
         try {
             choice = scanner.nextInt();
@@ -171,6 +172,7 @@ public class SelectionMenu implements Displayable {
             DisplayController displayController = DisplayController.getInstance();
             displayController.setNextDisplay(new InvalidAlert(this, scanner));
         }
+
         if (choice > 0 && choice <= items.size()) {
             items.get(choice - 1).runAction();
         } else {

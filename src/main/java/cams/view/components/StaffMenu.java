@@ -1,6 +1,6 @@
 package cams.view.components;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import cams.camp.Camp;
@@ -52,11 +52,12 @@ public class StaffMenu extends SelectionMenu {
         addItem(new ActionableItem("View All Camps", new ItemAction() {
             public void execute() {
                 // TODO add filter options
-                ArrayList<Camp> allCamps = campController.getAllCamps();
+                List<Camp> allCamps = campController.getAllCamps();
                 for (Camp camp : allCamps) {
                     campList.append(camp.getCampInfo().getCampName() + "\n");
                 }
-                displayController.setNextDisplay(new Alert(campList.toString(), new StaffMenu(scanner), scanner));
+                displayController.setNextDisplay(new Alert(
+                        campList.toString(), new StaffMenu(scanner), scanner));
             }
         }));
 

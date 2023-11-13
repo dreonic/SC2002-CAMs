@@ -1,6 +1,6 @@
 package cams.repliable;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import cams.domain.Student;
 
@@ -13,5 +13,5 @@ public interface RepliableEditorInterface {
 
     public void reply(Repliable repliable, Object replyMessage);
 
-    public ArrayList<Repliable> view();
+    public List<Repliable> view();
 }

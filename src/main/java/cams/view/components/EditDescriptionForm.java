@@ -29,7 +29,7 @@ public class EditDescriptionForm extends Form {
 
                 CampEditor campEditor = new CampEditor(camp);
                 campEditor.editDescription(newDescription);
-                
+
                 displayController.setNextDisplay(new EditCampMenu(scanner));
             }
         });

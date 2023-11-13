@@ -1,7 +1,8 @@
 package cams.view.components;
 
+import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import cams.camp.Camp;
@@ -13,7 +14,7 @@ import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
-public class StaffCampMenu extends SelectionMenu{
+public class StaffCampMenu extends SelectionMenu {
     public StaffCampMenu(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();
@@ -23,38 +24,37 @@ public class StaffCampMenu extends SelectionMenu{
 
         addItem(new ActionableItem("View Students", new ItemAction() {
             public void execute() {
-                ArrayList<Student> attendeesList = new ArrayList<Student>(camp.getAttendees());
-                ArrayList<Student> committeeList = new ArrayList<Student>();
-                HashMap<Student,Integer> committee = camp.getCommittee();
+                List<Student> attendeesList = new ArrayList<Student>(camp.getAttendees());
+                List<Student> committeeList = new ArrayList<Student>();
+                Map<Student, Integer> committee = camp.getCommittee();
 
-                if(committee != null) {
-                    for(HashMap.Entry<Student,Integer> member:committee.entrySet()) {
+                if (committee != null) {
+                    for (Map.Entry<Student, Integer> member : committee.entrySet()) {
                         committeeList.add(member.getKey());
                     }
                 }
 
-                if(attendeesList.isEmpty()) {
+                if (attendeesList.isEmpty()) {
                     studentList.append("0 Attendees");
-                }
-                else {
+                } else {
                     studentList.append("Attendees: \n");
-                    for(Student student:attendeesList) {
+                    for (Student student : attendeesList) {
                         studentList.append(student.getName() + "\n");
                     }
                 }
 
                 studentList.append("\n");
 
-                if(committeeList.isEmpty()) {
+                if (committeeList.isEmpty()) {
                     studentList.append("0 Committee Members");
-                }
-                else {
+                } else {
                     studentList.append("Committee Members: \n");
-                    for(Student student:committeeList) {
+                    for (Student student : committeeList) {
                         studentList.append(student.getName() + "\n");
                     }
                 }
-                displayController.setNextDisplay(new Alert(studentList.toString(), new StaffCampMenu(scanner), scanner));
+                displayController.setNextDisplay(new Alert(
+                        studentList.toString(), new StaffCampMenu(scanner), scanner));
             }
         }));
 
@@ -88,7 +88,7 @@ public class StaffCampMenu extends SelectionMenu{
 
         addItem(new ActionableItem("Delete Camp", new ItemAction() {
             public void execute() {
-                
+
             }
         }));
 

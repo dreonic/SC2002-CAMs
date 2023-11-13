@@ -2,7 +2,9 @@ package cams.user;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
 
 import org.apache.poi.ss.usermodel.*;
@@ -13,7 +15,7 @@ import cams.domain.Student;
 
 public class UserController {
     private static UserController userController;
-    private HashMap<String, User> userTable = new HashMap<>();
+    private Map<String, User> userTable;
 
     private UserController() {
         userTable = new HashMap<String, User>();
@@ -62,7 +64,7 @@ public class UserController {
                     break;
                 }
 
-                ArrayList<String> args = new ArrayList<String>();
+                List<String> args = new ArrayList<String>();
                 for (Cell cell : row) {
                     args.add(cell.toString());
                 }

@@ -1,7 +1,9 @@
 package cams.camp;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
 
 import cams.domain.Staff;
@@ -21,14 +23,14 @@ import cams.domain.Student;
  */
 public class CampController {
     private static CampController campController;
-    private HashMap<String, Camp> campTable;
+    private Map<String, Camp> campTable;
     private Camp currentCamp;
 
     /**
      * Private constructor to ensure singleton pattern.
      */
     private CampController() {
-        campTable = new HashMap<>();
+        campTable = new HashMap<String, Camp>();
         currentCamp = null;
     }
 
@@ -52,7 +54,7 @@ public class CampController {
         return campController;
     }
 
-    HashMap<String,Camp> getCampTable() {
+    Map<String, Camp> getCampTable() {
         return campTable;
     }
 
@@ -84,9 +86,9 @@ public class CampController {
      *
      * @return An array of {@code Camp} objects.
      */
-    public ArrayList<Camp> getAllCamps() {
-        ArrayList<Camp> campList = new ArrayList<Camp>();
-        for (HashMap.Entry<String, Camp> camp : campTable.entrySet()) {
+    public List<Camp> getAllCamps() {
+        List<Camp> campList = new ArrayList<Camp>();
+        for (Map.Entry<String, Camp> camp : campTable.entrySet()) {
             campList.add(camp.getValue());
         }
         return campList;
@@ -132,8 +134,8 @@ public class CampController {
      *
      * @return A {@code HashMap} containing the performance report.
      */
-    public HashMap<Student, Integer> getPerformanceReport(String campName) {
-        HashMap<Student, Integer> performanceReport = new HashMap<Student, Integer>(
+    public Map<Student, Integer> getPerformanceReport(String campName) {
+        Map<Student, Integer> performanceReport = new HashMap<Student, Integer>(
                 campTable.get(campName).getCommittee());
         return performanceReport;
     }
@@ -143,9 +145,9 @@ public class CampController {
      *
      * @return A {@code Set} containing the attendance list.
      */
-    public ArrayList<Student> getAttendanceList(String campName) {
+    public List<Student> getAttendanceList(String campName) {
         Camp camp = campTable.get(campName);
-        ArrayList<Student> attendanceList = camp.getAttendees();
+        List<Student> attendanceList = camp.getAttendees();
         return attendanceList;
     }
 

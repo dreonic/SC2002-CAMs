@@ -49,27 +49,31 @@ public class CreateCampForm extends Form {
                             values.get("Camp Name"),
                             values.get("Location"),
                             values.get("Description"),
-                            LocalDate.parse(values.get("Start Date (dd-mm-yyyy)"), formatter),
-                            LocalDate.parse(values.get("End Date (dd-mm-yyyy)"), formatter),
-                            LocalDate.parse(values.get("Registration Closing Date (dd-mm-yyyy)"), formatter),
+                            LocalDate.parse(values.get(
+                                    "Start Date (dd-mm-yyyy)"), formatter),
+                            LocalDate.parse(values.get(
+                                    "End Date (dd-mm-yyyy)"), formatter),
+                            LocalDate.parse(values.get(
+                                    "Registration Closing Date (dd-mm-yyyy)"),
+                                    formatter),
                             Integer.parseInt(values.get("Total Slots")),
                             parseVisibility(values.get("Make visible? (Y/n)")),
                             values.get("User Group"),
                             staffController.getCurrentStaff());
 
                     displayController.setNextDisplay(new StaffMenu(scanner));
+
                 } catch (DateTimeParseException e) {
-                    displayController.setNextDisplay(
-                            new Alert(
-                                    "Date input format is invalid!",
-                                    new CreateCampForm(scanner),
-                                    scanner));
+                    displayController.setNextDisplay(new Alert(
+                            "Date input format is invalid!",
+                            new CreateCampForm(scanner),
+                            scanner));
+
                 } catch (NumberFormatException e) {
-                    displayController.setNextDisplay(
-                            new Alert(
-                                    "Number input format is invalid!",
-                                    new CreateCampForm(scanner),
-                                    scanner));
+                    displayController.setNextDisplay(new Alert(
+                            "Number input format is invalid!",
+                            new CreateCampForm(scanner),
+                            scanner));
                 }
             }
         });

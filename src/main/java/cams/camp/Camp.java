@@ -1,8 +1,9 @@
 package cams.camp;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import cams.domain.Staff;
@@ -29,7 +30,7 @@ public class Camp {
     private Set<Enquiry> enquiries;
     private Set<Suggestion> suggestions;
     private Set<Student> attendees;
-    private HashMap<Student, Integer> committee;
+    private Map<Student, Integer> committee;
     private CampInfo campInfo;
     private CampDate campDate;
     private String userGroup;
@@ -134,9 +135,9 @@ public class Camp {
      *
      * @return An array of {@code Enquiry} objects.
      */
-    public ArrayList<Enquiry> getEnquiriesArray() {
-        ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
-        if(enquiries == null)
+    public List<Enquiry> getEnquiriesArray() {
+        List<Enquiry> enquiryList = new ArrayList<Enquiry>();
+        if (enquiries == null)
             return enquiryList;
         else {
             for (Enquiry enquiry : enquiries) {
@@ -169,9 +170,9 @@ public class Camp {
      *
      * @return An array of {@code Suggestion} objects.
      */
-    public ArrayList<Suggestion> getSuggestionsArray() {
-        ArrayList<Suggestion> suggestionList = new ArrayList<Suggestion>();
-        if(suggestions == null)
+    public List<Suggestion> getSuggestionsArray() {
+        List<Suggestion> suggestionList = new ArrayList<Suggestion>();
+        if (suggestions == null)
             return suggestionList;
         else {
             for (Suggestion suggestion : suggestions) {
@@ -185,13 +186,13 @@ public class Camp {
         committee.put(student, 0);
     }
 
-    public HashMap<Student, Integer> getCommittee() {
+    public Map<Student, Integer> getCommittee() {
         return committee;
     }
 
-    public ArrayList<Student> getAttendees() {
-        ArrayList<Student> attendeeList = new ArrayList<Student>();
-        if(attendees == null)
+    public List<Student> getAttendees() {
+        List<Student> attendeeList = new ArrayList<Student>();
+        if (attendees == null)
             return attendeeList;
         else {
             for (Student attendee : attendees) {

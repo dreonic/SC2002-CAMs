@@ -1,16 +1,18 @@
 package cams.camp;
 
 import cams.filter.FilterStrategy;
+import java.util.List;
 import java.util.ArrayList;
 
 public class CampFilterController {
     private static CampFilterController campFilterController;
-    private ArrayList<FilterStrategy> filterStrategies;
+    private List<FilterStrategy> filterStrategies;
 
-    private CampFilterController() {}
+    private CampFilterController() {
+    }
 
     public static CampFilterController getInstance() {
-        if(campFilterController == null){
+        if (campFilterController == null) {
             campFilterController = new CampFilterController();
         }
         return campFilterController;
@@ -20,19 +22,19 @@ public class CampFilterController {
         filterStrategies.add(strategy);
     }
 
-    public ArrayList<FilterStrategy> getFilterStrategies() {
+    public List<FilterStrategy> getFilterStrategies() {
         return filterStrategies;
     }
 
-    public ArrayList<Camp> filter(String faculty) {
-        ArrayList<Camp> filteredList = new ArrayList<Camp>();
+    public List<Camp> filter(String faculty) {
+        List<Camp> filteredList = new ArrayList<Camp>();
         CampController campController = CampController.getInstance();
-        ArrayList<Camp> allCamps = campController.getAllCamps();
-        for(Camp camp:allCamps) {
-            if(camp.getUserGroup() == faculty)
+        List<Camp> allCamps = campController.getAllCamps();
+        for (Camp camp : allCamps) {
+            if (camp.getUserGroup() == faculty)
                 filteredList.add(camp);
         }
-        for(FilterStrategy strategy:filterStrategies) {
+        for (FilterStrategy strategy : filterStrategies) {
             strategy.filter(filteredList);
         }
         return filteredList;
