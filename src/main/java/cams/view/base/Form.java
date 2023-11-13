@@ -69,6 +69,14 @@ import java.util.Scanner;
  * }
  * </pre>
  * 
+ * The result of the example above:
+ * 
+ * <pre>
+ * Form title goes here.
+ * Label 1: 
+ * Label 2:
+ * </pre>
+ * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
