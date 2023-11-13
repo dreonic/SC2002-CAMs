@@ -7,6 +7,7 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Staff;
 import cams.domain.StaffController;
+import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
@@ -41,9 +42,10 @@ public class StaffMenu extends SelectionMenu {
             }
         }));
 
-        addItem(new ActionableItem("View Camps", new ItemAction() {
+        addItem(new ActionableItem("View Created Camps", new ItemAction() {
             public void execute() {
-                
+                DisplayController controller = DisplayController.getInstance();
+                controller.setNextDisplay(new StaffViewCampMenu(scanner));
             }
         }));
     }
