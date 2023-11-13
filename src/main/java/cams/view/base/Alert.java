@@ -40,6 +40,14 @@ import cams.view.DisplayController;
  * }
  * </pre>
  * 
+ * The result of the example above:
+ * 
+ * <pre>
+ * Alert Content
+ * 
+ * Press ENTER to continue...
+ * </pre>
+ * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
