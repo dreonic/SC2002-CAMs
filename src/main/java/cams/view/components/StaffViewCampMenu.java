@@ -29,5 +29,11 @@ public class StaffViewCampMenu extends SelectionMenu{
                 }
             }));
         }
+        
+        addItem(new ActionableItem("Back", new ItemAction() {
+            public void execute() {
+                controller.setNextDisplay(new StaffMenu(scanner));
+            }
+        }));
     }
 }
