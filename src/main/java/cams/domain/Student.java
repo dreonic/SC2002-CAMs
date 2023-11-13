@@ -2,6 +2,7 @@ package cams.domain;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.HashSet;
 
 import cams.camp.Camp;
@@ -10,8 +11,8 @@ import cams.user.User;
 
 public class Student extends User {
     private Camp committeeFor;
-    private HashSet<Camp> campsRegistered;
-    private HashSet<Enquiry> enquiries;
+    private Set<Camp> campsRegistered;
+    private Set<Enquiry> enquiries;
 
     public Student(String name, String userID, String faculty, String passwordHash) {
         super(name, userID, faculty, passwordHash);
