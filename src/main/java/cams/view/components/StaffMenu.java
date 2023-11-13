@@ -12,6 +12,7 @@ import cams.domain.StaffController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.CommonElements;
+import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
@@ -20,7 +21,10 @@ public class StaffMenu extends SelectionMenu {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();
         StaffController staffController = StaffController.getInstance();
+        CampController campController = CampController.getInstance();
+        DisplayController controller = DisplayController.getInstance();
         Staff currentUser = staffController.getCurrenStaff();
+        StringBuilder campList = new StringBuilder();
 
         if (currentUser == null) {
             throw new IllegalStateException("No staff has been assigned to the Staff Controller class");
@@ -51,6 +55,17 @@ public class StaffMenu extends SelectionMenu {
             public void execute() {
                 DisplayController controller = DisplayController.getInstance();
                 controller.setNextDisplay(new StaffViewCampMenu(scanner));
+            }
+        }));
+
+        addItem(new ActionableItem("View All Camps", new ItemAction() {
+            public void execute() {
+                // TODO add filter options
+                ArrayList<Camp> allCamps = campController.getAllCamps();
+                for (Camp camp : allCamps) {
+                    campList.append(camp.getCampInfo().getCampName() + "\n");
+                }
+                controller.setNextDisplay(new Alert(campList.toString(), new StaffMenu(scanner), scanner));
             }
         }));
     }
