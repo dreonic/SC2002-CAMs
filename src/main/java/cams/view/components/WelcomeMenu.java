@@ -2,10 +2,9 @@ package cams.view.components;
 
 import java.util.Scanner;
 
-import cams.user.AuthController;
-import cams.user.UserController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
@@ -21,17 +20,6 @@ import cams.view.base.SelectionMenu;
  * @since 2023-11-09
  */
 public class WelcomeMenu extends SelectionMenu {
-    private String header = """
-                 ██████╗ █████╗ ███╗   ███╗███████╗
-                ██╔════╝██╔══██╗████╗ ████║██╔════╝
-                ██║     ███████║██╔████╔██║███████╗
-                ██║     ██╔══██║██║╚██╔╝██║╚════██║
-                ╚██████╗██║  ██║██║ ╚═╝ ██║███████║
-                 ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
-            """;
-
-    private String separator = String.format("%045d", 0).replace("0", "═") + "\n";
-
     /**
      * Class constructor specifying the scanner to be used to receive user input.
      * 
@@ -40,7 +28,7 @@ public class WelcomeMenu extends SelectionMenu {
     public WelcomeMenu(Scanner scanner) {
         super(scanner);
 
-        setPrompt(separator + "\n" + header + "\n" + separator
+        setPrompt(CommonElements.getHeader() + "\n"
                 + "Welcome to Camp Application and Management System (CAMs).\n");
 
         addItem(new ActionableItem("Login", new ItemAction() {

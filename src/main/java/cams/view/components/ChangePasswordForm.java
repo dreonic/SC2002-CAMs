@@ -6,7 +6,6 @@ import java.util.Scanner;
 import cams.domain.Staff;
 import cams.user.AuthController;
 import cams.user.User;
-import cams.user.UserController;
 import cams.view.DisplayController;
 import cams.view.base.Alert;
 import cams.view.base.Displayable;
@@ -15,6 +14,7 @@ import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
 
 public class ChangePasswordForm extends Form {
+
     public ChangePasswordForm(Scanner scanner) {
         super("Change password:\n", scanner);
 

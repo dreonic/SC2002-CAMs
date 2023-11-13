@@ -3,9 +3,11 @@ package cams.view.components;
 import java.util.Scanner;
 
 import cams.domain.Staff;
+import cams.domain.StaffController;
+import cams.domain.Student;
+import cams.domain.StudentController;
 import cams.user.AuthController;
 import cams.user.User;
-import cams.user.UserController;
 import cams.view.DisplayController;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
@@ -43,10 +45,12 @@ public class LoginForm extends Form {
                 String passwordInput = getValues().get("Password");
 
                 try {
-                    User currenUser = authController.login(userIDInput, passwordInput);
-                    if (currenUser instanceof Staff) {
+                    User currentUser = authController.login(userIDInput, passwordInput);
+                    if (currentUser instanceof Staff) {
+                        StaffController.getInstance((Staff) currentUser);
                         displayController.setNextDisplay(new StaffMenu(scanner));
                     } else {
+                        StudentController.getInstance((Student) currentUser);
                         displayController.setNextDisplay(new StudentMenu(scanner));
                     }
                 } catch (IllegalArgumentException e) {

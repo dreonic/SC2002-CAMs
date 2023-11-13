@@ -6,14 +6,26 @@ public class StudentController {
     private static StudentController studentController;
     private Student student;
 
+    private StudentController() {
+        student = null;
+    }
+
     private StudentController(Student student) {
         this.student = student;
     }
 
+    public static StudentController getInstance() {
+        if (studentController == null) {
+            studentController = new StudentController();
+        }
+        return studentController;
+    }
+
     public static StudentController getInstance(Student student) {
         if(studentController == null) {
-            studentController = new StudentController(student);
+            studentController = new StudentController();
         }
+        studentController.setCurrentStudent(student);
         return studentController;
     }
 

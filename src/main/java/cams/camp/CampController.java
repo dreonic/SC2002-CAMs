@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import cams.domain.Staff;
 import cams.domain.Student;
 
 /**
@@ -51,24 +52,31 @@ public class CampController {
         return campController;
     }
 
+    HashMap<String,Camp> getCampTable() {
+        return campTable;
+    }
+
     /**
      * Creates a new camp and adds it to the camp table.
      *
-     * @param campName            The name of the camp.
-     * @param location            The location of the camp.
-     * @param description         The description of the camp.
-     * @param startDate           The start date of the camp.
-     * @param endDate             The end date of the camp.
+     * @param campName             The name of the camp.
+     * @param location             The location of the camp.
+     * @param description          The description of the camp.
+     * @param startDate            The start date of the camp.
+     * @param endDate              The end date of the camp.
      * @param registrationDeadline The registration deadline for the camp.
-     * @param totalSlots          The total available slots for the camp.
-     * @param isVisible           Indicates whether the camp is visible.
-     * @param userGroup           The user group associated with the camp.
+     * @param totalSlots           The total available slots for the camp.
+     * @param isVisible            Indicates whether the camp is visible.
+     * @param userGroup            The user group associated with the camp.
+     * @param staffInCharge
      */
     public void createCamp(String campName, String location, String description, LocalDate startDate,
-                           LocalDate endDate, LocalDate registrationDeadline, int totalSlots,
-                           boolean isVisible, String userGroup) {
-        Camp newCamp = new Camp(campName, location, description, startDate, endDate, registrationDeadline, totalSlots, isVisible, userGroup);
-        campTable.put(campName, newCamp);
+            LocalDate endDate, LocalDate registrationDeadline, int totalSlots,
+            boolean isVisible, String userGroup, Staff staffInCharge) {
+        Camp newCamp = new Camp(campName, location, description, startDate, endDate, registrationDeadline, totalSlots,
+                isVisible, userGroup, staffInCharge);
+        campTable.put(campName.toLowerCase(), newCamp);
+        staffInCharge.addCamp(newCamp);
     }
 
     /**
@@ -78,7 +86,7 @@ public class CampController {
      */
     public ArrayList<Camp> getAllCamps() {
         ArrayList<Camp> campList = new ArrayList<Camp>();
-        for(HashMap.Entry<String, Camp> camp:campTable.entrySet()) {
+        for (HashMap.Entry<String, Camp> camp : campTable.entrySet()) {
             campList.add(camp.getValue());
         }
         return campList;
@@ -88,10 +96,11 @@ public class CampController {
      * Retrieves a specific camp by name.
      *
      * @param name The name of the camp to retrieve.
-     * @return The {@code Camp} object with the specified name, or {@code null} if not found.
+     * @return The {@code Camp} object with the specified name, or {@code null} if
+     *         not found.
      */
     public Camp getCamp(String name) {
-        return campTable.get(name);
+        return campTable.get(name.toLowerCase());
     }
 
     /**
@@ -100,8 +109,8 @@ public class CampController {
      * @param name The name of the camp to delete.
      */
     public void deleteCamp(String name) {
-        if(campTable.get(name).getAttendees().isEmpty())
-            campTable.remove(name);
+        if (campTable.get(name).getAttendees().isEmpty())
+            campTable.remove(name.toLowerCase());
     }
 
     /**
@@ -124,7 +133,8 @@ public class CampController {
      * @return A {@code HashMap} containing the performance report.
      */
     public HashMap<Student, Integer> getPerformanceReport(String campName) {
-        HashMap<Student,Integer> performanceReport = new HashMap<Student,Integer>(campTable.get(campName).getCommittee());
+        HashMap<Student, Integer> performanceReport = new HashMap<Student, Integer>(
+                campTable.get(campName).getCommittee());
         return performanceReport;
     }
 

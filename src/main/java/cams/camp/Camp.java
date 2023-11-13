@@ -46,13 +46,15 @@ public class Camp {
      * @param totalSlots           The total available slots for the camp.
      * @param isVisible            Indicates whether the camp is visible.
      * @param userGroup            The user group associated with the camp.
+     * @param staffInCharge
      */
     public Camp(String campName, String location, String description, LocalDate startDate,
             LocalDate endDate, LocalDate registrationDeadline, int totalSlots,
-            boolean isVisible, String userGroup) {
+            boolean isVisible, String userGroup, Staff staffInCharge) {
         this.campInfo = new CampInfo(campName, location, description, totalSlots, 10, isVisible);
         this.campDate = new CampDate(startDate, endDate, registrationDeadline);
         this.userGroup = userGroup;
+        this.staffInCharge = staffInCharge;
     }
 
     public Staff getStaffInCharge() {
@@ -134,7 +136,7 @@ public class Camp {
      */
     public ArrayList<Enquiry> getEnquiriesArray() {
         ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
-        for(Enquiry enquiry:enquiries) {
+        for (Enquiry enquiry : enquiries) {
             enquiryList.add(enquiry);
         }
         return enquiryList;
@@ -165,7 +167,7 @@ public class Camp {
      */
     public ArrayList<Suggestion> getSuggestionsArray() {
         ArrayList<Suggestion> suggestionList = new ArrayList<Suggestion>();
-        for(Suggestion suggestion:suggestions) {
+        for (Suggestion suggestion : suggestions) {
             suggestionList.add(suggestion);
         }
         return suggestionList;
@@ -175,19 +177,23 @@ public class Camp {
         committee.put(student, 0);
     }
 
-    public HashMap<Student,Integer> getCommittee() {
+    public HashMap<Student, Integer> getCommittee() {
         return committee;
     }
 
     public ArrayList<Student> getAttendees() {
         ArrayList<Student> attendeeList = new ArrayList<Student>();
-        for(Student attendee:attendees) {
-            attendeeList.add(attendee);
+        if(attendees == null)
+            return attendeeList;
+        else {
+            for (Student attendee : attendees) {
+                attendeeList.add(attendee);
+            }
+            return attendeeList;
         }
-        return attendeeList;
     }
 
     public void incrementCommitteePoint(Student student) {
-        committee.put(student, committee.get(student)+1);
+        committee.put(student, committee.get(student) + 1);
     }
 }
