@@ -67,9 +67,9 @@ public class UserController {
                     args.add(cell.toString());
                 }
                 User user = ("student".equals(userType))
-                        ? new Student(args.get(0), args.get(1), args.get(2),
+                        ? new Student(args.get(0), args.get(1).substring(0, args.get(1).indexOf('@')), args.get(2),
                                 (args.size() == 4) ? args.get(3) : null)
-                        : new Staff(args.get(0), args.get(1), args.get(2),
+                        : new Staff(args.get(0), args.get(1).substring(0, args.get(1).indexOf('@')), args.get(2),
                                 (args.size() == 4) ? args.get(3) : null);
                 addUser(user);
             }

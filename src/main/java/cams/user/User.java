@@ -1,15 +1,15 @@
 package cams.user;
 
 public class User {
+    private String name;
     private String userID;
     private String passwordHash;
     private String faculty;
-    private String email;
 
-    public User(String userID, String email, String faculty, String passwordHash) {
+    public User(String name, String userID, String faculty, String passwordHash) {
+        this.name = name;
         this.userID = userID;
         this.faculty = faculty;
-        this.email = email;
         AuthController authController = AuthController.getInstance();
         this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode("password") : passwordHash;
     }
@@ -34,11 +34,11 @@ public class User {
         this.faculty = faculty;
     }
 
-    public String getEmail() {
-        return this.email;
+    public String getName() {
+        return this.name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setName(String name) {
+        this.name = name;
     }
 }
