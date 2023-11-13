@@ -21,12 +21,12 @@ public class StaffCampMenu extends SelectionMenu{
         Camp camp = campController.getCurrentCamp();
         StringBuilder studentList = new StringBuilder();
 
-        addItem(new ActionableItem("View students", new ItemAction() {
+        addItem(new ActionableItem("View Students", new ItemAction() {
             public void execute() {
                 ArrayList<Student> attendeesList = new ArrayList<Student>(camp.getAttendees());
                 ArrayList<Student> committeeList = new ArrayList<Student>();
                 HashMap<Student,Integer> committee = camp.getCommittee();
-                
+
                 if(committee != null) {
                     for(HashMap.Entry<Student,Integer> member:committee.entrySet()) {
                         committeeList.add(member.getKey());
@@ -58,9 +58,21 @@ public class StaffCampMenu extends SelectionMenu{
             }
         }));
 
-        addItem(new ActionableItem("View enquiries", new ItemAction() {
+        addItem(new ActionableItem("View Enquiries", new ItemAction() {
             public void execute() {
                 displayController.setNextDisplay(new StaffViewEnquiryMenu(scanner));
+            }
+        }));
+
+        addItem(new ActionableItem("Edit Camp", new ItemAction() {
+            public void execute() {
+                displayController.setNextDisplay(new EditCampMenu(scanner));
+            }
+        }));
+
+        addItem(new ActionableItem("Delete Camp", new ItemAction() {
+            public void execute() {
+                
             }
         }));
 

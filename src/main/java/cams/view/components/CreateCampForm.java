@@ -6,7 +6,6 @@ import java.time.format.DateTimeParseException;
 import java.util.Map;
 import java.util.Scanner;
 
-import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.StaffController;
 import cams.view.DisplayController;

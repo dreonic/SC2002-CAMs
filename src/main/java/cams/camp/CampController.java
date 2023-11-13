@@ -52,6 +52,10 @@ public class CampController {
         return campController;
     }
 
+    HashMap<String,Camp> getCampTable() {
+        return campTable;
+    }
+
     /**
      * Creates a new camp and adds it to the camp table.
      *
@@ -71,7 +75,7 @@ public class CampController {
             boolean isVisible, String userGroup, Staff staffInCharge) {
         Camp newCamp = new Camp(campName, location, description, startDate, endDate, registrationDeadline, totalSlots,
                 isVisible, userGroup, staffInCharge);
-        campTable.put(campName, newCamp);
+        campTable.put(campName.toLowerCase(), newCamp);
         staffInCharge.addCamp(newCamp);
     }
 
@@ -96,7 +100,7 @@ public class CampController {
      *         not found.
      */
     public Camp getCamp(String name) {
-        return campTable.get(name);
+        return campTable.get(name.toLowerCase());
     }
 
     /**
@@ -106,7 +110,7 @@ public class CampController {
      */
     public void deleteCamp(String name) {
         if (campTable.get(name).getAttendees().isEmpty())
-            campTable.remove(name);
+            campTable.remove(name.toLowerCase());
     }
 
     /**

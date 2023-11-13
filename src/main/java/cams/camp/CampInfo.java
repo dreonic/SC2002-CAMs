@@ -140,7 +140,7 @@ public class CampInfo {
      *
      * @return {@code true} if the camp is visible, {@code false} otherwise.
      */
-    public boolean getisVisible() {
+    public boolean getIsVisible() {
         return isVisible;
     }
 
