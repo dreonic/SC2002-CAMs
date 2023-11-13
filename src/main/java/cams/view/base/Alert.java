@@ -5,7 +5,40 @@ import java.util.Scanner;
 import cams.view.DisplayController;
 
 /**
- * Base class for all dismissable pop-up user interface elements.
+ * Base class for all dismissable pop-up user interface elements. This base
+ * class enables displaying a pop-up with content which can be dismissed by
+ * pressing the ENTER key. Once dismissed, the previous/calling
+ * <code>Displayable</code> user interface element is displayed. Specific
+ * alerts in this application like <code>InvalidAlert</code> are implemented as
+ * extensions from this base class.
+ * <p>
+ * To use this base alert, extend from or construct this base class with the
+ * content and specify the previous <code>Displayable</code> which called this
+ * alert.
+ * Usage example by extension:
+ * 
+ * <pre>
+ * {@code
+ * public class SpecificAlert extends Alert {
+ *     public SpecificAlert(Displayable previousDisplayable, Scanner scanner) {
+ *         super("Alert content", previousDisplayable, scanner);
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Usage example by association:
+ * 
+ * <pre>
+ * {@code
+ * public class Foo {
+ *     public void bar() {
+ *         Scanner sc = new Scanner(System.in);
+ *         Alert alert = new Alert("Alert content", previousDisplayable, sc);
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -19,7 +52,7 @@ public class Alert extends ActionableItem implements Displayable {
     private Scanner scanner;
 
     /**
-     * Class constructor specifying displayed content, caller user interface element
+     * Constructs alert with content, caller user interface element
      * and the scanner to be used to receive user input.
      * 
      * @param content             displayed content
@@ -37,7 +70,9 @@ public class Alert extends ActionableItem implements Displayable {
     }
 
     /**
-     * Clears stdout and displays content and instructions to dismiss pop-up.
+     * Clears the standard output and displays content and instructions to dismiss
+     * pop-up. Dismissing the pop-up using the ENTER eky will return the user to the
+     * previous <code>Displayable</code> user interface element.
      */
     public void display() {
         System.out.print("\033[H\033[2J");

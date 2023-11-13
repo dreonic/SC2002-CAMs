@@ -4,7 +4,12 @@ import java.io.Console;
 import java.util.Scanner;
 
 /**
- * Base class for user interface elements which requests user input.
+ * Base class for user interface elements which requests user input. This base
+ * class enables this application to retrieve and store user input which may be
+ * further processed by classes containing this base class. This base textbox is
+ * used by association in this application.
+ * <p>
+ * To use this base textbox, construct this base class with its label.
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -21,8 +26,8 @@ public class TextBox implements Displayable {
     private boolean inputHidden;
 
     /**
-     * Class constructor specifying displayed label and the scanner to be used to
-     * receive user input.
+     * Constructs a labelled textbox and the scanner to be used to receive user
+     * input. Label should be descriptive of what is required from the user.
      * 
      * @param label   textbox label
      * @param scanner scanner for this textbox
@@ -35,9 +40,10 @@ public class TextBox implements Displayable {
     }
 
     /**
-     * Class constructor specifying displayed label, whether input will be hidden
-     * and the scanner to be used to
-     * receive user input.
+     * Constructs a labelled textbox where the user input can be hidden and the
+     * scanner to be used to receive user input. Label should be descriptive of what
+     * is required from the user. An example where user input may want to be hidden
+     * is when asking for the user's password.
      * 
      * @param label       textbox label
      * @param inputHidden disables input echoing if true
@@ -78,7 +84,8 @@ public class TextBox implements Displayable {
     }
 
     /**
-     * Displays textbox label to stdout and gets user input in the same line.
+     * Displays textbox label to the standard output and gets user input in the same
+     * line using the provided scaanner of the textbox.
      */
     public void display() {
         Console console = System.console();
