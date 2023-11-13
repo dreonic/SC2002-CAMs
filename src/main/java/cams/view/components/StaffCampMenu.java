@@ -60,7 +60,23 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View Enquiries", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new StaffViewEnquiryMenu(scanner));
+                if(camp.getEnquiriesArray().isEmpty()) {
+                    displayController.setNextDisplay(new Alert("No Enquiries", new StaffCampMenu(scanner), scanner));
+                }
+                else {
+                    displayController.setNextDisplay(new StaffViewEnquiryMenu(scanner));
+                }
+            }
+        }));
+
+        addItem(new ActionableItem("View Suggestions", new ItemAction() {
+            public void execute() {
+                if(camp.getSuggestionsArray().isEmpty()) {
+                    displayController.setNextDisplay(new Alert("No Suggestions", new StaffCampMenu(scanner), scanner));
+                }
+                else {
+                displayController.setNextDisplay(new StaffViewSuggestionMenu(scanner));
+                }
             }
         }));
 

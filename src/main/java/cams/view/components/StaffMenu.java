@@ -43,12 +43,6 @@ public class StaffMenu extends SelectionMenu {
             }
         }));
 
-        addItem(new ActionableItem("Edit Camp", new ItemAction() {
-            public void execute() {
-                displayController.setNextDisplay(new EditCampMenu(scanner));
-            }
-        }));
-
         addItem(new ActionableItem("View Created Camps", new ItemAction() {
             public void execute() {
                 displayController.setNextDisplay(new StaffViewCampMenu(scanner));

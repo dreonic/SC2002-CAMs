@@ -1,32 +1,31 @@
 package cams.view.components;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import cams.camp.Camp;
 import cams.camp.CampController;
-import cams.repliable.Enquiry;
-import cams.repliable.EnquiryEditor;
+import cams.repliable.Suggestion;
+import cams.repliable.SuggestionEditor;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
-public class StaffViewEnquiryMenu extends SelectionMenu {
-    public StaffViewEnquiryMenu(Scanner scanner) {
+public class StaffViewSuggestionMenu extends SelectionMenu {
+    public StaffViewSuggestionMenu(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
-        EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
-        List<Enquiry> enquiriesList = new ArrayList<Enquiry>(camp.getEnquiriesArray());
+        SuggestionEditor suggestionEditor = new SuggestionEditor(camp);
+        ArrayList<Suggestion> suggestionList = camp.getSuggestionsArray();
 
-        for (Enquiry enquiry : enquiriesList) {
-            addItem(new ActionableItem(enquiry.getQuestion(), new ItemAction() {
+        for(Suggestion suggestion:suggestionList) {
+            addItem(new ActionableItem(suggestion.getContent(), new ItemAction() {
                 public void execute() {
-                    enquiryEditor.setCurrentEnquiry(enquiry);
-                    displayController.setNextDisplay(new StaffEnquiryMenu(scanner));
+                    suggestionEditor.setCurrentSuggestion(suggestion);
+                    displayController.setNextDisplay(new StaffSuggestionMenu(scanner));
                 }
             }));
         }

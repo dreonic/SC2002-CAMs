@@ -17,7 +17,6 @@ public class EditNameForm extends Form {
         super(scanner);
 
         setTitle("Edit Camp Name: \n");
-
         addInput(new TextBox("New Camp Name", scanner));
 
         setAction(new ItemAction() {
@@ -36,9 +35,9 @@ public class EditNameForm extends Form {
                 } else {
                     CampEditor campEditor = new CampEditor(camp);
                     campEditor.editName(newName);
+                    displayController.setNextDisplay(
+                            new Alert("Camp name changed successfully!", new EditCampMenu(scanner), scanner));
                 }
-
-                displayController.setNextDisplay(new EditCampMenu(scanner));
             }
         });
     }

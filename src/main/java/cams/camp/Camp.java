@@ -137,10 +137,14 @@ public class Camp {
      */
     public List<Enquiry> getEnquiriesArray() {
         List<Enquiry> enquiryList = new ArrayList<Enquiry>();
-        for (Enquiry enquiry : enquiries) {
-            enquiryList.add(enquiry);
+        if (enquiries == null)
+            return enquiryList;
+        else {
+            for (Enquiry enquiry : enquiries) {
+                enquiryList.add(enquiry);
+            }
+            return enquiryList;
         }
-        return enquiryList;
     }
 
     /**
@@ -168,10 +172,14 @@ public class Camp {
      */
     public List<Suggestion> getSuggestionsArray() {
         List<Suggestion> suggestionList = new ArrayList<Suggestion>();
-        for (Suggestion suggestion : suggestions) {
-            suggestionList.add(suggestion);
+        if (suggestions == null)
+            return suggestionList;
+        else {
+            for (Suggestion suggestion : suggestions) {
+                suggestionList.add(suggestion);
+            }
+            return suggestionList;
         }
-        return suggestionList;
     }
 
     public void addCommittee(Student student) {
