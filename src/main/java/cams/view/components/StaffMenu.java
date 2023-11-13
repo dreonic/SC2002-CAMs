@@ -3,18 +3,22 @@ package cams.view.components;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.apache.commons.math3.transform.DstNormalization;
+
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Staff;
 import cams.domain.StaffController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
 public class StaffMenu extends SelectionMenu {
     public StaffMenu(Scanner scanner) {
         super(scanner);
+        DisplayController displayController = DisplayController.getInstance();
         StaffController staffController = StaffController.getInstance();
         Staff currentUser = staffController.getCurrenStaff();
 
@@ -22,7 +26,8 @@ public class StaffMenu extends SelectionMenu {
             throw new IllegalStateException("No staff has been assigned to the Staff Controller class");
         }
 
-        setPrompt("Welcome to CAMs, " + currentUser.getName() + "!");
+        setPrompt(CommonElements.getHeader("Staff") + "\n"
+                + "Welcome to CAMs, " + currentUser.getName() + "!\n");
 
         addItem(new ActionableItem("Change Password", new ItemAction() {
             public void execute() {
@@ -32,7 +37,7 @@ public class StaffMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Create Camp", new ItemAction() {
             public void execute() {
-
+                displayController.setNextDisplay(new CreateCampForm(scanner));
             }
         }));
 

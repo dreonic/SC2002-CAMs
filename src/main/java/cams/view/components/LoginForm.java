@@ -3,7 +3,9 @@ package cams.view.components;
 import java.util.Scanner;
 
 import cams.domain.Staff;
+import cams.domain.StaffController;
 import cams.domain.Student;
+import cams.domain.StudentController;
 import cams.domain.Staff;
 import cams.user.AuthController;
 import cams.user.User;
@@ -31,7 +33,7 @@ public class LoginForm extends Form {
      * @param scanner scanner for this menu
      */
     public LoginForm(Scanner scanner) {
-        super("Login to CAMS:\n\n", scanner);
+        super("Login to CAMS:\n", scanner);
 
         addInput(new TextBox("User ID", scanner));
         addInput(new TextBox("Password", true, scanner));
@@ -47,8 +49,10 @@ public class LoginForm extends Form {
                 try {
                     User currenUser = authController.login(userIDInput, passwordInput);
                     if (currenUser instanceof Staff) {
+                        StaffController.getInstance((Staff) currenUser);
                         displayController.setNextDisplay(new StaffMenu(scanner));
                     } else {
+                        StudentController.getInstance((Student) currenUser);
                         displayController.setNextDisplay(new StudentMenu(scanner));
                     }
                 } catch (IllegalArgumentException e) {
