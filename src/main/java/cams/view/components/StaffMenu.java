@@ -43,11 +43,7 @@ public class StaffMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View Camps", new ItemAction() {
             public void execute() {
-                CampController campController = CampController.getInstance();
-                ArrayList<Camp> allCamps = campController.getAllCamps();
-                for(Camp camp:allCamps) {
-                    System.out.println(camp.getCampInfo().getCampName());
-                }
+                
             }
         }));
     }

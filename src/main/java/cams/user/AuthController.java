@@ -52,4 +52,9 @@ public class AuthController {
 
         user.setHashedPassword(hashPassword(newPassword));
     }
+
+    public void close() {
+        AuthController.authController = null;
+    }
+
 }

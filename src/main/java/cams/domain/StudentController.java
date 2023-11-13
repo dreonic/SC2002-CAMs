@@ -23,8 +23,9 @@ public class StudentController {
 
     public static StudentController getInstance(Student student) {
         if(studentController == null) {
-            studentController = new StudentController(student);
+            studentController = new StudentController();
         }
+        studentController.setCurrentStudent(student);
         return studentController;
     }
 
