@@ -21,12 +21,14 @@ import cams.domain.Student;
 public class CampController {
     private static CampController campController;
     private HashMap<String, Camp> campTable;
+    private Camp currentCamp;
 
     /**
      * Private constructor to ensure singleton pattern.
      */
     private CampController() {
         campTable = new HashMap<>();
+        currentCamp = null;
     }
 
     /**
@@ -38,6 +40,14 @@ public class CampController {
         if (campController == null) {
             campController = new CampController();
         }
+        return campController;
+    }
+
+    public static CampController getInstance(Camp camp) {
+        if (campController == null) {
+            campController = new CampController();
+        }
+        campController.currentCamp = camp;
         return campController;
     }
 
@@ -127,5 +137,13 @@ public class CampController {
         Camp camp = campTable.get(campName);
         ArrayList<Student> attendanceList = camp.getAttendees();
         return attendanceList;
+    }
+
+    public void setCurrentCamp(Camp camp) {
+        currentCamp = camp;
+    }
+
+    public Camp getCurrentCamp() {
+        return currentCamp;
     }
 }
