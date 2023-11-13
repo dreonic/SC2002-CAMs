@@ -3,8 +3,6 @@ package cams.view.components;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.apache.commons.math3.transform.DstNormalization;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Staff;
@@ -35,7 +33,7 @@ public class StaffMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Change Password", new ItemAction() {
             public void execute() {
-
+                displayController.setNextDisplay(new ChangePasswordForm(scanner));
             }
         }));
 
