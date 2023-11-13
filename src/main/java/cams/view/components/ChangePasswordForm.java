@@ -3,11 +3,13 @@ package cams.view.components;
 import java.util.Map;
 import java.util.Scanner;
 
+import cams.domain.Staff;
 import cams.user.AuthController;
 import cams.user.User;
 import cams.user.UserController;
 import cams.view.DisplayController;
 import cams.view.base.Alert;
+import cams.view.base.Displayable;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
@@ -33,6 +35,18 @@ public class ChangePasswordForm extends Form {
                 try {
                     authController.changePassword(currentUser.getUserID(),
                             oldPassword, newPassword);
+
+                    Displayable nextDisplay = null;
+                    String successAlertContent = "Changed password successfully!";
+
+                    if (authController.getCurrentUser() instanceof Staff) {
+                        nextDisplay = new StaffMenu(scanner);
+                    } else {
+                        nextDisplay = new StudentMenu(scanner);
+                    }
+
+                    displayController.setNextDisplay(new Alert(
+                            successAlertContent, nextDisplay, scanner));
                 } catch (IllegalArgumentException e) {
                     displayController.setNextDisplay(
                             new Alert(
