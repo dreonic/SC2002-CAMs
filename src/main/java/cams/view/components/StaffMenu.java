@@ -22,7 +22,6 @@ public class StaffMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         StaffController staffController = StaffController.getInstance();
         CampController campController = CampController.getInstance();
-        DisplayController displayController = DisplayController.getInstance();
         Staff currentUser = staffController.getCurrenStaff();
         StringBuilder campList = new StringBuilder();
 
