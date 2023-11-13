@@ -56,7 +56,7 @@ public class StudentMenu extends SelectionMenu {
                 ArrayList<Camp> availableCamps = new ArrayList<Camp>();
                 for (Camp camp : allCamps) { // add condition for dates OR check for clashing dates when student tries
                                              // to register?
-                    if (camp.getCampInfo().getisVisible() == true && camp.getUserGroup() == currentUser.getFaculty()
+                    if (camp.getCampInfo().getIsVisible() == true && camp.getUserGroup() == currentUser.getFaculty()
                             || camp.getUserGroup() == "Whole NTU")
                         availableCamps.add(camp);
                 }

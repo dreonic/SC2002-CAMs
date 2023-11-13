@@ -47,7 +47,7 @@ public class StaffMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Edit Camp", new ItemAction() {
             public void execute() {
-
+                displayController.setNextDisplay(new EditCampMenu(scanner));
             }
         }));
 
