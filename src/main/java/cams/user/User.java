@@ -1,16 +1,17 @@
 package cams.user;
 
 public class User {
+    private String name;
     private String userID;
     private String passwordHash;
     private String faculty;
-    private String name;
 
-    public User(String userID, String faculty) {
+    public User(String name, String userID, String faculty, String passwordHash) {
+        this.name = name;
         this.userID = userID;
         this.faculty = faculty;
         AuthController authController = AuthController.getInstance();
-        passwordHash = authController.getPasswordEncoder().encode("password");
+        this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode("password") : passwordHash;
     }
 
     public String getUserID() {
@@ -40,5 +41,4 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
 }

@@ -74,6 +74,15 @@ import cams.view.components.InvalidAlert;
  * }
  * </pre>
  * 
+ * The result of the example above:
+ * 
+ * <pre>
+ * Prompt content goes here.
+ * (1) Selection item 1
+ * (2) Selection item 2
+ * Choice:
+ * </pre>
+ * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau

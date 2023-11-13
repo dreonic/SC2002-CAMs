@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import cams.domain.Staff;
 import cams.domain.Student;
+import cams.domain.Staff;
 import cams.user.AuthController;
 import cams.user.User;
 import cams.user.UserController;
@@ -30,7 +31,7 @@ public class LoginForm extends Form {
      * @param scanner scanner for this menu
      */
     public LoginForm(Scanner scanner) {
-        super("Login to CAMS\n", scanner);
+        super("Login to CAMS:\n\n", scanner);
 
         addInput(new TextBox("User ID", scanner));
         addInput(new TextBox("Password", true, scanner));
@@ -42,15 +43,15 @@ public class LoginForm extends Form {
 
                 String userIDInput = getValues().get("User ID");
                 String passwordInput = getValues().get("Password");
-                User user = authController.login(userIDInput, passwordInput);
 
-                if (user != null) {
-                    if (user instanceof Staff) {
+                try {
+                    User currenUser = authController.login(userIDInput, passwordInput);
+                    if (currenUser instanceof Staff) {
                         displayController.setNextDisplay(new StaffMenu(scanner));
                     } else {
                         displayController.setNextDisplay(new StudentMenu(scanner));
                     }
-                } else {
+                } catch (IllegalArgumentException e) {
                     displayController.setNextDisplay(new LoginErrorAlert(new LoginForm(scanner), scanner));
                 }
             }

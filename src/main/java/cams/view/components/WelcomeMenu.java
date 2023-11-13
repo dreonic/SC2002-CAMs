@@ -2,6 +2,8 @@ package cams.view.components;
 
 import java.util.Scanner;
 
+import cams.user.AuthController;
+import cams.user.UserController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;

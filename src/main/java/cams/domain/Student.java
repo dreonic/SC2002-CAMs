@@ -1,7 +1,7 @@
 package cams.domain;
 
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.HashSet;
 
 import cams.camp.Camp;
 import cams.repliable.Enquiry;
@@ -9,11 +9,13 @@ import cams.user.User;
 
 public class Student extends User {
     private Camp committeeFor;
-    private Set<Camp> campsRegistered;
-    private Set<Enquiry> enquiries;
+    private HashSet<Camp> campsRegistered;
+    private HashSet<Enquiry> enquiries;
 
-    public Student(String userID, String faculty) {
-        super(userID, faculty);
+    public Student(String name, String userID, String faculty, String passwordHash) {
+        super(name, userID, faculty, passwordHash);
+        this.campsRegistered = new HashSet<Camp>();
+        this.enquiries = new HashSet<Enquiry>();
     }
 
     public ArrayList<Camp> getCamps() {
