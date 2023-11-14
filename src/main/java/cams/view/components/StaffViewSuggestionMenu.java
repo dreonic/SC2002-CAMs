@@ -1,6 +1,6 @@
 package cams.view.components;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import cams.camp.Camp;
@@ -19,9 +19,9 @@ public class StaffViewSuggestionMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         SuggestionEditor suggestionEditor = new SuggestionEditor(camp);
-        ArrayList<Suggestion> suggestionList = camp.getSuggestionsArray();
+        List<Suggestion> suggestionList = camp.getSuggestionsArray();
 
-        for(Suggestion suggestion:suggestionList) {
+        for (Suggestion suggestion : suggestionList) {
             addItem(new ActionableItem(suggestion.getContent(), new ItemAction() {
                 public void execute() {
                     suggestionEditor.setCurrentSuggestion(suggestion);
