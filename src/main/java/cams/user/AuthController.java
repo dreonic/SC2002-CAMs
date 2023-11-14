@@ -45,7 +45,8 @@ public class AuthController {
         return currentUser;
     }
 
-    public void changePassword(String userID, String oldPassword, String newPassword) throws IllegalArgumentException {
+    public void changePassword(String userID, String oldPassword, String newPassword)
+            throws IllegalArgumentException {
         login(userID, oldPassword).setHashedPassword(hashPassword(newPassword));
     }
 

@@ -64,30 +64,17 @@ public class CampEditor {
     }
 
     /**
-     * Edits the start date of the camp.
-     *
-     * @param startDate The new start date for the camp.
+     * Edits the registration deadline, start and end date of the camp.
+     * 
+     * @param startDate            The new start date for the camp
+     * @param endDate              The new end date for the camp
+     * @param registrationDeadline The new registration deadline for the camp
+     * @throws IllegalArgumentException when registration deadline is after start
+     *                                  date or start date is after end date
      */
-    public void editStartDate(LocalDate startDate) {
-        camp.getCampDate().setStartDate(startDate);
-    }
-
-    /**
-     * Edits the end date of the camp.
-     *
-     * @param endDate The new end date for the camp.
-     */
-    public void editEndDate(LocalDate endDate) {
-        camp.getCampDate().setEndDate(endDate);
-    }
-
-    /**
-     * Edits the registration deadline of the camp.
-     *
-     * @param registrationDeadline The new registration deadline for the camp.
-     */
-    public void editRegistrationDeadline(LocalDate registrationDeadline) {
-        camp.getCampDate().setRegistrationDeadline(registrationDeadline);
+    public void editDates(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline)
+            throws IllegalArgumentException {
+        camp.getCampDate().setDates(startDate, endDate, registrationDeadline);
     }
 
     /**

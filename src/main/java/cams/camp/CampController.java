@@ -72,9 +72,11 @@ public class CampController {
      * @param userGroup            The user group associated with the camp.
      * @param staffInCharge
      */
-    public void createCamp(String campName, String location, String description, LocalDate startDate,
-            LocalDate endDate, LocalDate registrationDeadline, int totalSlots,
-            boolean isVisible, String userGroup, Staff staffInCharge) {
+    public void createCamp(
+            String campName, String location, String description,
+            LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline,
+            int totalSlots, boolean isVisible, String userGroup, Staff staffInCharge)
+            throws IllegalArgumentException {
         Camp newCamp = new Camp(campName, location, description, startDate, endDate, registrationDeadline, totalSlots,
                 isVisible, userGroup, staffInCharge);
         campTable.put(campName.toLowerCase(), newCamp);

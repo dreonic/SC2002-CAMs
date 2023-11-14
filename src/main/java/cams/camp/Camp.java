@@ -49,9 +49,11 @@ public class Camp {
      * @param userGroup            The user group associated with the camp.
      * @param staffInCharge
      */
-    public Camp(String campName, String location, String description, LocalDate startDate,
-            LocalDate endDate, LocalDate registrationDeadline, int totalSlots,
-            boolean isVisible, String userGroup, Staff staffInCharge) {
+    public Camp(
+            String campName, String location, String description,
+            LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline,
+            int totalSlots, boolean isVisible, String userGroup, Staff staffInCharge)
+            throws IllegalArgumentException {
         this.campInfo = new CampInfo(campName, location, description, totalSlots, 10, isVisible);
         this.campDate = new CampDate(startDate, endDate, registrationDeadline);
         this.userGroup = userGroup;
