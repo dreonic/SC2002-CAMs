@@ -3,6 +3,7 @@ package cams;
 import java.util.Scanner;
 
 import cams.user.AuthController;
+import cams.user.UserController;
 import cams.view.DisplayController;
 import cams.view.components.WelcomeMenu;
 
@@ -19,6 +20,6 @@ public class App {
     }
 
     public static void stopControllers() {
-
+        UserController.close();
     }
 }

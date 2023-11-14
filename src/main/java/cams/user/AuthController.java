@@ -2,6 +2,8 @@ package cams.user;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import cams.App;
+
 public class AuthController {
     private static AuthController authController;
     private User currentUser;
@@ -39,6 +41,7 @@ public class AuthController {
 
     public void logout() {
         currentUser = null;
+        App.stopControllers();
     }
 
     public User getCurrentUser() {
