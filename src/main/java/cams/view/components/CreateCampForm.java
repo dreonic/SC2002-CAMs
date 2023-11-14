@@ -29,7 +29,7 @@ public class CreateCampForm extends Form {
         DisplayController displayController = DisplayController.getInstance();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        setTitle("Create a new Camp:\n");
+        setTitle("Create a new camp:\n");
 
         addInput(new TextBox("Camp Name", scanner));
         addInput(new TextBox("Location", scanner));

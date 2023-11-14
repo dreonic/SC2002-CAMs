@@ -11,6 +11,7 @@ import cams.domain.Student;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
@@ -21,6 +22,8 @@ public class StaffCampMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         StringBuilder studentList = new StringBuilder();
+
+        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()));
 
         addItem(new ActionableItem("View Students", new ItemAction() {
             public void execute() {

@@ -3,7 +3,9 @@ package cams.camp;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.Set;
 
 import cams.domain.Staff;
@@ -58,6 +60,10 @@ public class Camp {
         this.campDate = new CampDate(startDate, endDate, registrationDeadline);
         this.userGroup = userGroup;
         this.staffInCharge = staffInCharge;
+        enquiries = new HashSet<Enquiry>();
+        suggestions = new HashSet<Suggestion>();
+        attendees = new HashSet<Student>();
+        committee = new HashMap<Student, Integer>();
     }
 
     public Staff getStaffInCharge() {
