@@ -15,9 +15,10 @@ public class EnquiryEditor implements RepliableEditorInterface {
     }
 
     @Override
-    public void create(String content, Student student) {
+    public Repliable create(String content, Student student) {
         Enquiry enquiry = new Enquiry(content, student);
         camp.addEnquiry(enquiry);
+        return enquiry;
     }
 
     @Override

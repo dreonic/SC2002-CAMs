@@ -5,7 +5,7 @@ import java.util.List;
 import cams.domain.Student;
 
 public interface RepliableEditorInterface {
-    public void create(String content, Student student);
+    public Repliable create(String content, Student student);
 
     public void edit(Repliable repliable, String newContent);
 

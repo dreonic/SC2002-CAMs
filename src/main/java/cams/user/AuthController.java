@@ -2,6 +2,8 @@ package cams.user;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import cams.App;
+
 public class AuthController {
     private static AuthController authController;
     private User currentUser;
