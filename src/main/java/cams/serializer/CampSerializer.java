@@ -23,7 +23,11 @@ import cams.user.UserController;
 
 public class CampSerializer {
     public static void deserialize() {
-        try (FileInputStream fileIn = new FileInputStream("src/data/camp_list.xlsx");
+        deserialize("src/data/camp_list.xslx");
+    }
+
+    public static void deserialize(String path) {
+        try (FileInputStream fileIn = new FileInputStream(path);
                 Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -63,7 +67,7 @@ public class CampSerializer {
                 Camp newCamp = campController.getCamp(args.get(0));
                 String[] commitees = args.get(10).split(",");
                 String[] attendees = args.get(11).split(",");
-                
+
                 for (String commitee : commitees) {
                     Student student = (Student) userController.getUser(commitee);
                     student.setCommitteeFor(newCamp);
@@ -75,10 +79,15 @@ public class CampSerializer {
                     newCamp.addAttandee(student);
                 }
             }
-        } catch (IOException e) {}
+        } catch (IOException e) {
+        }
     }
 
     public static void serialize() {
+        serialize("src/data/camp_list.xlsx");
+    }
+
+    public static void serialize(String path) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");
             Map<String, Camp> campTable = CampController.getInstance().getCampTable();
@@ -151,7 +160,7 @@ public class CampSerializer {
                 }
             }
 
-            try (FileOutputStream fileOut = new FileOutputStream("src/data/camp_list.xlsx")) {
+            try (FileOutputStream fileOut = new FileOutputStream(path)) {
                 workbook.write(fileOut);
             }
         } catch (IOException e) {

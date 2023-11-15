@@ -34,4 +34,8 @@ public class StaffController {
     public void setCurrentStaff(Staff staff) {
         this.staff = staff;
     }
+
+    public static void close() {
+        staffController = null;
+    }
 }

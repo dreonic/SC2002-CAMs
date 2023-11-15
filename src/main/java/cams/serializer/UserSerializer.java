@@ -17,8 +17,12 @@ import cams.user.UserController;
 
 public class UserSerializer {
     public static void deserialize(String userType) {
+        deserialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
+    }
+
+    public static void deserialize(String userType, String studentPath, String staffPath) {
         try (FileInputStream fileIn = new FileInputStream(
-                "student".equals(userType) ? "src/data/student_list.xlsx" : "src/data/staff_list.xlsx");
+                "student".equals(userType) ? studentPath : staffPath);
                 Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             for (Row row : sheet) {
@@ -50,14 +54,19 @@ public class UserSerializer {
                                 (args.size() == 4) ? args.get(3) : null);
                 UserController.getInstance().addUser(user);
             }
-        } catch (IOException e) {}
+        } catch (IOException e) {
+        }
     }
-    
+
     public static void serialize(String userType) {
+        serialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
+    }
+
+    public static void serialize(String userType, String studentPath, String staffPath) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");
-            Map<String, User> userTable= UserController.getInstance().getUserTable();
-            
+            Map<String, User> userTable = UserController.getInstance().getUserTable();
+
             Row headerRow = sheet.createRow(0);
             List<String> header = List.of("Name", "Email", "Faculty", "Password");
             for (int i = 0; i < 4; i++) {
@@ -96,7 +105,7 @@ public class UserSerializer {
             }
 
             try (FileOutputStream fileOut = new FileOutputStream(
-                    "student".equals(userType) ? "src/data/student_list.xlsx" : "src/data/staff_list.xlsx")) {
+                    "student".equals(userType) ? studentPath : staffPath)) {
                 workbook.write(fileOut);
             }
         } catch (IOException e) {

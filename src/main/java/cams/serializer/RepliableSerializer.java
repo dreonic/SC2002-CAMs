@@ -23,8 +23,12 @@ import cams.user.UserController;
 
 public class RepliableSerializer {
     public static void deserialize(String repliableType) {
+        deserialize(repliableType, "src/data/enquiry_list.xlsx", "src/data/suggestion_list.xlsx");
+    }
+
+    public static void deserialize(String repliableType, String enquiryPath, String suggestionPath) {
         try (FileInputStream fileIn = new FileInputStream(
-                "enquiry".equals(repliableType) ? "src/data/enquiry_list.xlsx" : "src/data/suggestion_list.xlsx");
+                "enquiry".equals(repliableType) ? enquiryPath : suggestionPath);
                 Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             CampController campController = CampController.getInstance();
@@ -65,10 +69,15 @@ public class RepliableSerializer {
                     editor.reply(suggestion, null);
                 }
             }
-        } catch (IOException e) {}
+        } catch (IOException e) {
+        }
     }
 
     public static void serialize(String repliableType) {
+        serialize(repliableType, "src/data/enquiry_list.xlsx", "src/data/suggestion_list.xlsx");
+    }
+
+    public static void serialize(String repliableType, String enquiryPath, String suggestionPath) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");
             Map<String, Camp> campTable = CampController.getInstance().getCampTable();
@@ -114,7 +123,7 @@ public class RepliableSerializer {
             }
 
             try (FileOutputStream fileOut = new FileOutputStream(
-                    "enquiry".equals(repliableType) ? "src/data/enquiry_list.xlsx" : "src/data/suggestion_list.xlsx")) {
+                    "enquiry".equals(repliableType) ? enquiryPath : suggestionPath)) {
                 workbook.write(fileOut);
             }
         } catch (IOException e) {

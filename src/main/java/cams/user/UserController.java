@@ -28,8 +28,9 @@ public class UserController {
         userController = null;
     }
 
-    public void addUser(User user) {
-        userTable.put(user.getUserID(), user);
+    public void addUser(User user) throws IllegalArgumentException {
+        if (userTable.putIfAbsent(user.getUserID(), user) != null)
+            throw new IllegalArgumentException("User with the same userID already exists!");
     }
 
     public User getUser(String userID) {
