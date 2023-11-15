@@ -157,15 +157,15 @@ public class Form implements Displayable {
 
     /**
      * Retrieves the current values of all input fields inside this form as a map,
-     * where the key is the input field label and the value is its corresponding
-     * value.
+     * where the key is the intput field/textbox ID and the value is its
+     * corresponding value.
      * 
      * @return map of input field labels to values
      */
     public Map<String, String> getValues() {
         Map<String, String> res = new HashMap<String, String>();
         for (TextBox tb : inputs)
-            res.put(tb.getLabel(), tb.getValue());
+            res.put(tb.getId(), tb.getValue());
         return res;
     }
 

@@ -34,12 +34,13 @@ public class UserController {
         UserController.userController = null;
     }
 
-    private void addUser(User user) {
-        userTable.put(user.getUserID(), user);
+    public void addUser(User user) throws IllegalArgumentException {
+        if (userTable.putIfAbsent(user.getUserID(), user) != null)
+            throw new IllegalArgumentException("User with the same userID already exists!");
     }
 
     public User getUser(String userID) {
-        return userTable.get(userID);
+        return userTable.get(userID.toUpperCase());
     }
 
     private void deserialize(String userType, String file) {
