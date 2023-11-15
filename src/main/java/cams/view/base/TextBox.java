@@ -141,7 +141,7 @@ public class TextBox implements Displayable {
     public void display() {
         Console console = System.console();
         System.out.print(label + ": ");
-        if (inputHidden) {
+        if (inputHidden && console != null) {
             value = new String(console.readPassword());
         } else {
             value = scanner.nextLine();

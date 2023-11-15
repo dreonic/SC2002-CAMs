@@ -22,7 +22,7 @@ public class StudentController {
     }
 
     public static StudentController getInstance(Student student) {
-        if(studentController == null) {
+        if (studentController == null) {
             studentController = new StudentController();
         }
         studentController.setCurrentStudent(student);
@@ -38,20 +38,22 @@ public class StudentController {
     }
 
     public void register(Camp camp, Boolean isCommittee) {
-        //also need to check for conflicting dates
-        if(!student.getCamps().contains(camp) && isCommittee == false) {
+        // also need to check for conflicting dates
+        if (!student.getCamps().contains(camp) && isCommittee == false) {
             student.addCamp(camp);
-        }
-        else if(!student.getCamps().contains(camp) && isCommittee == true && student.getCommitteeFor() == null) {
+        } else if (!student.getCamps().contains(camp) && isCommittee == true && student.getCommitteeFor() == null) {
             student.addCamp(camp);
             student.setCommitteeFor(camp);
         }
     }
 
     public void withdraw(Camp camp) {
-        if(student.getCommitteeFor() != camp && student.getCamps().contains(camp)) {
+        if (student.getCommitteeFor() != camp && student.getCamps().contains(camp)) {
             student.removeCamp(camp);
         }
     }
 
+    public static void close() {
+        studentController = null;
+    }
 }
