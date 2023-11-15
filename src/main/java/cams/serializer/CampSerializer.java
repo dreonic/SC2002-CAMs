@@ -60,23 +60,27 @@ public class CampSerializer {
                         LocalDate.parse(args.get(3), formatter),
                         LocalDate.parse(args.get(4), formatter),
                         LocalDate.parse(args.get(5), formatter),
-                        Integer.parseInt(args.get(6)),
+                        (int) Double.parseDouble(args.get(6)),
                         Boolean.parseBoolean(args.get(7)), args.get(8),
                         (Staff) UserController.getInstance().getUser(args.get(9)));
 
                 Camp newCamp = campController.getCamp(args.get(0));
-                String[] commitees = args.get(10).split(",");
-                String[] attendees = args.get(11).split(",");
-
+                String[] commitees = args.get(10).split(", ");
+                String[] attendees = args.get(11).split(", ");
+                
                 for (String commitee : commitees) {
                     Student student = (Student) userController.getUser(commitee);
-                    student.setCommitteeFor(newCamp);
-                    newCamp.addCommittee(student);
+                    if (student != null) {
+                        student.setCommitteeFor(newCamp);
+                        newCamp.addCommittee(student);
+                    }
                 }
                 for (String attendee : attendees) {
                     Student student = (Student) userController.getUser(attendee);
-                    student.addCamp(newCamp);
-                    newCamp.addAttandee(student);
+                    if (student != null) {
+                        student.addCamp(newCamp);
+                        newCamp.addAttandee(student);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -91,6 +95,7 @@ public class CampSerializer {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");
             Map<String, Camp> campTable = CampController.getInstance().getCampTable();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
             Row headerRow = sheet.createRow(0);
             List<String> header = List.of("Name", "Location", "Description", "Start Date",
@@ -105,7 +110,7 @@ public class CampSerializer {
             for (Map.Entry<String, Camp> entry : campTable.entrySet()) {
                 Camp camp = entry.getValue();
                 Row row = sheet.createRow(rowNum);
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < 12; i++) {
                     Cell cell = row.createCell(i);
                     CampInfo campInfo = camp.getCampInfo();
                     CampDate campDate = camp.getCampDate();
@@ -127,13 +132,13 @@ public class CampSerializer {
                             cell.setCellValue(campInfo.getDescription());
                             break;
                         case 3:
-                            cell.setCellValue(campDate.getStartDate().toString());
+                            cell.setCellValue(campDate.getStartDate().format(formatter));
                             break;
                         case 4:
-                            cell.setCellValue(campDate.getEndDate().toString());
+                            cell.setCellValue(campDate.getEndDate().format(formatter));
                             break;
                         case 5:
-                            cell.setCellValue(campDate.getRegistrationDeadline().toString());
+                            cell.setCellValue(campDate.getRegistrationDeadline().format(formatter));
                             break;
                         case 6:
                             cell.setCellValue(campInfo.getTotalSlots());
