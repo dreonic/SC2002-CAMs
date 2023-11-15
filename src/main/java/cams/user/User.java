@@ -8,7 +8,7 @@ public class User {
 
     public User(String name, String userID, String faculty, String passwordHash) {
         this.name = name;
-        this.userID = userID;
+        this.userID = userID.toUpperCase();
         this.faculty = faculty;
         AuthController authController = AuthController.getInstance();
         this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode("password")

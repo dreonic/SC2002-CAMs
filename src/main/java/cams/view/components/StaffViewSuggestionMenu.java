@@ -21,7 +21,7 @@ public class StaffViewSuggestionMenu extends SelectionMenu {
         SuggestionEditor suggestionEditor = new SuggestionEditor(camp);
         List<Suggestion> suggestionList = camp.getSuggestionsArray();
 
-        for(Suggestion suggestion:suggestionList) {
+        for (Suggestion suggestion : suggestionList) {
             addItem(new ActionableItem(suggestion.getContent(), new ItemAction() {
                 public void execute() {
                     suggestionEditor.setCurrentSuggestion(suggestion);

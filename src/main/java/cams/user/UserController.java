@@ -33,7 +33,7 @@ public class UserController {
     }
 
     public User getUser(String userID) {
-        return userTable.get(userID);
+        return userTable.get(userID.toUpperCase());
     }
 
     public Map<String, User> getUserTable() {

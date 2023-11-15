@@ -14,6 +14,7 @@ import cams.view.base.SelectionMenu;
 public class EditCampMenu extends SelectionMenu {
     public EditCampMenu(Scanner scanner) {
         super(scanner);
+
         DisplayController displayController = DisplayController.getInstance();
         CampController campController = CampController.getInstance();
         Camp camp = campController.getCurrentCamp();
@@ -61,7 +62,5 @@ public class EditCampMenu extends SelectionMenu {
                 displayController.setNextDisplay(new StaffCampMenu(scanner));
             }
         }));
-
     }
-
 }

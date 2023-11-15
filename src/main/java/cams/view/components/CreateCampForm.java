@@ -23,9 +23,13 @@ public class CreateCampForm extends Form {
 
     public CreateCampForm(Scanner scanner) {
         super(scanner);
+
+        CampController campController = CampController.getInstance();
+        StaffController staffController = StaffController.getInstance();
+        DisplayController displayController = DisplayController.getInstance();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        setTitle("Create a new Camp:\n");
+        setTitle("Create a new camp:\n");
 
         addInput(new TextBox("Camp Name", scanner));
         addInput(new TextBox("Location", scanner));
@@ -39,11 +43,8 @@ public class CreateCampForm extends Form {
 
         setAction(new ItemAction() {
             public void execute() {
-                CampController campController = CampController.getInstance();
-                StaffController staffController = StaffController.getInstance();
-                DisplayController displayController = DisplayController.getInstance();
-
                 Map<String, String> values = getValues();
+
                 try {
                     campController.createCamp(
                             values.get("Camp Name"),
@@ -74,6 +75,11 @@ public class CreateCampForm extends Form {
                             "Number input format is invalid!",
                             new CreateCampForm(scanner),
                             scanner));
+
+                } catch (IllegalArgumentException e) {
+                    displayController.setNextDisplay(new Alert(
+                            "Registration should not end after start date and start date should not end after end date!",
+                            null, scanner));
                 }
             }
         });

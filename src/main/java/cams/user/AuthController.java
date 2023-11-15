@@ -31,7 +31,7 @@ public class AuthController {
 
     public User login(String userID, String password) throws IllegalArgumentException {
         UserController userController = UserController.getInstance();
-        User user = userController.getUser(userID.toUpperCase());
+        User user = userController.getUser(userID);
         if (user == null || !passwordEncoder.matches(password, user.getHashedPassword()))
             throw new IllegalArgumentException("Incorrect userID or password!");
 
@@ -48,11 +48,12 @@ public class AuthController {
         return currentUser;
     }
 
-    public void changePassword(String userID, String oldPassword, String newPassword) throws IllegalArgumentException {
+    public void changePassword(String userID, String oldPassword, String newPassword)
+            throws IllegalArgumentException {
         login(userID, oldPassword).setHashedPassword(hashPassword(newPassword));
     }
 
-    public void close() {
+    public static void close() {
         AuthController.authController = null;
     }
 

@@ -30,7 +30,13 @@ public class CampDate {
      * @param endDate              The end date of the camp.
      * @param registrationDeadline The registration deadline for the camp.
      */
-    public CampDate(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline) {
+    public CampDate(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline)
+            throws IllegalArgumentException {
+        if (registrationDeadline.isAfter(startDate))
+            throw new IllegalArgumentException("registrationDeadline cannot be after startDate!");
+        if (startDate.isAfter(endDate))
+            throw new IllegalArgumentException("startDate cannot be after endDate!");
+
         this.startDate = startDate;
         this.endDate = endDate;
         this.registrationDeadline = registrationDeadline;
@@ -46,30 +52,12 @@ public class CampDate {
     }
 
     /**
-     * Sets the start date of the camp.
-     *
-     * @param startDate The new start date.
-     */
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    /**
      * Retrieves the end date of the camp.
      *
      * @return The end date.
      */
     public LocalDate getEndDate() {
         return endDate;
-    }
-
-    /**
-     * Sets the end date of the camp.
-     *
-     * @param endDate The new end date.
-     */
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
     }
 
     /**
@@ -81,12 +69,15 @@ public class CampDate {
         return registrationDeadline;
     }
 
-    /**
-     * Sets the registration deadline for the camp.
-     *
-     * @param registrationDeadline The new registration deadline.
-     */
-    public void setRegistrationDeadline(LocalDate registrationDeadline) {
+    public void setDates(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline)
+            throws IllegalArgumentException {
+        if (registrationDeadline.isAfter(startDate))
+            throw new IllegalArgumentException("registrationDeadline cannot be after startDate!");
+        if (startDate.isAfter(endDate))
+            throw new IllegalArgumentException("startDate cannot be after endDate!");
+
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.registrationDeadline = registrationDeadline;
     }
 }
