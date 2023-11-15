@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import cams.domain.Staff;
 import cams.domain.Student;
+import cams.serializer.CampSerializer;
 
 /**
  * The {@code CampController} class manages camps and provides functionality
@@ -42,19 +43,23 @@ public class CampController {
     public static CampController getInstance() {
         if (campController == null) {
             campController = new CampController();
+            CampSerializer.deserialize();
         }
         return campController;
     }
 
-    public static CampController getInstance(Camp camp) {
-        if (campController == null) {
-            campController = new CampController();
-        }
-        campController.currentCamp = camp;
-        return campController;
+    public static void close() {
+        CampSerializer.serialize();
+        CampSerializer.serialize();
+        campController = null;
     }
 
-    Map<String, Camp> getCampTable() {
+    /**
+     * Retrieves the whole camp table.
+     *
+     * @returns The camp table {@code HashMap} containing all created camps
+     */
+    public Map<String, Camp> getCampTable() {
         return campTable;
     }
 

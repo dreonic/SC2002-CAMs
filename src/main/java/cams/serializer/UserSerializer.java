@@ -16,7 +16,7 @@ import cams.user.User;
 import cams.user.UserController;
 
 public class UserSerializer {
-    public static void deserialize(Map<String, User> userTable, String userType) {
+    public static void deserialize(String userType) {
         try (FileInputStream fileIn = new FileInputStream(
                 "student".equals(userType) ? "src/data/student_list.xlsx" : "src/data/staff_list.xlsx");
                 Workbook workbook = new XSSFWorkbook(fileIn)) {
@@ -55,10 +55,11 @@ public class UserSerializer {
         }
     }
     
-    public static void serialize(Map<String, User> userTable, String userType) {
+    public static void serialize(String userType) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");
-
+            Map<String, User> userTable= UserController.getInstance().getUserTable();
+            
             Row headerRow = sheet.createRow(0);
             List<String> header = List.of("Name", "Email", "Faculty", "Password");
             for (int i = 0; i < 4; i++) {
