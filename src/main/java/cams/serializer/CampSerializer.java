@@ -75,9 +75,7 @@ public class CampSerializer {
                     newCamp.addAttandee(student);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
     }
 
     public static void serialize() {

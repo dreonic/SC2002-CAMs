@@ -13,14 +13,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import cams.camp.Camp;
 import cams.camp.CampController;
-import cams.domain.Staff;
 import cams.domain.Student;
 import cams.repliable.Enquiry;
 import cams.repliable.EnquiryEditor;
 import cams.repliable.Repliable;
 import cams.repliable.Suggestion;
 import cams.repliable.SuggestionEditor;
-import cams.user.User;
 import cams.user.UserController;
 
 public class RepliableSerializer {
@@ -67,9 +65,7 @@ public class RepliableSerializer {
                     editor.reply(suggestion, null);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
     }
 
     public static void serialize(String repliableType) {
@@ -118,7 +114,7 @@ public class RepliableSerializer {
             }
 
             try (FileOutputStream fileOut = new FileOutputStream(
-                    "enquiry".equals(repliableType) ? "src/data/enquiry_list.xlsx" : "src/data/_list.xlsx")) {
+                    "enquiry".equals(repliableType) ? "src/data/enquiry_list.xlsx" : "src/data/suggestion_list.xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (IOException e) {

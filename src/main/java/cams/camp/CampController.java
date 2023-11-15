@@ -50,7 +50,6 @@ public class CampController {
 
     public static void close() {
         CampSerializer.serialize();
-        CampSerializer.serialize();
         campController = null;
     }
 

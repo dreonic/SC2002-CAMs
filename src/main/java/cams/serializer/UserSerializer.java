@@ -50,9 +50,7 @@ public class UserSerializer {
                                 (args.size() == 4) ? args.get(3) : null);
                 UserController.getInstance().addUser(user);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
     }
     
     public static void serialize(String userType) {

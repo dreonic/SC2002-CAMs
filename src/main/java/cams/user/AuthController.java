@@ -41,7 +41,6 @@ public class AuthController {
 
     public void logout() {
         currentUser = null;
-        App.stopControllers();
     }
 
     public User getCurrentUser() {
