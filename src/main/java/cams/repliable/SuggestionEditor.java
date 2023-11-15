@@ -15,9 +15,10 @@ public class SuggestionEditor implements RepliableEditorInterface {
     }
 
     @Override
-    public void create(String content, Student student) {
+    public Repliable create(String content, Student student) {
         Suggestion suggestion = new Suggestion(content, student);
         camp.addSuggestion(suggestion);
+        return suggestion;
     }
 
     @Override
