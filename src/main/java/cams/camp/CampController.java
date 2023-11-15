@@ -164,8 +164,4 @@ public class CampController {
     public Camp getCurrentCamp() {
         return currentCamp;
     }
-
-    public static void close() {
-        campController = null;
-    }
 }
