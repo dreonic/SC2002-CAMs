@@ -6,11 +6,13 @@ students.
 
 ## Prerequisites
 
-Install the [Java Development Kit](https://www.oracle.com/java/technologies/downloads/) (minimum version 15) and [Apache Maven](https://maven.apache.org/download.cgi).
+Install the [Java Development Kit](https://www.oracle.com/java/technologies/downloads/) (minimum version 15)
+and [Apache Maven](https://maven.apache.org/download.cgi).
 
 ## Installation
 
-1. Run the following command in the root directory to build the application. Build files will be located in `target/` and the application will be compiled in the `.jar` file.
+1. Run the following command in the root directory to build the application. Build files will be located in `target/`
+   and the application will be compiled in the `.jar` file.
 
 ```bash
 mvn clean package
@@ -31,3 +33,11 @@ mvn clean site
 ```
 
 2. Access the application documentation site from `target/site/apidocs/index.html`.
+
+## Building App and Generating Documentation
+
+1. Run the following command in the root directory.
+
+```bash
+mvn clean package site 
+```
