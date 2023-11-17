@@ -8,7 +8,7 @@ import java.util.Scanner;
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
-import cams.repliable.Enquiry;
+import cams.serializer.PerformanceReportSerializer;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
@@ -93,6 +93,22 @@ public class StaffCampMenu extends SelectionMenu {
         addItem(new ActionableItem("Delete Camp", new ItemAction() {
             public void execute() {
 
+            }
+        }));
+
+        addItem(new ActionableItem("Generate Student List", new ItemAction() {
+            public void execute() {
+                displayController.setNextDisplay(new StudentListFilterMenu(scanner));
+            }
+        }));
+
+        addItem(new ActionableItem("Generate Performance Report", new ItemAction() {
+            public void execute() {
+                String campName = camp.getCampInfo().getCampName();
+                PerformanceReportSerializer.serialize(camp);
+                displayController.setNextDisplay(new Alert(
+                        "Performance report generated! See report in src/data/performance_report_" + campName + ".xlsx",
+                        new StaffCampMenu(scanner), scanner));
             }
         }));
 
