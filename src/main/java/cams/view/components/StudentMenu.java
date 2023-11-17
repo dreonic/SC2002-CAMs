@@ -8,7 +8,10 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
 import cams.domain.StudentController;
+<<<<<<< HEAD
 import cams.user.AuthController;
+=======
+>>>>>>> origin/dev
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
@@ -22,8 +25,14 @@ public class StudentMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         StudentController studentController = StudentController.getInstance();
         CampController campController = CampController.getInstance();
+<<<<<<< HEAD
         Student currentUser = studentController.getCurrentStudent();
         StringBuilder campList = new StringBuilder();
+=======
+        DisplayController displayController = DisplayController.getInstance();
+
+        Student currentUser = studentController.getCurrentStudent();
+>>>>>>> origin/dev
 
         if (currentUser == null) {
             throw new IllegalStateException(
@@ -75,14 +84,12 @@ public class StudentMenu extends SelectionMenu {
         // }));
 
         addItem(new ActionableItem("View Registered Camps", new ItemAction() {
-            // TODO: need to make each listed Camp interactable or assign index?
             public void execute() {
-                List<Camp> registeredCamps = currentUser.getCamps();
-                for (Camp camp : registeredCamps)
-                    System.out.println(camp.getCampInfo().getCampName());
+                displayController.setNextDisplay(new StudentViewRegisteredCampMenu(scanner));
             }
         }));
 
+<<<<<<< HEAD
         // addItem(new ActionableItem("Withdraw from a Camp", new ItemAction() {
         //     // TODO: only accessible once user has selected a Camp from 'View Registered
         //     // Camps' list
@@ -107,18 +114,81 @@ public class StudentMenu extends SelectionMenu {
         //         displayController.setNextDisplay(new SubmitEnquiryForm(scanner));
         //     }
         // }));
+=======
+        if(currentUser.getCommitteeFor() != null) {
+            Camp committeeCamp = currentUser.getCommitteeFor();
+            addItem(new ActionableItem("View Registered Camps", new ItemAction() {
+                public void execute() {
+                    campController.setCurrentCamp(committeeCamp);
+                    displayController.setNextDisplay(new StudentCommitteeMenu(scanner));
+                }
+            }));
+        }
 
-        addItem(new ActionableItem("View Enquiries", new ItemAction() {
-            public void execute() {
+        // addItem(new ActionableItem("Withdraw from a Camp", new ItemAction() {
+        //     // TODO: only accessible once user has selected a Camp from 'View Registered
+        //     // Camps' list
+        //     public void execute() {
 
-            }
-        }));
+        //     }
+        // }));
+
+        // addItem(new ActionableItem("View Camps", new ItemAction() {
+        //     // TODO: need to make each listed Camp interactable or assign index?
+        //     public void execute() {
+        //         CampController campController = CampController.getInstance();
+        //         List<Camp> allCamps = campController.getAllCamps();
+        //         List<Camp> availableCamps = new ArrayList<Camp>();
+        //         for (Camp camp : allCamps) {
+        //             // TODO: add condition for dates OR check for clashing dates when student tries
+        //             // to register?
+        //             if (camp.getCampInfo().getIsVisible() == true
+        //                     && camp.getUserGroup() == currentUser.getFaculty()
+        //                     || camp.getUserGroup() == "Whole NTU")
+        //                 availableCamps.add(camp);
+        //         }
+        //         for (Camp camp : availableCamps) {
+        //             System.out.println(camp.getCampInfo().getCampName());
+        //         }
+        //     }
+        // }));
+
+        // addItem(new ActionableItem("Register for a Camp", new ItemAction() {
+        //     // TODO: only accessible once user has selected a Camp from 'View Camps' list
+        //     public void execute() {
+>>>>>>> origin/dev
+
+        //     }
+        // }));
+
+        // addItem(new ActionableItem("Submit Enquiry", new ItemAction() {
+        //     // TODO: only accessible once user has selected a Camp from 'View Camps' or
+        //     // 'View
+        //     // Registered Camps' list
+        //     public void execute() {
+
+<<<<<<< HEAD
+        // addItem(new ActionableItem("Edit Enquiry", new ItemAction() {
+        //     // TODO: only accessible once user has selected an Enquiry from 'View Enquiries'
+        //     // list
+        //     public void execute() {
+
+=======
+        //     }
+        // }));
+
+        // addItem(new ActionableItem("View Enquiries", new ItemAction() {
+        //     public void execute() {
+
+        //     }
+        // }));
 
         // addItem(new ActionableItem("Edit Enquiry", new ItemAction() {
         //     // TODO: only accessible once user has selected an Enquiry from 'View Enquiries'
         //     // list
         //     public void execute() {
 
+>>>>>>> origin/dev
         //     }
         // }));
 
@@ -130,6 +200,7 @@ public class StudentMenu extends SelectionMenu {
         //     }
         // }));
 
+<<<<<<< HEAD
         addItem(new ActionableItem("Logout", new ItemAction() {
             public void execute() {
                 AuthController authController = AuthController.getInstance();
@@ -137,5 +208,7 @@ public class StudentMenu extends SelectionMenu {
                 displayController.setNextDisplay(new LogoutAlert(scanner));
             }
         }));
+=======
+>>>>>>> origin/dev
     }
 }

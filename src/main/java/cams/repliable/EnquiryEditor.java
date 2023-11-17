@@ -8,7 +8,6 @@ import java.util.List;
 
 public class EnquiryEditor implements RepliableEditorInterface {
     private final Camp camp;
-    private Enquiry currentEnquiry;
 
     public EnquiryEditor(Camp camp) {
         this.camp = camp;
@@ -47,14 +46,6 @@ public class EnquiryEditor implements RepliableEditorInterface {
     @Override
     public List<Repliable> view() {
         return new ArrayList<>(camp.getEnquiries());
-    }
-
-    public Enquiry getCurrentEnquiry() {
-        return currentEnquiry;
-    }
-
-    public void setCurrentEnquiry(Enquiry enquiry) {
-        currentEnquiry = enquiry;
     }
 
 }
