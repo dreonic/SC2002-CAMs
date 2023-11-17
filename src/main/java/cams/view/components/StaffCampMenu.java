@@ -9,7 +9,6 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
 import cams.serializer.PerformanceReportSerializer;
-import cams.repliable.Enquiry;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
@@ -99,7 +98,7 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Generate Student List", new ItemAction() {
             public void execute() {
-
+                displayController.setNextDisplay(new StudentListFilterMenu(scanner));
             }
         }));
 
