@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class AuthController {
     private static AuthController authController;
     private User currentUser;
-    BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     private AuthController() {
         passwordEncoder = new BCryptPasswordEncoder(4);

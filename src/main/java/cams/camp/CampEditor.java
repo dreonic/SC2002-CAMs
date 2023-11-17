@@ -21,8 +21,8 @@ import java.time.LocalDate;
  * @since 2023-11-09
  */
 public class CampEditor {
-    private Camp camp;
-    private CampController campController = CampController.getInstance();
+    private final Camp camp;
+    private final CampController campController;
 
     /**
      * Constructs a new {@code CampEditor} for the specified camp.
@@ -31,6 +31,7 @@ public class CampEditor {
      */
     public CampEditor(Camp camp) {
         this.camp = camp;
+        campController = CampController.getInstance();
     }
 
     /**
@@ -42,7 +43,6 @@ public class CampEditor {
         campController.deleteCamp(camp.getCampInfo().getCampName());
         camp.getCampInfo().setCampName(name);
         campController.getCampTable().put(name, camp);
-
     }
 
     /**
@@ -88,16 +88,9 @@ public class CampEditor {
 
     /**
      * Toggles the visibility of the camp.
-     *
-     * @param isVisible {@code true} to make the camp visible, {@code false}
-     *                  otherwise.
      */
     public void toggleVisibility() {
-        if (camp.getCampInfo().getIsVisible() == false) {
-            camp.getCampInfo().setIsVisible(true);
-        } else {
-            camp.getCampInfo().setIsVisible(false);
-        }
+        camp.getCampInfo().setIsVisible(!camp.getCampInfo().getIsVisible());
     }
 
     /**

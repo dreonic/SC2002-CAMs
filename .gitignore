@@ -45,4 +45,5 @@ buildNumber.properties
 
 /.vscode
 /.idea
-/src/data/*
+/src/data
+/src/test/data

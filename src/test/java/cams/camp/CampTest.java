@@ -1,20 +1,18 @@
 package cams.camp;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import cams.domain.Staff;
+import cams.domain.Student;
+import cams.repliable.Enquiry;
+import cams.repliable.Suggestion;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import cams.domain.Staff;
-import cams.domain.Student;
-import cams.repliable.Enquiry;
-import cams.repliable.Suggestion;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CampTest {
     Staff campStaff = new Staff("Staff A", "staffa", "Testing Faculty", null);
@@ -54,5 +52,41 @@ public class CampTest {
         Map<Student, Integer> committee = testCamp.getCommittee();
         assertNotNull(committee);
         assertTrue(committee.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Cannot create a camp with blank name")
+    void campWithBlankNameThrows() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Camp(
+                    "",
+                    testCamp.getCampInfo().getLocation(),
+                    testCamp.getCampInfo().getDescription(),
+                    testCamp.getCampDate().getStartDate(),
+                    testCamp.getCampDate().getEndDate(),
+                    testCamp.getCampDate().getRegistrationDeadline(),
+                    testCamp.getCampInfo().getTotalSlots(),
+                    testCamp.getCampInfo().getIsVisible(),
+                    testCamp.getUserGroup(),
+                    testCamp.getStaffInCharge());
+        });
+    }
+
+    @Test
+    @DisplayName("Cannot create a camp without any staff in charge of it")
+    void campWithoutStaffThrows() {
+        assertThrows(NullPointerException.class, () -> {
+            new Camp(
+                    testCamp.getCampInfo().getCampName(),
+                    testCamp.getCampInfo().getLocation(),
+                    testCamp.getCampInfo().getDescription(),
+                    testCamp.getCampDate().getStartDate(),
+                    testCamp.getCampDate().getEndDate(),
+                    testCamp.getCampDate().getRegistrationDeadline(),
+                    testCamp.getCampInfo().getTotalSlots(),
+                    testCamp.getCampInfo().getIsVisible(),
+                    testCamp.getUserGroup(),
+                    null);
+        });
     }
 }

@@ -9,6 +9,7 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
 import cams.serializer.PerformanceReportSerializer;
+import cams.repliable.Enquiry;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
@@ -64,7 +65,7 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View Enquiries", new ItemAction() {
             public void execute() {
-                if (camp.getEnquiriesArray().isEmpty()) {
+                if (camp.getEnquiries().isEmpty()) {
                     displayController.setNextDisplay(new Alert(
                             "No Enquiries", new StaffCampMenu(scanner), scanner));
                 } else {
@@ -75,7 +76,7 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View Suggestions", new ItemAction() {
             public void execute() {
-                if (camp.getSuggestionsArray().isEmpty()) {
+                if (camp.getSuggestions().isEmpty()) {
                     displayController.setNextDisplay(new Alert(
                             "No Suggestions", new StaffCampMenu(scanner), scanner));
                 } else {

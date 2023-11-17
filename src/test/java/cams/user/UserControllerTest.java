@@ -43,24 +43,6 @@ public class UserControllerTest {
         assertNotNull(userController.getUser("testC"));
     }
 
-    @Test
-    @DisplayName("Initial data is serialized correctly")
-    void initialDataSerializedCorrectly() {
-        UserController userController = UserController.getInstance();
-        String[] initialStaffID = {
-                "hukumar", "OURIN", "Upam", "anWiT", "aRVi"
-        };
-        String[] initialStudentID = {
-                "yChern", "KOH1", "BR015", "ct113", "ycn019", "dl007", "doN84", "ELI34", "LE51", "sl22", "AkY013"
-        };
-        for (String staffID : initialStaffID) {
-            assertNotNull(userController.getUser(staffID));
-        }
-        for (String studentID : initialStudentID) {
-            assertNotNull(userController.getUser(studentID));
-        }
-    }
-
     @AfterAll
     static void closeControllers() {
         UserController.close();

@@ -20,7 +20,7 @@ public class StaffViewEnquiryMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
-        List<Enquiry> enquiriesList = new ArrayList<Enquiry>(camp.getEnquiriesArray());
+        List<Enquiry> enquiriesList = new ArrayList<Enquiry>(camp.getEnquiries());
 
         for (Enquiry enquiry : enquiriesList) {
             addItem(new ActionableItem(enquiry.getQuestion(), new ItemAction() {
