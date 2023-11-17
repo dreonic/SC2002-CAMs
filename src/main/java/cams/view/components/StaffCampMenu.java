@@ -15,6 +15,7 @@ import cams.view.base.Alert;
 import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+import de.vandermeer.asciitable.AsciiTable;
 
 public class StaffCampMenu extends SelectionMenu {
     public StaffCampMenu(Scanner scanner) {
@@ -24,18 +25,26 @@ public class StaffCampMenu extends SelectionMenu {
         Camp camp = campController.getCurrentCamp();
         StringBuilder studentList = new StringBuilder();
         String campName = camp.getCampInfo().getCampName();
-        StringBuilder campInfo = new StringBuilder();
 
-        campInfo.append("Camp Name: " + camp.getCampInfo().getCampName() + "\n");
-        campInfo.append("Location: " + camp.getCampInfo().getLocation() + "\n");
-        campInfo.append("Description: " + camp.getCampInfo().getDescription() + "\n");
-        campInfo.append("Start Date: " + camp.getCampDate().getStartDate().toString() + "\n");
-        campInfo.append("End Date: " + camp.getCampDate().getEndDate().toString() + "\n");
-        campInfo.append("Available Slots: " + (camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size()) + "\n");
-        campInfo.append("User Group: " + camp.getUserGroup() + "\n");
-        campInfo.append("Staff in Charge: " + camp.getStaffInCharge().getName() + "\n");
-
-        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()) + "\n" + campInfo.toString());
+        AsciiTable info = new AsciiTable();
+        info.addRule();
+        info.addRow("Camp Name: ", camp.getCampInfo().getCampName());
+        info.addRule();
+        info.addRow("Location: ", camp.getCampInfo().getLocation());
+        info.addRule();
+        info.addRow("Description: ", camp.getCampInfo().getDescription());
+        info.addRule();
+        info.addRow("Date: ", camp.getCampDate().getStartDate().toString() + " - " + camp.getCampDate().getEndDate().toString());
+        info.addRule();
+        info.addRow("Available Slots: ", (camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size()));
+        info.addRule();
+        info.addRow("User Group: ", camp.getUserGroup());
+        info.addRule();
+        info.addRow("Staff in Charge: ", camp.getStaffInCharge().getName());
+        info.addRule();
+        
+        String rend = info.render();
+        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()) + "\n" + rend + "\n");
 
         addItem(new ActionableItem("View Students", new ItemAction() {
             public void execute() {
