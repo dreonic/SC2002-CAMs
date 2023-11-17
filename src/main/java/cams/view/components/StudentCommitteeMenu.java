@@ -7,8 +7,10 @@ import cams.camp.CampController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+import de.vandermeer.asciitable.AsciiTable;
 
 public class StudentCommitteeMenu extends SelectionMenu {
     public StudentCommitteeMenu(Scanner scanner) {
@@ -16,6 +18,26 @@ public class StudentCommitteeMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         CampController campController = CampController.getInstance();
         Camp camp  = campController.getCurrentCamp();
+
+        AsciiTable info = new AsciiTable();
+        info.addRule();
+        info.addRow("Camp Name: ", camp.getCampInfo().getCampName());
+        info.addRule();
+        info.addRow("Location: ", camp.getCampInfo().getLocation());
+        info.addRule();
+        info.addRow("Description: ", camp.getCampInfo().getDescription());
+        info.addRule();
+        info.addRow("Date: ", camp.getCampDate().getStartDate().toString() + " - " + camp.getCampDate().getEndDate().toString());
+        info.addRule();
+        info.addRow("Available Slots: ", (camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size()));
+        info.addRule();
+        info.addRow("User Group: ", camp.getUserGroup());
+        info.addRule();
+        info.addRow("Staff in Charge: ", camp.getStaffInCharge().getName());
+        info.addRule();
+        
+        String rend = info.render();
+        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()) + "\n" + rend + "\n");
 
         addItem(new ActionableItem("Submit Suggestion", new ItemAction() {
             public void execute() {

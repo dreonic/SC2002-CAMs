@@ -88,6 +88,10 @@ public class Student extends User {
         enquiries.add(enquiry);
     }
 
+    public void removeEnquiry(Enquiry enquiry) {
+        enquiries.remove(enquiry);
+    }
+
     /**
      * Gets the camp for which the student serves as a committee member.
      *
