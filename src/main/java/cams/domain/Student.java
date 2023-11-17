@@ -1,31 +1,27 @@
 package cams.domain;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
-
 import cams.camp.Camp;
 import cams.repliable.Enquiry;
 import cams.user.User;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Student extends User {
     private Camp committeeFor;
-    private Set<Camp> campsRegistered;
-    private Set<Enquiry> enquiries;
+    private final Set<Camp> campsRegistered;
+    private final Set<Enquiry> enquiries;
 
     public Student(String name, String userID, String faculty, String passwordHash) {
         super(name, userID, faculty, passwordHash);
-        this.campsRegistered = new HashSet<Camp>();
-        this.enquiries = new HashSet<Enquiry>();
+        this.campsRegistered = new HashSet<>();
+        this.enquiries = new HashSet<>();
     }
 
     public List<Camp> getCamps() {
-        List<Camp> camps = new ArrayList<Camp>();
-        for (Camp camp : campsRegistered) {
-            camps.add(camp);
-        }
-        return camps;
+        return new ArrayList<>(campsRegistered);
     }
 
     public void addCamp(Camp camp) {
@@ -37,11 +33,7 @@ public class Student extends User {
     }
 
     public List<Enquiry> getEnquiries() {
-        List<Enquiry> enquiriesList = new ArrayList<Enquiry>();
-        for (Enquiry enquiry : enquiries) {
-            enquiriesList.add(enquiry);
-        }
-        return enquiriesList;
+        return new ArrayList<>(enquiries);
     }
 
     public void addEnquiry(Enquiry enquiry) {

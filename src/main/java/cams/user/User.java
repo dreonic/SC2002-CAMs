@@ -1,18 +1,23 @@
 package cams.user;
 
+import java.util.Objects;
+
 public class User {
     private String name;
-    private String userID;
+    private final String userID;
     private String passwordHash;
     private String faculty;
 
     public User(String name, String userID, String faculty, String passwordHash) {
-        this.name = name;
+        this.name = Objects.requireNonNull(name);
+        if (userID.isBlank()) {
+            throw new IllegalArgumentException("User ID must not be blank!");
+        }
         this.userID = userID.toUpperCase();
-        this.faculty = faculty;
+        this.faculty = Objects.requireNonNull(faculty);
         AuthController authController = AuthController.getInstance();
-        this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode("password")
-                : passwordHash;
+        this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode(
+                "password") : passwordHash;
     }
 
     public String getUserID() {
@@ -23,7 +28,7 @@ public class User {
         return this.passwordHash;
     }
 
-    public void setHashedPassword(String hashedPassword) {
+    void setHashedPassword(String hashedPassword) {
         this.passwordHash = hashedPassword;
     }
 
@@ -32,7 +37,7 @@ public class User {
     }
 
     public void setFaculty(String faculty) {
-        this.faculty = faculty;
+        this.faculty = Objects.requireNonNull(faculty);
     }
 
     public String getName() {
@@ -40,6 +45,6 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = Objects.requireNonNull(name);
     }
 }
