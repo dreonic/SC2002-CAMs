@@ -1,19 +1,19 @@
 package cams.camp;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-
 import cams.domain.Staff;
 import cams.domain.Student;
 import cams.serializer.CampSerializer;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * The {@code CampController} class manages camps and provides functionality
  * for creating, retrieving, updating, and deleting camps.
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -31,7 +31,7 @@ public class CampController {
      * Private constructor to ensure singleton pattern.
      */
     private CampController() {
-        campTable = new HashMap<String, Camp>();
+        campTable = new HashMap<>();
         currentCamp = null;
     }
 
@@ -105,7 +105,7 @@ public class CampController {
      *
      * @param name The name of the camp to retrieve.
      * @return The {@code Camp} object with the specified name, or {@code null} if
-     *         not found.
+     * not found.
      */
     public Camp getCamp(String name) {
         return campTable.get(name.toLowerCase());

@@ -1,5 +1,15 @@
 package cams.serializer;
 
+import cams.camp.Camp;
+import cams.camp.CampController;
+import cams.camp.CampDate;
+import cams.camp.CampInfo;
+import cams.domain.Staff;
+import cams.domain.Student;
+import cams.user.UserController;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,25 +20,40 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import cams.camp.Camp;
-import cams.camp.CampController;
-import cams.camp.CampDate;
-import cams.camp.CampInfo;
-import cams.domain.Staff;
-import cams.domain.Student;
-import cams.user.UserController;
-
+/**
+ * The {@code CampSerializer} class provides methods for serializing and deserializing
+ * camp information to and from an Excel file. It uses Apache POI library for Excel handling.
+ * This is for storing persistent data across different program sessions (after exiting the program).
+ *
+ * <p>The serialization process converts a collection of {@code Camp} objects into an Excel
+ * file, while deserialization reads data from an Excel file and creates corresponding
+ * {@code Camp} objects and establishes the required associations with {@code Staff}
+ * and {@code Student}.</p>
+ *
+ * <p>Serialized data includes camp details such as name, location, description, start date,
+ * end date, registration deadline, total slots, visibility, user group, staff in charge,
+ * committee members, and attendees.</p>
+ *
+ * <p>The Excel file has a specific structure with headers and rows containing
+ * the respective camp information.</p>
+ */
 public class CampSerializer {
+    /**
+     * Deserializes camp information from the default Excel file path "src/data/camp_list.xlsx"
+     * and updates the {@code CampController} accordingly.
+     */
     public static void deserialize() {
         deserialize("src/data/camp_list.xlsx");
     }
 
+    /**
+     * Deserializes camp information from the specified Excel file path and updates the {@code CampController} accordingly.
+     *
+     * @param path The file path of the Excel file containing camp information.
+     */
     public static void deserialize(String path) {
         try (FileInputStream fileIn = new FileInputStream(path);
-                Workbook workbook = new XSSFWorkbook(fileIn)) {
+             Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             CampController campController = CampController.getInstance();
@@ -52,7 +77,7 @@ public class CampSerializer {
                     break;
                 }
 
-                List<String> args = new ArrayList<String>();
+                List<String> args = new ArrayList<>();
                 for (Cell cell : row) {
                     args.add(cell.toString());
                 }
@@ -67,7 +92,7 @@ public class CampSerializer {
                 Camp newCamp = campController.getCamp(args.get(0));
                 String[] commitees = args.get(10).split(", ");
                 String[] attendees = args.get(11).split(", ");
-                
+
                 for (String commitee : commitees) {
                     Student student = (Student) userController.getUser(commitee);
                     if (student != null) {
@@ -87,10 +112,19 @@ public class CampSerializer {
         }
     }
 
+    /**
+     * Serializes camp information to the default Excel file path "src/data/camp_list.xlsx"
+     * based on the current state of the {@code CampController}.
+     */
     public static void serialize() {
         serialize("src/data/camp_list.xlsx");
     }
 
+    /**
+     * Serializes camp information to the specified Excel file path based on the current state of the {@code CampController}.
+     *
+     * @param path The file path where the camp information should be serialized to.
+     */
     public static void serialize(String path) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");

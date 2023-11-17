@@ -2,7 +2,9 @@ package cams.camp;
 
 import cams.filter.FilterStrategy;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class CampFilterController {
     private static CampFilterController campFilterController;
@@ -19,6 +21,10 @@ public class CampFilterController {
         return campFilterController;
     }
 
+    public Set<FilterStrategy> getFilterStrategies() {
+        return new HashSet<>(filterStrategies);
+    }
+
     public void addFilterStrategy(FilterStrategy strategy) {
         filterStrategies.add(strategy);
     }
@@ -27,22 +33,18 @@ public class CampFilterController {
         filterStrategies.remove(strategy);
     }
 
-    public void clearFilterStrategies() { filterStrategies.clear(); }
+    public void clearFilterStrategies() {
+        filterStrategies.clear();
+    }
 
-    public List<Camp> filter(String faculty) {
+    public List<Camp> getFilteredCamps() {
         CampController campController = CampController.getInstance();
-        List<Camp> allCamps = campController.getAllCamps();
-        List<Camp> filteredList = new ArrayList<>();
+        List<Camp> filteredCamps = campController.getAllCamps();
 
-        for (Camp camp : allCamps) {
-            if (faculty.equals(camp.getUserGroup()))
-                filteredList.add(camp);
+        for (FilterStrategy filterStrategy : filterStrategies) {
+            filteredCamps = filterStrategy.filter(filteredCamps);
         }
-        for (FilterStrategy strategy : filterStrategies) {
-            strategy.filter(filteredList);
-        }
-
-        return filteredList;
+        return filteredCamps;
     }
 
 }

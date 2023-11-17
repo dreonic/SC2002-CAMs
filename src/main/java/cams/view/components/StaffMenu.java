@@ -1,9 +1,5 @@
 package cams.view.components;
 
-import java.util.List;
-import java.util.Scanner;
-
-import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Staff;
 import cams.domain.StaffController;
@@ -11,9 +7,10 @@ import cams.user.AuthController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.CommonElements;
-import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+
+import java.util.Scanner;
 
 public class StaffMenu extends SelectionMenu {
     public StaffMenu(Scanner scanner) {
@@ -51,13 +48,7 @@ public class StaffMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View All Camps", new ItemAction() {
             public void execute() {
-                // TODO add filter options
-                List<Camp> allCamps = campController.getAllCamps();
-                for (Camp camp : allCamps) {
-                    campList.append(camp.getCampInfo().getCampName() + "\n");
-                }
-                displayController.setNextDisplay(new Alert(
-                        campList.toString(), new StaffMenu(scanner), scanner));
+                displayController.setNextDisplay(new FilterCampMenu(scanner));
             }
         }));
 

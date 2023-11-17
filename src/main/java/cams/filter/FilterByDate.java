@@ -9,6 +9,10 @@ import java.util.List;
 public class FilterByDate implements FilterStrategy {
     private LocalDate date;
 
+    public FilterByDate() {
+        date = null;
+    }
+
     public FilterByDate(LocalDate date) {
         this.date = date;
     }
@@ -26,5 +30,10 @@ public class FilterByDate implements FilterStrategy {
             }
         }
         return campsByDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Date: " + date.toString();
     }
 }
