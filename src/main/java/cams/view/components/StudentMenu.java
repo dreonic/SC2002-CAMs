@@ -45,7 +45,7 @@ public class StudentMenu extends SelectionMenu {
 
         if(currentUser.getCommitteeFor() != null) {
             Camp committeeCamp = currentUser.getCommitteeFor();
-            addItem(new ActionableItem("View Registered Camps", new ItemAction() {
+            addItem(new ActionableItem("View Committee Camp", new ItemAction() {
                 public void execute() {
                     campController.setCurrentCamp(committeeCamp);
                     displayController.setNextDisplay(new StudentCommitteeMenu(scanner));

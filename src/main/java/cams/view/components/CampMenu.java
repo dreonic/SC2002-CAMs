@@ -9,6 +9,7 @@ import cams.user.AuthController;
 import cams.user.User;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.Alert;
 import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
@@ -36,7 +37,12 @@ public class CampMenu extends SelectionMenu {
         if(currentUser instanceof Student) {
             addItem(new ActionableItem("Register", new ItemAction() {
                 public void execute() {
-                    
+                    if(((Student)currentUser).getCamps().contains(camp)) {
+                        displayController.setNextDisplay(new Alert("Already registered for this camp!", new CampMenu(scanner), scanner));
+                    }
+                    else {
+                        displayController.setNextDisplay(new RegisterMenu(scanner));
+                    }
                 }
             }));
 
@@ -45,19 +51,12 @@ public class CampMenu extends SelectionMenu {
                     
                 }
             }));
+        }
 
-            addItem(new ActionableItem("Back", new ItemAction() {
-                public void execute() {
-                    displayController.setNextDisplay(new StudentViewCampMenu(scanner));
-                }
-            }));
-        }
-        else {
-            addItem(new ActionableItem("Back", new ItemAction() {
-                public void execute() {
-                    displayController.setNextDisplay(new StaffViewCampMenu(scanner));
-                }
-            }));
-        }
+        addItem(new ActionableItem("Back", new ItemAction() {
+            public void execute() {
+                displayController.setNextDisplay(new FilterCampMenu(scanner));
+            }
+        }));
     }
 }
