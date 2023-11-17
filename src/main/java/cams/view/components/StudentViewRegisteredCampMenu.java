@@ -31,6 +31,14 @@ public class StudentViewRegisteredCampMenu extends SelectionMenu {
                     }
                 }));
             }
+            else {
+                addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {
+                    public void execute() {
+                        campController.setCurrentCamp(camp);
+                        displayController.setNextDisplay(new StudentCommitteeMenu(scanner));
+                    }
+                }));
+            }
         }
 
         addItem(new ActionableItem("Back", new ItemAction() {
