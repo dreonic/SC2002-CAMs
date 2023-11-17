@@ -12,8 +12,8 @@ import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
-public class StaffViewEnquiryMenu extends SelectionMenu {
-    public StaffViewEnquiryMenu(Scanner scanner) {
+public class CommitteeViewEnquiryMenu extends SelectionMenu {
+    public CommitteeViewEnquiryMenu(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
@@ -23,14 +23,14 @@ public class StaffViewEnquiryMenu extends SelectionMenu {
         for (Enquiry enquiry : enquiriesList) {
             addItem(new ActionableItem(enquiry.getQuestion(), new ItemAction() {
                 public void execute() {
-                    displayController.setNextDisplay(new StaffEnquiryMenu(scanner, enquiry));
+                    displayController.setNextDisplay(new CommitteeEnquiryMenu(scanner, enquiry));
                 }
             }));
         }
 
         addItem(new ActionableItem("Back", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new StaffCampMenu(scanner));
+                displayController.setNextDisplay(new StudentCommitteeMenu(scanner));
             }
         }));
     }
