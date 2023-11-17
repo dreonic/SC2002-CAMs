@@ -1,5 +1,15 @@
 package cams.serializer;
 
+import cams.camp.Camp;
+import cams.camp.CampController;
+import cams.camp.CampDate;
+import cams.camp.CampInfo;
+import cams.domain.Staff;
+import cams.domain.Student;
+import cams.user.UserController;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,17 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import cams.camp.Camp;
-import cams.camp.CampController;
-import cams.camp.CampDate;
-import cams.camp.CampInfo;
-import cams.domain.Staff;
-import cams.domain.Student;
-import cams.user.UserController;
 
 /**
  * The {@code CampSerializer} class provides methods for serializing and deserializing
@@ -54,7 +53,7 @@ public class CampSerializer {
      */
     public static void deserialize(String path) {
         try (FileInputStream fileIn = new FileInputStream(path);
-                Workbook workbook = new XSSFWorkbook(fileIn)) {
+             Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             CampController campController = CampController.getInstance();
@@ -78,7 +77,7 @@ public class CampSerializer {
                     break;
                 }
 
-                List<String> args = new ArrayList<String>();
+                List<String> args = new ArrayList<>();
                 for (Cell cell : row) {
                     args.add(cell.toString());
                 }
@@ -93,7 +92,7 @@ public class CampSerializer {
                 Camp newCamp = campController.getCamp(args.get(0));
                 String[] commitees = args.get(10).split(", ");
                 String[] attendees = args.get(11).split(", ");
-                
+
                 for (String commitee : commitees) {
                     Student student = (Student) userController.getUser(commitee);
                     if (student != null) {
