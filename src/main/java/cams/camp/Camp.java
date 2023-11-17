@@ -56,7 +56,7 @@ public class Camp {
         if (userGroup.isBlank()) {
             throw new IllegalArgumentException("User group must not be blank!");
         }
-        this.userGroup = userGroup;
+        this.userGroup = userGroup.toUpperCase();
         this.staffInCharge = Objects.requireNonNull(staffInCharge, "A staff must be in charge of this camp!");
         this.enquiries = new HashSet<>();
         this.suggestions = new HashSet<>();
