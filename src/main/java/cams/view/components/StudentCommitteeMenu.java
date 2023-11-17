@@ -10,7 +10,7 @@ import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
-public class StudentCommitteeMenu extends SelectionMenu{
+public class StudentCommitteeMenu extends SelectionMenu {
     public StudentCommitteeMenu(Scanner scanner) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();
