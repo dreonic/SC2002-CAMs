@@ -8,7 +8,10 @@ import cams.filter.FilterStrategy;
 import cams.user.AuthController;
 import cams.user.User;
 import cams.view.DisplayController;
-import cams.view.base.*;
+import cams.view.base.ActionableItem;
+import cams.view.base.CommonElements;
+import cams.view.base.ItemAction;
+import cams.view.base.SelectionMenu;
 
 import java.util.List;
 import java.util.Scanner;
@@ -57,22 +60,16 @@ public class FilterCampMenu extends SelectionMenu {
             @Override
             public void execute() {
                 List<Camp> filteredCamps = filterController.getFilteredCamps();
-                StringBuilder campList = new StringBuilder();
-                if (filteredCamps.isEmpty()) {
-                    campList.append("No camps found.");
-                }
-                for (Camp camp : filteredCamps) {
-                    campList.append(camp.getCampInfo().getCampName()).append("\n");
-                }
-                displayController.setNextDisplay(new Alert(
-                        campList.toString(), new StaffMenu(scanner), scanner
-                ));
+                displayController.setNextDisplay(new CampListMenu(filteredCamps, scanner));
             }
         }));
 
         addItem(new ActionableItem("Back", new ItemAction() {
             @Override
             public void execute() {
+                if (currentUser instanceof Student) {
+                    displayController.setNextDisplay(new StudentMenu(scanner));
+                }
                 displayController.setNextDisplay(new StaffMenu(scanner));
             }
         }));
