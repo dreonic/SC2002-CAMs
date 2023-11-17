@@ -17,13 +17,10 @@ import cams.view.base.SelectionMenu;
 public class StudentViewEnquiryMenu extends SelectionMenu {
     public StudentViewEnquiryMenu(Scanner scanner) {
         super(scanner);
-        // CampController campController = CampController.getInstance();
         StudentController studentController = StudentController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
 
-        // Camp camp = campController.getCurrentCamp();
         Student currentUser = studentController.getCurrentStudent();
-        // EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
         List<Enquiry> enquiriesList = new ArrayList<Enquiry>(currentUser.getEnquiries());
 
         for (Enquiry enquiry : enquiriesList) {
@@ -36,7 +33,7 @@ public class StudentViewEnquiryMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Back", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new StaffCampMenu(scanner));
+                displayController.setNextDisplay(new StudentMenu(scanner));
             }
         }));
     }    

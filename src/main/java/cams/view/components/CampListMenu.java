@@ -2,6 +2,8 @@ package cams.view.components;
 
 import cams.camp.Camp;
 import cams.camp.CampController;
+import cams.domain.Student;
+import cams.user.AuthController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;
@@ -17,6 +19,7 @@ public class CampListMenu extends SelectionMenu {
 
         DisplayController displayController = DisplayController.getInstance();
         CampController campController = CampController.getInstance();
+        AuthController authController = AuthController.getInstance();
         setPrompt("View camp details\n");
 
         for (Camp camp : camps) {
@@ -32,7 +35,11 @@ public class CampListMenu extends SelectionMenu {
         addItem(new ActionableItem("Back", new ItemAction() {
             @Override
             public void execute() {
-                displayController.setNextDisplay(new StaffMenu(scanner));
+                if (authController.getCurrentUser() instanceof Student) {
+                    displayController.setNextDisplay(new StudentMenu(scanner));
+                } else {
+                    displayController.setNextDisplay(new StaffMenu(scanner));
+                }
             }
         }));
     }

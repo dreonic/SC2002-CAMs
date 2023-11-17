@@ -17,6 +17,7 @@ public class EnquiryEditor implements RepliableEditorInterface {
     public Repliable create(String content, Student student) {
         Enquiry enquiry = new Enquiry(content, student);
         camp.addEnquiry(enquiry);
+        student.addEnquiry(enquiry);
         return enquiry;
     }
 

@@ -26,7 +26,7 @@ public class FilterCampMenu extends SelectionMenu {
 
         User currentUser = authController.getCurrentUser();
         StringBuilder promptBuilder = new StringBuilder(CommonElements.getStatusBar("View Camps"));
-        promptBuilder.append("Current filters: ");
+        promptBuilder.append("\nCurrent filters: ");
 
         if (currentUser instanceof Student) {
             filterController.addFilterStrategy(new FilterByUserGroup(currentUser.getFaculty()));
@@ -69,8 +69,10 @@ public class FilterCampMenu extends SelectionMenu {
             public void execute() {
                 if (currentUser instanceof Student) {
                     displayController.setNextDisplay(new StudentMenu(scanner));
+                } 
+                else {
+                    displayController.setNextDisplay(new StaffMenu(scanner));
                 }
-                displayController.setNextDisplay(new StaffMenu(scanner));
             }
         }));
     }
