@@ -34,6 +34,6 @@ public class FilterByDate implements FilterStrategy {
 
     @Override
     public String toString() {
-        return "Date: " + date.toString();
+        return "Date: " + (date != null ? date.toString() : "");
     }
 }

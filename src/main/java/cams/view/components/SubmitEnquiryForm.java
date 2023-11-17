@@ -3,7 +3,6 @@ package cams.view.components;
 import java.util.Map;
 import java.util.Scanner;
 
-import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.StudentController;
 import cams.repliable.EnquiryEditor;

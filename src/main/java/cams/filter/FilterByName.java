@@ -33,6 +33,6 @@ public class FilterByName implements FilterStrategy {
 
     @Override
     public String toString() {
-        return "Name: " + name;
+        return "Name: " + (name != null ? name : "");
     }
 }

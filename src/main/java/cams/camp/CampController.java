@@ -117,7 +117,7 @@ public class CampController {
      * @param name The name of the camp to delete.
      */
     public void deleteCamp(String name) throws RuntimeException {
-        if (campTable.get(name).getAttendees().isEmpty())
+        if (campTable.get(name.toLowerCase()).getAttendees().isEmpty())
             campTable.remove(name.toLowerCase());
         else
             throw new RuntimeException("Camp must have no attendees to be deleted!");

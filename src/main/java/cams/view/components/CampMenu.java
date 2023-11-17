@@ -30,6 +30,7 @@ public class CampMenu extends SelectionMenu {
         campInfo.append("Start Date: " + camp.getCampDate().getStartDate().toString() + "\n");
         campInfo.append("End Date: " + camp.getCampDate().getEndDate().toString() + "\n");
         campInfo.append("Available Slots: " + (camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size()) + "\n");
+        campInfo.append("User Group: " + camp.getUserGroup() + "\n");
         campInfo.append("Staff in Charge: " + camp.getStaffInCharge().getName() + "\n");
 
         setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()) + campInfo.toString());
@@ -48,7 +49,7 @@ public class CampMenu extends SelectionMenu {
 
             addItem(new ActionableItem("Submit Enquiry", new ItemAction() {
                 public void execute() {
-                    
+                    displayController.setNextDisplay(new SubmitEnquiryForm(scanner));
                 }
             }));
         }

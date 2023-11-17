@@ -95,6 +95,7 @@ public class StaffCampMenu extends SelectionMenu {
             public void execute() {
                 try {
                     campController.deleteCamp(campName);
+                    displayController.setNextDisplay(new Alert(campName + " successfully deleted!", new StaffCampMenu(scanner), scanner));
                 } catch (RuntimeException e) {
                     displayController.setNextDisplay(new Alert(
                             e.getMessage(),

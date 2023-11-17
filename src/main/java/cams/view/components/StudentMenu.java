@@ -30,19 +30,30 @@ public class StudentMenu extends SelectionMenu {
                     "No student has been assigned to the Student Controller class");
         }
 
-        setPrompt(CommonElements.getHeader("Student") + "Welcome to CAMs, "
+        setPrompt(CommonElements.getHeader("Student") + "\nWelcome to CAMs, "
                 + currentUser.getName() + "!\n");
 
         addItem(new ActionableItem("Change Password", new ItemAction() {
             public void execute() {
                 displayController.setNextDisplay(new ChangePasswordForm(scanner));
-                displayController.setNextDisplay(new ChangePasswordForm(scanner));
+            }
+        }));
+
+        addItem(new ActionableItem("View All Camps", new ItemAction() {
+            public void execute() {
+                displayController.setNextDisplay(new FilterCampMenu(scanner));
             }
         }));
 
         addItem(new ActionableItem("View Registered Camps", new ItemAction() {
             public void execute() {
                 displayController.setNextDisplay(new StudentViewRegisteredCampMenu(scanner));
+            }
+        }));
+
+        addItem(new ActionableItem("View Enquiries", new ItemAction() {
+            public void execute() {
+                displayController.setNextDisplay(new StudentViewEnquiryMenu(scanner));
             }
         }));
 
@@ -55,44 +66,6 @@ public class StudentMenu extends SelectionMenu {
                 }
             }));
         }
-
-        addItem(new ActionableItem("Register for a Camp", new ItemAction() {
-            // TODO: only accessible once user has selected a Camp from 'View Camps' list
-            public void execute() {
-
-            }
-        }));
-
-        addItem(new ActionableItem("Submit Enquiry", new ItemAction() {
-            // TODO: only accessible once user has selected a Camp from 'View Camps' or
-            // 'View
-            // Registered Camps' list
-            public void execute() {
-
-            }
-        }));
-
-        addItem(new ActionableItem("View Enquiries", new ItemAction() {
-            public void execute() {
-
-            }
-        }));
-
-        // addItem(new ActionableItem("Edit Enquiry", new ItemAction() {
-        //     // TODO: only accessible once user has selected an Enquiry from 'View Enquiries'
-        //     // list
-        //     public void execute() {
-
-        //     }
-        // }));
-
-        // addItem(new ActionableItem("View Enquiry Reply", new ItemAction() {
-        //     // TODO: only accessible once user has selected an Enquiry from 'View Enquiries'
-        //     // list
-        //     public void execute() {
-
-        //     }
-        // }));
 
         addItem(new ActionableItem("Logout", new ItemAction() {
             public void execute() {

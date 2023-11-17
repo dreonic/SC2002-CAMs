@@ -36,6 +36,6 @@ public class FilterByStaff implements FilterStrategy {
 
     @Override
     public String toString() {
-        return "Staff: " + staff.getName();
+        return "Staff: " + (staff != null ? staff.getName() : "");
     }
 }
