@@ -23,7 +23,7 @@ import cams.user.UserController;
 
 public class CampSerializer {
     public static void deserialize() {
-        deserialize("src/data/camp_list.xslx");
+        deserialize("src/data/camp_list.xlsx");
     }
 
     public static void deserialize(String path) {
