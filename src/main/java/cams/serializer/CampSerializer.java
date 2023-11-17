@@ -79,7 +79,7 @@ public class CampSerializer {
                     Student student = (Student) userController.getUser(attendee);
                     if (student != null) {
                         student.addCamp(newCamp);
-                        newCamp.addAttandee(student);
+                        newCamp.addAttendee(student);
                     }
                 }
             }

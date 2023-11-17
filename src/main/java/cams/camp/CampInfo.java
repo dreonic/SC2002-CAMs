@@ -1,10 +1,12 @@
 package cams.camp;
 
+import java.util.Objects;
+
 /**
  * The {@code CampInfo} class represents information about a camp, including its
  * name,
  * location, description, total slots, committee slots, and visibility status.
- *
+ * <p>
  * Instances of this class encapsulate the editable details of a camp.
  * These details can be retrieved and modified using getter and setter methods
  * accessed through {@code CampEditor}.
@@ -36,10 +38,13 @@ public class CampInfo {
      * @param isVisible      Indicates whether the camp is visible.
      */
     public CampInfo(String campName, String location, String description,
-            int totalSlots, int committeeSlots, boolean isVisible) {
+                    int totalSlots, int committeeSlots, boolean isVisible) throws IllegalArgumentException {
+        if (campName.isBlank()) {
+            throw new IllegalArgumentException("Camp must have a name!");
+        }
         this.campName = campName;
-        this.location = location;
-        this.description = description;
+        this.location = Objects.requireNonNull(location);
+        this.description = Objects.requireNonNull(description);
         this.totalSlots = totalSlots;
         this.committeeSlots = committeeSlots;
         this.isVisible = isVisible;
@@ -60,6 +65,9 @@ public class CampInfo {
      * @param campName The new name for the camp.
      */
     public void setCampName(String campName) {
+        if (campName.isBlank()) {
+            throw new IllegalArgumentException("Camp must have a name!");
+        }
         this.campName = campName;
     }
 
@@ -78,7 +86,7 @@ public class CampInfo {
      * @param location The new location for the camp.
      */
     public void setLocation(String location) {
-        this.location = location;
+        this.location = Objects.requireNonNull(location);
     }
 
     /**
@@ -96,7 +104,7 @@ public class CampInfo {
      * @param description The new description for the camp.
      */
     public void setDescription(String description) {
-        this.description = description;
+        this.description = Objects.requireNonNull(description);
     }
 
     /**

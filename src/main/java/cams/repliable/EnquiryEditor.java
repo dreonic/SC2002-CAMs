@@ -46,11 +46,7 @@ public class EnquiryEditor implements RepliableEditorInterface {
 
     @Override
     public List<Repliable> view() {
-        ArrayList<Repliable> enquiryList = new ArrayList<Repliable>();
-        for (Enquiry enquiry : camp.getEnquiries()) {
-            enquiryList.add(enquiry);
-        }
-        return enquiryList;
+        return new ArrayList<Repliable>(camp.getEnquiries());
     }
 
     public Enquiry getCurrentEnquiry() {

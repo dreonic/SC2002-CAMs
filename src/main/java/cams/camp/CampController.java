@@ -24,7 +24,7 @@ import cams.serializer.CampSerializer;
  */
 public class CampController {
     private static CampController campController;
-    private Map<String, Camp> campTable;
+    private final Map<String, Camp> campTable;
     private Camp currentCamp;
 
     /**
@@ -56,7 +56,7 @@ public class CampController {
     /**
      * Retrieves the whole camp table.
      *
-     * @returns The camp table {@code HashMap} containing all created camps
+     * @return The camp table {@code HashMap} containing all created camps
      */
     public Map<String, Camp> getCampTable() {
         return campTable;
@@ -93,7 +93,7 @@ public class CampController {
      * @return An array of {@code Camp} objects.
      */
     public List<Camp> getAllCamps() {
-        List<Camp> campList = new ArrayList<Camp>();
+        List<Camp> campList = new ArrayList<>();
         for (Map.Entry<String, Camp> camp : campTable.entrySet()) {
             campList.add(camp.getValue());
         }
@@ -116,23 +116,11 @@ public class CampController {
      *
      * @param name The name of the camp to delete.
      */
-    public void deleteCamp(String name) {
+    public void deleteCamp(String name) throws RuntimeException {
         if (campTable.get(name).getAttendees().isEmpty())
             campTable.remove(name.toLowerCase());
-    }
-
-    /**
-     * Updates the name of a camp in the camp table.
-     *
-     * @param oldName The current name of the camp.
-     * @param newName The new name for the camp.
-     */
-    protected void updateName(String oldName, String newName) {
-        if (campTable.containsKey(oldName)) {
-            Camp camp = campTable.get(oldName);
-            campTable.remove(oldName);
-            campTable.put(newName, camp);
-        }
+        else
+            throw new RuntimeException("Camp must have no attendees to be deleted!");
     }
 
     /**
@@ -141,7 +129,7 @@ public class CampController {
      * @return A {@code HashMap} containing the performance report.
      */
     public Map<Student, Integer> getPerformanceReport(String campName) {
-        Map<Student, Integer> performanceReport = new HashMap<Student, Integer>(
+        Map<Student, Integer> performanceReport = new HashMap<>(
                 campTable.get(campName).getCommittee());
         return performanceReport;
     }
@@ -153,8 +141,7 @@ public class CampController {
      */
     public List<Student> getAttendanceList(String campName) {
         Camp camp = campTable.get(campName);
-        List<Student> attendanceList = camp.getAttendees();
-        return attendanceList;
+        return camp.getAttendees();
     }
 
     public void setCurrentCamp(Camp camp) {
