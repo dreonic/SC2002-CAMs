@@ -1,13 +1,13 @@
 package cams.repliable;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import cams.camp.Camp;
 import cams.domain.Student;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SuggestionEditor implements RepliableEditorInterface {
-    private Camp camp;
+    private final Camp camp;
     private Suggestion currentSuggestion;
 
     public SuggestionEditor(Camp camp) {
@@ -15,15 +15,16 @@ public class SuggestionEditor implements RepliableEditorInterface {
     }
 
     @Override
-    public void create(String content, Student student) {
+    public Repliable create(String content, Student student) {
         Suggestion suggestion = new Suggestion(content, student);
         camp.addSuggestion(suggestion);
+        return suggestion;
     }
 
     @Override
     public void edit(Repliable repliable, String newContent) {
         Suggestion suggestion = (Suggestion) repliable;
-        if (suggestion.getIsApproved() == false) {
+        if (!suggestion.getIsApproved()) {
             suggestion.setContent(newContent);
         }
     }
@@ -44,11 +45,7 @@ public class SuggestionEditor implements RepliableEditorInterface {
 
     @Override
     public List<Repliable> view() {
-        List<Repliable> suggestionList = new ArrayList<Repliable>();
-        for (Suggestion suggestion : camp.getSuggestions()) {
-            suggestionList.add(suggestion);
-        }
-        return suggestionList;
+        return new ArrayList<>(camp.getSuggestions());
     }
 
     public Suggestion getCurrentSuggestion() {

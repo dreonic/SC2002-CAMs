@@ -8,9 +8,11 @@ import java.util.Scanner;
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
+import cams.repliable.Enquiry;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
@@ -21,6 +23,8 @@ public class StaffCampMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         StringBuilder studentList = new StringBuilder();
+
+        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()));
 
         addItem(new ActionableItem("View Students", new ItemAction() {
             public void execute() {
@@ -60,10 +64,10 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View Enquiries", new ItemAction() {
             public void execute() {
-                if(camp.getEnquiriesArray().isEmpty()) {
-                    displayController.setNextDisplay(new Alert("No Enquiries", new StaffCampMenu(scanner), scanner));
-                }
-                else {
+                if (camp.getEnquiries().isEmpty()) {
+                    displayController.setNextDisplay(new Alert(
+                            "No Enquiries", new StaffCampMenu(scanner), scanner));
+                } else {
                     displayController.setNextDisplay(new StaffViewEnquiryMenu(scanner));
                 }
             }
@@ -71,11 +75,11 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View Suggestions", new ItemAction() {
             public void execute() {
-                if(camp.getSuggestionsArray().isEmpty()) {
-                    displayController.setNextDisplay(new Alert("No Suggestions", new StaffCampMenu(scanner), scanner));
-                }
-                else {
-                displayController.setNextDisplay(new StaffViewSuggestionMenu(scanner));
+                if (camp.getSuggestions().isEmpty()) {
+                    displayController.setNextDisplay(new Alert(
+                            "No Suggestions", new StaffCampMenu(scanner), scanner));
+                } else {
+                    displayController.setNextDisplay(new StaffViewSuggestionMenu(scanner));
                 }
             }
         }));

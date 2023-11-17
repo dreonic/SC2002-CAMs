@@ -10,10 +10,6 @@ public class StudentController {
         student = null;
     }
 
-    private StudentController(Student student) {
-        this.student = student;
-    }
-
     public static StudentController getInstance() {
         if (studentController == null) {
             studentController = new StudentController();
@@ -22,7 +18,7 @@ public class StudentController {
     }
 
     public static StudentController getInstance(Student student) {
-        if(studentController == null) {
+        if (studentController == null) {
             studentController = new StudentController();
         }
         studentController.setCurrentStudent(student);
@@ -37,21 +33,32 @@ public class StudentController {
         this.student = student;
     }
 
-    public void register(Camp camp, Boolean isCommittee) {
-        //also need to check for conflicting dates
-        if(!student.getCamps().contains(camp) && isCommittee == false) {
-            student.addCamp(camp);
+    public void register(Camp camp, Boolean isCommittee) throws RuntimeException {
+        // also need to check for conflicting dates
+        if (student.getCamps().contains(camp)) {
+            throw new RuntimeException("Current student already registered for this camp!");
         }
-        else if(!student.getCamps().contains(camp) && isCommittee == true && student.getCommitteeFor() == null) {
-            student.addCamp(camp);
-            student.setCommitteeFor(camp);
+
+        student.addCamp(camp);
+        if (!isCommittee) return;
+
+        if (student.getCommitteeFor() != null) {
+            throw new RuntimeException("Cannot register as committee! Current student is already a committee for another camp!");
         }
+        student.setCommitteeFor(camp);
     }
 
     public void withdraw(Camp camp) {
-        if(student.getCommitteeFor() != camp && student.getCamps().contains(camp)) {
-            student.removeCamp(camp);
+        if (student.getCommitteeFor() == camp) {
+            throw new RuntimeException("Student committees are not allowed to withdraw!");
         }
+        if (!student.getCamps().contains(camp)) {
+            throw new RuntimeException("Cannot withdraw! Student is not registered for this camp!");
+        }
+        student.removeCamp(camp);
     }
 
+    public static void close() {
+        studentController = null;
+    }
 }

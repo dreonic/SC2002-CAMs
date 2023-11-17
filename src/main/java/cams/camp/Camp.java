@@ -1,19 +1,16 @@
 package cams.camp;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
-
 import cams.domain.Staff;
 import cams.domain.Student;
 import cams.repliable.Enquiry;
 import cams.repliable.Suggestion;
 
+import java.time.LocalDate;
+import java.util.*;
+
 /**
  * Main entity class representing a camp.
- *
+ * <p>
  * This class encapsulates information about a camp, date info
  * is encapsulated in campDate, while editable info is encapsulated in campInfo
  *
@@ -26,14 +23,14 @@ import cams.repliable.Suggestion;
  * @since 2023-11-09
  */
 public class Camp {
-    private Staff staffInCharge;
-    private Set<Enquiry> enquiries;
-    private Set<Suggestion> suggestions;
-    private Set<Student> attendees;
-    private Map<Student, Integer> committee;
-    private CampInfo campInfo;
-    private CampDate campDate;
-    private String userGroup;
+    private final CampInfo campInfo;
+    private final CampDate campDate;
+    private final String userGroup;
+    private final Staff staffInCharge;
+    private final Set<Enquiry> enquiries;
+    private final Set<Suggestion> suggestions;
+    private final Set<Student> attendees;
+    private final Map<Student, Integer> committee;
 
     /**
      * Constructs a new camp with the specified details.
@@ -47,23 +44,28 @@ public class Camp {
      * @param totalSlots           The total available slots for the camp.
      * @param isVisible            Indicates whether the camp is visible.
      * @param userGroup            The user group associated with the camp.
-     * @param staffInCharge
+     * @param staffInCharge        The staff in charge of this camp.
      */
-    public Camp(String campName, String location, String description, LocalDate startDate,
-            LocalDate endDate, LocalDate registrationDeadline, int totalSlots,
-            boolean isVisible, String userGroup, Staff staffInCharge) {
+    public Camp(
+            String campName, String location, String description,
+            LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline,
+            int totalSlots, boolean isVisible, String userGroup, Staff staffInCharge)
+            throws IllegalArgumentException {
         this.campInfo = new CampInfo(campName, location, description, totalSlots, 10, isVisible);
         this.campDate = new CampDate(startDate, endDate, registrationDeadline);
+        if (userGroup.isBlank()) {
+            throw new IllegalArgumentException("User group must not be blank!");
+        }
         this.userGroup = userGroup;
-        this.staffInCharge = staffInCharge;
+        this.staffInCharge = Objects.requireNonNull(staffInCharge, "A staff must be in charge of this camp!");
+        this.enquiries = new HashSet<>();
+        this.suggestions = new HashSet<>();
+        this.attendees = new HashSet<>();
+        this.committee = new HashMap<>();
     }
 
     public Staff getStaffInCharge() {
         return staffInCharge;
-    }
-
-    public void setStaffInCharge(Staff staff) {
-        this.staffInCharge = staff;
     }
 
     /**
@@ -79,7 +81,7 @@ public class Camp {
      * Retrieves the dates associated with the camp.
      *
      * @return The {@code CampDate} object containing start date, end date, and
-     *         registration deadline.
+     * registration deadline.
      */
     public CampDate getCampDate() {
         return campDate;
@@ -100,7 +102,7 @@ public class Camp {
      * @return A {@code Set} containing the enquiries for the camp.
      */
     public Set<Enquiry> getEnquiries() {
-        return enquiries;
+        return new HashSet<>(enquiries);
     }
 
     /**
@@ -109,7 +111,7 @@ public class Camp {
      * @return A {@code Set} containing the suggestions for the camp.
      */
     public Set<Suggestion> getSuggestions() {
-        return suggestions;
+        return new HashSet<>(suggestions);
     }
 
     /**
@@ -131,23 +133,6 @@ public class Camp {
     }
 
     /**
-     * Retrieves an array containing all the enquiries for the camp.
-     *
-     * @return An array of {@code Enquiry} objects.
-     */
-    public List<Enquiry> getEnquiriesArray() {
-        List<Enquiry> enquiryList = new ArrayList<Enquiry>();
-        if (enquiries == null)
-            return enquiryList;
-        else {
-            for (Enquiry enquiry : enquiries) {
-                enquiryList.add(enquiry);
-            }
-            return enquiryList;
-        }
-    }
-
-    /**
      * Adds a suggestion to the set of suggestions for the camp.
      *
      * @param suggestion The {@code Suggestion} to be added.
@@ -165,44 +150,25 @@ public class Camp {
         suggestions.remove(suggestion);
     }
 
-    /**
-     * Retrieves an array containing all the suggestions for the camp.
-     *
-     * @return An array of {@code Suggestion} objects.
-     */
-    public List<Suggestion> getSuggestionsArray() {
-        List<Suggestion> suggestionList = new ArrayList<Suggestion>();
-        if (suggestions == null)
-            return suggestionList;
-        else {
-            for (Suggestion suggestion : suggestions) {
-                suggestionList.add(suggestion);
-            }
-            return suggestionList;
-        }
-    }
-
     public void addCommittee(Student student) {
         committee.put(student, 0);
     }
 
     public Map<Student, Integer> getCommittee() {
-        return committee;
+        return new HashMap<>(committee);
     }
 
     public List<Student> getAttendees() {
-        List<Student> attendeeList = new ArrayList<Student>();
-        if (attendees == null)
-            return attendeeList;
-        else {
-            for (Student attendee : attendees) {
-                attendeeList.add(attendee);
-            }
-            return attendeeList;
-        }
+        return new ArrayList<>(attendees);
     }
 
-    public void incrementCommitteePoint(Student student) {
+    public void incrementCommitteePoint(Student student) throws IllegalArgumentException {
+        if (committee.get(student) == null)
+            throw new IllegalArgumentException("Student is not a committee for this camp!");
         committee.put(student, committee.get(student) + 1);
+    }
+
+    public void addAttendee(Student student) {
+        attendees.add(student);
     }
 }

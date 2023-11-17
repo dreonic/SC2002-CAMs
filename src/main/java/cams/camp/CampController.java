@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import cams.domain.Staff;
 import cams.domain.Student;
+import cams.serializer.CampSerializer;
 
 /**
  * The {@code CampController} class manages camps and provides functionality
@@ -23,7 +24,7 @@ import cams.domain.Student;
  */
 public class CampController {
     private static CampController campController;
-    private Map<String, Camp> campTable;
+    private final Map<String, Camp> campTable;
     private Camp currentCamp;
 
     /**
@@ -42,19 +43,22 @@ public class CampController {
     public static CampController getInstance() {
         if (campController == null) {
             campController = new CampController();
+            CampSerializer.deserialize();
         }
         return campController;
     }
 
-    public static CampController getInstance(Camp camp) {
-        if (campController == null) {
-            campController = new CampController();
-        }
-        campController.currentCamp = camp;
-        return campController;
+    public static void close() {
+        CampSerializer.serialize();
+        campController = null;
     }
 
-    Map<String, Camp> getCampTable() {
+    /**
+     * Retrieves the whole camp table.
+     *
+     * @return The camp table {@code HashMap} containing all created camps
+     */
+    public Map<String, Camp> getCampTable() {
         return campTable;
     }
 
@@ -72,9 +76,11 @@ public class CampController {
      * @param userGroup            The user group associated with the camp.
      * @param staffInCharge
      */
-    public void createCamp(String campName, String location, String description, LocalDate startDate,
-            LocalDate endDate, LocalDate registrationDeadline, int totalSlots,
-            boolean isVisible, String userGroup, Staff staffInCharge) {
+    public void createCamp(
+            String campName, String location, String description,
+            LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline,
+            int totalSlots, boolean isVisible, String userGroup, Staff staffInCharge)
+            throws IllegalArgumentException {
         Camp newCamp = new Camp(campName, location, description, startDate, endDate, registrationDeadline, totalSlots,
                 isVisible, userGroup, staffInCharge);
         campTable.put(campName.toLowerCase(), newCamp);
@@ -87,7 +93,7 @@ public class CampController {
      * @return An array of {@code Camp} objects.
      */
     public List<Camp> getAllCamps() {
-        List<Camp> campList = new ArrayList<Camp>();
+        List<Camp> campList = new ArrayList<>();
         for (Map.Entry<String, Camp> camp : campTable.entrySet()) {
             campList.add(camp.getValue());
         }
@@ -110,23 +116,11 @@ public class CampController {
      *
      * @param name The name of the camp to delete.
      */
-    public void deleteCamp(String name) {
+    public void deleteCamp(String name) throws RuntimeException {
         if (campTable.get(name).getAttendees().isEmpty())
             campTable.remove(name.toLowerCase());
-    }
-
-    /**
-     * Updates the name of a camp in the camp table.
-     *
-     * @param oldName The current name of the camp.
-     * @param newName The new name for the camp.
-     */
-    protected void updateName(String oldName, String newName) {
-        if (campTable.containsKey(oldName)) {
-            Camp camp = campTable.get(oldName);
-            campTable.remove(oldName);
-            campTable.put(newName, camp);
-        }
+        else
+            throw new RuntimeException("Camp must have no attendees to be deleted!");
     }
 
     /**
@@ -135,7 +129,7 @@ public class CampController {
      * @return A {@code HashMap} containing the performance report.
      */
     public Map<Student, Integer> getPerformanceReport(String campName) {
-        Map<Student, Integer> performanceReport = new HashMap<Student, Integer>(
+        Map<Student, Integer> performanceReport = new HashMap<>(
                 campTable.get(campName).getCommittee());
         return performanceReport;
     }
@@ -147,8 +141,7 @@ public class CampController {
      */
     public List<Student> getAttendanceList(String campName) {
         Camp camp = campTable.get(campName);
-        List<Student> attendanceList = camp.getAttendees();
-        return attendanceList;
+        return camp.getAttendees();
     }
 
     public void setCurrentCamp(Camp camp) {

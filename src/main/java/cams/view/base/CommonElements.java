@@ -28,6 +28,14 @@ public class CommonElements {
         return str.toString();
     }
 
+    public static String getStatusBar(String status) {
+        StringBuilder str = new StringBuilder();
+        str.append("═══ " + status + " ");
+        for (int i = 0; i < 40 - status.length(); i++)
+            str.append("═");
+        return str.toString();
+    }
+
     public static void clearSystemOut() {
         System.out.print("\033[H\033[2J");
         System.out.flush();

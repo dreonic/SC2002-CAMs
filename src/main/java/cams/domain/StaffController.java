@@ -8,10 +8,6 @@ public class StaffController {
         staff = null;
     }
 
-    private StaffController(Staff staff) {
-        this.staff = staff;
-    }
-
     public static StaffController getInstance() {
         if (staffController == null) {
             staffController = new StaffController();
@@ -33,5 +29,9 @@ public class StaffController {
 
     public void setCurrentStaff(Staff staff) {
         this.staff = staff;
+    }
+
+    public static void close() {
+        staffController = null;
     }
 }

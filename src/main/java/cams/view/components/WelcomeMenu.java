@@ -2,6 +2,7 @@ package cams.view.components;
 
 import java.util.Scanner;
 
+import cams.App;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.CommonElements;
@@ -28,7 +29,7 @@ public class WelcomeMenu extends SelectionMenu {
     public WelcomeMenu(Scanner scanner) {
         super(scanner);
 
-        setPrompt(CommonElements.getHeader() + "\n"
+        setPrompt(CommonElements.getHeader()
                 + "Welcome to Camp Application and Management System (CAMs).\n");
 
         addItem(new ActionableItem("Login", new ItemAction() {
@@ -40,6 +41,7 @@ public class WelcomeMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Exit", new ItemAction() {
             public void execute() {
+                App.stopControllersAndSerialize();
                 return;
             }
         }));

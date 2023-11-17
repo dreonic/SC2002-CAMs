@@ -44,3 +44,6 @@ buildNumber.properties
 .classpath
 
 /.vscode
+/.idea
+/src/data
+/src/test/data

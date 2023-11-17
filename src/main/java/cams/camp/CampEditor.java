@@ -21,8 +21,8 @@ import java.time.LocalDate;
  * @since 2023-11-09
  */
 public class CampEditor {
-    private Camp camp;
-    CampController campController = CampController.getInstance();
+    private final Camp camp;
+    private final CampController campController;
 
     /**
      * Constructs a new {@code CampEditor} for the specified camp.
@@ -31,6 +31,7 @@ public class CampEditor {
      */
     public CampEditor(Camp camp) {
         this.camp = camp;
+        campController = CampController.getInstance();
     }
 
     /**
@@ -42,7 +43,6 @@ public class CampEditor {
         campController.deleteCamp(camp.getCampInfo().getCampName());
         camp.getCampInfo().setCampName(name);
         campController.getCampTable().put(name, camp);
-
     }
 
     /**
@@ -64,30 +64,17 @@ public class CampEditor {
     }
 
     /**
-     * Edits the start date of the camp.
-     *
-     * @param startDate The new start date for the camp.
+     * Edits the registration deadline, start and end date of the camp.
+     * 
+     * @param startDate            The new start date for the camp
+     * @param endDate              The new end date for the camp
+     * @param registrationDeadline The new registration deadline for the camp
+     * @throws IllegalArgumentException when registration deadline is after start
+     *                                  date or start date is after end date
      */
-    public void editStartDate(LocalDate startDate) {
-        camp.getCampDate().setStartDate(startDate);
-    }
-
-    /**
-     * Edits the end date of the camp.
-     *
-     * @param endDate The new end date for the camp.
-     */
-    public void editEndDate(LocalDate endDate) {
-        camp.getCampDate().setEndDate(endDate);
-    }
-
-    /**
-     * Edits the registration deadline of the camp.
-     *
-     * @param registrationDeadline The new registration deadline for the camp.
-     */
-    public void editRegistrationDeadline(LocalDate registrationDeadline) {
-        camp.getCampDate().setRegistrationDeadline(registrationDeadline);
+    public void editDates(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline)
+            throws IllegalArgumentException {
+        camp.getCampDate().setDates(startDate, endDate, registrationDeadline);
     }
 
     /**
@@ -101,17 +88,9 @@ public class CampEditor {
 
     /**
      * Toggles the visibility of the camp.
-     *
-     * @param isVisible {@code true} to make the camp visible, {@code false}
-     *                  otherwise.
      */
     public void toggleVisibility() {
-        if(camp.getCampInfo().getIsVisible() == false) {
-            camp.getCampInfo().setIsVisible(true);
-        }
-        else {
-            camp.getCampInfo().setIsVisible(false);
-        }
+        camp.getCampInfo().setIsVisible(!camp.getCampInfo().getIsVisible());
     }
 
     /**
