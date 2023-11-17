@@ -15,11 +15,33 @@ import cams.domain.Student;
 import cams.user.User;
 import cams.user.UserController;
 
+/**
+ * The {@code UserSerializer} class provides methods for serializing and deserializing user information,
+ * including both students and staff, into and from Excel files. The class uses the Apache POI library
+ * for Excel handling.
+ *
+ * <p>Users can be of two types: {@code Student} or {@code Staff}. The class supports the serialization and deserialization
+ * of these users based on the specified user type.</p>
+ */
 public class UserSerializer {
+     /**
+     * Deserializes user information from an Excel file based on the specified user type.
+     * The deserialized user information is then added to the {@code UserController} instance.
+     *
+     * @param userType    The type of user to deserialize "student" or "staff").
+     */
     public static void deserialize(String userType) {
         deserialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
     }
 
+    /**
+     * Deserializes user information from specified Excel files based on the specified user type.
+     * The deserialized user information is then added to the {@link UserController} instance.
+     *
+     * @param userType     The type of user to deserialize "student" or "staff".
+     * @param studentPath  The path to the Excel file containing student information.
+     * @param staffPath    The path to the Excel file containing staff information.
+     */
     public static void deserialize(String userType, String studentPath, String staffPath) {
         try (FileInputStream fileIn = new FileInputStream(
                 "student".equals(userType) ? studentPath : staffPath);
@@ -58,10 +80,24 @@ public class UserSerializer {
         }
     }
 
+    /**
+     * Serializes user information of the specified type {@code Student} or {@code Staff} into an Excel file.
+     * The generated Excel file includes details such as name, email, faculty, and hashed password.
+     *
+     * @param userType    The type of user to serialize "student" or "staff".
+     */
     public static void serialize(String userType) {
         serialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
     }
 
+    /**
+     * Serializes user information of the specified type {@code Student} or {@code Staff} into specified Excel files.
+     * The generated Excel file includes details such as name, email, faculty, and hashed password.
+     *
+     * @param userType     The type of user to serialize "student" or "staff".
+     * @param studentPath  The path to the Excel file for storing student information.
+     * @param staffPath    The path to the Excel file for storing staff information.
+     */
     public static void serialize(String userType, String studentPath, String staffPath) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");
