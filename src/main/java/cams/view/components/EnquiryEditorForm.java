@@ -1,17 +1,13 @@
 package cams.view.components;
 
-import java.util.Map;
 import java.util.Scanner;
 
 import cams.camp.CampController;
-import cams.domain.StudentController;
 import cams.repliable.Enquiry;
 import cams.repliable.EnquiryEditor;
 import cams.view.DisplayController;
-import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
 import cams.view.base.Form;
-import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
 
 public class EnquiryEditorForm extends Form {
@@ -26,29 +22,8 @@ public class EnquiryEditorForm extends Form {
 
         EnquiryEditor enquiryEditor = new EnquiryEditor(campController.getCurrentCamp());
 
-        enquiryEditor.edit(currentEnquiry, getTitle());
+        enquiryEditor.edit(currentEnquiry, getValues().get("New Enquiry"));
 
-        displayController.setNextDisplay(new Alert("Suggestion has been approved", new StaffViewSuggestionMenu(scanner), scanner));
-
-
-        setAction(new ItemAction() {
-            public void execute() {
-                StudentController studentController = StudentController.getInstance();
-                DisplayController displayController = DisplayController.getInstance();
-                CampController campController = CampController.getInstance();
-
-                EnquiryEditor enquiryEditor = new EnquiryEditor(campController.getCurrentCamp());
-
-                Map<String, String> values = getValues();
-
-                
-
-                enquiryEditor.create(
-                        values.get("Question"),
-                        studentController.getCurrentStudent());
-
-                displayController.setNextDisplay(new StudentMenu(scanner));
-            }
-        });
+        displayController.setNextDisplay(new Alert("Enquiry has been updated!", new StudentViewEnquiryMenu(scanner), scanner));
     }
 }
