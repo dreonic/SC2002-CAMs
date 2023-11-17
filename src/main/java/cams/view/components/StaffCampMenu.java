@@ -23,6 +23,7 @@ public class StaffCampMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         StringBuilder studentList = new StringBuilder();
+        String campName = camp.getCampInfo().getCampName();
 
         setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()));
 
@@ -92,7 +93,13 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Delete Camp", new ItemAction() {
             public void execute() {
-
+                try {
+                    campController.deleteCamp(campName);
+                } catch (RuntimeException e) {
+                    displayController.setNextDisplay(new Alert(
+                            e.getMessage(),
+                            new StaffCampMenu(scanner), scanner));
+                }
             }
         }));
 
@@ -104,7 +111,6 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Generate Performance Report", new ItemAction() {
             public void execute() {
-                String campName = camp.getCampInfo().getCampName();
                 PerformanceReportSerializer.serialize(camp);
                 displayController.setNextDisplay(new Alert(
                         "Performance report generated! See report in src/data/performance_report_" + campName + ".xlsx",
