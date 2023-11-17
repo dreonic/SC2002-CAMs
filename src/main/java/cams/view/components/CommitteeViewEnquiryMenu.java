@@ -7,7 +7,6 @@ import java.util.Scanner;
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.repliable.Enquiry;
-import cams.repliable.EnquiryEditor;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;
@@ -19,14 +18,12 @@ public class CommitteeViewEnquiryMenu extends SelectionMenu {
         CampController campController = CampController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
-        EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
         List<Enquiry> enquiriesList = new ArrayList<Enquiry>(camp.getEnquiries());
 
         for (Enquiry enquiry : enquiriesList) {
             addItem(new ActionableItem(enquiry.getQuestion(), new ItemAction() {
                 public void execute() {
-                    enquiryEditor.setCurrentEnquiry(enquiry);
-                    displayController.setNextDisplay(new CommitteeViewEnquiryMenu(scanner));
+                    displayController.setNextDisplay(new CommitteeEnquiryMenu(scanner, enquiry));
                 }
             }));
         }
