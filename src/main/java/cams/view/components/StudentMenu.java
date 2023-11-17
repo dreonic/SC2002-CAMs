@@ -8,6 +8,7 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
 import cams.domain.StudentController;
+import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
@@ -16,9 +17,12 @@ import cams.view.base.SelectionMenu;
 public class StudentMenu extends SelectionMenu {
     public StudentMenu(Scanner scanner) {
         super(scanner);
+        DisplayController displayController = DisplayController.getInstance();
         StudentController studentController = StudentController.getInstance();
-
+        CampController campController = CampController.getInstance();
         Student currentUser = studentController.getCurrentStudent();
+        StringBuilder campList = new StringBuilder();
+
         if (currentUser == null) {
             throw new IllegalStateException(
                     "No student has been assigned to the Student Controller class");
@@ -29,7 +33,7 @@ public class StudentMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Change Password", new ItemAction() {
             public void execute() {
-
+                displayController.setNextDisplay(new ChangePasswordForm(scanner));
             }
         }));
 
@@ -82,7 +86,7 @@ public class StudentMenu extends SelectionMenu {
             // 'View
             // Registered Camps' list
             public void execute() {
-
+                displayController.setNextDisplay(new SubmitEnquiryForm(scanner));
             }
         }));
 
