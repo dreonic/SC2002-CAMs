@@ -21,8 +21,18 @@ public class StudentRegisteredCampMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         Student currentUser = studentController.getCurrentStudent();
+        StringBuilder campInfo = new StringBuilder();
 
-        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()));
+        campInfo.append("Camp Name: " + camp.getCampInfo().getCampName() + "\n");
+        campInfo.append("Location: " + camp.getCampInfo().getLocation() + "\n");
+        campInfo.append("Description: " + camp.getCampInfo().getDescription() + "\n");
+        campInfo.append("Start Date: " + camp.getCampDate().getStartDate().toString() + "\n");
+        campInfo.append("End Date: " + camp.getCampDate().getEndDate().toString() + "\n");
+        campInfo.append("Available Slots: " + (camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size()) + "\n");
+        campInfo.append("User Group: " + camp.getUserGroup() + "\n");
+        campInfo.append("Staff in Charge: " + camp.getStaffInCharge().getName() + "\n");
+
+        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()) + "\n" + campInfo.toString());
 
         addItem(new ActionableItem("Withdraw", new ItemAction() {
             public void execute() {
@@ -34,7 +44,7 @@ public class StudentRegisteredCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Submit Enquiry", new ItemAction() {
             public void execute() {
-                
+                displayController.setNextDisplay(new SubmitEnquiryForm(scanner));
             }
         }));
 

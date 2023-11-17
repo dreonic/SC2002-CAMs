@@ -33,7 +33,7 @@ public class CampMenu extends SelectionMenu {
         campInfo.append("User Group: " + camp.getUserGroup() + "\n");
         campInfo.append("Staff in Charge: " + camp.getStaffInCharge().getName() + "\n");
 
-        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()) + campInfo.toString());
+        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()) + "\n" + campInfo.toString());
 
         if(currentUser instanceof Student) {
             addItem(new ActionableItem("Register", new ItemAction() {

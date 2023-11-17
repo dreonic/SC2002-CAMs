@@ -24,8 +24,18 @@ public class StaffCampMenu extends SelectionMenu {
         Camp camp = campController.getCurrentCamp();
         StringBuilder studentList = new StringBuilder();
         String campName = camp.getCampInfo().getCampName();
+        StringBuilder campInfo = new StringBuilder();
 
-        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()));
+        campInfo.append("Camp Name: " + camp.getCampInfo().getCampName() + "\n");
+        campInfo.append("Location: " + camp.getCampInfo().getLocation() + "\n");
+        campInfo.append("Description: " + camp.getCampInfo().getDescription() + "\n");
+        campInfo.append("Start Date: " + camp.getCampDate().getStartDate().toString() + "\n");
+        campInfo.append("End Date: " + camp.getCampDate().getEndDate().toString() + "\n");
+        campInfo.append("Available Slots: " + (camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size()) + "\n");
+        campInfo.append("User Group: " + camp.getUserGroup() + "\n");
+        campInfo.append("Staff in Charge: " + camp.getStaffInCharge().getName() + "\n");
+
+        setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()) + "\n" + campInfo.toString());
 
         addItem(new ActionableItem("View Students", new ItemAction() {
             public void execute() {
