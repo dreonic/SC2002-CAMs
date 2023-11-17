@@ -171,4 +171,8 @@ public class Camp {
     public void addAttendee(Student student) {
         attendees.add(student);
     }
+
+    public void removeAttendee(Student student) {
+        attendees.remove(student);
+    }
 }
