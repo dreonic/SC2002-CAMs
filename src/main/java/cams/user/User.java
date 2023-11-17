@@ -14,7 +14,7 @@ public class User {
             throw new IllegalArgumentException("User ID must not be blank!");
         }
         this.userID = userID.toUpperCase();
-        this.faculty = Objects.requireNonNull(faculty);
+        this.faculty = Objects.requireNonNull(faculty).toUpperCase();
         AuthController authController = AuthController.getInstance();
         this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode(
                 "password") : passwordHash;
@@ -37,7 +37,7 @@ public class User {
     }
 
     public void setFaculty(String faculty) {
-        this.faculty = Objects.requireNonNull(faculty);
+        this.faculty = Objects.requireNonNull(faculty).toUpperCase();
     }
 
     public String getName() {

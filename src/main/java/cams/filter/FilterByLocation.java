@@ -8,6 +8,10 @@ import java.util.List;
 public class FilterByLocation implements FilterStrategy {
     private String location;
 
+    public FilterByLocation() {
+        location = null;
+    }
+
     public FilterByLocation(String location) {
         this.location = location;
     }
@@ -25,5 +29,10 @@ public class FilterByLocation implements FilterStrategy {
             }
         }
         return campsAtLocation;
+    }
+
+    @Override
+    public String toString() {
+        return "Location: " + location;
     }
 }

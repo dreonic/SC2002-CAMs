@@ -10,9 +10,14 @@ import java.util.Objects;
 public class FilterByStaff implements FilterStrategy {
     private Staff staff;
 
+    public FilterByStaff() {
+        staff = null;
+    }
+
     public FilterByStaff(Staff staff) {
         this.staff = Objects.requireNonNull(staff);
     }
+
 
     public void setCriteria(Object object) {
         this.staff = (Staff) object;
@@ -27,5 +32,10 @@ public class FilterByStaff implements FilterStrategy {
             }
         }
         return campsByStaff;
+    }
+
+    @Override
+    public String toString() {
+        return "Staff: " + staff.getName();
     }
 }

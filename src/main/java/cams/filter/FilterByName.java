@@ -8,6 +8,10 @@ import java.util.List;
 public class FilterByName implements FilterStrategy {
     private String name;
 
+    public FilterByName() {
+        name = null;
+    }
+
     public FilterByName(String name) {
         this.name = name;
     }
@@ -25,5 +29,10 @@ public class FilterByName implements FilterStrategy {
             }
         }
         return campsByName;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name;
     }
 }
