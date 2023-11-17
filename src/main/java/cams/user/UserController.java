@@ -1,16 +1,16 @@
 package cams.user;
 
-import java.util.Map;
-import java.util.HashMap;
-
 import cams.serializer.UserSerializer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserController {
     private static UserController userController;
-    private Map<String, User> userTable;
+    private final Map<String, User> userTable;
 
     private UserController() {
-        userTable = new HashMap<String, User>();
+        userTable = new HashMap<>();
     }
 
     public static UserController getInstance() {
@@ -38,6 +38,6 @@ public class UserController {
     }
 
     public Map<String, User> getUserTable() {
-        return userTable;
+        return new HashMap<>(userTable);
     }
 }
