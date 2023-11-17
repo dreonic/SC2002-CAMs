@@ -8,7 +8,7 @@ import java.util.Scanner;
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
-import cams.repliable.Enquiry;
+import cams.serializer.PerformanceReportSerializer;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
@@ -23,6 +23,7 @@ public class StaffCampMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         StringBuilder studentList = new StringBuilder();
+        String campName = camp.getCampInfo().getCampName();
 
         setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()));
 
@@ -92,7 +93,28 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Delete Camp", new ItemAction() {
             public void execute() {
+                try {
+                    campController.deleteCamp(campName);
+                } catch (RuntimeException e) {
+                    displayController.setNextDisplay(new Alert(
+                            e.getMessage(),
+                            new StaffCampMenu(scanner), scanner));
+                }
+            }
+        }));
 
+        addItem(new ActionableItem("Generate Student List", new ItemAction() {
+            public void execute() {
+                displayController.setNextDisplay(new StudentListFilterMenu(scanner));
+            }
+        }));
+
+        addItem(new ActionableItem("Generate Performance Report", new ItemAction() {
+            public void execute() {
+                PerformanceReportSerializer.serialize(camp);
+                displayController.setNextDisplay(new Alert(
+                        "Performance report generated! See report in src/data/performance_report_" + campName + ".xlsx",
+                        new StaffCampMenu(scanner), scanner));
             }
         }));
 
