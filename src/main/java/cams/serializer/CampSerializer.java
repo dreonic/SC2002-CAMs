@@ -20,11 +20,37 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * The {@code CampSerializer} class provides methods for serializing and deserializing
+ * camp information to and from an Excel file. It uses Apache POI library for Excel handling.
+ * This is for storing persistent data across different program sessions (after exiting the program).
+ *
+ * <p>The serialization process converts a collection of {@code Camp} objects into an Excel
+ * file, while deserialization reads data from an Excel file and creates corresponding
+ * {@code Camp} objects and establishes the required associations with {@code Staff}
+ * and {@code Student}.</p>
+ *
+ * <p>Serialized data includes camp details such as name, location, description, start date,
+ * end date, registration deadline, total slots, visibility, user group, staff in charge,
+ * committee members, and attendees.</p>
+ *
+ * <p>The Excel file has a specific structure with headers and rows containing
+ * the respective camp information.</p>
+ */
 public class CampSerializer {
+    /**
+     * Deserializes camp information from the default Excel file path "src/data/camp_list.xlsx"
+     * and updates the {@code CampController} accordingly.
+     */
     public static void deserialize() {
         deserialize("src/data/camp_list.xlsx");
     }
 
+    /**
+     * Deserializes camp information from the specified Excel file path and updates the {@code CampController} accordingly.
+     *
+     * @param path The file path of the Excel file containing camp information.
+     */
     public static void deserialize(String path) {
         try (FileInputStream fileIn = new FileInputStream(path);
              Workbook workbook = new XSSFWorkbook(fileIn)) {
@@ -86,10 +112,19 @@ public class CampSerializer {
         }
     }
 
+    /**
+     * Serializes camp information to the default Excel file path "src/data/camp_list.xlsx"
+     * based on the current state of the {@code CampController}.
+     */
     public static void serialize() {
         serialize("src/data/camp_list.xlsx");
     }
 
+    /**
+     * Serializes camp information to the specified Excel file path based on the current state of the {@code CampController}.
+     *
+     * @param path The file path where the camp information should be serialized to.
+     */
     public static void serialize(String path) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");

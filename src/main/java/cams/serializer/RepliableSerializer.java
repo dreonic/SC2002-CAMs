@@ -21,11 +21,32 @@ import cams.repliable.Suggestion;
 import cams.repliable.SuggestionEditor;
 import cams.user.UserController;
 
+/**
+ * The {@code RepliableSerializer} class provides methods to serialize and deserialize
+ * {@code Enquiry} and {@code Suggestion} objects to and from Excel files. It is specifically
+ * designed to handle {@code Enquiry} and {@code Suggestion} for a given specific {@code Camp}
+ *
+ * <p>This class uses the Apache POI library for Excel handling.</p>
+ */
 public class RepliableSerializer {
+    /**
+     * Deserializes {@code Enquiry} or {@code Suggestion} data from an Excel file based on the
+     * specified repliable type.
+     *
+     * @param repliableType The type of repliable data to deserialize {@code Enquiry} or {@code Suggestion}.
+     */
     public static void deserialize(String repliableType) {
         deserialize(repliableType, "src/data/enquiry_list.xlsx", "src/data/suggestion_list.xlsx");
     }
 
+    /**
+     * Deserializes {@code Enquiry} or {@code Suggestion} data from Excel files based on the
+     * specified repliable type and file paths.
+     *
+     * @param repliableType The type of repliable data to deserialize {@code Enquiry} or {@code Suggestion}.
+     * @param enquiryPath   The file path for the enquiry data Excel file.
+     * @param suggestionPath The file path for the suggestion data Excel file.
+     */
     public static void deserialize(String repliableType, String enquiryPath, String suggestionPath) {
         try (FileInputStream fileIn = new FileInputStream(
                 "enquiry".equals(repliableType) ? enquiryPath : suggestionPath);
@@ -73,10 +94,22 @@ public class RepliableSerializer {
         }
     }
 
+    /**
+     * Serializes {@code Enquiry} or {@code Suggestion} data to an Excel file based on the specified repliable type.
+     *
+     * @param repliableType The type of repliable data to serialize {@code Enquiry} or {@code Suggestion}.
+     */
     public static void serialize(String repliableType) {
         serialize(repliableType, "src/data/enquiry_list.xlsx", "src/data/suggestion_list.xlsx");
     }
 
+    /**
+     * Serializes {@code Enquiry} or {@code Suggestion} data to Excel files based on the specified repliable type and file paths.
+     *
+     * @param repliableType The type of repliable data to serialize {@code Enquiry} or {@code Suggestion}.
+     * @param enquiryPath   The file path for the enquiry data Excel file.
+     * @param suggestionPath The file path for the suggestion data Excel file.
+     */
     public static void serialize(String repliableType, String enquiryPath, String suggestionPath) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");

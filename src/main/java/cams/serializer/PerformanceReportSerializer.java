@@ -14,7 +14,31 @@ import cams.camp.CampDate;
 import cams.camp.CampInfo;
 import cams.domain.Student;
 
+/**
+ * The {@code PerformanceReportSerializer} class provides a method for
+ * generating a performance report
+ * for a specific camp and serializing it to an Excel file. The report includes
+ * camp information and
+ * committee members' performance details such as name, email, faculty, and
+ * points.
+ *
+ * <p>
+ * The Excel file is created with two sections: one for camp information and
+ * another for committee
+ * members' performance. The file is saved with a name based on the camp's name.
+ * </p>
+ *
+ * <p>
+ * This class uses the Apache POI library for Excel handling.
+ * </p>
+ */
 public class PerformanceReportSerializer {
+    /**
+     * Serializes the performance report for the specified camp to an Excel file.
+     * The Excel file includes camp information and committee members' performance details.
+     *
+     * @param camp The {@code Camp} for which the performance report is generated.
+     */
     public static void serialize(Camp camp) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");
