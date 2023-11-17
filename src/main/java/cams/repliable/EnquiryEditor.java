@@ -1,13 +1,13 @@
 package cams.repliable;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import cams.camp.Camp;
 import cams.domain.Student;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EnquiryEditor implements RepliableEditorInterface {
-    private Camp camp;
+    private final Camp camp;
     private Enquiry currentEnquiry;
 
     public EnquiryEditor(Camp camp) {
@@ -24,7 +24,7 @@ public class EnquiryEditor implements RepliableEditorInterface {
     @Override
     public void edit(Repliable repliable, String newContent) {
         Enquiry enquiry = (Enquiry) repliable;
-        if (enquiry.getReply() == "") {
+        if (enquiry.getReply() == null) {
             enquiry.setQuestion(newContent);
         }
     }
@@ -46,7 +46,7 @@ public class EnquiryEditor implements RepliableEditorInterface {
 
     @Override
     public List<Repliable> view() {
-        return new ArrayList<Repliable>(camp.getEnquiries());
+        return new ArrayList<>(camp.getEnquiries());
     }
 
     public Enquiry getCurrentEnquiry() {
