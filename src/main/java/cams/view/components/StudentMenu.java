@@ -61,7 +61,7 @@ public class StudentMenu extends SelectionMenu {
                     // to register?
                     if (camp.getCampInfo().getIsVisible() == true
                             && camp.getUserGroup() == currentUser.getFaculty()
-                            || camp.getUserGroup() == "Whole NTU")
+                            || camp.getUserGroup() == "NTU")
                         availableCamps.add(camp);
                 }
                 for (Camp camp : availableCamps) {
