@@ -31,7 +31,7 @@ public class AuthController {
         UserController userController = UserController.getInstance();
         User user = userController.getUser(userID);
         if (user == null || !passwordEncoder.matches(password, user.getHashedPassword()))
-            throw new IllegalArgumentException("Incorrect userID or password!");
+            throw new IllegalArgumentException("eh Incorrect userID or password!");
 
         currentUser = user;
         return getCurrentUser();
