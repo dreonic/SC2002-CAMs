@@ -89,4 +89,35 @@ public class CampTest {
                     null);
         });
     }
+
+    @Test
+    @DisplayName("A new committee has 0 points")
+    void newCommitteeZeroPoints() {
+        Student campComm = new Student("Camp Committee 1", "comm01", "Testing Faculty", null);
+        testCamp.addCommittee(campComm);
+        assertTrue(testCamp.getCommittee().containsKey(campComm));
+        assertEquals(0, testCamp.getCommittee().get(campComm));
+    }
+
+    @Test
+    @DisplayName("Incrementing a noncommittee throws")
+    void incrementNoncommitteeThrows() {
+        Student normal = new Student("Student A", "stu001", "Testing Faculty", null);
+        testCamp.addAttendee(normal);
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
+            testCamp.incrementCommitteePoint(normal);
+        });
+        assertEquals("Student is not a committee for this camp!", e.getMessage());
+    }
+
+    @Test
+    @DisplayName("Incrementing a committee adds their points by 1")
+    void incrementCommitteeAddsOnePoint() {
+        Student campComm = new Student("Camp Committee 2", "comm02", "Testing Faculty", null);
+        testCamp.addCommittee(campComm);
+        assertDoesNotThrow(() -> {
+            testCamp.incrementCommitteePoint(campComm);
+        });
+        assertEquals(1, testCamp.getCommittee().get(campComm));
+    }
 }
