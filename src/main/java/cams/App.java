@@ -1,7 +1,5 @@
 package cams;
 
-import java.util.Scanner;
-
 import cams.camp.CampController;
 import cams.serializer.RepliableSerializer;
 import cams.user.AuthController;
@@ -9,27 +7,29 @@ import cams.user.UserController;
 import cams.view.DisplayController;
 import cams.view.components.WelcomeMenu;
 
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) {
+        startControllersAndDeserialize();
         Scanner sc = new Scanner(System.in);
         DisplayController menuController = DisplayController.getInstance(new WelcomeMenu(sc));
         menuController.displayCurrent();
-        startControllersAndDeserialize();
     }
 
     public static void startControllersAndDeserialize() {
         AuthController.getInstance();
         UserController.getInstance();
         CampController.getInstance();
-        RepliableSerializer.deserialize("enquiry");
-        RepliableSerializer.deserialize("suggestion");
+        RepliableSerializer.deserialize("enquiry", "enquiry_list.xlsx", "suggestion_list.xlsx");
+        RepliableSerializer.deserialize("suggestion", "enquiry_list.xlsx", "suggestion_list.xlsx");
     }
 
     public static void stopControllersAndSerialize() {
-        AuthController.close();
-        UserController.close();
+        RepliableSerializer.serialize("suggestion", "enquiry_list.xlsx", "suggestion_list.xlsx");
+        RepliableSerializer.serialize("enquiry", "enquiry_list.xlsx", "suggestion_list.xlsx");
         CampController.close();
-        RepliableSerializer.serialize("enquiry");
-        RepliableSerializer.serialize("suggestion");
+        UserController.close();
+        AuthController.close();
     }
 }

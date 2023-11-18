@@ -1,18 +1,18 @@
 package cams.serializer;
 
+import cams.camp.Camp;
+import cams.camp.CampDate;
+import cams.camp.CampInfo;
+import cams.domain.Student;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import cams.camp.Camp;
-import cams.camp.CampDate;
-import cams.camp.CampInfo;
-import cams.domain.Student;
 
 /**
  * The {@code PerformanceReportSerializer} class provides a method for
@@ -137,7 +137,7 @@ public class PerformanceReportSerializer {
             }
 
             try (FileOutputStream fileOut = new FileOutputStream(
-                    "src/data/performance_report_" + camp.getCampInfo().getCampName() + ".xlsx")) {
+                    "performance_report_" + camp.getCampInfo().getCampName() + ".xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (IOException e) {

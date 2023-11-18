@@ -1,19 +1,21 @@
 package cams.serializer;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import cams.domain.Staff;
 import cams.domain.Student;
 import cams.user.User;
 import cams.user.UserController;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * The {@code UserSerializer} class provides methods for serializing and deserializing user information,
@@ -24,28 +26,44 @@ import cams.user.UserController;
  * of these users based on the specified user type.</p>
  */
 public class UserSerializer {
-     /**
+    /**
      * Deserializes user information from an Excel file based on the specified user type.
      * The deserialized user information is then added to the {@code UserController} instance.
      *
-     * @param userType    The type of user to deserialize "student" or "staff").
+     * @param userType The type of user to deserialize "student" or "staff").
      */
-    public static void deserialize(String userType) {
-        deserialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
-    }
+//    public static void deserialize(String userType) {
+//        deserialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
+//    }
 
     /**
      * Deserializes user information from specified Excel files based on the specified user type.
      * The deserialized user information is then added to the {@link UserController} instance.
      *
-     * @param userType     The type of user to deserialize "student" or "staff".
-     * @param studentPath  The path to the Excel file containing student information.
-     * @param staffPath    The path to the Excel file containing staff information.
+     * @param userType    The type of user to deserialize "student" or "staff".
+     * @param studentPath The path to the Excel file containing student information.
+     * @param staffPath   The path to the Excel file containing staff information.
      */
-    public static void deserialize(String userType, String studentPath, String staffPath) {
-        try (FileInputStream fileIn = new FileInputStream(
-                "student".equals(userType) ? studentPath : staffPath);
-                Workbook workbook = new XSSFWorkbook(fileIn)) {
+    public static List<User> deserialize(String userType, String studentPath, String staffPath) {
+        String path = "student".equals(userType) ? studentPath : staffPath;
+        List<User> result = new ArrayList<>();
+        FileInputStream f = null;
+
+        try (FileInputStream savedFile = new FileInputStream(path)) {
+            f = savedFile;
+        } catch (FileNotFoundException e) {
+            try (InputStream inStream = UserSerializer.class.getClassLoader().getResourceAsStream(path)) {
+                Path tempFile = Paths.get("user_list.tmp");
+                Files.copy(Objects.requireNonNull(inStream), tempFile, StandardCopyOption.REPLACE_EXISTING);
+                f = new FileInputStream("user_list.tmp");
+                Files.delete(tempFile);
+            } catch (IOException ignored) {
+            }
+        } catch (IOException ignored) {
+        }
+
+        try (FileInputStream fileIn = Objects.requireNonNull(f);
+             Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             for (Row row : sheet) {
                 // Skip header
@@ -65,43 +83,43 @@ public class UserSerializer {
                     break;
                 }
 
-                List<String> args = new ArrayList<String>();
+                List<String> args = new ArrayList<>();
                 for (Cell cell : row) {
                     args.add(cell.toString());
                 }
                 User user = ("student".equals(userType))
                         ? new Student(args.get(0), args.get(1).substring(0, args.get(1).indexOf('@')), args.get(2),
-                                (args.size() == 4) ? args.get(3) : null)
+                        (args.size() == 4) ? args.get(3) : null)
                         : new Staff(args.get(0), args.get(1).substring(0, args.get(1).indexOf('@')), args.get(2),
-                                (args.size() == 4) ? args.get(3) : null);
-                UserController.getInstance().addUser(user);
+                        (args.size() == 4) ? args.get(3) : null);
+                result.add(user);
             }
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
+        return result;
     }
 
     /**
      * Serializes user information of the specified type {@code Student} or {@code Staff} into an Excel file.
      * The generated Excel file includes details such as name, email, faculty, and hashed password.
      *
-     * @param userType    The type of user to serialize "student" or "staff".
+     * @param userType The type of user to serialize "student" or "staff".
      */
-    public static void serialize(String userType) {
-        serialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
-    }
+//    public static void serialize(String userType) {
+//        serialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
+//    }
 
     /**
      * Serializes user information of the specified type {@code Student} or {@code Staff} into specified Excel files.
      * The generated Excel file includes details such as name, email, faculty, and hashed password.
      *
-     * @param userType     The type of user to serialize "student" or "staff".
-     * @param studentPath  The path to the Excel file for storing student information.
-     * @param staffPath    The path to the Excel file for storing staff information.
+     * @param userType    The type of user to serialize "student" or "staff".
+     * @param studentPath The path to the Excel file for storing student information.
+     * @param staffPath   The path to the Excel file for storing staff information.
      */
-    public static void serialize(String userType, String studentPath, String staffPath) {
+    public static void serialize(Map<String, User> userTable, String userType, String studentPath, String staffPath) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");
-            Map<String, User> userTable = UserController.getInstance().getUserTable();
 
             Row headerRow = sheet.createRow(0);
             List<String> header = List.of("Name", "Email", "Faculty", "Password");

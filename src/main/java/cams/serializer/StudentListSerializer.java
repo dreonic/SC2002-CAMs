@@ -1,18 +1,18 @@
 package cams.serializer;
 
+import cams.camp.Camp;
+import cams.camp.CampDate;
+import cams.camp.CampInfo;
+import cams.domain.Student;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import cams.camp.Camp;
-import cams.camp.CampDate;
-import cams.camp.CampInfo;
-import cams.domain.Student;
 
 /**
  * The {@code StudentListSerializer} class provides a method to serialize the information of
@@ -29,9 +29,9 @@ public class StudentListSerializer {
      * the value of the {@code removeTable} parameter, which can be set to "committee" to exclude committee
      * information, "attendee" to exclude attendee information, or "none" to include both.
      *
-     * @param camp         The camp for which student information is to be serialized.
-     * @param removeTable  A string indicating which table(s) to exclude from the output.
-     *                     Valid values are "committee", "attendee", or "none" for both.
+     * @param camp        The camp for which student information is to be serialized.
+     * @param removeTable A string indicating which table(s) to exclude from the output.
+     *                    Valid values are "committee", "attendee", or "none" for both.
      */
     public static void serialize(Camp camp, String removeTable) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
@@ -172,7 +172,7 @@ public class StudentListSerializer {
             }
 
             try (FileOutputStream fileOut = new FileOutputStream(
-                    "src/data/student_list_" + camp.getCampInfo().getCampName() + ".xlsx")) {
+                    "student_list_" + camp.getCampInfo().getCampName() + ".xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (IOException e) {

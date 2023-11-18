@@ -1,7 +1,5 @@
 package cams.view.components;
 
-import java.util.Scanner;
-
 import cams.App;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
@@ -9,9 +7,11 @@ import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
+import java.util.Scanner;
+
 /**
  * Initial user interface element displayed to the user.
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -23,7 +23,7 @@ import cams.view.base.SelectionMenu;
 public class WelcomeMenu extends SelectionMenu {
     /**
      * Class constructor specifying the scanner to be used to receive user input.
-     * 
+     *
      * @param scanner scanner for this menu
      */
     public WelcomeMenu(Scanner scanner) {
@@ -42,7 +42,6 @@ public class WelcomeMenu extends SelectionMenu {
         addItem(new ActionableItem("Exit", new ItemAction() {
             public void execute() {
                 App.stopControllersAndSerialize();
-                return;
             }
         }));
     }

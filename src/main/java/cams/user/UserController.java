@@ -3,6 +3,7 @@ package cams.user;
 import cams.serializer.UserSerializer;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserController {
@@ -16,15 +17,24 @@ public class UserController {
     public static UserController getInstance() {
         if (userController == null) {
             userController = new UserController();
-            UserSerializer.deserialize("student");
-            UserSerializer.deserialize("staff");
+            userController.initializeUserTable();
         }
         return userController;
     }
 
+    private void initializeUserTable() {
+        List<User> students = UserSerializer.deserialize("student", "student_list.xlsx", "staff_list.xlsx");
+        List<User> staffs = UserSerializer.deserialize("staff", "student_list.xlsx", "staff_list.xlsx");
+
+        for (User user : students)
+            addUser(user);
+        for (User user : staffs)
+            addUser(user);
+    }
+
     public static void close() {
-        UserSerializer.serialize("student");
-        UserSerializer.serialize("staff");
+        UserSerializer.serialize(userController.getUserTable(), "student", "student_list.xlsx", "staff_list.xlsx");
+        UserSerializer.serialize(userController.getUserTable(), "staff", "student_list.xlsx", "staff_list.xlsx");
         userController = null;
     }
 
