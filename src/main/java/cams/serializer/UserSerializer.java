@@ -27,16 +27,6 @@ import java.util.Objects;
  */
 public class UserSerializer {
     /**
-     * Deserializes user information from an Excel file based on the specified user type.
-     * The deserialized user information is then added to the {@code UserController} instance.
-     *
-     * @param userType The type of user to deserialize "student" or "staff").
-     */
-//    public static void deserialize(String userType) {
-//        deserialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
-//    }
-
-    /**
      * Deserializes user information from specified Excel files based on the specified user type.
      * The deserialized user information is then added to the {@link UserController} instance.
      *
@@ -98,16 +88,6 @@ public class UserSerializer {
         }
         return result;
     }
-
-    /**
-     * Serializes user information of the specified type {@code Student} or {@code Staff} into an Excel file.
-     * The generated Excel file includes details such as name, email, faculty, and hashed password.
-     *
-     * @param userType The type of user to serialize "student" or "staff".
-     */
-//    public static void serialize(String userType) {
-//        serialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
-//    }
 
     /**
      * Serializes user information of the specified type {@code Student} or {@code Staff} into specified Excel files.

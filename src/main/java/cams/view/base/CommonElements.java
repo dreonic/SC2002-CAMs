@@ -13,16 +13,15 @@ public class CommonElements {
     public static final String separator = String.format("%045d", 0).replace("0", "═") + "\n";
 
     public static String getHeader() {
-        StringBuilder str = new StringBuilder(separator + "\n");
-        str.append(logo + "\n");
-        str.append(separator);
-        return str.toString();
+        String str = separator + "\n" + logo + "\n" +
+                separator;
+        return str;
     }
 
     public static String getHeader(String status) {
         StringBuilder str = new StringBuilder(separator + "\n");
         str.append(logo + "\n");
-        str.append("═══ " + status + " ");
+        str.append("═══ ").append(status).append(" ");
         for (int i = 0; i < 40 - status.length(); i++)
             str.append("═");
         return str.toString();
@@ -30,7 +29,7 @@ public class CommonElements {
 
     public static String getStatusBar(String status) {
         StringBuilder str = new StringBuilder();
-        str.append("═══ " + status + " ");
+        str.append("═══ ").append(status).append(" ");
         for (int i = 0; i < 40 - status.length(); i++)
             str.append("═");
         return str.toString();

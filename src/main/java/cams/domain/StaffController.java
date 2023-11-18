@@ -5,6 +5,7 @@ package cams.domain;
  * in the system. It follows the Singleton pattern to ensure a single instance
  * throughout the application.
  */
+@SuppressWarnings("UnusedReturnValue")
 public class StaffController {
     /**
      * The sole instance of the StaffController class.

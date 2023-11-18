@@ -1,7 +1,5 @@
 package cams.view.components.camp;
 
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.camp.CampEditor;
@@ -11,6 +9,8 @@ import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.staff.StaffCampMenu;
+
+import java.util.Scanner;
 
 public class EditCampMenu extends SelectionMenu {
     public EditCampMenu(Scanner scanner) {
@@ -44,7 +44,7 @@ public class EditCampMenu extends SelectionMenu {
             public void execute() {
                 CampEditor campEditor = new CampEditor(camp);
                 campEditor.toggleVisibility();
-                if (camp.getCampInfo().getIsVisible() == true) {
+                if (camp.getCampInfo().getIsVisible()) {
                     displayController.setNextDisplay(new Alert(
                             "Camp is now visible",
                             new EditCampMenu(scanner),

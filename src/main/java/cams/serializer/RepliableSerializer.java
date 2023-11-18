@@ -25,16 +25,6 @@ import java.util.Set;
  */
 public class RepliableSerializer {
     /**
-     * Deserializes {@code Enquiry} or {@code Suggestion} data from an Excel file based on the
-     * specified repliable type.
-     *
-     * @param repliableType The type of repliable data to deserialize {@code Enquiry} or {@code Suggestion}.
-     */
-//    public static void deserialize(String repliableType) {
-//        deserialize(repliableType, "src/data/enquiry_list.xlsx", "src/data/suggestion_list.xlsx");
-//    }
-
-    /**
      * Deserializes {@code Enquiry} or {@code Suggestion} data from Excel files based on the
      * specified repliable type and file paths.
      *
@@ -88,15 +78,6 @@ public class RepliableSerializer {
         } catch (IOException e) {
         }
     }
-
-    /**
-     * Serializes {@code Enquiry} or {@code Suggestion} data to an Excel file based on the specified repliable type.
-     *
-     * @param repliableType The type of repliable data to serialize {@code Enquiry} or {@code Suggestion}.
-     */
-//    public static void serialize(String repliableType) {
-//        serialize(repliableType, "src/data/enquiry_list.xlsx", "src/data/suggestion_list.xlsx");
-//    }
 
     /**
      * Serializes {@code Enquiry} or {@code Suggestion} data to Excel files based on the specified repliable type and file paths.

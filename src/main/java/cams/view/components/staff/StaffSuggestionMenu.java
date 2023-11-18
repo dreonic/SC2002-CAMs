@@ -1,7 +1,5 @@
 package cams.view.components.staff;
 
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.repliable.Suggestion;
@@ -11,6 +9,8 @@ import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+
+import java.util.Scanner;
 
 public class StaffSuggestionMenu extends SelectionMenu {
     public StaffSuggestionMenu(Scanner scanner) {
@@ -24,7 +24,7 @@ public class StaffSuggestionMenu extends SelectionMenu {
         addItem(new ActionableItem("Approve? (Y/n)", new ItemAction() {
             public void execute() {
                 String reply = scanner.nextLine();
-                if (reply.toLowerCase() == "y") {
+                if (reply.toLowerCase().equals("y")) {
                     suggestion.setIsApproved(true);
                     displayController.setNextDisplay(new Alert("Suggestion has been approved", new StaffViewSuggestionMenu(scanner), scanner));
                 } else {
