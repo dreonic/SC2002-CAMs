@@ -4,6 +4,7 @@ import cams.camp.CampFilterController;
 import cams.domain.Staff;
 import cams.domain.Student;
 import cams.filter.FilterByUserGroup;
+import cams.filter.FilterByVisibility;
 import cams.filter.FilterStrategy;
 import cams.user.AuthController;
 import cams.user.User;
@@ -28,11 +29,15 @@ public class SetFilterCampMenu extends SelectionMenu {
         promptBuilder.append("Current filters: ");
 
         if (currentUser instanceof Student) {
+            filterController.clearFilterStrategies();
+            filterController.addFilterStrategy(new FilterByVisibility(true));
             filterController.addFilterStrategy(new FilterByUserGroup(currentUser.getFaculty()));
         }
 
         if (filterController.getFilterStrategies().isEmpty()) {
             promptBuilder.append("-");
+        } else {
+            promptBuilder.append("\n");
         }
         for (FilterStrategy filterStrategy : filterController.getFilterStrategies()) {
             promptBuilder.append("[").append(filterStrategy.toString()).append("] ");
@@ -76,6 +81,12 @@ public class SetFilterCampMenu extends SelectionMenu {
                 }
             }));
 
+            addItem(new ActionableItem("Set visibility filter", new ItemAction() {
+                @Override
+                public void execute() {
+                    displayController.setNextDisplay(new FilterByVisibilityForm(scanner));
+                }
+            }));
         }
         addItem(new ActionableItem("Back", new ItemAction() {
             @Override

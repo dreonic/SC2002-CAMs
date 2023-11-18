@@ -1,7 +1,6 @@
 package cams.serializer;
 
 import cams.camp.Camp;
-import cams.camp.CampController;
 import cams.camp.CampDate;
 import cams.camp.CampInfo;
 import cams.domain.Staff;
@@ -49,7 +48,6 @@ public class CampSerializer {
              Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            CampController campController = CampController.getInstance();
             UserController userController = UserController.getInstance();
 
             for (Row row : sheet) {
@@ -94,6 +92,7 @@ public class CampSerializer {
                 String[] attendees = args.get(11).split(", ");
 
                 for (String committee : committees) {
+                    if (committee.isBlank()) continue;
                     Student student = (Student) userController.getUser(committee);
                     if (student == null)
                         throw new RuntimeException("Student not found in user table!");
@@ -101,6 +100,7 @@ public class CampSerializer {
                     newCamp.addCommittee(student);
                 }
                 for (String attendee : attendees) {
+                    if (attendee.isBlank()) continue;
                     Student student = (Student) userController.getUser(attendee);
                     if (student == null)
                         throw new RuntimeException("Student not found in user table!");
