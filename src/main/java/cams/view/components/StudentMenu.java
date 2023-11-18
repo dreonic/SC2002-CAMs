@@ -23,7 +23,6 @@ public class StudentMenu extends SelectionMenu {
         StudentController studentController = StudentController.getInstance();
         CampController campController = CampController.getInstance();
         Student currentUser = studentController.getCurrentStudent();
-        StringBuilder campList = new StringBuilder();
 
         if (currentUser == null) {
             throw new IllegalStateException(
