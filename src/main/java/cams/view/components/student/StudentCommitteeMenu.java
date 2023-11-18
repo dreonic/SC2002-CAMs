@@ -7,6 +7,7 @@ import cams.view.base.*;
 import cams.view.components.repliable.CommitteeViewEnquiryMenu;
 import cams.view.components.repliable.SubmitSuggestionForm;
 import de.vandermeer.asciitable.AsciiTable;
+import de.vandermeer.asciithemes.u8.U8_Grids;
 
 import java.util.Scanner;
 
@@ -18,6 +19,9 @@ public class StudentCommitteeMenu extends SelectionMenu {
         Camp camp = campController.getCurrentCamp();
 
         AsciiTable info = new AsciiTable();
+        info.getContext().setGrid(U8_Grids.borderDouble());
+        info.getContext().setWidth(75);
+
         info.addRule();
         info.addRow("Camp Name: ", camp.getCampInfo().getCampName());
         info.addRule();
@@ -33,6 +37,9 @@ public class StudentCommitteeMenu extends SelectionMenu {
         info.addRule();
         info.addRow("Staff in Charge: ", camp.getStaffInCharge().getName());
         info.addRule();
+
+        info.getContext().setFrameLeftMargin(2);
+        info.setPaddingLeftRight(1);
 
         String rend = info.render();
         setPrompt(CommonElements.getStatusBar(camp.getCampInfo().getCampName()) + "\n" + rend + "\n");
