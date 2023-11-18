@@ -1,14 +1,10 @@
 package cams.user;
 
+import org.junit.jupiter.api.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UserTest {
     BCryptPasswordEncoder passwordEncoder;
@@ -36,7 +32,7 @@ public class UserTest {
     void passwordHashedCorrectlyIfSpecified() {
         String password = "12345678";
         AuthController authController = AuthController.getInstance();
-        User user = new User("Test User", "test001", "Testing Faculty", authController.hashPassword(password));
+        User user = new User("Test User", "test001", "Testing Faculty", passwordEncoder.encode(password));
         assertTrue(passwordEncoder.matches(password, user.getHashedPassword()));
     }
 

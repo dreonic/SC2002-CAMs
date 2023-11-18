@@ -4,7 +4,7 @@ package cams.view.base;
  * Base class for user interface elements with distinct actions. This base class
  * provides other classes, mainly <code>SelectionMenu</code>, to display choices
  * each with their own content and action.
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -15,11 +15,11 @@ package cams.view.base;
  */
 public class ActionableItem {
     private String content;
-    private ItemAction action;
+    private final ItemAction action;
 
     /**
      * Constructs an item with content and action.
-     * 
+     *
      * @param content item content
      * @param action  item action
      */
@@ -30,7 +30,7 @@ public class ActionableItem {
 
     /**
      * Retrieves item content.
-     * 
+     *
      * @return item content
      */
     public String getContent() {
@@ -39,7 +39,7 @@ public class ActionableItem {
 
     /**
      * Assigns item content.
-     * 
+     *
      * @param content item content
      */
     public void setContent(String content) {

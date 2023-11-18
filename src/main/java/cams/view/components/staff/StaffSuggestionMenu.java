@@ -24,7 +24,7 @@ public class StaffSuggestionMenu extends SelectionMenu {
         addItem(new ActionableItem("Approve? (Y/n)", new ItemAction() {
             public void execute() {
                 String reply = scanner.nextLine();
-                if (reply.toLowerCase().equals("y")) {
+                if (reply.equalsIgnoreCase("y")) {
                     suggestion.setIsApproved(true);
                     displayController.setNextDisplay(new Alert("Suggestion has been approved", new StaffViewSuggestionMenu(scanner), scanner));
                 } else {

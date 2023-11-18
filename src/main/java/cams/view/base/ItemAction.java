@@ -2,7 +2,7 @@ package cams.view.base;
 
 /**
  * Interface for actions of user interface elements. Usually not implemented
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -15,5 +15,5 @@ public interface ItemAction {
     /**
      * Executes specified action.
      */
-    public void execute();
+    void execute();
 }

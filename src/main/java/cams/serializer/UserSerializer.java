@@ -37,22 +37,18 @@ public class UserSerializer {
     public static List<User> deserialize(String userType, String studentPath, String staffPath) {
         String path = "student".equals(userType) ? studentPath : staffPath;
         List<User> result = new ArrayList<>();
-        FileInputStream f = null;
 
-        try (FileInputStream savedFile = new FileInputStream(path)) {
-            f = savedFile;
+        try (FileInputStream fileToCheck = new FileInputStream(path)) {
         } catch (FileNotFoundException e) {
             try (InputStream inStream = UserSerializer.class.getClassLoader().getResourceAsStream(path)) {
-                Path tempFile = Paths.get("user_list.tmp");
-                Files.copy(Objects.requireNonNull(inStream), tempFile, StandardCopyOption.REPLACE_EXISTING);
-                f = new FileInputStream("user_list.tmp");
-                Files.delete(tempFile);
+                Path initialListFile = Paths.get(path);
+                Files.copy(Objects.requireNonNull(inStream), initialListFile, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException ignored) {
             }
         } catch (IOException ignored) {
         }
 
-        try (FileInputStream fileIn = Objects.requireNonNull(f);
+        try (FileInputStream fileIn = new FileInputStream(path);
              Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             for (Row row : sheet) {

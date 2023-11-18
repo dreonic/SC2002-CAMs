@@ -1,17 +1,17 @@
 package cams.repliable;
 
-import java.util.List;
-
 import cams.domain.Student;
 
+import java.util.List;
+
 public interface RepliableEditorInterface {
-    public Repliable create(String content, Student student);
+    Repliable create(String content, Student student);
 
-    public void edit(Repliable repliable, String newContent);
+    void edit(Repliable repliable, String newContent);
 
-    public void delete(Repliable repliable);
+    void delete(Repliable repliable);
 
-    public void reply(Repliable repliable, Object replyMessage);
+    void reply(Repliable repliable, Object replyMessage);
 
-    public List<Repliable> view();
+    List<Repliable> view();
 }

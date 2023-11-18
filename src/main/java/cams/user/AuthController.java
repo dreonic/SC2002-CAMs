@@ -23,10 +23,6 @@ public class AuthController {
         return passwordEncoder;
     }
 
-    public String hashPassword(String password) {
-        return passwordEncoder.encode(password);
-    }
-
     public User login(String userID, String password) throws IllegalArgumentException {
         UserController userController = UserController.getInstance();
         User user = userController.getUser(userID);
@@ -47,7 +43,7 @@ public class AuthController {
 
     public void changePassword(String userID, String oldPassword, String newPassword)
             throws IllegalArgumentException {
-        login(userID, oldPassword).setHashedPassword(hashPassword(newPassword));
+        login(userID, oldPassword).setHashedPassword(passwordEncoder.encode(newPassword));
     }
 
     public static void close() {

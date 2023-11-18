@@ -13,9 +13,8 @@ public class CommonElements {
     public static final String separator = String.format("%045d", 0).replace("0", "═") + "\n";
 
     public static String getHeader() {
-        String str = separator + "\n" + logo + "\n" +
+        return separator + "\n" + logo + "\n" +
                 separator;
-        return str;
     }
 
     public static String getHeader(String status) {

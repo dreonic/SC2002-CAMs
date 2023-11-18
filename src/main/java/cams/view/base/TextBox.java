@@ -10,7 +10,7 @@ import java.util.Scanner;
  * used by association in this application.
  * <p>
  * To use this base textbox, construct this base class with its label.
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -20,17 +20,17 @@ import java.util.Scanner;
  * @since 2023-11-09
  */
 public class TextBox implements Displayable {
-    private String id;
+    private final String id;
     private String label;
     private String value;
-    private Scanner scanner;
-    private boolean inputHidden;
+    private final Scanner scanner;
+    private final boolean inputHidden;
 
     /**
      * Constructs a labelled textbox and the scanner to be used to receive user
      * input. The ID attached to this textbox is the label. Label should be
      * descriptive of what is required from the user.
-     * 
+     *
      * @param label   textbox label
      * @param scanner scanner for this textbox
      */
@@ -46,7 +46,7 @@ public class TextBox implements Displayable {
      * Constructs a labelled textbox and the scanner to be used to receive user
      * input, with ID attached to the textbox. Label should be descriptive of what
      * is required from the user.
-     * 
+     *
      * @param id      textbox id
      * @param label   textbox label
      * @param scanner scanner for this textbox
@@ -65,7 +65,7 @@ public class TextBox implements Displayable {
      * the label. Label should be descriptive of what is required from the user. An
      * example where user input may want to be hidden is when asking for the user's
      * password.
-     * 
+     *
      * @param label       textbox label
      * @param inputHidden disables input echoing if true
      * @param scanner     scanner for this textbox
@@ -84,7 +84,7 @@ public class TextBox implements Displayable {
      * Label should be descriptive of what is required from the user. An example
      * where user input may want to be hidden is when asking for the user's
      * password.
-     * 
+     *
      * @param label       textbox label
      * @param inputHidden disables input echoing if true
      * @param scanner     scanner for this textbox
@@ -100,7 +100,7 @@ public class TextBox implements Displayable {
     /**
      * Retrieves textbox ID. This ID can be used by {@code Form} as the key to
      * access the textbox's value.
-     * 
+     *
      * @return textbox ID
      */
     public String getId() {
@@ -109,7 +109,7 @@ public class TextBox implements Displayable {
 
     /**
      * Retrieves textbox label.
-     * 
+     *
      * @return textbox label
      */
     public String getLabel() {
@@ -118,7 +118,7 @@ public class TextBox implements Displayable {
 
     /**
      * Assigns the textbox label
-     * 
+     *
      * @param label textbox label
      */
     public void setLabel(String label) {
@@ -127,7 +127,7 @@ public class TextBox implements Displayable {
 
     /**
      * Retrieves textbox value/user input.
-     * 
+     *
      * @return textbox value
      */
     public String getValue() {
