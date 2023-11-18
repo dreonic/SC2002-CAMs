@@ -6,6 +6,7 @@ import cams.domain.Student;
 import cams.user.AuthController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.staff.StaffMenu;
@@ -22,7 +23,7 @@ public class CampListMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         CampController campController = CampController.getInstance();
         AuthController authController = AuthController.getInstance();
-        setPrompt("View camp details\n");
+        setPrompt(CommonElements.getStatusBar("View camp details \n"));
 
         for (Camp camp : camps) {
             addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {

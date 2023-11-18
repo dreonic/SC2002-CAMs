@@ -3,7 +3,6 @@ package cams.view.components.camp;
 import cams.camp.CampFilterController;
 import cams.filter.FilterByVisibility;
 import cams.filter.FilterStrategy;
-import cams.user.UserController;
 import cams.view.DisplayController;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
@@ -19,7 +18,6 @@ public class FilterByVisibilityForm extends FilterStrategyForm {
 
         CampFilterController filterController = CampFilterController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
-        UserController userController = UserController.getInstance();
 
         addInput(new TextBox("criteria", "Visibilty (Y/n)", scanner));
 

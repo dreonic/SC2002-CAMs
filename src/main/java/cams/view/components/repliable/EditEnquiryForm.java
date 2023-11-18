@@ -1,37 +1,42 @@
 package cams.view.components.repliable;
 
 import cams.camp.Camp;
+import cams.camp.CampController;
+import cams.repliable.Enquiry;
 import cams.repliable.EnquiryEditor;
-import cams.repliable.Repliable;
 import cams.view.DisplayController;
+import cams.view.base.Alert;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
-import cams.view.components.student.StudentMenu;
+import cams.view.components.student.StudentViewEnquiryMenu;
 
 import java.util.Map;
 import java.util.Scanner;
 
 public class EditEnquiryForm extends Form {
-    public EditEnquiryForm(Scanner scanner, Camp currentCamp, Repliable oldRepliable) {
+    public EditEnquiryForm(Scanner scanner, Enquiry enquiry) {
         super(scanner);
-        setTitle("Edit Enquiry:\n");
+        CampController campController = CampController.getInstance();
+        DisplayController displayController = DisplayController.getInstance();
+        Camp camp = campController.getCurrentCamp();
 
-        addInput(new TextBox("New Question", scanner));
+        setTitle("Edit enquiry:\n");
+
+        addInput(new TextBox("New Enquiry", scanner));
 
         setAction(new ItemAction() {
             public void execute() {
-                DisplayController displayController = DisplayController.getInstance();
-                EnquiryEditor enquiryEditor = new EnquiryEditor(currentCamp);
+                EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
 
                 Map<String, String> values = getValues();
                 enquiryEditor.edit(
-                        oldRepliable,
-                        values.get("New Question"));
+                        enquiry,
+                        values.get("New Enquiry"));
 
-                displayController.setNextDisplay(new StudentMenu(scanner));
+                displayController.setNextDisplay(new Alert("Enquiry has been updated!", new StudentViewEnquiryMenu(scanner), scanner));
             }
         });
-    }
 
+    }
 }

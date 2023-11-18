@@ -1,31 +1,28 @@
 package cams.view.components.staff;
 
-import cams.camp.Camp;
-import cams.camp.CampController;
 import cams.repliable.Enquiry;
-import cams.repliable.EnquiryEditor;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+import cams.view.components.repliable.ReplyEnquiryForm;
 
 import java.util.Scanner;
 
 public class StaffEnquiryMenu extends SelectionMenu {
     public StaffEnquiryMenu(Scanner scanner, Enquiry enquiry) {
         super(scanner);
-        CampController campController = CampController.getInstance();
-        Camp camp = campController.getCurrentCamp();
-        EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
         DisplayController displayController = DisplayController.getInstance();
 
         addItem(new ActionableItem("Reply", new ItemAction() {
             public void execute() {
-                String reply = scanner.nextLine();
-                enquiryEditor.reply(enquiry, reply);
-                displayController.setNextDisplay(new Alert(
-                            "Reply updated!", new StaffViewEnquiryMenu(scanner), scanner));
+                if(enquiry.getReply() != null) {
+                    displayController.setNextDisplay(new Alert("Enquiry has already been answered!", new StaffViewEnquiryMenu(scanner), scanner));
+                }
+                else {
+                    displayController.setNextDisplay(new ReplyEnquiryForm(scanner, enquiry));
+                }
             }
         }));
 
