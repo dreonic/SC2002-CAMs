@@ -109,7 +109,6 @@
                         <configuration>
                             <artifactSet>
                                 <excludes>
-                                    <exclude>junit:junit</exclude>
                                     <exclude>log4j:log4j</exclude>
                                 </excludes>
                             </artifactSet>

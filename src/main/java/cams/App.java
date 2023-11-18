@@ -21,13 +21,13 @@ public class App {
         AuthController.getInstance();
         UserController.getInstance();
         CampController.getInstance();
-        RepliableSerializer.deserialize("enquiry");
-        RepliableSerializer.deserialize("suggestion");
+        RepliableSerializer.deserialize("enquiry", "enquiry_list.xlsx", "suggestion_list.xlsx");
+        RepliableSerializer.deserialize("suggestion", "enquiry_list.xlsx", "suggestion_list.xlsx");
     }
 
     public static void stopControllersAndSerialize() {
-        RepliableSerializer.serialize("suggestion");
-        RepliableSerializer.serialize("enquiry");
+        RepliableSerializer.serialize("suggestion", "enquiry_list.xlsx", "suggestion_list.xlsx");
+        RepliableSerializer.serialize("enquiry", "enquiry_list.xlsx", "suggestion_list.xlsx");
         CampController.close();
         UserController.close();
         AuthController.close();

@@ -23,29 +23,6 @@ public class UserController {
     }
 
     private void initializeUserTable() {
-//        File studentList = new File("student_list.xlsx");
-//        File staffList = new File("staff_list.xlsx");
-//
-//        String studentListPath, staffListPath;
-//        if (!studentList.isFile()) {
-//            URL initialStudentList = getClass().getClassLoader().getResource("student_list.xlsx");
-//            studentListPath = Objects.requireNonNull(initialStudentList).getPath();
-//        } else {
-//            studentListPath = studentList.getPath();
-//        }
-//        if (!staffList.isFile()) {
-//            URL initialStaffList = getClass().getClassLoader().getResource("staff_list.xlsx");
-//            staffListPath = Objects.requireNonNull(initialStaffList).getPath();
-//        } else {
-//            staffListPath = staffList.getPath();
-//        }
-//
-//        System.out.println("Student Excel Path: " + studentListPath);
-//        System.out.println("Staff Excel Path: " + staffListPath);
-//
-//        List<User> students = UserSerializer.deserialize("student", studentListPath, staffListPath);
-//        List<User> staffs = UserSerializer.deserialize("staff", studentListPath, staffListPath);
-
         List<User> students = UserSerializer.deserialize("student", "student_list.xlsx", "staff_list.xlsx");
         List<User> staffs = UserSerializer.deserialize("staff", "student_list.xlsx", "staff_list.xlsx");
 
