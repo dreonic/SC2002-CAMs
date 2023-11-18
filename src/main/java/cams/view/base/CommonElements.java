@@ -13,14 +13,11 @@ public class CommonElements {
     public static final String separator = String.format("%045d", 0).replace("0", "═") + "\n";
 
     public static String getHeader() {
-        return separator + "\n" + logo + "\n" + separator + "\n";
+        return separator + "\n" + logo + "\n" + separator;
     }
 
     public static String getHeader(String status) {
-        return separator + "\n" + logo + "\n" +
-                "═══ " + status + " " +
-                "═".repeat(Math.max(0, 40 - status.length())) +
-                "\n";
+        return separator + "\n" + logo + "\n" + getStatusBar(status);
     }
 
     public static String getStatusBar(String status) {

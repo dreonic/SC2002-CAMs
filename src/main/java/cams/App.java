@@ -15,6 +15,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         DisplayController menuController = DisplayController.getInstance(new WelcomeMenu(sc));
         menuController.displayCurrent();
+        stopControllersAndSerialize();
     }
 
     public static void startControllersAndDeserialize() {

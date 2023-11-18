@@ -23,7 +23,7 @@ public class StudentListFilterMenu extends SelectionMenu {
             public void execute() {
                 StudentListSerializer.serialize(camp, "committee");
                 displayController.setNextDisplay(new Alert(
-                        "Student list generated! See report in src/data/student_list_" + campName + ".xlsx",
+                        "Student list generated! See report in /student_list_" + campName + ".xlsx",
                         new StaffCampMenu(scanner), scanner));
             }
         }));
@@ -32,7 +32,7 @@ public class StudentListFilterMenu extends SelectionMenu {
             public void execute() {
                 StudentListSerializer.serialize(camp, "attendee");
                 displayController.setNextDisplay(new Alert(
-                        "Student list generated! See report in src/data/student_list_" + campName + ".xlsx",
+                        "Student list generated! See report in /student_list_" + campName + ".xlsx",
                         new StaffCampMenu(scanner), scanner));
             }
         }));
@@ -41,7 +41,7 @@ public class StudentListFilterMenu extends SelectionMenu {
             public void execute() {
                 StudentListSerializer.serialize(camp, "none");
                 displayController.setNextDisplay(new Alert(
-                        "Student list generated! See report in src/data/student_list_" + campName + ".xlsx",
+                        "Student list generated! See report in /student_list_" + campName + ".xlsx",
                         new StaffCampMenu(scanner), scanner));
 
             }
