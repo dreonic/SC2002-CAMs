@@ -159,9 +159,9 @@ public class Camp {
     }
 
     public List<Student> getAttendees() {
-        if(attendees == null)
-            return new ArrayList<Student>();
-        return new ArrayList<Student>(attendees);
+        if (attendees == null)
+            return new ArrayList<>();
+        return new ArrayList<>(attendees);
     }
 
     public void incrementCommitteePoint(Student student) throws IllegalArgumentException {

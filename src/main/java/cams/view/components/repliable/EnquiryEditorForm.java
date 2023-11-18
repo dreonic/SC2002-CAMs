@@ -1,8 +1,5 @@
 package cams.view.components.repliable;
 
-import java.util.Map;
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.repliable.Enquiry;
@@ -13,6 +10,9 @@ import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
 import cams.view.components.student.StudentViewEnquiryMenu;
+
+import java.util.Map;
+import java.util.Scanner;
 
 public class EnquiryEditorForm extends Form {
     public EnquiryEditorForm(Scanner scanner, Enquiry enquiry) {

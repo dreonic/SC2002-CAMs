@@ -3,8 +3,8 @@ package cams.user;
 import java.util.Objects;
 
 public class User {
-    private String name;
     private final String userID;
+    private String name;
     private String passwordHash;
     private String faculty;
 

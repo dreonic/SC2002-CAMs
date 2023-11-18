@@ -5,6 +5,7 @@ package cams.domain;
  * in the system. It follows the Singleton pattern to ensure a single instance
  * throughout the application.
  */
+@SuppressWarnings("UnusedReturnValue")
 public class StaffController {
     /**
      * The sole instance of the StaffController class.
@@ -52,6 +53,13 @@ public class StaffController {
     }
 
     /**
+     * Closes the StaffController instance by setting it to null.
+     */
+    public static void close() {
+        staffController = null;
+    }
+
+    /**
      * Gets the currently logged-in staff user.
      *
      * @return The currently logged-in staff user, or null if no user is logged in.
@@ -67,12 +75,5 @@ public class StaffController {
      */
     public void setCurrentStaff(Staff staff) {
         this.staff = staff;
-    }
-
-    /**
-     * Closes the StaffController instance by setting it to null.
-     */
-    public static void close() {
-        staffController = null;
     }
 }

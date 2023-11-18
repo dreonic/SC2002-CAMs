@@ -1,7 +1,5 @@
 package cams.view.components.student;
 
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.serializer.StudentListSerializer;
@@ -11,6 +9,8 @@ import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.staff.StaffCampMenu;
+
+import java.util.Scanner;
 
 public class StudentListFilterMenu extends SelectionMenu {
     public StudentListFilterMenu(Scanner scanner) {

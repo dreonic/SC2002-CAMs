@@ -4,8 +4,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class AuthController {
     private static AuthController authController;
-    private User currentUser;
     private final BCryptPasswordEncoder passwordEncoder;
+    private User currentUser;
 
     private AuthController() {
         passwordEncoder = new BCryptPasswordEncoder(4);
@@ -19,12 +19,12 @@ public class AuthController {
         return authController;
     }
 
-    public BCryptPasswordEncoder getPasswordEncoder() {
-        return passwordEncoder;
+    public static void close() {
+        AuthController.authController = null;
     }
 
-    public String hashPassword(String password) {
-        return passwordEncoder.encode(password);
+    public BCryptPasswordEncoder getPasswordEncoder() {
+        return passwordEncoder;
     }
 
     public User login(String userID, String password) throws IllegalArgumentException {
@@ -47,11 +47,7 @@ public class AuthController {
 
     public void changePassword(String userID, String oldPassword, String newPassword)
             throws IllegalArgumentException {
-        login(userID, oldPassword).setHashedPassword(hashPassword(newPassword));
-    }
-
-    public static void close() {
-        AuthController.authController = null;
+        login(userID, oldPassword).setHashedPassword(passwordEncoder.encode(newPassword));
     }
 
 }

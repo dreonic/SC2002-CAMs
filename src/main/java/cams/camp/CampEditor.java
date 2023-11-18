@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * The {@code CampEditor} class provides methods to edit various attributes of a
  * camp.
- *
+ * <p>
  * Instances of this class are used to modify the editable properties of a given
  * camp's {@code CampInfo},
  * such as its name, description, location, dates, and visibility.
@@ -65,7 +65,7 @@ public class CampEditor {
 
     /**
      * Edits the registration deadline, start and end date of the camp.
-     * 
+     *
      * @param startDate            The new start date for the camp
      * @param endDate              The new end date for the camp
      * @param registrationDeadline The new registration deadline for the camp

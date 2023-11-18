@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * Represents the date-related information for a camp, including start date,
  * end date, and registration deadline.
- *
+ * <p>
  * Instances of this class encapsulate the dates of a camp's schedule.
  * Start date indicates when the camp begins, end date indicates when it ends,
  * and registration deadline is the last date for registration.

@@ -1,23 +1,19 @@
 package cams.view.components.staff;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
 import cams.serializer.PerformanceReportSerializer;
 import cams.view.DisplayController;
-import cams.view.base.ActionableItem;
-import cams.view.base.Alert;
-import cams.view.base.CommonElements;
-import cams.view.base.ItemAction;
-import cams.view.base.SelectionMenu;
+import cams.view.base.*;
 import cams.view.components.camp.EditCampMenu;
 import cams.view.components.student.StudentListFilterMenu;
 import de.vandermeer.asciitable.AsciiTable;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 public class StaffCampMenu extends SelectionMenu {
     public StaffCampMenu(Scanner scanner) {
@@ -65,7 +61,7 @@ public class StaffCampMenu extends SelectionMenu {
                 } else {
                     studentList.append("Attendees: \n");
                     for (Student student : attendeesList) {
-                        studentList.append(student.getName() + "\n");
+                        studentList.append(student.getName()).append("\n");
                     }
                 }
 
@@ -76,7 +72,7 @@ public class StaffCampMenu extends SelectionMenu {
                 } else {
                     studentList.append("Committee Members: \n");
                     for (Student student : committeeList) {
-                        studentList.append(student.getName() + "\n");
+                        studentList.append(student.getName()).append("\n");
                     }
                 }
                 displayController.setNextDisplay(new Alert(

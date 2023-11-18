@@ -10,9 +10,9 @@ import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.auth.ChangePasswordForm;
+import cams.view.components.auth.LogoutAlert;
 import cams.view.components.camp.CreateCampForm;
 import cams.view.components.camp.FilterCampMenu;
-import cams.view.components.auth.LogoutAlert;
 
 import java.util.Scanner;
 

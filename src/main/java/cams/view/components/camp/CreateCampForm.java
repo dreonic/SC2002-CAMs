@@ -1,11 +1,5 @@
 package cams.view.components.camp;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Map;
-import java.util.Scanner;
-
 import cams.camp.CampController;
 import cams.domain.StaffController;
 import cams.view.DisplayController;
@@ -15,13 +9,13 @@ import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
 import cams.view.components.staff.StaffMenu;
 
-public class CreateCampForm extends Form {
-    private boolean parseVisibility(String visibility) {
-        if (visibility.equalsIgnoreCase("n"))
-            return false;
-        return true;
-    }
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Map;
+import java.util.Scanner;
 
+public class CreateCampForm extends Form {
     public CreateCampForm(Scanner scanner) {
         super(scanner);
 
@@ -84,5 +78,9 @@ public class CreateCampForm extends Form {
                 }
             }
         });
+    }
+
+    private boolean parseVisibility(String visibility) {
+        return !visibility.equalsIgnoreCase("n");
     }
 }

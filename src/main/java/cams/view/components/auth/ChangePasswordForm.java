@@ -1,19 +1,15 @@
 package cams.view.components.auth;
 
-import java.util.Map;
-import java.util.Scanner;
-
 import cams.domain.Staff;
 import cams.user.AuthController;
 import cams.user.User;
 import cams.view.DisplayController;
-import cams.view.base.Alert;
-import cams.view.base.Displayable;
-import cams.view.base.Form;
-import cams.view.base.ItemAction;
-import cams.view.base.TextBox;
+import cams.view.base.*;
 import cams.view.components.staff.StaffMenu;
 import cams.view.components.student.StudentMenu;
+
+import java.util.Map;
+import java.util.Scanner;
 
 public class ChangePasswordForm extends Form {
 
@@ -38,7 +34,7 @@ public class ChangePasswordForm extends Form {
                     authController.changePassword(
                             currentUser.getUserID(), oldPassword, newPassword);
 
-                    Displayable nextDisplay = null;
+                    Displayable nextDisplay;
                     String successAlertContent = "Changed password successfully!";
 
                     if (authController.getCurrentUser() instanceof Staff) {

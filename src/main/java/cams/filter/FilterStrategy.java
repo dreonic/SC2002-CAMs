@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface FilterStrategy {
 
-    public void setCriteria(Object object);
+    void setCriteria(Object object);
 
-    public List<Camp> filter(List<Camp> camps);
+    List<Camp> filter(List<Camp> camps);
 
-    public String toString();
+    String toString();
 }

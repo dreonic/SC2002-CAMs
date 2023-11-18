@@ -1,7 +1,5 @@
 package cams.view.components.student;
 
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
@@ -14,6 +12,8 @@ import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.repliable.EnquiryEditorForm;
+
+import java.util.Scanner;
 
 public class StudentEnquiryMenu extends SelectionMenu {
     public StudentEnquiryMenu(Scanner scanner, Enquiry enquiry) {

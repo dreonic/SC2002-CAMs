@@ -1,11 +1,11 @@
 package cams.view.base;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import cams.view.DisplayController;
 import cams.view.components.InvalidAlert;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Base class for all user interface elements with actionable selections. This
@@ -20,14 +20,14 @@ import cams.view.components.InvalidAlert;
  * which they are displayed in the standard output.
  * <p>
  * Usage example by extension:
- * 
+ *
  * <pre>
  * {@code
  * public class SpecificMenu extends SelectionMenu {
  *     public SpecificMenu(Scanner scanner) {
  *         super(scanner);
  *         setPrompt("Prompt content goes here.");
- * 
+ *
  *         // Will appear as the first selection choice
  *         addItem(new ActionableItem("Selection item 1", new ItemAction() {
  *             public void execute() {
@@ -45,9 +45,9 @@ import cams.view.components.InvalidAlert;
  * }
  * }
  * </pre>
- * 
+ * <p>
  * Usage example by association:
- * 
+ *
  * <pre>
  * {@code
  * public class Foo {
@@ -55,7 +55,7 @@ import cams.view.components.InvalidAlert;
  *         Scanner sc = new Scanner(System.in);
  *         SelectionMenu menu = new SelectionMenu(sc);
  *         menu.setPrompt("Prompt content goes here.");
- * 
+ *
  *         // Will appear as the first selection choice
  *         menu.addItem(new ActionableItem("Selection item 1", new ItemAction() {
  *             public void execute() {
@@ -73,16 +73,16 @@ import cams.view.components.InvalidAlert;
  * }
  * }
  * </pre>
- * 
+ * <p>
  * The result of the example above:
- * 
+ *
  * <pre>
  * Prompt content goes here.
  * (1) Selection item 1
  * (2) Selection item 2
  * Choice:
  * </pre>
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -92,13 +92,13 @@ import cams.view.components.InvalidAlert;
  * @since 2023-11-09
  */
 public class SelectionMenu implements Displayable {
+    private final List<ActionableItem> items;
+    private final Scanner scanner;
     private String prompt;
-    private List<ActionableItem> items;
-    private Scanner scanner;
 
     /**
      * Constructs an empty menu with the scanner to be used to receive user input.
-     * 
+     *
      * @param scanner scanner for this menu
      */
     public SelectionMenu(Scanner scanner) {
@@ -110,7 +110,7 @@ public class SelectionMenu implements Displayable {
     /**
      * Constructs a menu with prompt and the scanner to be used to receive user
      * input.
-     * 
+     *
      * @param prompt  displayed prompt
      * @param scanner scanner for this menu
      */
@@ -122,7 +122,7 @@ public class SelectionMenu implements Displayable {
 
     /**
      * Retrieves this menu's prompt.
-     * 
+     *
      * @return menu prompt
      */
     public String getPrompt() {
@@ -131,7 +131,7 @@ public class SelectionMenu implements Displayable {
 
     /**
      * Assigns this menu's prompt.
-     * 
+     *
      * @param prompt prompt to be displayed
      */
     public void setPrompt(String prompt) {
@@ -141,7 +141,7 @@ public class SelectionMenu implements Displayable {
     /**
      * Adds a new actionable selection to the menu. Actionable selections added to
      * the menu cannot be removed afterwards.
-     * 
+     *
      * @param item actionable selection
      */
     public void addItem(ActionableItem item) {
@@ -152,7 +152,6 @@ public class SelectionMenu implements Displayable {
      * Clears the standard output and displays menu prompt and selections to the
      * standard output. Waits and captures user selection choice and executes the
      * action of the selected item afterwards.
-     * 
      */
     public void display() {
         int choice = 0;

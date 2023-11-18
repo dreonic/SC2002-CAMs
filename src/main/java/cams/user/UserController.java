@@ -22,6 +22,12 @@ public class UserController {
         return userController;
     }
 
+    public static void close() {
+        UserSerializer.serialize(userController.getUserTable(), "student", "student_list.xlsx", "staff_list.xlsx");
+        UserSerializer.serialize(userController.getUserTable(), "staff", "student_list.xlsx", "staff_list.xlsx");
+        userController = null;
+    }
+
     private void initializeUserTable() {
         List<User> students = UserSerializer.deserialize("student", "student_list.xlsx", "staff_list.xlsx");
         List<User> staffs = UserSerializer.deserialize("staff", "student_list.xlsx", "staff_list.xlsx");
@@ -30,12 +36,6 @@ public class UserController {
             addUser(user);
         for (User user : staffs)
             addUser(user);
-    }
-
-    public static void close() {
-        UserSerializer.serialize(userController.getUserTable(), "student", "student_list.xlsx", "staff_list.xlsx");
-        UserSerializer.serialize(userController.getUserTable(), "staff", "student_list.xlsx", "staff_list.xlsx");
-        userController = null;
     }
 
     public void addUser(User user) throws IllegalArgumentException {

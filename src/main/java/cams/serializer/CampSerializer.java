@@ -39,16 +39,6 @@ import java.util.stream.Collectors;
  */
 public class CampSerializer {
     /**
-     * Deserializes camp information from the default Excel file path "src/data/camp_list.xlsx"
-     * and updates the {@code CampController} accordingly.
-     *
-     * @return
-     */
-//    public static List<Camp> deserialize() {
-//        return deserialize("src/data/camp_list.xlsx");
-//    }
-
-    /**
      * Deserializes camp information from the specified Excel file path and updates the {@code CampController} accordingly.
      *
      * @param path The file path of the Excel file containing camp information.
@@ -84,7 +74,7 @@ public class CampSerializer {
                 for (int i = 0; i < 12; i++) {
                     Cell cell = row.getCell(i);
                     if (cell == null || cell.getCellType() == CellType.BLANK) {
-                        args.add(""); 
+                        args.add("");
                     } else {
                         args.add(cell.toString());
                     }
@@ -122,14 +112,6 @@ public class CampSerializer {
         }
         return result;
     }
-
-    /**
-     * Serializes camp information to the default Excel file path "src/data/camp_list.xlsx"
-     * based on the current state of the {@code CampController}.
-     */
-//    public static void serialize() {
-//        serialize(new HashMap<>(), "src/data/camp_list.xlsx");
-//    }
 
     /**
      * Serializes camp information to the specified Excel file path based on the current state of the {@code CampController}.

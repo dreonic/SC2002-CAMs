@@ -1,10 +1,6 @@
 package cams.view.base;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Base class for all user interface elements which requires user input and runs
@@ -19,20 +15,20 @@ import java.util.Scanner;
  * displayed in the standard output.
  * <p>
  * Usage example by extension:
- * 
+ *
  * <pre>
  * {@code
  * public class SpecificForm extends Form {
  *     public SpecificForm(Scanner scanner) {
  *         super(scanner);
  *         setTitle("Form title goes here.");
- * 
+ *
  *         // Will appear as the first input field
  *         addInput(new TextBox("Label 1", scanner));
  *
  *         // Will appear as the second input field
  *         addInput(new TextBox("Label 2", scanner));
- * 
+ *
  *         setAction(new ItemAction() {
  *             public void execute() {
  *                 System.out.println("Getting user inputs completed.");
@@ -42,9 +38,9 @@ import java.util.Scanner;
  * }
  * }
  * </pre>
- * 
+ * <p>
  * Usage example by association:
- * 
+ *
  * <pre>
  * {@code
  * public class Foo {
@@ -52,13 +48,13 @@ import java.util.Scanner;
  *         Scanner sc = new Scanner(System.in);
  *         Form form = new Form(sc);
  *         form.setTitle("Form title goes here.");
- * 
+ *
  *         // Will appear as the first input field
  *         form.addInput(new TextBox("Label 1", scanner));
  *
  *         // Will appear as the second input field
  *         form.addInput(new TextBox("Label 2", scanner));
- * 
+ *
  *         form.setAction(new ItemAction() {
  *             public void execute() {
  *                 System.out.println("Getting user inputs completed.");
@@ -68,15 +64,15 @@ import java.util.Scanner;
  * }
  * }
  * </pre>
- * 
+ * <p>
  * The result of the example above:
- * 
+ *
  * <pre>
  * Form title goes here.
- * Label 1: 
+ * Label 1:
  * Label 2:
  * </pre>
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -86,14 +82,14 @@ import java.util.Scanner;
  * @since 2023-11-11
  */
 public class Form implements Displayable {
+    private final List<TextBox> inputs;
+    private final Scanner scanner;
     private String title;
-    private List<TextBox> inputs;
-    private Scanner scanner;
     private ItemAction action;
 
     /**
      * Constructs an empty form with the scanner to be used to receive user input.
-     * 
+     *
      * @param scanner scanner for this form
      */
     public Form(Scanner scanner) {
@@ -106,7 +102,7 @@ public class Form implements Displayable {
     /**
      * Constructs an empty form with title/prompt and the scanner to be used to
      * receive user input.
-     * 
+     *
      * @param title   displayed title
      * @param scanner scanner for this form
      */
@@ -119,7 +115,7 @@ public class Form implements Displayable {
 
     /**
      * Retrieves this form's title.
-     * 
+     *
      * @return form title
      */
     public String getTitle() {
@@ -128,7 +124,7 @@ public class Form implements Displayable {
 
     /**
      * Assigns this form's title.
-     * 
+     *
      * @param title title to be displayed
      */
     public void setTitle(String title) {
@@ -138,7 +134,7 @@ public class Form implements Displayable {
     /**
      * Assigns the action to be run after this form completes retrieving user
      * inputs. This form action should not be empty.
-     * 
+     *
      * @param action form action
      */
     public void setAction(ItemAction action) {
@@ -148,7 +144,7 @@ public class Form implements Displayable {
     /**
      * Adds a new user input field to the form. Input fields added to the form
      * cannot be removed afterwards.
-     * 
+     *
      * @param input labelled form input field
      */
     public void addInput(TextBox input) {
@@ -159,7 +155,7 @@ public class Form implements Displayable {
      * Retrieves the current values of all input fields inside this form as a map,
      * where the key is the intput field/textbox ID and the value is its
      * corresponding value.
-     * 
+     *
      * @return map of input field labels to values
      */
     public Map<String, String> getValues() {
@@ -174,7 +170,6 @@ public class Form implements Displayable {
      * input field initially. Waits and captures user input and displays the next
      * user input field afterwards. Repeats this until there areno more input fields
      * left to display.
-     * 
      */
     public void display() {
         CommonElements.clearSystemOut();

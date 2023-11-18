@@ -25,6 +25,12 @@ public class AuthControllerTest {
                 "Test User C", "testc", "Testing Faculty", null));
     }
 
+    @AfterAll
+    static void closeControllers() {
+        UserController.close();
+        AuthController.close();
+    }
+
     @Test
     @DisplayName("Logging in with wrong/nonexistent user ID throws")
     void wrongUserIDLoginThrows() {
@@ -94,11 +100,5 @@ public class AuthControllerTest {
         });
         authController.logout();
         assertNull(authController.getCurrentUser());
-    }
-
-    @AfterAll
-    static void closeControllers() {
-        UserController.close();
-        AuthController.close();
     }
 }

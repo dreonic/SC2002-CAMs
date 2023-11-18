@@ -1,8 +1,8 @@
 package cams.domain;
 
-import java.time.LocalDate;
-
 import cams.camp.Camp;
+
+import java.time.LocalDate;
 
 /**
  * The StudentController class manages the interaction between the system and a student user.
@@ -37,12 +37,20 @@ public class StudentController {
      * @param student The student to associate with the controller.
      * @return The singleton instance of StudentController.
      */
+    @SuppressWarnings("UnusedReturnValue")
     public static StudentController getInstance(Student student) {
         if (studentController == null) {
             studentController = new StudentController();
         }
         studentController.setCurrentStudent(student);
         return studentController;
+    }
+
+    /**
+     * Closes the StudentController, releasing the current student association.
+     */
+    public static void close() {
+        studentController = null;
     }
 
     /**
@@ -66,8 +74,8 @@ public class StudentController {
     /**
      * Registers the student for a camp, optionally as a committee member.
      *
-     * @param camp         The camp to register for.
-     * @param isCommittee  A boolean indicating whether the student registers as a committee member.
+     * @param camp        The camp to register for.
+     * @param isCommittee A boolean indicating whether the student registers as a committee member.
      * @throws RuntimeException If there is a scheduling conflict or other registration issues.
      */
     public void register(Camp camp, Boolean isCommittee) throws RuntimeException {
@@ -113,12 +121,5 @@ public class StudentController {
             throw new RuntimeException("Cannot withdraw! Student is not registered for this camp!");
         }
         student.removeCamp(camp);
-    }
-
-    /**
-     * Closes the StudentController, releasing the current student association.
-     */
-    public static void close() {
-        studentController = null;
     }
 }

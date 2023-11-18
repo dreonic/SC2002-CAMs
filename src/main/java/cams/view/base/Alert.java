@@ -1,8 +1,8 @@
 package cams.view.base;
 
-import java.util.Scanner;
-
 import cams.view.DisplayController;
+
+import java.util.Scanner;
 
 /**
  * Base class for all dismissable pop-up user interface elements. This base
@@ -16,7 +16,7 @@ import cams.view.DisplayController;
  * content and specify the previous <code>Displayable</code> which called this
  * alert.
  * Usage example by extension:
- * 
+ *
  * <pre>
  * {@code
  * public class SpecificAlert extends Alert {
@@ -26,9 +26,9 @@ import cams.view.DisplayController;
  * }
  * }
  * </pre>
- * 
+ * <p>
  * Usage example by association:
- * 
+ *
  * <pre>
  * {@code
  * public class Foo {
@@ -39,15 +39,15 @@ import cams.view.DisplayController;
  * }
  * }
  * </pre>
- * 
+ * <p>
  * The result of the example above:
- * 
+ *
  * <pre>
  * Alert Content
- * 
+ *
  * Press ENTER to continue...
  * </pre>
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -57,12 +57,12 @@ import cams.view.DisplayController;
  * @since 2023-11-09
  */
 public class Alert extends ActionableItem implements Displayable {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     /**
      * Constructs alert with content, caller user interface element
      * and the scanner to be used to receive user input.
-     * 
+     *
      * @param content             displayed content
      * @param previousDisplayable caller user interface element
      * @param scanner             scanner for this alert

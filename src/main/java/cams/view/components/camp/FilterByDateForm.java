@@ -2,6 +2,7 @@ package cams.view.components.camp;
 
 import cams.camp.CampFilterController;
 import cams.filter.FilterByDate;
+import cams.filter.FilterStrategy;
 import cams.view.DisplayController;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
@@ -11,6 +12,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class FilterByDateForm extends FilterStrategyForm {
+    private static FilterStrategy current;
+
     public FilterByDateForm(Scanner scanner) {
         super(new FilterByDate(), scanner);
 
@@ -24,8 +27,11 @@ public class FilterByDateForm extends FilterStrategyForm {
             @Override
             public void execute() {
                 filterStrategy.setCriteria(LocalDate.parse(getValues().get("criteria"), formatter));
+                if (current != null)
+                    filterController.removeFilterStrategy(current);
                 filterController.addFilterStrategy(filterStrategy);
-                displayController.setNextDisplay(new AddFilterCampMenu(scanner));
+                current = filterStrategy;
+                displayController.setNextDisplay(new SetFilterCampMenu(scanner));
             }
         });
     }

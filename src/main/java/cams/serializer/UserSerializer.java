@@ -27,16 +27,6 @@ import java.util.Objects;
  */
 public class UserSerializer {
     /**
-     * Deserializes user information from an Excel file based on the specified user type.
-     * The deserialized user information is then added to the {@code UserController} instance.
-     *
-     * @param userType The type of user to deserialize "student" or "staff").
-     */
-//    public static void deserialize(String userType) {
-//        deserialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
-//    }
-
-    /**
      * Deserializes user information from specified Excel files based on the specified user type.
      * The deserialized user information is then added to the {@link UserController} instance.
      *
@@ -47,22 +37,18 @@ public class UserSerializer {
     public static List<User> deserialize(String userType, String studentPath, String staffPath) {
         String path = "student".equals(userType) ? studentPath : staffPath;
         List<User> result = new ArrayList<>();
-        FileInputStream f = null;
 
-        try (FileInputStream savedFile = new FileInputStream(path)) {
-            f = savedFile;
+        try (FileInputStream fileToCheck = new FileInputStream(path)) {
         } catch (FileNotFoundException e) {
             try (InputStream inStream = UserSerializer.class.getClassLoader().getResourceAsStream(path)) {
-                Path tempFile = Paths.get("user_list.tmp");
-                Files.copy(Objects.requireNonNull(inStream), tempFile, StandardCopyOption.REPLACE_EXISTING);
-                f = new FileInputStream("user_list.tmp");
-                Files.delete(tempFile);
+                Path initialListFile = Paths.get(path);
+                Files.copy(Objects.requireNonNull(inStream), initialListFile, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException ignored) {
             }
         } catch (IOException ignored) {
         }
 
-        try (FileInputStream fileIn = Objects.requireNonNull(f);
+        try (FileInputStream fileIn = new FileInputStream(path);
              Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             for (Row row : sheet) {
@@ -98,16 +84,6 @@ public class UserSerializer {
         }
         return result;
     }
-
-    /**
-     * Serializes user information of the specified type {@code Student} or {@code Staff} into an Excel file.
-     * The generated Excel file includes details such as name, email, faculty, and hashed password.
-     *
-     * @param userType The type of user to serialize "student" or "staff".
-     */
-//    public static void serialize(String userType) {
-//        serialize(userType, "src/data/student_list.xlsx", "src/data/staff_list.xlsx");
-//    }
 
     /**
      * Serializes user information of the specified type {@code Student} or {@code Staff} into specified Excel files.

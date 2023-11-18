@@ -28,6 +28,24 @@ public class CampControllerTest {
         CampController.getInstance();
     }
 
+    @AfterAll
+    static void cleanCampTable() {
+        CampController campController = CampController.getInstance();
+
+        for (Camp camp : campController.getAllCamps()) {
+            for (Student attendee : camp.getAttendees()) {
+                camp.removeAttendee(attendee);
+            }
+            campController.deleteCamp(camp.getCampInfo().getCampName());
+        }
+    }
+
+    @AfterAll
+    static void closeControllers() {
+        CampController.close();
+        UserController.close();
+    }
+
     @Test
     @DisplayName("Getting camp ignores the camp's name case")
     void getCampIgnoresCase() {
@@ -154,23 +172,5 @@ public class CampControllerTest {
         assertThat(performanceReport, hasEntry(student005, 0));
         assertThat(performanceReport, hasEntry(student006, 0));
         assertThat(performanceReport, not(hasKey(student004)));
-    }
-
-    @AfterAll
-    static void cleanCampTable() {
-        CampController campController = CampController.getInstance();
-
-        for (Camp camp : campController.getAllCamps()) {
-            for (Student attendee : camp.getAttendees()) {
-                camp.removeAttendee(attendee);
-            }
-            campController.deleteCamp(camp.getCampInfo().getCampName());
-        }
-    }
-
-    @AfterAll
-    static void closeControllers() {
-        CampController.close();
-        UserController.close();
     }
 }

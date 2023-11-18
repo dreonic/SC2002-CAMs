@@ -1,13 +1,13 @@
 package cams.view.components;
 
-import java.util.Scanner;
-
 import cams.view.base.Alert;
 import cams.view.base.Displayable;
 
+import java.util.Scanner;
+
 /**
  * Dismissable pop-up when user selects an invalid choice in a menu.
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -20,7 +20,7 @@ public class InvalidAlert extends Alert {
     /**
      * Class constructor specifying caller user interface element and the scanner to
      * be used to receive user input.
-     * 
+     *
      * @param previousDisplayable caller user interface element
      * @param scanner             scanner for this alert
      */
