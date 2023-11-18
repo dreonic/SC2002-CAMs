@@ -35,7 +35,7 @@ public class ReplyEnquiryForm extends Form {
                 EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
 
                 Map<String, String> values = getValues();
-                enquiryEditor.edit(
+                enquiryEditor.reply(
                         enquiry,
                         values.get("Reply"));
 
