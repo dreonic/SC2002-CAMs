@@ -15,8 +15,8 @@ import cams.view.base.SelectionMenu;
 
 import java.util.Scanner;
 
-public class AddFilterCampMenu extends SelectionMenu {
-    public AddFilterCampMenu(Scanner scanner) {
+public class SetFilterCampMenu extends SelectionMenu {
+    public SetFilterCampMenu(Scanner scanner) {
         super(scanner);
 
         DisplayController displayController = DisplayController.getInstance();
@@ -40,28 +40,28 @@ public class AddFilterCampMenu extends SelectionMenu {
 
         setPrompt(promptBuilder.append("\n").toString());
 
-        addItem(new ActionableItem("Add name filter", new ItemAction() {
+        addItem(new ActionableItem("Set name filter", new ItemAction() {
             @Override
             public void execute() {
                 displayController.setNextDisplay(new FilterByNameForm(scanner));
             }
         }));
 
-        addItem(new ActionableItem("Add date filter", new ItemAction() {
+        addItem(new ActionableItem("Set date filter", new ItemAction() {
             @Override
             public void execute() {
                 displayController.setNextDisplay(new FilterByDateForm(scanner));
             }
         }));
 
-        addItem(new ActionableItem("Add location filter", new ItemAction() {
+        addItem(new ActionableItem("Set location filter", new ItemAction() {
             @Override
             public void execute() {
                 displayController.setNextDisplay(new FilterByLocationForm(scanner));
             }
         }));
 
-        addItem(new ActionableItem("Add staff-in-charge filter", new ItemAction() {
+        addItem(new ActionableItem("Set staff-in-charge filter", new ItemAction() {
             @Override
             public void execute() {
                 displayController.setNextDisplay(new FilterByStaffForm(scanner));
@@ -69,7 +69,7 @@ public class AddFilterCampMenu extends SelectionMenu {
         }));
 
         if (currentUser instanceof Staff) {
-            addItem(new ActionableItem("Add user group filter", new ItemAction() {
+            addItem(new ActionableItem("Set user group filter", new ItemAction() {
                 @Override
                 public void execute() {
                     displayController.setNextDisplay(new FilterByUserGroupForm(scanner));

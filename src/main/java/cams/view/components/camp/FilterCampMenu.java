@@ -43,10 +43,10 @@ public class FilterCampMenu extends SelectionMenu {
 
         setPrompt(promptBuilder.append("\n").toString());
 
-        addItem(new ActionableItem("Add filters", new ItemAction() {
+        addItem(new ActionableItem("Set filters", new ItemAction() {
             @Override
             public void execute() {
-                displayController.setNextDisplay(new AddFilterCampMenu(scanner));
+                displayController.setNextDisplay(new SetFilterCampMenu(scanner));
             }
         }));
 
