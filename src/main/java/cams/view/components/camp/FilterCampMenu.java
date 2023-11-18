@@ -4,6 +4,7 @@ import cams.camp.Camp;
 import cams.camp.CampFilterController;
 import cams.domain.Student;
 import cams.filter.FilterByUserGroup;
+import cams.filter.FilterByVisibility;
 import cams.filter.FilterStrategy;
 import cams.user.AuthController;
 import cams.user.User;
@@ -31,6 +32,8 @@ public class FilterCampMenu extends SelectionMenu {
         promptBuilder.append("\nCurrent filters: ");
 
         if (currentUser instanceof Student) {
+            filterController.clearFilterStrategies();
+            filterController.addFilterStrategy(new FilterByVisibility(true));
             filterController.addFilterStrategy(new FilterByUserGroup(currentUser.getFaculty()));
         }
 
