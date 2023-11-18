@@ -1,6 +1,5 @@
 package cams.view.components;
 
-import cams.App;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.CommonElements;
@@ -42,7 +41,6 @@ public class WelcomeMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Exit", new ItemAction() {
             public void execute() {
-                App.stopControllersAndSerialize();
             }
         }));
     }

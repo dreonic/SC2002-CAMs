@@ -9,28 +9,39 @@ import java.util.Map;
 public class UserController {
     private static UserController userController;
     private final Map<String, User> userTable;
+    private final String studentPath;
+    private final String staffPath;
 
-    private UserController() {
+    private UserController(String studentPath, String staffPath) {
         userTable = new HashMap<>();
+        this.studentPath = studentPath;
+        this.staffPath = staffPath;
+        initializeUserTable();
     }
 
     public static UserController getInstance() {
         if (userController == null) {
-            userController = new UserController();
-            userController.initializeUserTable();
+            userController = new UserController("student_list.xlsx", "staff_list.xlsx");
+        }
+        return userController;
+    }
+
+    public static UserController getInstance(String studentPath, String staffPath) {
+        if (userController == null) {
+            userController = new UserController(studentPath, staffPath);
         }
         return userController;
     }
 
     public static void close() {
-        UserSerializer.serialize(userController.getUserTable(), "student", "student_list.xlsx", "staff_list.xlsx");
-        UserSerializer.serialize(userController.getUserTable(), "staff", "student_list.xlsx", "staff_list.xlsx");
+        UserSerializer.serialize(userController.getUserTable(), "student", userController.studentPath, userController.staffPath);
+        UserSerializer.serialize(userController.getUserTable(), "staff", userController.studentPath, userController.staffPath);
         userController = null;
     }
 
     private void initializeUserTable() {
-        List<User> students = UserSerializer.deserialize("student", "student_list.xlsx", "staff_list.xlsx");
-        List<User> staffs = UserSerializer.deserialize("staff", "student_list.xlsx", "staff_list.xlsx");
+        List<User> students = UserSerializer.deserialize("student", studentPath, staffPath);
+        List<User> staffs = UserSerializer.deserialize("staff", studentPath, staffPath);
 
         for (User user : students)
             addUser(user);
