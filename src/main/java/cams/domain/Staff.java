@@ -22,10 +22,10 @@ public class Staff extends User {
     /**
      * Constructs a Staff object with the specified details.
      *
-     * @param name          The name of the staff member.
-     * @param userID        The unique user identifier for the staff member.
-     * @param faculty       The faculty to which the staff member belongs.
-     * @param passwordHash  The hashed password for authentication.
+     * @param name         The name of the staff member.
+     * @param userID       The unique user identifier for the staff member.
+     * @param faculty      The faculty to which the staff member belongs.
+     * @param passwordHash The hashed password for authentication.
      */
     public Staff(String name, String userID, String faculty, String passwordHash) {
         super(name, userID, faculty, passwordHash);

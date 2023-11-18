@@ -47,6 +47,13 @@ public class StudentController {
     }
 
     /**
+     * Closes the StudentController, releasing the current student association.
+     */
+    public static void close() {
+        studentController = null;
+    }
+
+    /**
      * Gets the current student associated with the controller.
      *
      * @return The current student.
@@ -114,12 +121,5 @@ public class StudentController {
             throw new RuntimeException("Cannot withdraw! Student is not registered for this camp!");
         }
         student.removeCamp(camp);
-    }
-
-    /**
-     * Closes the StudentController, releasing the current student association.
-     */
-    public static void close() {
-        studentController = null;
     }
 }

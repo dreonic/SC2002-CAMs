@@ -14,8 +14,8 @@ package cams.view.base;
  * @since 2023-11-09
  */
 public class ActionableItem {
-    private String content;
     private final ItemAction action;
+    private String content;
 
     /**
      * Constructs an item with content and action.

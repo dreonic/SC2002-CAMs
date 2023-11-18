@@ -14,6 +14,11 @@ public class UserTest {
         AuthController.getInstance();
     }
 
+    @AfterAll
+    static void closeControllers() {
+        AuthController.close();
+    }
+
     @BeforeEach
     void initializePasswordEncoder() {
         AuthController authController = AuthController.getInstance();
@@ -42,10 +47,5 @@ public class UserTest {
         String userID = "tEst001";
         User user = new User("Test User", userID, "Testing Faculty", null);
         assertEquals(userID.toUpperCase(), user.getUserID());
-    }
-
-    @AfterAll
-    static void closeControllers() {
-        AuthController.close();
     }
 }

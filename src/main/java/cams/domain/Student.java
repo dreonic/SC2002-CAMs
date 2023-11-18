@@ -15,27 +15,25 @@ import java.util.Set;
  */
 public class Student extends User {
     /**
+     * The set of camps registered by the student.
+     */
+    private final Set<Camp> campsRegistered;
+    /**
+     * The set of enquiries made by the student.
+     */
+    private final Set<Enquiry> enquiries;
+    /**
      * The camp for which the student serves as a committee member.
      */
     private Camp committeeFor;
 
     /**
-     * The set of camps registered by the student.
-     */
-    private final Set<Camp> campsRegistered;
-
-    /**
-     * The set of enquiries made by the student.
-     */
-    private final Set<Enquiry> enquiries;
-
-    /**
      * Constructs a new Student object with the specified attributes.
      *
-     * @param name          The name of the student.
-     * @param userID        The unique user ID of the student.
-     * @param faculty       The faculty to which the student belongs.
-     * @param passwordHash  The hashed password of the student.
+     * @param name         The name of the student.
+     * @param userID       The unique user ID of the student.
+     * @param faculty      The faculty to which the student belongs.
+     * @param passwordHash The hashed password of the student.
      */
     public Student(String name, String userID, String faculty, String passwordHash) {
         super(name, userID, faculty, passwordHash);

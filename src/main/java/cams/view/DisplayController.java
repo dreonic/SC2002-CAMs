@@ -8,27 +8,27 @@ import cams.view.base.Displayable;
  * output.
  * <p>
  * To use this controller, first instantiate and initialize this singleton.
- * 
+ *
  * <pre>
  * {@code
  * Scanner sc = new Scanner(System.in);
  * DisplayController controller = DisplayController.getInstance(new WelcomeMenu(sc));
  * }
  * </pre>
- * 
+ * <p>
  * Once instantiated for the first time, the singleton instance can be retrieved through the
  * <code>getInstance</code> method without passing any arguments.
- * 
+ *
  * <pre>
  * {@code
  * DisplayController controller = DisplayController.getInstance();
  * }
  * </pre>
- * 
+ * <p>
  * Call the <code>displayCurrent</code> method of this singleton instance to start displaying user
  * interface elements. This call will terminate once there are no user interface elements available
  * to display.
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -49,9 +49,9 @@ public class DisplayController {
      * Instantiates and initializes singleton with inital user interface element. This user
      * interface element will be displayed first upon calling <code>displayCurrent</code> unless
      * overridden by the setter <code>setNextDisplay</code> before first call.
-     * 
+     *
      * @param initialDisplay initial user interface element if the singleton has not been
-     *        instantiated; otherwise, this is unused
+     *                       instantiated; otherwise, this is unused
      * @return singleton instance
      */
     public static DisplayController getInstance(Displayable initialDisplay) {
@@ -63,10 +63,10 @@ public class DisplayController {
 
     /**
      * Returns an initialized singleton instance.
-     * 
+     *
      * @return singleton instance
      * @throws IllegalStateException when singleton has not yet been initialized with an initial
-     *         user interface element
+     *                               user interface element
      */
     public static DisplayController getInstance() throws IllegalStateException {
         if (displayController == null) {
@@ -98,7 +98,7 @@ public class DisplayController {
      * displayed after the current user interface element display terminates if singleton is running
      * <code>displayCurrent</code>. Otherwise, this method sets the first user interface to display
      * upon calling <code>displayCurrent</code>.
-     * 
+     *
      * @param displayable user interface element to be displayed
      */
     public void setNextDisplay(Displayable displayable) {

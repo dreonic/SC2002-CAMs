@@ -53,6 +53,13 @@ public class StaffController {
     }
 
     /**
+     * Closes the StaffController instance by setting it to null.
+     */
+    public static void close() {
+        staffController = null;
+    }
+
+    /**
      * Gets the currently logged-in staff user.
      *
      * @return The currently logged-in staff user, or null if no user is logged in.
@@ -68,12 +75,5 @@ public class StaffController {
      */
     public void setCurrentStaff(Staff staff) {
         this.staff = staff;
-    }
-
-    /**
-     * Closes the StaffController instance by setting it to null.
-     */
-    public static void close() {
-        staffController = null;
     }
 }

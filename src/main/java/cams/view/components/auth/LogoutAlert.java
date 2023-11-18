@@ -1,9 +1,9 @@
 package cams.view.components.auth;
 
-import java.util.Scanner;
-
 import cams.view.base.Alert;
 import cams.view.components.WelcomeMenu;
+
+import java.util.Scanner;
 
 public class LogoutAlert extends Alert {
     public LogoutAlert(Scanner scanner) {

@@ -1,9 +1,5 @@
 package cams.view.components.student;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import cams.domain.Student;
 import cams.domain.StudentController;
 import cams.repliable.Enquiry;
@@ -11,6 +7,10 @@ import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class StudentViewEnquiryMenu extends SelectionMenu {
     public StudentViewEnquiryMenu(Scanner scanner) {

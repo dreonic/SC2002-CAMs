@@ -1,8 +1,5 @@
 package cams.view.components.staff;
 
-import java.util.List;
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Staff;
@@ -11,6 +8,9 @@ import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+
+import java.util.List;
+import java.util.Scanner;
 
 public class StaffViewCampMenu extends SelectionMenu {
     public StaffViewCampMenu(Scanner scanner) {

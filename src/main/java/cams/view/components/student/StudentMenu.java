@@ -1,7 +1,5 @@
 package cams.view.components.student;
 
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
@@ -13,8 +11,10 @@ import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.auth.ChangePasswordForm;
-import cams.view.components.camp.FilterCampMenu;
 import cams.view.components.auth.LogoutAlert;
+import cams.view.components.camp.FilterCampMenu;
+
+import java.util.Scanner;
 
 public class StudentMenu extends SelectionMenu {
     public StudentMenu(Scanner scanner) {

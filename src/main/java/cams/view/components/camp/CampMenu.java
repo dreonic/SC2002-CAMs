@@ -1,20 +1,16 @@
 package cams.view.components.camp;
 
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
 import cams.user.AuthController;
 import cams.user.User;
 import cams.view.DisplayController;
-import cams.view.base.ActionableItem;
-import cams.view.base.Alert;
-import cams.view.base.CommonElements;
-import cams.view.base.ItemAction;
-import cams.view.base.SelectionMenu;
+import cams.view.base.*;
 import cams.view.components.repliable.SubmitEnquiryForm;
 import de.vandermeer.asciitable.AsciiTable;
+
+import java.util.Scanner;
 
 public class CampMenu extends SelectionMenu {
     public CampMenu(Scanner scanner) {

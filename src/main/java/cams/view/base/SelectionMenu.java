@@ -92,9 +92,9 @@ import java.util.Scanner;
  * @since 2023-11-09
  */
 public class SelectionMenu implements Displayable {
-    private String prompt;
     private final List<ActionableItem> items;
     private final Scanner scanner;
+    private String prompt;
 
     /**
      * Constructs an empty menu with the scanner to be used to receive user input.

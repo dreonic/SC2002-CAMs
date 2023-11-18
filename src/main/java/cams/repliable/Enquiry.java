@@ -21,7 +21,7 @@ public class Enquiry extends Repliable {
     }
 
     public String getReply() {
-        if(reply == null)
+        if (reply == null)
             return "No Replies yet";
         else
             return reply;

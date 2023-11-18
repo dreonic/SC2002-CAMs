@@ -16,10 +16,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class CreateCampForm extends Form {
-    private boolean parseVisibility(String visibility) {
-        return !visibility.equalsIgnoreCase("n");
-    }
-
     public CreateCampForm(Scanner scanner) {
         super(scanner);
 
@@ -82,5 +78,9 @@ public class CreateCampForm extends Form {
                 }
             }
         });
+    }
+
+    private boolean parseVisibility(String visibility) {
+        return !visibility.equalsIgnoreCase("n");
     }
 }

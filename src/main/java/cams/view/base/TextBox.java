@@ -21,10 +21,10 @@ import java.util.Scanner;
  */
 public class TextBox implements Displayable {
     private final String id;
-    private String label;
-    private String value;
     private final Scanner scanner;
     private final boolean inputHidden;
+    private String label;
+    private String value;
 
     /**
      * Constructs a labelled textbox and the scanner to be used to receive user

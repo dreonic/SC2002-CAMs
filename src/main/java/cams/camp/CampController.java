@@ -48,15 +48,15 @@ public class CampController {
         return campController;
     }
 
+    public static void close() {
+        CampSerializer.serialize(campController.getCampTable(), "camp_list.xlsx");
+        campController = null;
+    }
+
     private void initializeCampTable() {
         List<Camp> camps = CampSerializer.deserialize("camp_list.xlsx");
         for (Camp camp : camps)
             campTable.put(camp.getCampInfo().getCampName().toLowerCase(), camp);
-    }
-
-    public static void close() {
-        CampSerializer.serialize(campController.getCampTable(), "camp_list.xlsx");
-        campController = null;
     }
 
     /**
@@ -152,11 +152,11 @@ public class CampController {
         return camp.getAttendees();
     }
 
-    public void setCurrentCamp(Camp camp) {
-        currentCamp = camp;
-    }
-
     public Camp getCurrentCamp() {
         return currentCamp;
+    }
+
+    public void setCurrentCamp(Camp camp) {
+        currentCamp = camp;
     }
 }

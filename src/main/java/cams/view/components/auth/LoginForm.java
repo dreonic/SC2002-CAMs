@@ -1,7 +1,5 @@
 package cams.view.components.auth;
 
-import java.util.Scanner;
-
 import cams.domain.Staff;
 import cams.domain.StaffController;
 import cams.domain.Student;
@@ -14,6 +12,8 @@ import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
 import cams.view.components.staff.StaffMenu;
 import cams.view.components.student.StudentMenu;
+
+import java.util.Scanner;
 
 /**
  * User login interface.

@@ -82,9 +82,9 @@ import java.util.*;
  * @since 2023-11-11
  */
 public class Form implements Displayable {
-    private String title;
     private final List<TextBox> inputs;
     private final Scanner scanner;
+    private String title;
     private ItemAction action;
 
     /**

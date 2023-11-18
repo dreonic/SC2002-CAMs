@@ -1,19 +1,23 @@
 package cams.user;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserControllerTest {
     @BeforeAll
     static void initalizeControllers() {
         AuthController.getInstance();
         UserController.getInstance();
+    }
+
+    @AfterAll
+    static void closeControllers() {
+        UserController.close();
+        AuthController.close();
     }
 
     @Test
@@ -41,11 +45,5 @@ public class UserControllerTest {
 
         assertNotNull(userController.getUser("testB"));
         assertNotNull(userController.getUser("testC"));
-    }
-
-    @AfterAll
-    static void closeControllers() {
-        UserController.close();
-        AuthController.close();
     }
 }

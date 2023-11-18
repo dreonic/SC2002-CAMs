@@ -1,8 +1,5 @@
 package cams.view.components.camp;
 
-import java.util.Map;
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.camp.CampEditor;
@@ -11,6 +8,9 @@ import cams.view.base.Alert;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
+
+import java.util.Map;
+import java.util.Scanner;
 
 public class EditNameForm extends Form {
     public EditNameForm(Scanner scanner) {

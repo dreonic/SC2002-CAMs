@@ -1,18 +1,14 @@
 package cams.view.components.student;
 
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.view.DisplayController;
-import cams.view.base.ActionableItem;
-import cams.view.base.Alert;
-import cams.view.base.CommonElements;
-import cams.view.base.ItemAction;
-import cams.view.base.SelectionMenu;
+import cams.view.base.*;
 import cams.view.components.repliable.CommitteeViewEnquiryMenu;
 import cams.view.components.repliable.SubmitSuggestionForm;
 import de.vandermeer.asciitable.AsciiTable;
+
+import java.util.Scanner;
 
 public class StudentCommitteeMenu extends SelectionMenu {
     public StudentCommitteeMenu(Scanner scanner) {

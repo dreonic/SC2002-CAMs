@@ -1,7 +1,5 @@
 package cams.view.components.repliable;
 
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.repliable.Enquiry;
@@ -10,6 +8,8 @@ import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+
+import java.util.Scanner;
 
 public class CommitteeEnquiryMenu extends SelectionMenu {
     public CommitteeEnquiryMenu(Scanner scanner, Enquiry enquiry) {

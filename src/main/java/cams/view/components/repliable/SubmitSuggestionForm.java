@@ -1,8 +1,5 @@
 package cams.view.components.repliable;
 
-import java.util.Map;
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
@@ -13,6 +10,9 @@ import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
 import cams.view.components.student.StudentCommitteeMenu;
+
+import java.util.Map;
+import java.util.Scanner;
 
 public class SubmitSuggestionForm extends Form {
     public SubmitSuggestionForm(Scanner scanner) {
