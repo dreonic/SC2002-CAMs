@@ -25,13 +25,16 @@ import java.util.Map;
 public class CampController {
     private static CampController campController;
     private final Map<String, Camp> campTable;
+    private final String campPath;
     private Camp currentCamp;
 
     /**
      * Private constructor to ensure singleton pattern.
      */
-    private CampController() {
+    private CampController(String campPath) {
         campTable = new HashMap<>();
+        this.campPath = campPath;
+        initializeCampTable();
         currentCamp = null;
     }
 
@@ -42,19 +45,25 @@ public class CampController {
      */
     public static CampController getInstance() {
         if (campController == null) {
-            campController = new CampController();
-            campController.initializeCampTable();
+            campController = new CampController("camp_list.xlsx");
+        }
+        return campController;
+    }
+
+    public static CampController getInstance(String campPath) {
+        if (campController == null) {
+            campController = new CampController(campPath);
         }
         return campController;
     }
 
     public static void close() {
-        CampSerializer.serialize(campController.getCampTable(), "camp_list.xlsx");
+        CampSerializer.serialize(campController.getCampTable(), campController.campPath);
         campController = null;
     }
 
     private void initializeCampTable() {
-        List<Camp> camps = CampSerializer.deserialize("camp_list.xlsx");
+        List<Camp> camps = CampSerializer.deserialize(campPath);
         for (Camp camp : camps)
             campTable.put(camp.getCampInfo().getCampName().toLowerCase(), camp);
     }

@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class ChangePasswordForm extends Form {
 
     public ChangePasswordForm(Scanner scanner) {
-        super("Change password:\n", scanner);
+        super(CommonElements.getStatusBar("Change Password") + "Change your password:\n", scanner);
 
         AuthController authController = AuthController.getInstance();
         DisplayController displayController = DisplayController.getInstance();

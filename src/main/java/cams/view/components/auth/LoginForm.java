@@ -7,6 +7,7 @@ import cams.domain.StudentController;
 import cams.user.AuthController;
 import cams.user.User;
 import cams.view.DisplayController;
+import cams.view.base.CommonElements;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
@@ -33,7 +34,7 @@ public class LoginForm extends Form {
      * @param scanner scanner for this menu
      */
     public LoginForm(Scanner scanner) {
-        super("Login to CAMS:\n", scanner);
+        super(CommonElements.getStatusBar("Login") + "Login to CAMS:\n", scanner);
 
         addInput(new TextBox("User ID", scanner));
         addInput(new TextBox("Password", true, scanner));
