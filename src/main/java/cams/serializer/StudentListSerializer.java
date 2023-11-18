@@ -128,8 +128,8 @@ public class StudentListSerializer {
                             default:
                                 break;
                         }
-                        rowNum++;
                     }
+                    rowNum++;
                 }
                 rowNum++;
             }
@@ -165,8 +165,8 @@ public class StudentListSerializer {
                             default:
                                 break;
                         }
-                        rowNum++;
                     }
+                    rowNum++;
                 }
                 rowNum++;
             }

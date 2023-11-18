@@ -78,8 +78,13 @@ public class CampSerializer {
                 }
 
                 List<String> args = new ArrayList<>();
-                for (Cell cell : row) {
-                    args.add(cell.toString());
+                for (int i = 0; i < 12; i++) {
+                    Cell cell = row.getCell(i);
+                    if (cell == null || cell.getCellType() == CellType.BLANK) {
+                        args.add(""); 
+                    } else {
+                        args.add(cell.toString());
+                    }
                 }
                 campController.createCamp(args.get(0), args.get(1), args.get(2),
                         LocalDate.parse(args.get(3), formatter),
@@ -187,16 +192,16 @@ public class CampSerializer {
                             cell.setCellValue(camp.getStaffInCharge().getUserID());
                             break;
                         case 10:
-                            cell.setCellValue(commaSeparatedAttendee);
+                            cell.setCellValue(commaSeparatedCommittee);
                             break;
                         case 11:
-                            cell.setCellValue(commaSeparatedCommittee);
+                            cell.setCellValue(commaSeparatedAttendee);
                             break;
                         default:
                             break;
                     }
-                    rowNum++;
                 }
+                rowNum++;
             }
 
             try (FileOutputStream fileOut = new FileOutputStream(path)) {

@@ -132,8 +132,8 @@ public class PerformanceReportSerializer {
                         default:
                             break;
                     }
-                    rowNum++;
                 }
+                rowNum++;
             }
 
             try (FileOutputStream fileOut = new FileOutputStream(
