@@ -1,7 +1,6 @@
 package cams.filter;
 
 import cams.camp.Camp;
-import cams.camp.CampController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,6 @@ public class FilterByUserGroup implements FilterStrategy {
 
     @Override
     public List<Camp> filter(List<Camp> camps) {
-        CampController campController = CampController.getInstance();
         List<Camp> filteredCamps = new ArrayList<>();
 
         for (Camp camp : camps) {
