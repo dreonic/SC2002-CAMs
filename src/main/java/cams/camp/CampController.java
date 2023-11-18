@@ -43,13 +43,19 @@ public class CampController {
     public static CampController getInstance() {
         if (campController == null) {
             campController = new CampController();
-            CampSerializer.deserialize();
+            campController.initializeCampTable();
         }
         return campController;
     }
 
+    private void initializeCampTable() {
+        List<Camp> camps = CampSerializer.deserialize("camp_list.xlsx");
+        for (Camp camp : camps)
+            campTable.put(camp.getCampInfo().getCampName().toLowerCase(), camp);
+    }
+
     public static void close() {
-        CampSerializer.serialize();
+        CampSerializer.serialize(campController.getCampTable(), "camp_list.xlsx");
         campController = null;
     }
 

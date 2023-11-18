@@ -41,17 +41,20 @@ public class CampSerializer {
     /**
      * Deserializes camp information from the default Excel file path "src/data/camp_list.xlsx"
      * and updates the {@code CampController} accordingly.
+     *
+     * @return
      */
-    public static void deserialize() {
-        deserialize("src/data/camp_list.xlsx");
-    }
+//    public static List<Camp> deserialize() {
+//        return deserialize("src/data/camp_list.xlsx");
+//    }
 
     /**
      * Deserializes camp information from the specified Excel file path and updates the {@code CampController} accordingly.
      *
      * @param path The file path of the Excel file containing camp information.
      */
-    public static void deserialize(String path) {
+    public static List<Camp> deserialize(String path) throws RuntimeException {
+        List<Camp> result = new ArrayList<>();
         try (FileInputStream fileIn = new FileInputStream(path);
              Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
@@ -81,60 +84,62 @@ public class CampSerializer {
                 for (Cell cell : row) {
                     args.add(cell.toString());
                 }
-                campController.createCamp(args.get(0), args.get(1), args.get(2),
+
+                Camp newCamp = new Camp(
+                        args.get(0), args.get(1), args.get(2),
                         LocalDate.parse(args.get(3), formatter),
                         LocalDate.parse(args.get(4), formatter),
                         LocalDate.parse(args.get(5), formatter),
                         (int) Double.parseDouble(args.get(6)),
                         Boolean.parseBoolean(args.get(7)), args.get(8),
-                        (Staff) UserController.getInstance().getUser(args.get(9)));
+                        (Staff) UserController.getInstance().getUser(args.get(9))
+                );
 
-                Camp newCamp = campController.getCamp(args.get(0));
-                String[] commitees = args.get(10).split(", ");
+                String[] committees = args.get(10).split(", ");
                 String[] attendees = args.get(11).split(", ");
 
-                for (String commitee : commitees) {
-                    Student student = (Student) userController.getUser(commitee);
-                    if (student != null) {
-                        student.setCommitteeFor(newCamp);
-                        newCamp.addCommittee(student);
-                    }
+                for (String committee : committees) {
+                    Student student = (Student) userController.getUser(committee);
+                    if (student == null)
+                        throw new RuntimeException("Student not found in user table!");
+                    student.setCommitteeFor(newCamp);
+                    newCamp.addCommittee(student);
                 }
                 for (String attendee : attendees) {
                     Student student = (Student) userController.getUser(attendee);
-                    if (student != null) {
-                        student.addCamp(newCamp);
-                        newCamp.addAttendee(student);
-                    }
+                    if (student == null)
+                        throw new RuntimeException("Student not found in user table!");
+                    student.addCamp(newCamp);
+                    newCamp.addAttendee(student);
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
+        return result;
     }
 
     /**
      * Serializes camp information to the default Excel file path "src/data/camp_list.xlsx"
      * based on the current state of the {@code CampController}.
      */
-    public static void serialize() {
-        serialize("src/data/camp_list.xlsx");
-    }
+//    public static void serialize() {
+//        serialize(new HashMap<>(), "src/data/camp_list.xlsx");
+//    }
 
     /**
      * Serializes camp information to the specified Excel file path based on the current state of the {@code CampController}.
      *
      * @param path The file path where the camp information should be serialized to.
      */
-    public static void serialize(String path) {
+    public static void serialize(Map<String, Camp> campTable, String path) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             var sheet = workbook.createSheet("outputSheet");
-            Map<String, Camp> campTable = CampController.getInstance().getCampTable();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
             Row headerRow = sheet.createRow(0);
             List<String> header = List.of("Name", "Location", "Description", "Start Date",
                     "End Date", "Registration Deadline", "Total Slots",
-                    "Is Visible", "User Group", "Staff in Charge", "Commitee Members", "Attendees");
+                    "Is Visible", "User Group", "Staff in Charge", "Committee Members", "Attendees");
             for (int i = 0; i < 12; i++) {
                 Cell cell = headerRow.createCell(i);
                 cell.setCellValue(header.get(i));
