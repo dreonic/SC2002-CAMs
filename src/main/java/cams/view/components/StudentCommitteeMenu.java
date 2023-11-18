@@ -56,9 +56,9 @@ public class StudentCommitteeMenu extends SelectionMenu {
             }
         }));
 
-        addItem(new ActionableItem("Generate Attendance List", new ItemAction() {
+        addItem(new ActionableItem("Generate Student List", new ItemAction() {
             public void execute() {
-                
+                displayController.setNextDisplay(new StudentListFilterMenu(scanner));
             }
         }));
 
