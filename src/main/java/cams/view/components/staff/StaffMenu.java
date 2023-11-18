@@ -1,6 +1,5 @@
 package cams.view.components.staff;
 
-import cams.camp.CampController;
 import cams.domain.Staff;
 import cams.domain.StaffController;
 import cams.user.AuthController;
@@ -21,9 +20,7 @@ public class StaffMenu extends SelectionMenu {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();
         StaffController staffController = StaffController.getInstance();
-        CampController campController = CampController.getInstance();
         Staff currentUser = staffController.getCurrentStaff();
-        StringBuilder campList = new StringBuilder();
 
         if (currentUser == null) {
             throw new IllegalStateException("No staff has been assigned to the Staff Controller class");
