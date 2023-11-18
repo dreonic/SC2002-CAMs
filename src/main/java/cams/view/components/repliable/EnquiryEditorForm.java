@@ -17,19 +17,19 @@ import java.util.Scanner;
 public class EnquiryEditorForm extends Form {
     public EnquiryEditorForm(Scanner scanner, Enquiry enquiry) {
         super(scanner);
-        CampController campController = CampController.getInstance();
-        DisplayController displayController = DisplayController.getInstance();
-        Camp camp = campController.getCurrentCamp();
-
-        setTitle("Edit enquiry:\n");
-
-        addInput(new TextBox("New Enquiry", scanner));
 
         setAction(new ItemAction() {
             public void execute() {
+                CampController campController = CampController.getInstance();
+                DisplayController displayController = DisplayController.getInstance();
+                Camp camp = campController.getCurrentCamp();
+                Map<String, String> values = getValues();
                 EnquiryEditor enquiryEditor = new EnquiryEditor(camp);
 
-                Map<String, String> values = getValues();
+                setTitle("Edit enquiry\n");
+
+                addInput(new TextBox("New Enquiry", scanner));
+
                 enquiryEditor.edit(
                         enquiry,
                         values.get("New Enquiry"));
