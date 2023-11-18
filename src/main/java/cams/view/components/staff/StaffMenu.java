@@ -29,7 +29,7 @@ public class StaffMenu extends SelectionMenu {
             throw new IllegalStateException("No staff has been assigned to the Staff Controller class");
         }
 
-        setPrompt(CommonElements.getHeader("Staff") + "\n"
+        setPrompt(CommonElements.getHeader("Staff")
                 + "Welcome to CAMs, " + currentUser.getName() + "!\n");
 
         addItem(new ActionableItem("Change Password", new ItemAction() {
