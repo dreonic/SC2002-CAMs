@@ -117,6 +117,9 @@ public class CampController {
      * @param name The name of the camp to delete.
      */
     public void deleteCamp(String name) throws RuntimeException {
+        if (campTable.get(name.toLowerCase()) == null) {
+            throw new RuntimeException("No camp found with this name!");
+        }
         if (campTable.get(name.toLowerCase()).getAttendees().isEmpty())
             campTable.remove(name.toLowerCase());
         else
@@ -129,9 +132,8 @@ public class CampController {
      * @return A {@code HashMap} containing the performance report.
      */
     public Map<Student, Integer> getPerformanceReport(String campName) {
-        Map<Student, Integer> performanceReport = new HashMap<>(
-                campTable.get(campName).getCommittee());
-        return performanceReport;
+        return new HashMap<>(
+                getCamp(campName).getCommittee());
     }
 
     /**
@@ -140,7 +142,7 @@ public class CampController {
      * @return A {@code Set} containing the attendance list.
      */
     public List<Student> getAttendanceList(String campName) {
-        Camp camp = campTable.get(campName);
+        Camp camp = getCamp(campName);
         return camp.getAttendees();
     }
 
