@@ -6,6 +6,7 @@ import cams.repliable.Enquiry;
 import cams.repliable.EnquiryEditor;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
@@ -23,6 +24,8 @@ public class StaffEnquiryMenu extends SelectionMenu {
             public void execute() {
                 String reply = scanner.nextLine();
                 enquiryEditor.reply(enquiry, reply);
+                displayController.setNextDisplay(new Alert(
+                            "Reply updated!", new StaffViewEnquiryMenu(scanner), scanner));
             }
         }));
 
