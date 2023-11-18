@@ -6,6 +6,7 @@ import cams.camp.CampEditor;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.staff.StaffCampMenu;
@@ -20,7 +21,7 @@ public class EditCampMenu extends SelectionMenu {
         CampController campController = CampController.getInstance();
         Camp camp = campController.getCurrentCamp();
 
-        setPrompt("Edit Camp: \n");
+        setPrompt(CommonElements.getStatusBar("Editing " + camp.getCampInfo().getCampName() + "\n"));
 
         addItem(new ActionableItem("Camp Name", new ItemAction() {
             public void execute() {

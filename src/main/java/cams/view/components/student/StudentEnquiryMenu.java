@@ -11,7 +11,7 @@ import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
-import cams.view.components.repliable.EnquiryEditorForm;
+import cams.view.components.repliable.EditEnquiryForm;
 
 import java.util.Scanner;
 
@@ -29,7 +29,7 @@ public class StudentEnquiryMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Edit", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new EnquiryEditorForm(scanner, enquiry));
+                displayController.setNextDisplay(new EditEnquiryForm(scanner, enquiry));
             }
         }));
 
@@ -48,7 +48,12 @@ public class StudentEnquiryMenu extends SelectionMenu {
 
         addItem(new ActionableItem("View Reply", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new Alert(enquiry.getReply(), new StudentEnquiryMenu(scanner, enquiry), scanner));
+                if(enquiry.getReply() == null){
+                    displayController.setNextDisplay(new Alert("No reply yet", new StudentViewEnquiryMenu(scanner), scanner));
+                }
+                else{
+                    displayController.setNextDisplay(new Alert(enquiry.getReply(), new StudentEnquiryMenu(scanner, enquiry), scanner));
+                }
             }
         }));
 
