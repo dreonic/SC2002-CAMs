@@ -65,7 +65,7 @@ public class CampController {
     private void initializeCampTable() {
         List<Camp> camps = CampSerializer.deserialize(campPath);
         for (Camp camp : camps)
-            campTable.put(camp.getCampInfo().getCampName().toLowerCase(), camp);
+            createCamp(camp);
     }
 
     /**
@@ -100,6 +100,11 @@ public class CampController {
                 isVisible, userGroup, staffInCharge);
         campTable.put(campName.toLowerCase(), newCamp);
         staffInCharge.addCamp(newCamp);
+    }
+
+    public void createCamp(Camp newCamp) {
+        campTable.put(newCamp.getCampInfo().getCampName().toLowerCase(), newCamp);
+        newCamp.getStaffInCharge().addCamp(newCamp);
     }
 
     /**
