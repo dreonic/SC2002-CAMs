@@ -25,7 +25,7 @@ public class StaffEnquiryMenu extends SelectionMenu {
                 String reply = scanner.nextLine();
                 enquiryEditor.reply(enquiry, reply);
                 displayController.setNextDisplay(new Alert(
-                            "Reply added!", new StaffViewEnquiryMenu(scanner), scanner));
+                            "Reply changed!", new StaffViewEnquiryMenu(scanner), scanner));
             }
         }));
 
