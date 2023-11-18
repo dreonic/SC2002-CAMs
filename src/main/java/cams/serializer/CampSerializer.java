@@ -107,6 +107,7 @@ public class CampSerializer {
                     student.addCamp(newCamp);
                     newCamp.addAttendee(student);
                 }
+                result.add(newCamp);
             }
         } catch (IOException ignored) {
         }
