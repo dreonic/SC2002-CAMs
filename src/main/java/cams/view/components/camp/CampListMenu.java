@@ -27,9 +27,10 @@ public class CampListMenu extends SelectionMenu {
         setPrompt(CommonElements.getStatusBar("View Camp Details"));
 
         if (currentUser instanceof Student) {
+            Student student = (Student) currentUser;
             for (Camp camp : camps) {
-                if (("NTU".equalsIgnoreCase(camp.getUserGroup()) || currentUser.getFaculty().equalsIgnoreCase(camp.getUserGroup()))
-                    && camp.getCampInfo().getIsVisible())
+                if (("NTU".equalsIgnoreCase(camp.getUserGroup()) || student.getFaculty().equalsIgnoreCase(camp.getUserGroup()))
+                    && camp.getCampInfo().getIsVisible() && !student.getCamps().contains(camp))
                 addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {
                     @Override
                     public void execute() {
