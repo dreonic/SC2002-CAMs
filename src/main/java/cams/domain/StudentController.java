@@ -85,12 +85,16 @@ public class StudentController {
                     startDate2 = camp.getCampDate().getStartDate();
             LocalDate endDate1 = registeredCamp.getCampDate().getEndDate(), endDate2 = camp.getCampDate().getEndDate();
             if (!(startDate1.isAfter(endDate2) || startDate2.isAfter(endDate1)) || startDate1.isEqual(endDate2) || startDate2.isEqual(endDate1)) {
-                throw new RuntimeException("Conflicting camp schedule with " + registeredCampName + "!");
+                throw new RuntimeException("Failed to register, conflicting camp schedule with " + registeredCampName + "!");
             }
         }
 
-        if (student.getCamps().contains(camp)) {
-            throw new RuntimeException("Current student already registered for this camp!");
+        if (camp.getAttendees().contains(student)) {
+            throw new RuntimeException("Failed to register, current student already registered for this camp!");
+        }
+
+        if(camp.getBlacklist().contains(student)) {
+            throw new RuntimeException("Failed to register, current student already withdrew from this camp!");
         }
 
         if (isCommittee && student.getCommitteeFor() != null) {
@@ -122,5 +126,6 @@ public class StudentController {
             throw new RuntimeException("Cannot withdraw! Student is not registered for this camp!");
         }
         student.removeCamp(camp);
+        camp.removeAttendee(student);
     }
 }

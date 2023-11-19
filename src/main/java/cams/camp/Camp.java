@@ -30,6 +30,7 @@ public class Camp {
     private final Set<Enquiry> enquiries;
     private final Set<Suggestion> suggestions;
     private final Set<Student> attendees;
+    private final Set<Student> blacklist;
     private final Map<Student, Integer> committee;
 
     /**
@@ -61,6 +62,7 @@ public class Camp {
         this.enquiries = new HashSet<>();
         this.suggestions = new HashSet<>();
         this.attendees = new HashSet<>();
+        this.blacklist = new HashSet<>();
         this.committee = new HashMap<>();
     }
 
@@ -180,5 +182,10 @@ public class Camp {
 
     public void removeAttendee(Student student) {
         attendees.remove(student);
+        blacklist.add(student);
+    }
+
+    public Set<Student> getBlacklist() {
+        return blacklist;
     }
 }
