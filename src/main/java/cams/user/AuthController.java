@@ -2,7 +2,6 @@ package cams.user;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import cams.camp.CampController;
 import cams.camp.CampFilterController;
 
 public class AuthController {
