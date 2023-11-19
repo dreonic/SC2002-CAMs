@@ -36,7 +36,7 @@ public class StudentStudentListFilterMenu extends SelectionMenu {
             }
         }));
 
-        addItem(new ActionableItem("Generate both.", new ItemAction() {
+        addItem(new ActionableItem("Generate combined list.", new ItemAction() {
             public void execute() {
                 StudentListSerializer.serialize(camp, "none");
                 displayController.setNextDisplay(new Alert(

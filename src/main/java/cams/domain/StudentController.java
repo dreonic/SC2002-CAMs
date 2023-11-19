@@ -120,7 +120,7 @@ public class StudentController {
      */
     public void withdraw(Camp camp) {
         if (student.getCommitteeFor() == camp) {
-            throw new RuntimeException("Student committees are not allowed to withdraw!");
+            throw new RuntimeException("Committee members are not allowed to withdraw!");
         }
         if (!student.getCamps().contains(camp)) {
             throw new RuntimeException("Cannot withdraw! Student is not registered for this camp!");

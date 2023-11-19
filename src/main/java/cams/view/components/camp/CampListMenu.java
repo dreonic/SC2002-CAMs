@@ -24,7 +24,7 @@ public class CampListMenu extends SelectionMenu {
         CampController campController = CampController.getInstance();
         AuthController authController = AuthController.getInstance();
         User currentUser = authController.getCurrentUser();
-        setPrompt(CommonElements.getStatusBar("View camp details"));
+        setPrompt(CommonElements.getStatusBar("View Camp Details"));
 
         if (currentUser instanceof Student) {
             for (Camp camp : camps) {
