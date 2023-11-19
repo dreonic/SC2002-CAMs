@@ -23,7 +23,7 @@ public class CampListMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         CampController campController = CampController.getInstance();
         AuthController authController = AuthController.getInstance();
-        setPrompt(CommonElements.getStatusBar("View camp details \n"));
+        setPrompt(CommonElements.getStatusBar("View camp details"));
 
         for (Camp camp : camps) {
             addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {

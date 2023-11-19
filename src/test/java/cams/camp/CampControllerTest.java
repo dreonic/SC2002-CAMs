@@ -24,8 +24,8 @@ public class CampControllerTest {
 
     @BeforeAll
     static void initializeControllers() {
-        UserController.getInstance();
-        CampController.getInstance();
+        UserController.getInstance("test_student_list.xlsx", "test_staff_list.xlsx");
+        CampController.getInstance("test_camp_list.xlsx");
     }
 
     @AfterAll

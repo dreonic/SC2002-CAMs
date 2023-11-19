@@ -29,7 +29,13 @@ public class StudentEnquiryMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Edit", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new EditEnquiryForm(scanner, enquiry));
+                if(enquiry.getReply() == null) {
+                    displayController.setNextDisplay(new EditEnquiryForm(scanner, enquiry));    
+                }
+                else {
+                    displayController.setNextDisplay(new Alert("Enquiry cannot be edited", new StudentViewEnquiryMenu(scanner), scanner));
+                }
+                
             }
         }));
 

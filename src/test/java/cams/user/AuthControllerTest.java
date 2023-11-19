@@ -11,7 +11,7 @@ public class AuthControllerTest {
     @BeforeAll
     static void initializeControllers() {
         AuthController.getInstance();
-        UserController.getInstance();
+        UserController.getInstance("test_student_list.xlsx", "test_staff_list.xlsx");
     }
 
     @BeforeAll
