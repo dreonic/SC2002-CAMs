@@ -5,6 +5,7 @@ import cams.domain.StudentController;
 import cams.repliable.Enquiry;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
@@ -17,12 +18,13 @@ public class StudentViewEnquiryMenu extends SelectionMenu {
         super(scanner);
         StudentController studentController = StudentController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
-
         Student currentUser = studentController.getCurrentStudent();
         List<Enquiry> enquiriesList = new ArrayList<Enquiry>(currentUser.getEnquiries());
 
+        setPrompt(CommonElements.getStatusBar("View Enquiries"));
+
         for (Enquiry enquiry : enquiriesList) {
-            addItem(new ActionableItem(enquiry.getQuestion(), new ItemAction() {
+            addItem(new ActionableItem("\"" + enquiry.getQuestion() + "\"", new ItemAction() {
                 public void execute() {
                     displayController.setNextDisplay(new StudentEnquiryMenu(scanner, enquiry));
                 }

@@ -6,10 +6,11 @@ import cams.domain.Student;
 import cams.domain.StudentController;
 import cams.repliable.EnquiryEditor;
 import cams.view.DisplayController;
+import cams.view.base.CommonElements;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
-import cams.view.components.camp.CampMenu;
+import cams.view.components.student.StudentMenu;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -23,7 +24,7 @@ public class SubmitEnquiryForm extends Form {
         StudentController studentController = StudentController.getInstance();
         Student currentUser = studentController.getCurrentStudent();
 
-        setTitle("Submit a new Enquiry:\n");
+        setTitle(CommonElements.getStatusBar("Submit Enquiry") + "\n" + "Camp: " + camp.getCampInfo().getCampName() + "\n");
 
         addInput(new TextBox("Question", scanner));
 
@@ -37,7 +38,7 @@ public class SubmitEnquiryForm extends Form {
                         values.get("Question"),
                         currentUser);
 
-                displayController.setNextDisplay(new CampMenu(scanner));
+                displayController.setNextDisplay(new StudentMenu(scanner));
             }
         });
     }

@@ -9,7 +9,7 @@ public class Enquiry extends Repliable {
     public Enquiry(String question, Student student) {
         super(student);
         this.question = question;
-        reply = null;
+        reply = "";
     }
 
     public String getQuestion() {

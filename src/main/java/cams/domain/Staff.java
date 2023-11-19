@@ -49,4 +49,8 @@ public class Staff extends User {
     public void addCamp(Camp camp) {
         campsCreated.add(camp);
     }
-}
+
+    public void removeCamp(Camp camp) {
+        campsCreated.remove(camp);
+    }
+;}

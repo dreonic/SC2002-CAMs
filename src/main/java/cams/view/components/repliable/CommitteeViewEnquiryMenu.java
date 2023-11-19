@@ -5,6 +5,7 @@ import cams.camp.CampController;
 import cams.repliable.Enquiry;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.student.StudentCommitteeMenu;
@@ -20,6 +21,8 @@ public class CommitteeViewEnquiryMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
         List<Enquiry> enquiriesList = new ArrayList<Enquiry>(camp.getEnquiries());
+
+        setPrompt(CommonElements.getStatusBar("View Enquiries"));
 
         for (Enquiry enquiry : enquiriesList) {
             addItem(new ActionableItem(enquiry.getQuestion(), new ItemAction() {

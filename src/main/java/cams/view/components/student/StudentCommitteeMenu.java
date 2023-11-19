@@ -5,6 +5,7 @@ import cams.camp.CampController;
 import cams.view.DisplayController;
 import cams.view.base.*;
 import cams.view.components.repliable.CommitteeViewEnquiryMenu;
+import cams.view.components.repliable.CommitteeViewSuggestionMenu;
 import cams.view.components.repliable.SubmitSuggestionForm;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.u8.U8_Grids;
@@ -47,6 +48,12 @@ public class StudentCommitteeMenu extends SelectionMenu {
         addItem(new ActionableItem("Submit Suggestion", new ItemAction() {
             public void execute() {
                 displayController.setNextDisplay(new SubmitSuggestionForm(scanner));
+            }
+        }));
+
+        addItem(new ActionableItem("View Suggestions", new ItemAction() {
+            public void execute() {
+                displayController.setNextDisplay(new CommitteeViewSuggestionMenu(scanner));
             }
         }));
 

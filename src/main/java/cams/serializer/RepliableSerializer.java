@@ -40,12 +40,10 @@ public class RepliableSerializer {
             CampController campController = CampController.getInstance();
             UserController userController = UserController.getInstance();
             for (Row row : sheet) {
-                // Skip header
                 if (row.getRowNum() == 0) {
                     continue;
                 }
 
-                // End if meet empty row
                 boolean isRowEmpty = true;
                 for (Cell cell : row) {
                     if (cell != null && cell.getCellType() != CellType.BLANK) {

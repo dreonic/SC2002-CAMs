@@ -6,6 +6,7 @@ import cams.domain.Student;
 import cams.domain.StudentController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
@@ -22,8 +23,10 @@ public class StudentViewRegisteredCampMenu extends SelectionMenu {
         Student currentUser = studentController.getCurrentStudent();
         List<Camp> campsRegistered = currentUser.getCamps();
 
+        setPrompt(CommonElements.getStatusBar("View Registered Camps"));
+
         for (Camp camp : campsRegistered) {
-            if (currentUser.getCommitteeFor() != camp) {
+            if (camp != currentUser.getCommitteeFor()) {
                 addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {
                     public void execute() {
                         campController.setCurrentCamp(camp);

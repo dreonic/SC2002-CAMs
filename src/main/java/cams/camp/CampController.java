@@ -137,11 +137,14 @@ public class CampController {
      * @param name The name of the camp to delete.
      */
     public void deleteCamp(String name) throws RuntimeException {
-        if (campTable.get(name.toLowerCase()) == null) {
+        Camp camp = campTable.get(name.toLowerCase());
+        if (camp == null) {
             throw new RuntimeException("No camp found with this name!");
         }
-        if (campTable.get(name.toLowerCase()).getAttendees().isEmpty())
+        if (camp.getAttendees().isEmpty()) {
+            camp.getStaffInCharge().removeCamp(camp);
             campTable.remove(name.toLowerCase());
+        }
         else
             throw new RuntimeException("Camp must have no attendees to be deleted!");
     }

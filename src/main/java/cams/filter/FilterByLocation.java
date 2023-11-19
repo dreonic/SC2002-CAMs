@@ -9,7 +9,7 @@ public class FilterByLocation implements FilterStrategy {
     private String location;
 
     public FilterByLocation() {
-        location = null;
+        location = "";
     }
 
     public FilterByLocation(String location) {
@@ -33,6 +33,6 @@ public class FilterByLocation implements FilterStrategy {
 
     @Override
     public String toString() {
-        return "Location: " + (location != null ? location : "");
+        return "Location: " + (!location.isBlank() ? location : "");
     }
 }

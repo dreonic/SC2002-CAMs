@@ -4,6 +4,8 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.camp.CampEditor;
 import cams.view.DisplayController;
+import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
@@ -15,7 +17,7 @@ public class EditLocationForm extends Form {
     public EditLocationForm(Scanner scanner) {
         super(scanner);
 
-        setTitle("Edit Camp Location: \n");
+        setTitle(CommonElements.getStatusBar("Edit Camp Location"));
 
         addInput(new TextBox("New Camp Location", scanner));
 
@@ -29,7 +31,7 @@ public class EditLocationForm extends Form {
 
                 CampEditor campEditor = new CampEditor(camp);
                 campEditor.editLocation(newLocation);
-                displayController.setNextDisplay(new EditCampMenu(scanner));
+                displayController.setNextDisplay(new Alert("Location successfully changed!", new EditCampMenu(scanner), scanner));
             }
         });
     }

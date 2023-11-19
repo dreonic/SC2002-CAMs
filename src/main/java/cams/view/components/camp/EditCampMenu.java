@@ -21,11 +21,16 @@ public class EditCampMenu extends SelectionMenu {
         CampController campController = CampController.getInstance();
         Camp camp = campController.getCurrentCamp();
 
-        setPrompt(CommonElements.getStatusBar("Editing " + camp.getCampInfo().getCampName() + "\n"));
+        setPrompt(CommonElements.getStatusBar("Editing " + camp.getCampInfo().getCampName()));
 
         addItem(new ActionableItem("Camp Name", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new EditNameForm(scanner));
+                if(camp.getAttendees().isEmpty()) {
+                    displayController.setNextDisplay(new EditNameForm(scanner));
+                }
+                else {
+                    displayController.setNextDisplay(new Alert("Cannot edit camp name!", new EditCampMenu(scanner), scanner));
+                }
             }
         }));
 

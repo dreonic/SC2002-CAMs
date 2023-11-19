@@ -6,6 +6,7 @@ import cams.domain.Staff;
 import cams.domain.StaffController;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
@@ -21,6 +22,8 @@ public class StaffViewCampMenu extends SelectionMenu {
 
         Staff currentUser = staffController.getCurrentStaff();
         List<Camp> campsCreated = currentUser.getCamps();
+
+        setPrompt(CommonElements.getStatusBar("View Created Camps"));
 
         for (Camp camp : campsCreated) {
             addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {

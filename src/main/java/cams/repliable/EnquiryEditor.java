@@ -24,7 +24,7 @@ public class EnquiryEditor implements RepliableEditorInterface {
     @Override
     public void edit(Repliable repliable, String newContent) {
         Enquiry enquiry = (Enquiry) repliable;
-        if (enquiry.getReply() == null) {
+        if (enquiry.getReply().isBlank()) {
             enquiry.setQuestion(newContent);
         }
     }
