@@ -2,6 +2,9 @@ package cams.user;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import cams.camp.CampController;
+import cams.camp.CampFilterController;
+
 public class AuthController {
     private static AuthController authController;
     private final BCryptPasswordEncoder passwordEncoder;
@@ -39,6 +42,7 @@ public class AuthController {
 
     public void logout() {
         currentUser = null;
+        CampFilterController.close();
     }
 
     public User getCurrentUser() {

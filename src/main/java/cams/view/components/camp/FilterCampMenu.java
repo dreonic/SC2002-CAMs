@@ -31,12 +31,6 @@ public class FilterCampMenu extends SelectionMenu {
         StringBuilder promptBuilder = new StringBuilder(CommonElements.getStatusBar("View Camps"));
         promptBuilder.append("\nCurrent filters: ");
 
-        if (currentUser instanceof Student) {
-            filterController.clearFilterStrategies();
-            filterController.addFilterStrategy(new FilterByVisibility(true));
-            filterController.addFilterStrategy(new FilterByUserGroup(currentUser.getFaculty()));
-        }
-
         if (filterController.getFilterStrategies().isEmpty()) {
             promptBuilder.append("-");
         }
