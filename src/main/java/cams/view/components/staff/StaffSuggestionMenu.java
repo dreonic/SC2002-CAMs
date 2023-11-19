@@ -2,6 +2,7 @@ package cams.view.components.staff;
 
 import cams.camp.Camp;
 import cams.camp.CampController;
+import cams.domain.Student;
 import cams.repliable.Suggestion;
 import cams.repliable.SuggestionEditor;
 import cams.view.DisplayController;
@@ -31,6 +32,8 @@ public class StaffSuggestionMenu extends Form {
                 Map<String, String> values = getValues();
 
                 if(values.get("approval").equalsIgnoreCase("Y")) {
+                    Student student = suggestion.getStudent();
+                    camp.incrementCommitteePoint(student);
                     suggestionEditor.reply(suggestion, "Approve");
                     displayController.setNextDisplay(new Alert("Suggestion approved!", new StaffViewSuggestionMenu(scanner), scanner));
                 }

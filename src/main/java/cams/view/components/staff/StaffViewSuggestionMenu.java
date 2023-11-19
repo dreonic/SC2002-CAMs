@@ -27,10 +27,9 @@ public class StaffViewSuggestionMenu extends SelectionMenu {
         for (Suggestion suggestion : suggestionList) {
             addItem(new ActionableItem(suggestion.getContent(), new ItemAction() {
                 public void execute() {
-                    if(suggestion.getIsApproved() == true) {
+                    if (suggestion.getIsApproved()) {
                         displayController.setNextDisplay(new Alert("Suggestion already approved!", new StaffViewSuggestionMenu(scanner), scanner));
-                    }
-                    else {
+                    } else {
                         displayController.setNextDisplay(new StaffSuggestionMenu(scanner, suggestion));
                     }
                 }
