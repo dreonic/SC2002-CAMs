@@ -64,13 +64,16 @@ public class RepliableSerializer {
                     Student student = (Student) userController.getUser(args.get(1));
                     Enquiry enquiry = (Enquiry) editor.create(args.get(2), student);
                     student.addEnquiry(enquiry);
-                    editor.reply(enquiry, args.get(3));
-
+                    if (args.get(3) != "") {
+                        editor.reply(enquiry, args.get(3));
+                    }
                 } else {
                     SuggestionEditor editor = new SuggestionEditor(campController.getCamp(args.get(0)));
                     Student student = (Student) userController.getUser(args.get(1));
                     Suggestion suggestion = (Suggestion) editor.create(args.get(2), student);
-                    editor.reply(suggestion, null);
+                    if (Boolean.parseBoolean(args.get(3))) {
+                        editor.reply(suggestion, null);
+                    }
                 }
             }
         } catch (IOException e) {

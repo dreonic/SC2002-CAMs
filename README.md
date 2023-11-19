@@ -4,40 +4,30 @@
 camps within NTU. The application will act as a centralized hub for all staff and
 students.
 
-## Prerequisites
+## Building
 
-Install the [Java Development Kit](https://www.oracle.com/java/technologies/downloads/) (minimum version 15)
-and [Apache Maven](https://maven.apache.org/download.cgi).
-
-## Installation
-
-1. Run the following command in the root directory to build the application. Build files will be located in `target/`
-   and the application will be compiled in the `.jar` file.
+1. Install the [Java Development Kit](https://www.oracle.com/java/technologies/downloads/) (minimum version 17)
+   and [Apache Maven](https://maven.apache.org/download.cgi).
+2. Clone this repository to your machine.
+3. Clean existing builds, build the application, package the application into a Java Archive (`jar` file) and generate
+   the documentation by running the following command in the project directory (`SC2002-CAMs/`).
 
 ```bash
-mvn clean package
+mvn clean package site
 ```
 
-2. Run the application `cams.App` inside the `.jar` file using the following command.
+All build outputs (`jar` and `class` files) are stored inside the target directory (`SC2002-CAMs/target/`). The
+Javadoc is generated at `
+SC2002-CAMs/target/site/apidocs/`.
+
+## Running
+
+Execute the application through the Java Archive (`jar` file) by running the following command.
 
 ```bash
-java -cp target/SC2002-CAMs-1.0-SNAPSHOT.jar cams.App
+java -jar target/SC2002-CAMs-1.0-SNAPSHOT.jar
 ```
 
-## Generating Documentation
+## Documentation
 
-1. Run the following command to generate application documentation from Javadoc comments.
-
-```bash
-mvn clean site
-```
-
-2. Access the application documentation site from `target/site/apidocs/index.html`.
-
-## Building App and Generating Documentation
-
-1. Run the following command in the root directory.
-
-```bash
-mvn clean package site 
-```
+View the Javadoc generated at `SC2002-CAMs/target/site/apidocs/index.html`.
