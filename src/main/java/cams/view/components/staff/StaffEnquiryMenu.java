@@ -20,7 +20,7 @@ public class StaffEnquiryMenu extends SelectionMenu {
         CampController campController = CampController.getInstance();
         Camp camp = campController.getCurrentCamp();
 
-        setPrompt(CommonElements.getStatusBar("Enquiry Menu") + "Camp: " + camp.getCampInfo().getCampName() + "\n");
+        setPrompt(CommonElements.getStatusBar("Enquiry Menu") + "\n" + "\"" + enquiry.getQuestion() + "\"" + "\n" + "Camp: " + camp.getCampInfo().getCampName() + "\n");
 
         addItem(new ActionableItem("Reply", new ItemAction() {
             public void execute() {
