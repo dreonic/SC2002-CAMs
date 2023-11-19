@@ -6,8 +6,10 @@ import cams.repliable.Suggestion;
 import cams.repliable.SuggestionEditor;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+import cams.view.components.camp.CampMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +27,12 @@ public class StaffViewSuggestionMenu extends SelectionMenu {
         for (Suggestion suggestion : suggestionList) {
             addItem(new ActionableItem(suggestion.getContent(), new ItemAction() {
                 public void execute() {
-                    suggestionEditor.setCurrentSuggestion(suggestion);
-                    displayController.setNextDisplay(new StaffSuggestionMenu(scanner));
+                    if (suggestion.getIsApproved()) {
+                        displayController.setNextDisplay(new Alert("Suggestion already approved!", new StaffViewSuggestionMenu(scanner), scanner));
+                    } else {
+                        suggestionEditor.setCurrentSuggestion(suggestion);
+                        displayController.setNextDisplay(new StaffSuggestionMenu(scanner, suggestionEditor));
+                    }
                 }
             }));
         }
