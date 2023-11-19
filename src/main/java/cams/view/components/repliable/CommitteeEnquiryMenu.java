@@ -9,7 +9,6 @@ import cams.view.base.Alert;
 import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
-import cams.view.components.staff.StaffViewEnquiryMenu;
 import cams.view.components.student.CommitteeViewEnquiryMenu;
 
 import java.util.Scanner;
@@ -26,7 +25,7 @@ public class CommitteeEnquiryMenu extends SelectionMenu {
         addItem(new ActionableItem("Reply", new ItemAction() {
             public void execute() {
                 if(!enquiry.getReply().isBlank()) {
-                    displayController.setNextDisplay(new Alert("Enquiry has already been answered!", new StaffViewEnquiryMenu(scanner), scanner));
+                    displayController.setNextDisplay(new Alert("Enquiry has already been answered!", new CommitteeViewEnquiryMenu(scanner), scanner));
                 }
                 else {
                     displayController.setNextDisplay(new ReplyEnquiryForm(scanner, enquiry));
