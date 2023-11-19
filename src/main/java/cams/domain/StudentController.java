@@ -79,6 +79,11 @@ public class StudentController {
      * @throws RuntimeException If there is a scheduling conflict or other registration issues.
      */
     public void register(Camp camp, Boolean isCommittee) throws RuntimeException {
+
+        if(camp.getBlackList().contains(student)) {
+            throw new RuntimeException("Cannot register for a camp you have withdrawn from!");
+        }
+
         for (Camp registeredCamp : student.getCamps()) {
             String registeredCampName = registeredCamp.getCampInfo().getCampName();
             LocalDate startDate1 = registeredCamp.getCampDate().getStartDate(),
@@ -102,12 +107,12 @@ public class StudentController {
                     "Cannot register as committee! Current student is already a committee for another camp!");
         }
 
+        student.addCamp(camp);
+
         if (isCommittee) {
-            student.addCamp(camp);
             student.setCommitteeFor(camp);
             camp.addCommittee(student);
         } else {
-            student.addCamp(camp);
             camp.addAttendee(student);
         }
     }
@@ -125,6 +130,7 @@ public class StudentController {
         if (!student.getCamps().contains(camp)) {
             throw new RuntimeException("Cannot withdraw! Student is not registered for this camp!");
         }
+        camp.addBlackList(student);
         student.removeCamp(camp);
         camp.removeAttendee(student);
     }

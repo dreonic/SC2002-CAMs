@@ -1,4 +1,4 @@
-package cams.view.components.staff;
+package cams.view.components.repliable;
 
 import cams.camp.Camp;
 import cams.camp.CampController;
@@ -11,6 +11,7 @@ import cams.view.base.CommonElements;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
+import cams.view.components.staff.StaffViewSuggestionMenu;
 
 import java.util.Map;
 import java.util.Scanner;
