@@ -8,7 +8,6 @@ import java.util.List;
 
 public class SuggestionEditor implements RepliableEditorInterface {
     private final Camp camp;
-    private Suggestion currentSuggestion;
 
     public SuggestionEditor(Camp camp) {
         this.camp = camp;
@@ -38,7 +37,7 @@ public class SuggestionEditor implements RepliableEditorInterface {
     @Override
     public void reply(Repliable repliable, Object replyMessage) {
         Suggestion suggestion = (Suggestion) repliable;
-        if (camp.getSuggestions().contains(suggestion)) {
+        if (!suggestion.getIsApproved()) {
             suggestion.setIsApproved(true);
         }
     }
@@ -47,13 +46,4 @@ public class SuggestionEditor implements RepliableEditorInterface {
     public List<Repliable> view() {
         return new ArrayList<>(camp.getSuggestions());
     }
-
-    public Suggestion getCurrentSuggestion() {
-        return currentSuggestion;
-    }
-
-    public void setCurrentSuggestion(Suggestion suggestion) {
-        currentSuggestion = suggestion;
-    }
-
 }

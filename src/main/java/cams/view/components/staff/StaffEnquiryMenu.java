@@ -1,9 +1,12 @@
 package cams.view.components.staff;
 
+import cams.camp.Camp;
+import cams.camp.CampController;
 import cams.repliable.Enquiry;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.repliable.ReplyEnquiryForm;
@@ -14,6 +17,10 @@ public class StaffEnquiryMenu extends SelectionMenu {
     public StaffEnquiryMenu(Scanner scanner, Enquiry enquiry) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();
+        CampController campController = CampController.getInstance();
+        Camp camp = campController.getCurrentCamp();
+
+        setPrompt(CommonElements.getStatusBar("Enquiry Menu") + "Camp: " + camp.getCampInfo().getCampName() + "\n");
 
         addItem(new ActionableItem("Reply", new ItemAction() {
             public void execute() {

@@ -27,7 +27,7 @@ public class ReplyEnquiryForm extends Form {
         AuthController authController = AuthController.getInstance();
         User currentUser = authController.getCurrentUser();
 
-        setTitle(CommonElements.getStatusBar("Reply Enquiry"));
+        setTitle(CommonElements.getStatusBar("Reply Enquiry") + "\n" + "\"" + enquiry.getQuestion() + "\"" + "\n" + "Camp: " + camp.getCampInfo().getCampName() + "\n");
 
         addInput(new TextBox("Reply", scanner));
 

@@ -98,11 +98,12 @@ public class StudentController {
                     "Cannot register as committee! Current student is already a committee for another camp!");
         }
 
-        student.addCamp(camp);
         if (isCommittee) {
+            student.addCamp(camp);
             student.setCommitteeFor(camp);
             camp.addCommittee(student);
         } else {
+            student.addCamp(camp);
             camp.addAttendee(student);
         }
     }

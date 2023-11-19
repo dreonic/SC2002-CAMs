@@ -22,7 +22,7 @@ public class EditEnquiryForm extends Form {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
 
-        setTitle(CommonElements.getStatusBar("Edit Enquiry") + "\n" + "\"" + enquiry.getQuestion() + "\"" + "\n");
+        setTitle(CommonElements.getStatusBar("Edit Enquiry") + "\n" + "\"" + enquiry.getQuestion() + "\"" + "\n" + "Camp: " + camp.getCampInfo().getCampName() + "\n");
 
         addInput(new TextBox("New Enquiry", scanner));
 

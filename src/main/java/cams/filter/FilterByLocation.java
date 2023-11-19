@@ -9,7 +9,7 @@ public class FilterByLocation implements FilterStrategy {
     private String location;
 
     public FilterByLocation() {
-        location = null;
+        location = "";
     }
 
     public FilterByLocation(String location) {

@@ -26,7 +26,7 @@ public class StudentViewRegisteredCampMenu extends SelectionMenu {
         setPrompt(CommonElements.getStatusBar("View Registered Camps"));
 
         for (Camp camp : campsRegistered) {
-            if (currentUser.getCommitteeFor() != camp) {
+            if (camp != currentUser.getCommitteeFor()) {
                 addItem(new ActionableItem(camp.getCampInfo().getCampName(), new ItemAction() {
                     public void execute() {
                         campController.setCurrentCamp(camp);

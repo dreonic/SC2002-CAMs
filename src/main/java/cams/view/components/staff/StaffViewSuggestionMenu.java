@@ -3,9 +3,10 @@ package cams.view.components.staff;
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.repliable.Suggestion;
-import cams.repliable.SuggestionEditor;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
+import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 
@@ -19,14 +20,19 @@ public class StaffViewSuggestionMenu extends SelectionMenu {
         CampController campController = CampController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
-        SuggestionEditor suggestionEditor = new SuggestionEditor(camp);
         List<Suggestion> suggestionList = new ArrayList<Suggestion>(camp.getSuggestions());
+
+        setPrompt(CommonElements.getStatusBar("View Suggestions"));
 
         for (Suggestion suggestion : suggestionList) {
             addItem(new ActionableItem(suggestion.getContent(), new ItemAction() {
                 public void execute() {
-                    suggestionEditor.setCurrentSuggestion(suggestion);
-                    displayController.setNextDisplay(new StaffSuggestionMenu(scanner));
+                    if(suggestion.getIsApproved() == true) {
+                        displayController.setNextDisplay(new Alert("Suggestion has already been approved!", new StaffViewSuggestionMenu(scanner), scanner));
+                    }
+                    else {
+                        displayController.setNextDisplay(new StaffSuggestionMenu(scanner, suggestion));
+                    }
                 }
             }));
         }

@@ -29,7 +29,7 @@ public class EditCampMenu extends SelectionMenu {
                     displayController.setNextDisplay(new EditNameForm(scanner));
                 }
                 else {
-                    displayController.setNextDisplay(new Alert("Cannot edit Camp name!", new EditCampMenu(scanner), scanner));
+                    displayController.setNextDisplay(new Alert("Cannot edit camp name!", new EditCampMenu(scanner), scanner));
                 }
             }
         }));
