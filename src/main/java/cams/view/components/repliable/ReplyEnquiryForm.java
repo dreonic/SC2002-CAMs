@@ -17,6 +17,7 @@ import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
 import cams.view.components.staff.StaffViewEnquiryMenu;
+import cams.view.components.student.CommitteeViewEnquiryMenu;
 
 public class ReplyEnquiryForm extends Form {
     public ReplyEnquiryForm(Scanner scanner, Enquiry enquiry) {

@@ -10,6 +10,7 @@ import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.staff.StaffViewEnquiryMenu;
+import cams.view.components.student.CommitteeViewEnquiryMenu;
 
 import java.util.Scanner;
 

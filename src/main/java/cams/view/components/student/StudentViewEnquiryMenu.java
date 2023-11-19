@@ -8,6 +8,7 @@ import cams.view.base.ActionableItem;
 import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+import cams.view.components.repliable.StudentEnquiryMenu;
 
 import java.util.ArrayList;
 import java.util.List;

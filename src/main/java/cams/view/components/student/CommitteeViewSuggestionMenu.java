@@ -1,4 +1,4 @@
-package cams.view.components.repliable;
+package cams.view.components.student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import cams.view.base.ActionableItem;
 import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
-import cams.view.components.student.StudentCommitteeMenu;
+import cams.view.components.repliable.CommitteeSuggestionMenu;
 
 public class CommitteeViewSuggestionMenu extends SelectionMenu {
     public CommitteeViewSuggestionMenu(Scanner scanner) {
