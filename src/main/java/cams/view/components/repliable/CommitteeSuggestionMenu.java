@@ -5,6 +5,7 @@ import java.util.Scanner;
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.repliable.Suggestion;
+import cams.repliable.SuggestionEditor;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
@@ -19,6 +20,7 @@ public class CommitteeSuggestionMenu extends SelectionMenu {
         DisplayController displayController = DisplayController.getInstance();
         CampController campController = CampController.getInstance();
         Camp camp = campController.getCurrentCamp();
+        SuggestionEditor suggestionEditor = new SuggestionEditor(camp);
 
         setPrompt(CommonElements.getStatusBar("Suggestion Menu") + "\n" + "\"" + suggestion.getContent() + "\"" + "\n" + "Camp: " + camp.getCampInfo().getCampName() + "\n");
 
@@ -29,6 +31,18 @@ public class CommitteeSuggestionMenu extends SelectionMenu {
                 }
                 else {
                     displayController.setNextDisplay(new EditSuggestionForm(scanner, suggestion));
+                }
+            }
+        }));
+
+        addItem(new ActionableItem("Delete", new ItemAction() {
+            public void execute() {
+                if(suggestion.getIsApproved() == true) {
+                    displayController.setNextDisplay(new Alert("Suggestion already approved. Cannot Delete!", new CommitteeViewSuggestionMenu(scanner), scanner));
+                }
+                else {
+                    suggestionEditor.delete(suggestion);
+                    displayController.setNextDisplay(new Alert("Suggestion has been deleted!", new CommitteeViewSuggestionMenu(scanner), scanner));
                 }
             }
         }));
