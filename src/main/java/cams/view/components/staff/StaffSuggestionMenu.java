@@ -22,6 +22,7 @@ public class StaffSuggestionMenu extends Form {
         Camp camp = campController.getCurrentCamp();
         SuggestionEditor suggestionEditor = new SuggestionEditor(camp);
         DisplayController displayController = DisplayController.getInstance();
+        Student student = suggestion.getStudent();
 
         setTitle(CommonElements.getStatusBar("Approve Suggestion") + "\n" + "\"" + suggestion.getContent() + "\"" + "\n" + "Camp: " + camp.getCampInfo().getCampName() + "\n" );
 
@@ -32,7 +33,6 @@ public class StaffSuggestionMenu extends Form {
                 Map<String, String> values = getValues();
 
                 if(values.get("approval").equalsIgnoreCase("Y")) {
-                    Student student = suggestion.getStudent();
                     camp.incrementCommitteePoint(student);
                     suggestionEditor.reply(suggestion, "Approve");
                     displayController.setNextDisplay(new Alert("Suggestion approved!", new StaffViewSuggestionMenu(scanner), scanner));

@@ -104,15 +104,16 @@ public class CampSerializer {
                 String[] attendees = args.get(11).split(", ");
 
                 for (String committeePoint : committees) {
+                    if(committeePoint.isBlank())
+                        continue;
                     String[] committeePointArr = committeePoint.split(": ");
                     String committee = committeePointArr[0];
                     int points = Integer.parseInt(committeePointArr[1]);
-                    if (committee.isBlank())
-                        continue;
                     Student student = (Student) userController.getUser(committee);
                     if (student == null)
                         throw new RuntimeException("Student not found in user table!");
                     student.setCommitteeFor(newCamp);
+                    student.addCamp(newCamp);
                     newCamp.addCommittee(student, points);
                 }
                 for (String attendee : attendees) {
