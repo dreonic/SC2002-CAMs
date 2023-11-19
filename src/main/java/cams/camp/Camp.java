@@ -154,8 +154,12 @@ public class Camp {
         committee.put(student, 0);
     }
 
+    public void addCommittee(Student student, int points) {
+        committee.put(student, points);
+    }
+
     public Map<Student, Integer> getCommittee() {
-        return new HashMap<>(committee);
+        return this.committee;
     }
 
     public List<Student> getAttendees() {
