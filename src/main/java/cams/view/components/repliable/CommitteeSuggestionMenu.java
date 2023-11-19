@@ -11,6 +11,7 @@ import cams.view.base.Alert;
 import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
+import cams.view.components.student.CommitteeViewSuggestionMenu;
 
 public class CommitteeSuggestionMenu extends SelectionMenu {
     public CommitteeSuggestionMenu(Scanner scanner, Suggestion suggestion) {

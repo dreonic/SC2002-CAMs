@@ -2,7 +2,6 @@ package cams.view.components.student;
 
 import cams.camp.Camp;
 import cams.camp.CampController;
-import cams.domain.Student;
 import cams.domain.StudentController;
 import cams.view.DisplayController;
 import cams.view.base.*;
@@ -19,7 +18,6 @@ public class StudentRegisteredCampMenu extends SelectionMenu {
         StudentController studentController = StudentController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
-        Student currentUser = studentController.getCurrentStudent();
 
         AsciiTable info = new AsciiTable();
         info.getContext().setGrid(U8_Grids.borderDouble());
@@ -49,8 +47,7 @@ public class StudentRegisteredCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Withdraw", new ItemAction() {
             public void execute() {
-                currentUser.removeCamp(camp);
-                camp.removeAttendee(currentUser);
+                studentController.withdraw(camp);
                 displayController.setNextDisplay(new Alert("Withdrawn from Camp successfully.", new StudentViewRegisteredCampMenu(scanner), scanner));
             }
         }));

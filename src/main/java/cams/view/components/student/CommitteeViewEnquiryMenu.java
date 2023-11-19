@@ -1,4 +1,4 @@
-package cams.view.components.repliable;
+package cams.view.components.student;
 
 import cams.camp.Camp;
 import cams.camp.CampController;
@@ -8,7 +8,7 @@ import cams.view.base.ActionableItem;
 import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
-import cams.view.components.student.StudentCommitteeMenu;
+import cams.view.components.repliable.CommitteeEnquiryMenu;
 
 import java.util.ArrayList;
 import java.util.List;

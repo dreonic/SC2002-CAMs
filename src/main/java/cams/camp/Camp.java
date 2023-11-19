@@ -31,6 +31,7 @@ public class Camp {
     private final Set<Suggestion> suggestions;
     private final Set<Student> attendees;
     private final Map<Student, Integer> committee;
+    private final Set<Student> blackList;
 
     /**
      * Constructs a new camp with the specified details.
@@ -62,6 +63,7 @@ public class Camp {
         this.suggestions = new HashSet<>();
         this.attendees = new HashSet<>();
         this.committee = new HashMap<>();
+        this.blackList = new HashSet<>();
     }
 
     public Staff getStaffInCharge() {
@@ -180,5 +182,15 @@ public class Camp {
 
     public void removeAttendee(Student student) {
         attendees.remove(student);
+    }
+
+    public void addBlackList(Student student) {
+        blackList.add(student);
+    }
+
+    public List<Student> getBlackList() {
+        if(blackList == null) 
+            return new ArrayList<>();
+        return new ArrayList<>(blackList);
     }
 }

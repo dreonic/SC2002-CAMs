@@ -10,6 +10,7 @@ import cams.view.base.CommonElements;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
+import cams.view.components.student.CommitteeViewSuggestionMenu;
 
 import java.util.Map;
 import java.util.Scanner;
