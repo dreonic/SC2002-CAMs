@@ -18,7 +18,6 @@ import java.util.Scanner;
 public class CampListMenu extends SelectionMenu {
     public CampListMenu(List<Camp> camps, Scanner scanner) {
         super(scanner);
-        // CampMenu
 
         DisplayController displayController = DisplayController.getInstance();
         CampController campController = CampController.getInstance();
