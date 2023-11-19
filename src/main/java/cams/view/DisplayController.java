@@ -61,6 +61,10 @@ public class DisplayController {
         return displayController;
     }
 
+    public static void close() {
+        displayController = null;
+    }
+
     /**
      * Returns an initialized singleton instance.
      *
