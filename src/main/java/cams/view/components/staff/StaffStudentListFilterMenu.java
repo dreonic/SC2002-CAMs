@@ -1,4 +1,4 @@
-package cams.view.components.student;
+package cams.view.components.staff;
 
 import cams.camp.Camp;
 import cams.camp.CampController;
@@ -8,12 +8,11 @@ import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
-import cams.view.components.staff.StaffCampMenu;
 
 import java.util.Scanner;
 
-public class StudentListFilterMenu extends SelectionMenu {
-    public StudentListFilterMenu(Scanner scanner) {
+public class StaffStudentListFilterMenu extends SelectionMenu {
+    public StaffStudentListFilterMenu(Scanner scanner) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = CampController.getInstance().getCurrentCamp();
