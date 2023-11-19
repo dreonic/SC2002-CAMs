@@ -48,7 +48,7 @@ public class StudentRegisteredCampMenu extends SelectionMenu {
         addItem(new ActionableItem("Withdraw", new ItemAction() {
             public void execute() {
                 studentController.withdraw(camp);
-                displayController.setNextDisplay(new Alert("Withdrawn from Camp successfully.", new StudentViewRegisteredCampMenu(scanner), scanner));
+                displayController.setNextDisplay(new Alert("Withdrawn from Camp successfully.", new StudentMenu(scanner), scanner));
             }
         }));
 

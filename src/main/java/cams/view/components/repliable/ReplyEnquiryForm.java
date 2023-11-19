@@ -42,6 +42,7 @@ public class ReplyEnquiryForm extends Form {
                         values.get("Reply"));
 
                 if(currentUser instanceof Student) {
+                    camp.incrementCommitteePoint((Student) currentUser);
                     displayController.setNextDisplay(new Alert("Enquiry answered!", new CommitteeViewEnquiryMenu(scanner), scanner));
                 }
                 else {
