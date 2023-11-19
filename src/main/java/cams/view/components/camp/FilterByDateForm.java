@@ -21,7 +21,7 @@ public class FilterByDateForm extends FilterStrategyForm {
         DisplayController displayController = DisplayController.getInstance();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        addInput(new TextBox("criteria", "Date (dd-mm-yyyy)", scanner));
+        addInput(new TextBox("criteria", "Start Date (dd-mm-yyyy)", scanner));
 
         setAction(new ItemAction() {
             @Override

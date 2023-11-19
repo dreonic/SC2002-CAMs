@@ -21,6 +21,10 @@ public class CampFilterController {
         return campFilterController;
     }
 
+    public static void close() {
+        campFilterController = null;
+    }
+
     public Set<FilterStrategy> getFilterStrategies() {
         return new HashSet<>(filterStrategies);
     }
