@@ -12,6 +12,7 @@ import cams.user.AuthController;
 import cams.user.User;
 import cams.view.DisplayController;
 import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
@@ -26,7 +27,7 @@ public class ReplyEnquiryForm extends Form {
         AuthController authController = AuthController.getInstance();
         User currentUser = authController.getCurrentUser();
 
-        setTitle("Replying Enquiry:\n");
+        setTitle(CommonElements.getStatusBar("Reply Enquiry"));
 
         addInput(new TextBox("Reply", scanner));
 

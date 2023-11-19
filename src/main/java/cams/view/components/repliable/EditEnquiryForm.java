@@ -6,6 +6,7 @@ import cams.repliable.Enquiry;
 import cams.repliable.EnquiryEditor;
 import cams.view.DisplayController;
 import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
@@ -21,7 +22,7 @@ public class EditEnquiryForm extends Form {
         DisplayController displayController = DisplayController.getInstance();
         Camp camp = campController.getCurrentCamp();
 
-        setTitle("Edit enquiry:\n");
+        setTitle(CommonElements.getStatusBar("Edit Enquiry") + "\n" + "\"" + enquiry.getQuestion() + "\"" + "\n");
 
         addInput(new TextBox("New Enquiry", scanner));
 

@@ -17,7 +17,7 @@ public class StaffEnquiryMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Reply", new ItemAction() {
             public void execute() {
-                if(enquiry.getReply() != null) {
+                if(!enquiry.getReply().isBlank()) {
                     displayController.setNextDisplay(new Alert("Enquiry has already been answered!", new StaffViewEnquiryMenu(scanner), scanner));
                 }
                 else {

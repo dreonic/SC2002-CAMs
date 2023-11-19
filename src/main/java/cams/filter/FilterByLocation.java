@@ -33,6 +33,6 @@ public class FilterByLocation implements FilterStrategy {
 
     @Override
     public String toString() {
-        return "Location: " + (location != null ? location : "");
+        return "Location: " + (!location.isBlank() ? location : "");
     }
 }

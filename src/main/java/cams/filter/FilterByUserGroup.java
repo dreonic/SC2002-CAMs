@@ -37,6 +37,6 @@ public class FilterByUserGroup implements FilterStrategy {
 
     @Override
     public String toString() {
-        return "User Group:" + (userGroup != null ? userGroup : "");
+        return "User Group:" + (!userGroup.isBlank() ? userGroup : "");
     }
 }

@@ -4,6 +4,7 @@ import cams.camp.CampController;
 import cams.domain.StaffController;
 import cams.view.DisplayController;
 import cams.view.base.Alert;
+import cams.view.base.CommonElements;
 import cams.view.base.Form;
 import cams.view.base.ItemAction;
 import cams.view.base.TextBox;
@@ -24,7 +25,7 @@ public class CreateCampForm extends Form {
         DisplayController displayController = DisplayController.getInstance();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        setTitle("Create a new camp:\n");
+        setTitle(CommonElements.getStatusBar("Create a Camp"));
 
         addInput(new TextBox("Camp Name", scanner));
         addInput(new TextBox("Location", scanner));
@@ -62,19 +63,19 @@ public class CreateCampForm extends Form {
                 } catch (DateTimeParseException e) {
                     displayController.setNextDisplay(new Alert(
                             "Date input format is invalid!",
-                            new CreateCampForm(scanner),
+                            new StaffMenu(scanner),
                             scanner));
 
                 } catch (NumberFormatException e) {
                     displayController.setNextDisplay(new Alert(
                             "Number input format is invalid!",
-                            new CreateCampForm(scanner),
+                            new StaffMenu(scanner),
                             scanner));
 
                 } catch (IllegalArgumentException e) {
                     displayController.setNextDisplay(new Alert(
                             "Registration should not end after start date and start date should not end after end date!",
-                            null, scanner));
+                            new StaffMenu(scanner), scanner));
                 }
             }
         });
