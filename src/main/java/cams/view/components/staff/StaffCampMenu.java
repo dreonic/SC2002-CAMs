@@ -7,7 +7,6 @@ import cams.serializer.PerformanceReportSerializer;
 import cams.view.DisplayController;
 import cams.view.base.*;
 import cams.view.components.camp.EditCampMenu;
-import cams.view.components.student.StudentListFilterMenu;
 import de.vandermeer.asciitable.AsciiTable;
 
 import java.util.ArrayList;
@@ -123,7 +122,7 @@ public class StaffCampMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Generate Student List", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new StudentListFilterMenu(scanner));
+                displayController.setNextDisplay(new StaffStudentListFilterMenu(scanner));
             }
         }));
 

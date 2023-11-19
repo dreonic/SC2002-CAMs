@@ -70,7 +70,7 @@ public class StudentCommitteeMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Generate Student List", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new StudentListFilterMenu(scanner));
+                displayController.setNextDisplay(new StudentStudentListFilterMenu(scanner));
             }
         }));
 
