@@ -104,7 +104,7 @@ public class CampSerializer {
                 String[] attendees = args.get(11).split(", ");
 
                 for (String committeePoint : committees) {
-                    if (committeePoint.isBlank())
+                    if(committeePoint.isBlank())
                         continue;
                     String[] committeePointArr = committeePoint.split(": ");
                     String committee = committeePointArr[0];
