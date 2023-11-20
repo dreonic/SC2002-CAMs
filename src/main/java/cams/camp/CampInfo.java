@@ -1,7 +1,5 @@
 package cams.camp;
 
-import java.util.Objects;
-
 /**
  * The {@code CampInfo} class represents information about a camp, including its
  * name,

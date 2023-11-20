@@ -72,10 +72,8 @@ public class CreateCampForm extends Form {
                             new StaffMenu(scanner),
                             scanner));
 
-                } catch (IllegalArgumentException e) {
-                    displayController.setNextDisplay(new Alert(
-                            "Registration should not end after start date and start date should not end after end date!",
-                            new StaffMenu(scanner), scanner));
+                }  catch (IllegalArgumentException e) {
+                    displayController.setNextDisplay(new Alert(e.getMessage(), new StaffMenu(scanner), scanner));
                 }
             }
         });

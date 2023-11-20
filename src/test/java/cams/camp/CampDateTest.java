@@ -21,7 +21,7 @@ public class CampDateTest {
                     LocalDate.parse("18-11-2023", formatter));
         });
 
-        assertEquals("registrationDeadline cannot be after startDate!", e.getMessage());
+        assertEquals("Registration deadline cannot be after start date!", e.getMessage());
     }
 
     @Test
@@ -35,6 +35,6 @@ public class CampDateTest {
                     LocalDate.parse("16-11-2023", formatter));
         });
 
-        assertEquals("startDate cannot be after endDate!", e.getMessage());
+        assertEquals("Start date cannot be after end date!", e.getMessage());
     }
 }
