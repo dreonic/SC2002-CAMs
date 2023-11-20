@@ -33,9 +33,9 @@ public class CampDate {
     public CampDate(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline)
             throws IllegalArgumentException {
         if (registrationDeadline.isAfter(startDate))
-            throw new IllegalArgumentException("registrationDeadline cannot be after startDate!");
+            throw new IllegalArgumentException("Registration deadline cannot be after start date!");
         if (startDate.isAfter(endDate))
-            throw new IllegalArgumentException("startDate cannot be after endDate!");
+            throw new IllegalArgumentException("Start date cannot be after end date!");
 
         this.startDate = startDate;
         this.endDate = endDate;
@@ -72,10 +72,10 @@ public class CampDate {
     public void setDates(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline)
             throws IllegalArgumentException {
         if (registrationDeadline.isAfter(startDate))
-            throw new IllegalArgumentException("registrationDeadline cannot be after startDate!");
+            throw new IllegalArgumentException("Registration deadline cannot be after start date!");
         if (startDate.isAfter(endDate))
-            throw new IllegalArgumentException("startDate cannot be after endDate!");
-
+            throw new IllegalArgumentException("Start date cannot be after end date!");
+            
         this.startDate = startDate;
         this.endDate = endDate;
         this.registrationDeadline = registrationDeadline;

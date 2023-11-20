@@ -1,7 +1,5 @@
 package cams.camp;
 
-import java.util.Objects;
-
 /**
  * The {@code CampInfo} class represents information about a camp, including its
  * name,
@@ -40,11 +38,19 @@ public class CampInfo {
     public CampInfo(String campName, String location, String description,
                     int totalSlots, int committeeSlots, boolean isVisible) throws IllegalArgumentException {
         if (campName.isBlank()) {
-            throw new IllegalArgumentException("Camp must have a name!");
+            throw new IllegalArgumentException("Camp name can't be empty!");
         }
         this.campName = campName;
-        this.location = Objects.requireNonNull(location);
-        this.description = Objects.requireNonNull(description);
+
+        if (location.isBlank()) {
+            throw new IllegalArgumentException("Camp location can't be empty!");
+        }
+        this.location = location;
+
+        if (description.isBlank()) {
+            throw new IllegalArgumentException("Camp description can't be empty!");
+        }
+        this.description = description;
         this.totalSlots = totalSlots;
         this.committeeSlots = committeeSlots;
         this.isVisible = isVisible;
@@ -66,7 +72,7 @@ public class CampInfo {
      */
     public void setCampName(String campName) {
         if (campName.isBlank()) {
-            throw new IllegalArgumentException("Camp must have a name!");
+            throw new IllegalArgumentException("Camp name can't be empty!");
         }
         this.campName = campName;
     }
@@ -86,7 +92,10 @@ public class CampInfo {
      * @param location The new location for the camp.
      */
     public void setLocation(String location) {
-        this.location = Objects.requireNonNull(location);
+        if (location.isBlank()) {
+            throw new IllegalArgumentException("Camp location can't be empty!");
+        }
+        this.location = location;
     }
 
     /**
@@ -104,7 +113,10 @@ public class CampInfo {
      * @param description The new description for the camp.
      */
     public void setDescription(String description) {
-        this.description = Objects.requireNonNull(description);
+        if (description.isBlank()) {
+            throw new IllegalArgumentException("Camp description can't be empty!");
+        }
+        this.description = description;
     }
 
     /**
