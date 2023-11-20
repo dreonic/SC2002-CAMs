@@ -11,7 +11,10 @@ import cams.user.User;
 import cams.user.UserController;
 import cams.view.base.CommonElements;
 import cams.view.components.WelcomeMenu;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.ByteArrayInputStream;
@@ -21,6 +24,7 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -79,38 +83,34 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Welcome menu displays properly")
     void welcomeMenuDisplaysProperly() {
         provideInput("2\n");
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Valid user can successfully login and logout, ignores user ID case")
     void validUserCanLoginLogout() {
         provideInput("1\nUpam\npassword\n5\n\n2\n");
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Cannot login with incorrect user ID or password")
     void cannotLoginWithIncorrectUserIDOrPassword() {
         provideInput("1\nnonexistent\npassword\n\nUPAM\nwrongpassword\n\nUPAM\npassword\n5\n\n2\n");
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Valid user can change password")
     void validUserCanChangePassword() {
         provideInput("1\nUPAM\npassword\n1\npassword\n12345678\n\n5\n\n2\n");
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         BCryptPasswordEncoder passwordEncoder = AuthController.getInstance().getPasswordEncoder();
@@ -118,16 +118,15 @@ public class DisplayableIT {
         assertTrue(passwordEncoder.matches("12345678", user.getHashedPassword()));
 
         provideInput("1\nUPAM\n\n12345678\n1\n12345678\npassword\n\n5\n\n2\n");
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Cannot change password without correct old password")
     void cannotChangePasswordWoCorrectOldPassword() {
         provideInput("1\nUPAM\npassword\n1\n12345678\nabcdefgh\n\npassword\npassword\n\n5\n\n2\n");
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         BCryptPasswordEncoder passwordEncoder = AuthController.getInstance().getPasswordEncoder();
@@ -136,14 +135,13 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Staff can create camp")
     void staffCanCreateCamp() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
         testInput.append("2\nA Test Camp\nTesting Location\nA camp used for testing purposes.\n19-11-2023\n21-11-2023\n10-11-2023\n15\nNTU\nY\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -151,7 +149,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Student can register for camp as an attendee")
     void studentCanRegisterCampAsAttendee() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -160,7 +157,7 @@ public class DisplayableIT {
         testInput.append("2\n3\n1\n1\n1\n\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -171,7 +168,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Student can register for camp as a committee")
     void studentCanRegisterCampAsCommittee() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -180,7 +176,7 @@ public class DisplayableIT {
         testInput.append("2\n3\n1\n1\n2\n\n");
         testInput.append("6\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -195,7 +191,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Student can submit enquiry for camp when he is not a committee")
     void studentNonCommitteeCanSubmitEnquiryForCamp() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -204,7 +199,7 @@ public class DisplayableIT {
         testInput.append("2\n3\n1\n2\nStudent's enquiry for testing\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -216,7 +211,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Student can submit enquiry for camp when he is not a committee but an attendee")
     void studentNonAttendeeAttendeeCanSubmitEnquiryForCamp() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -226,7 +220,7 @@ public class DisplayableIT {
         testInput.append("3\n1\n2\nStudent's enquiry for testing\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -238,7 +232,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Student attendee can withdraw from registered camp")
     void studentAttendeeCanWithdrawFromRegisteredCamp() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -248,7 +241,7 @@ public class DisplayableIT {
         testInput.append("3\n1\n1\n\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -261,7 +254,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Student cannot register if camp is full")
     void studentCannotRegisterIfCampFull() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -280,7 +272,7 @@ public class DisplayableIT {
         testInput.append("2\n3\n1\n1\n1\n\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -295,7 +287,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Student cannot register as committee if there are no remaining committee slots")
     void studentCannotRegisterAsCommitteeIfNoRemainingCommitteeSlots() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -335,7 +326,7 @@ public class DisplayableIT {
         testInput.append("2\n3\n1\n1\n2\n\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -367,7 +358,7 @@ public class DisplayableIT {
         testInput.append("4\n1\n1\nEdited student's enquiry for testing\n\n2\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
 
@@ -390,7 +381,7 @@ public class DisplayableIT {
         testInput.append("4\n1\n2\n\n1\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
 
@@ -402,7 +393,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Camp committee can submit suggestion")
     void campCommitteeCanSubmitSuggestion() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -412,7 +402,7 @@ public class DisplayableIT {
         testInput.append("5\n1\nCommittee's testing suggestion\n5\n");
         testInput.append("6\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -425,7 +415,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Camp committee can edit suggestion")
     void campCommitteeCanEditSuggestion() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -435,7 +424,7 @@ public class DisplayableIT {
         testInput.append("5\n1\nCommittee's testing suggestion\n2\n1\n1\nEdited committee's testing suggestion\n\n2\n5\n");
         testInput.append("6\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -447,7 +436,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Camp committee can delete suggestion")
     void campCommitteeCanDeleteSuggestion() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -457,7 +445,7 @@ public class DisplayableIT {
         testInput.append("5\n1\nCommittee's testing suggestion\n2\n1\n2\n\n1\n5\n");
         testInput.append("6\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -467,7 +455,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Staff can reply enquiry")
     void staffCanReplyEnquiry() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -478,7 +465,7 @@ public class DisplayableIT {
         testInput.append("3\n1\n2\n1\n1\nReplied enquiry\n\n2\n8\n2\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -492,7 +479,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Camp committee can reply enquiry and earn 1 point")
     void campCommitteeCanReplyEnquiryAndEarn1Point() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -504,7 +490,7 @@ public class DisplayableIT {
         testInput.append("5\n3\n1\n1\nReplied enquiry by committee\n\n2\n5\n");
         testInput.append("6\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -520,7 +506,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Staff can approve suggestion")
     void staffCanApproveSuggestion() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -532,7 +517,7 @@ public class DisplayableIT {
         testInput.append("3\n1\n3\n1\nY\n\n2\n8\n2\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -547,7 +532,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Staff can delete camp")
     void staffCanDeleteCamp() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -555,7 +539,7 @@ public class DisplayableIT {
         testInput.append("3\n1\n5\n\n1\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -564,7 +548,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Staff can edit camp")
     void staffCanEditCamp() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -576,7 +559,7 @@ public class DisplayableIT {
         testInput.append("5\n8\n2\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         CampController campController = CampController.getInstance();
@@ -589,7 +572,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Camp committee can generate attendee list")
     void campCommitteeCanGenerateAttendeeList() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -601,7 +583,7 @@ public class DisplayableIT {
         testInput.append("5\n4\n1\n\n5\n");
         testInput.append("6\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         Path path = Paths.get("student_list_Test.xlsx");
@@ -614,7 +596,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Camp committee can generate committee list")
     void campCommitteeCanGenerateCommitteeList() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -626,7 +607,7 @@ public class DisplayableIT {
         testInput.append("5\n4\n2\n\n5\n");
         testInput.append("6\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         Path path = Paths.get("student_list_Test.xlsx");
@@ -639,7 +620,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Camp committee can generate combined student list")
     void campCommitteeCanGenerateCombinedStudentList() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -651,7 +631,7 @@ public class DisplayableIT {
         testInput.append("5\n4\n3\n\n5\n");
         testInput.append("6\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         Path path = Paths.get("student_list_Test.xlsx");
@@ -664,7 +644,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Staff can generate attendee list")
     void staffCanGenerateAttendeeList() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -677,7 +656,7 @@ public class DisplayableIT {
         testInput.append("3\n1\n6\n1\n\n8\n2\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         Path path = Paths.get("student_list_Test.xlsx");
@@ -690,7 +669,6 @@ public class DisplayableIT {
 
 
     @Test
-    @Timeout(10)
     @DisplayName("Staff can generate committee list")
     void staffCanGenerateCommitteeList() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -703,7 +681,7 @@ public class DisplayableIT {
         testInput.append("3\n1\n6\n2\n\n8\n2\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         Path path = Paths.get("student_list_Test.xlsx");
@@ -715,7 +693,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Staff can generate combined student list")
     void staffCanGenerateCombinedStudentList() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -728,7 +705,7 @@ public class DisplayableIT {
         testInput.append("3\n1\n6\n3\n\n8\n2\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         Path path = Paths.get("student_list_Test.xlsx");
@@ -740,7 +717,6 @@ public class DisplayableIT {
     }
 
     @Test
-    @Timeout(10)
     @DisplayName("Staff can generate performance report")
     void staffCanGeneratePerformanceReport() {
         StringBuilder testInput = new StringBuilder("1\nUPAM\npassword\n");
@@ -752,7 +728,7 @@ public class DisplayableIT {
         testInput.append("3\n1\n3\n1\nY\n\n2\n7\n\n8\n2\n");
         testInput.append("5\n\n2\n");
         provideInput(testInput.toString());
-        runApp();
+        assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
         Path path = Paths.get("performance_report_Test.xlsx");
