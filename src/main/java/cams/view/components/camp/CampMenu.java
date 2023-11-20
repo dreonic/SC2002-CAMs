@@ -8,7 +8,7 @@ import cams.user.User;
 import cams.view.DisplayController;
 import cams.view.base.*;
 import cams.view.components.repliable.SubmitEnquiryForm;
-
+import cams.view.components.student.StudentMenu;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciithemes.u8.U8_Grids;
 
@@ -52,10 +52,15 @@ public class CampMenu extends SelectionMenu {
         if (currentUser instanceof Student) {
             addItem(new ActionableItem("Register", new ItemAction() {
                 public void execute() {
-                    if (((Student) currentUser).getCamps().contains(camp)) {
-                        displayController.setNextDisplay(new Alert("Already registered for this camp!", new CampMenu(scanner), scanner));
-                    } else {
-                        displayController.setNextDisplay(new CampRegisterMenu(scanner));
+                    if(camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size() == 0) {
+                        displayController.setNextDisplay(new Alert("This camp is full!", new StudentMenu(scanner), scanner));
+                    }
+                    else {
+                        if (((Student) currentUser).getCamps().contains(camp)) {
+                            displayController.setNextDisplay(new Alert("Already registered for this camp!", new StudentMenu(scanner), scanner));
+                        } else {
+                            displayController.setNextDisplay(new CampRegisterMenu(scanner));
+                        }
                     }
                 }
             }));

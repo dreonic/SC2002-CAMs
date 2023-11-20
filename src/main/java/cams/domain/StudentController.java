@@ -1,8 +1,11 @@
 package cams.domain;
 
 import cams.camp.Camp;
+import cams.repliable.Enquiry;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The StudentController class manages the interaction between the system and a student user.
@@ -105,9 +108,22 @@ public class StudentController {
         student.addCamp(camp);
 
         if (isCommittee) {
-            student.setCommitteeFor(camp);
-            camp.addCommittee(student);
-        } else {
+            if(camp.getCommittee().size() == 10) {
+                throw new RuntimeException("There are no remaining committee slots!");
+            }
+            else {
+                List<Enquiry> enquiriesList = new ArrayList<Enquiry>(camp.getEnquiries());
+                for(Enquiry enquiry:enquiriesList) {
+                    if(enquiry.getStudent() == student) {
+                        camp.removeEnquiry(enquiry);
+                        student.removeEnquiry(enquiry);
+                    }
+                }
+                student.setCommitteeFor(camp);
+                camp.addCommittee(student);
+            }
+        } 
+        else {
             camp.addAttendee(student);
         }
     }
@@ -120,7 +136,7 @@ public class StudentController {
      */
     public void withdraw(Camp camp) {
         if (student.getCommitteeFor() == camp) {
-            throw new RuntimeException("Student committees are not allowed to withdraw!");
+            throw new RuntimeException("Committee members are not allowed to withdraw!");
         }
         if (!student.getCamps().contains(camp)) {
             throw new RuntimeException("Cannot withdraw! Student is not registered for this camp!");
