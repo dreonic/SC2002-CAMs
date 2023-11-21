@@ -13,25 +13,39 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
 
 /**
- * The {@code StudentListSerializer} class provides a method to serialize the information of
- * students associated with a camp, including committee members and attendees, into an Excel file.
- * The generated Excel file includes details such as camp information, committee list, and attendee list.
+ * The {@code StudentListSerializer} class provides a method to serialize the
+ * information of
+ * students associated with a camp, including committee members and attendees,
+ * into an Excel file.
+ * The generated Excel file includes details such as camp information, committee
+ * list, and attendee list.
  *
- * <p>This class uses the Apache POI library for Excel handling.</p>
+ * <p>
+ * This class uses the Apache POI library for Excel handling.
+ * </p>
  */
 public class StudentListSerializer {
     /**
-     * Serializes the information of students associated with a camp, including committee members
-     * and attendees, into an Excel file. The generated Excel file includes details such as camp information,
-     * committee list, and attendee list. The specific information to include or exclude is determined by
-     * the value of the {@code removeTable} parameter, which can be set to "committee" to exclude committee
-     * information, "attendee" to exclude attendee information, or "none" to include both.
+     * Serializes the information of students associated with a camp, including
+     * committee members
+     * and attendees, into an Excel file. The generated Excel file includes details
+     * such as camp information,
+     * committee list, and attendee list. The specific information to include or
+     * exclude is determined by
+     * the value of the {@code removeTable} parameter, which can be set to
+     * "committee" to exclude committee
+     * information, "attendee" to exclude attendee information, or "none" to include
+     * both.
      *
-     * @param camp        The camp for which student information is to be serialized.
-     * @param removeTable A string indicating which table(s) to exclude from the output.
-     *                    Valid values are "committee", "attendee", or "none" for both.
+     * @param camp        The camp for which student information is to be
+     *                    serialized.
+     * @param removeTable A string indicating which table(s) to exclude from the
+     *                    output.
+     *                    Valid values are "committee", "attendee", or "none" for
+     *                    both.
      */
     public static void serialize(Camp camp, String removeTable) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
@@ -171,8 +185,13 @@ public class StudentListSerializer {
                 rowNum++;
             }
 
+            File reportFolder = new File("report");
+            if (!reportFolder.exists()) {
+                reportFolder.mkdirs();
+            }
+
             try (FileOutputStream fileOut = new FileOutputStream(
-                    "student_list_" + camp.getCampInfo().getCampName() + ".xlsx")) {
+                    "report/student_list_" + camp.getCampInfo().getCampName() + ".xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (IOException e) {

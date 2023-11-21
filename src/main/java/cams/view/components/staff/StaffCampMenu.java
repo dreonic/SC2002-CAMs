@@ -130,7 +130,7 @@ public class StaffCampMenu extends SelectionMenu {
             public void execute() {
                 PerformanceReportSerializer.serialize(camp);
                 displayController.setNextDisplay(new Alert(
-                        "Performance report generated! See report in /performance_report_" + campName + ".xlsx",
+                        "Performance report generated! See report in report/performance_report_" + campName + ".xlsx",
                         new StaffCampMenu(scanner), scanner));
             }
         }));

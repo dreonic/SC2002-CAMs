@@ -82,7 +82,7 @@ public class CampSerializer {
                 }
 
                 List<String> args = new ArrayList<>();
-                for (int i = 0; i < 12; i++) {
+                for (int i = 0; i < 13; i++) {
                     Cell cell = row.getCell(i);
                     if (cell == null || cell.getCellType() == CellType.BLANK) {
                         args.add("");
@@ -102,6 +102,7 @@ public class CampSerializer {
 
                 String[] committees = args.get(10).split(", ");
                 String[] attendees = args.get(11).split(", ");
+                String[] blacklist = args.get(12).split(", ");
 
                 for (String committeePoint : committees) {
                     if(committeePoint.isBlank())
@@ -125,6 +126,14 @@ public class CampSerializer {
                     student.addCamp(newCamp);
                     newCamp.addAttendee(student);
                 }
+                for (String blacklistedStudent : blacklist) {
+                    if (blacklistedStudent.isBlank())
+                        continue;
+                    Student student = (Student) userController.getUser(blacklistedStudent);
+                    if (student == null)
+                        throw new RuntimeException("Student not found in user table!");
+                    newCamp.addBlacklist(student);
+                }
                 result.add(newCamp);
             }
         } catch (IOException ignored) {
@@ -146,8 +155,8 @@ public class CampSerializer {
             Row headerRow = sheet.createRow(0);
             List<String> header = List.of("Name", "Location", "Description", "Start Date",
                     "End Date", "Registration Deadline", "Total Slots",
-                    "Is Visible", "User Group", "Staff in Charge", "Committee Members", "Attendees");
-            for (int i = 0; i < 12; i++) {
+                    "Is Visible", "User Group", "Staff in Charge", "Committee Members", "Attendees", "Blacklist");
+            for (int i = 0; i < 13; i++) {
                 Cell cell = headerRow.createCell(i);
                 cell.setCellValue(header.get(i));
             }
@@ -156,7 +165,7 @@ public class CampSerializer {
             for (Map.Entry<String, Camp> entry : campTable.entrySet()) {
                 Camp camp = entry.getValue();
                 Row row = sheet.createRow(rowNum);
-                for (int i = 0; i < 12; i++) {
+                for (int i = 0; i < 13; i++) {
                     Cell cell = row.createCell(i);
                     CampInfo campInfo = camp.getCampInfo();
                     CampDate campDate = camp.getCampDate();
@@ -168,6 +177,9 @@ public class CampSerializer {
                     String commaSeparatedAttendee = String.join(", ",
                             new ArrayList<>(
                                     camp.getAttendees().stream().map(Student::getUserID).collect(Collectors.toSet())));
+                    String commaSeparatedBlacklist = String.join(", ",
+                            new ArrayList<>(
+                                    camp.getBlacklist().stream().map(Student::getUserID).collect(Collectors.toSet())));
                     switch (i) {
                         case 0:
                             cell.setCellValue(campInfo.getCampName());
@@ -204,6 +216,9 @@ public class CampSerializer {
                             break;
                         case 11:
                             cell.setCellValue(commaSeparatedAttendee);
+                            break;
+                        case 12:
+                            cell.setCellValue(commaSeparatedBlacklist);
                             break;
                         default:
                             break;
