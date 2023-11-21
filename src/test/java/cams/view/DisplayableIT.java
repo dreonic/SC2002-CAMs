@@ -586,7 +586,7 @@ public class DisplayableIT {
         assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
-        Path path = Paths.get("student_list_Test.xlsx");
+        Path path = Paths.get("report/student_list_Test.xlsx");
         assertTrue(Files.exists(path));
         try {
             Files.delete(path);
@@ -610,7 +610,7 @@ public class DisplayableIT {
         assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
-        Path path = Paths.get("student_list_Test.xlsx");
+        Path path = Paths.get("report/student_list_Test.xlsx");
         assertTrue(Files.exists(path));
         try {
             Files.delete(path);
@@ -634,7 +634,7 @@ public class DisplayableIT {
         assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
-        Path path = Paths.get("student_list_Test.xlsx");
+        Path path = Paths.get("report/student_list_Test.xlsx");
         assertTrue(Files.exists(path));
         try {
             Files.delete(path);
@@ -659,7 +659,7 @@ public class DisplayableIT {
         assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
-        Path path = Paths.get("student_list_Test.xlsx");
+        Path path = Paths.get("report/student_list_Test.xlsx");
         assertTrue(Files.exists(path));
         try {
             Files.delete(path);
@@ -684,7 +684,7 @@ public class DisplayableIT {
         assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
-        Path path = Paths.get("student_list_Test.xlsx");
+        Path path = Paths.get("report/student_list_Test.xlsx");
         assertTrue(Files.exists(path));
         try {
             Files.delete(path);
@@ -708,7 +708,7 @@ public class DisplayableIT {
         assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
-        Path path = Paths.get("student_list_Test.xlsx");
+        Path path = Paths.get("report/student_list_Test.xlsx");
         assertTrue(Files.exists(path));
         try {
             Files.delete(path);
@@ -731,7 +731,7 @@ public class DisplayableIT {
         assertTimeoutPreemptively(Duration.ofSeconds(5), this::runApp);
         assertEndCorrectly();
 
-        Path path = Paths.get("performance_report_Test.xlsx");
+        Path path = Paths.get("report/performance_report_Test.xlsx");
         assertTrue(Files.exists(path));
         try {
             Files.delete(path);
