@@ -190,4 +190,8 @@ public class Camp {
             return new ArrayList<>();
         return new ArrayList<>(blacklist);
     }
+
+    public void addBlacklist(Student student) {
+        blacklist.add(student);
+    }
 }

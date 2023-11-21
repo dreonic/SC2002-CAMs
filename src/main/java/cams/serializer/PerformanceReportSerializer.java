@@ -8,6 +8,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
@@ -136,8 +137,13 @@ public class PerformanceReportSerializer {
                 rowNum++;
             }
 
+            File reportFolder = new File("report");
+            if (!reportFolder.exists()) {
+                reportFolder.mkdirs();
+            }
+
             try (FileOutputStream fileOut = new FileOutputStream(
-                    "performance_report_" + camp.getCampInfo().getCampName() + ".xlsx")) {
+                    "report/performance_report_" + camp.getCampInfo().getCampName() + ".xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (IOException e) {
