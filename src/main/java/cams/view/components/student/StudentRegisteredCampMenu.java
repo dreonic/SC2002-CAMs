@@ -28,7 +28,7 @@ public class StudentRegisteredCampMenu extends SelectionMenu {
     /**
      * Constructs the Student Registered Camp Menu specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this menu
      */
     public StudentRegisteredCampMenu(Scanner scanner) {
         super(scanner);

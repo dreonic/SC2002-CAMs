@@ -11,6 +11,14 @@ import java.util.Set;
 /**
  * The Staff entity class represents a staff member in the system, extending the User class.
  * Staff members have the ability to create and manage camps.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-09
  */
 public class Staff extends User {
 

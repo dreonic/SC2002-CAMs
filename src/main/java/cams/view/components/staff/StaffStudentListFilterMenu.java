@@ -28,7 +28,7 @@ public class StaffStudentListFilterMenu extends SelectionMenu {
     /**
      * Construcs the Staff Student List Filter Menu specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this menu
      */
     public StaffStudentListFilterMenu(Scanner scanner) {
         super(scanner);

@@ -30,8 +30,8 @@ public class CommitteeEnquiryMenu extends SelectionMenu {
     /**
      * Constructs the Committee Enquiry Menu specifying the scanner to be used and a {@code Enquiry} to be replied. 
      * 
-     * @param scanner
-     * @param enquiry
+     * @param scanner scanner for this menu
+     * @param enquiry specified enquiry to be replied
      */
     public CommitteeEnquiryMenu(Scanner scanner, Enquiry enquiry) {
         super(scanner);

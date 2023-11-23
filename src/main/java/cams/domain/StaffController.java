@@ -1,9 +1,17 @@
 package cams.domain;
 
 /**
- * The StaffController controller class is responsible for managing the current staff user
+ * The StaffController control class is responsible for managing the current staff user
  * in the system. It follows the Singleton pattern to ensure a single instance
  * throughout the application.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-09
  */
 @SuppressWarnings("UnusedReturnValue")
 public class StaffController {
@@ -13,22 +21,21 @@ public class StaffController {
     private static StaffController staffController;
 
     /**
-     * The currently logged-in staff user.
+     * The current staff associated with the controller.
      */
     private Staff staff;
 
     /**
-     * Private constructor to prevent instantiation from outside the class.
+     * Private constructor to enforce singleton pattern.
      */
     private StaffController() {
         staff = null;
     }
 
     /**
-     * Retrieves the instance of the StaffController. If it does not exist,
-     * a new instance is created.
+     * Gets the singleton instance of StaffController.
      *
-     * @return the StaffController instance.
+     * @return the singleton instance of StaffController
      */
     public static StaffController getInstance() {
         if (staffController == null) {
@@ -38,11 +45,10 @@ public class StaffController {
     }
 
     /**
-     * Retrieves the instance of the StaffController and sets the current staff user.
-     * If the instance does not exist, a new instance is created.
+     * Gets the singleton instance of StaffController with the specified staff.
      *
-     * @param staff the staff user to set as the current staff.
-     * @return the StaffController instance.
+     * @param staff the staff to associate with the controller
+     * @return the singleton instance of StaffController
      */
     public static StaffController getInstance(Staff staff) {
         if (staffController == null) {
@@ -53,25 +59,25 @@ public class StaffController {
     }
 
     /**
-     * Closes the StaffController instance by setting it to null.
+     * Closes the StaffController, releasing the current staff association.
      */
     public static void close() {
         staffController = null;
     }
 
     /**
-     * Gets the currently logged-in staff user.
+     * Gets the current staff associated with the controller.
      *
-     * @return The currently logged-in staff user, or null if no user is logged in.
+     * @return the current staff
      */
     public Staff getCurrentStaff() {
         return staff;
     }
 
     /**
-     * Sets the current staff user.
+     * Sets the current staff associated with the controller.
      *
-     * @param staff The staff user to set as the current staff.
+     * @param staff the staff to be set as the current staff
      */
     public void setCurrentStaff(Staff staff) {
         this.staff = staff;
