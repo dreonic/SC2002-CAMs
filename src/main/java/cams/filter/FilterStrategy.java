@@ -21,9 +21,9 @@ public interface FilterStrategy {
      * Sets the filter criteria for this filter strategy. An implementation should downcast this
      * criteria object to the type needed for that filter strategy.
      *
-     * @param object the filter criteria
+     * @param criteria the filter criteria
      */
-    void setCriteria(Object object);
+    void setCriteria(Object criteria);
 
     /**
      * Filters the list of camps provided using this filter strategy and returns the result.

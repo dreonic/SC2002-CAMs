@@ -5,6 +5,7 @@ import cams.camp.CampController;
 import cams.domain.Student;
 import cams.user.AuthController;
 import cams.user.User;
+import cams.view.CommonElements;
 import cams.view.DisplayController;
 import cams.view.base.*;
 import cams.view.components.repliable.SubmitEnquiryForm;

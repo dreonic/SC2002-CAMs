@@ -5,6 +5,7 @@ import cams.camp.CampController;
 import cams.camp.CampEditor;
 import cams.domain.Staff;
 import cams.domain.StaffController;
+import cams.view.CommonElements;
 import cams.view.DisplayController;
 import cams.view.base.*;
 

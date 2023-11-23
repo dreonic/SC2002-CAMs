@@ -2,6 +2,8 @@ package cams.view.base;
 
 import java.util.*;
 
+import cams.view.CommonElements;
+
 /**
  * Base class for all user interface elements which requires user input and runs
  * an action after retrieving them. This base class enables displaying a prompt

@@ -4,9 +4,9 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
 import cams.domain.StudentController;
+import cams.view.CommonElements;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
-import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 

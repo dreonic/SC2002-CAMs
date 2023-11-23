@@ -1,7 +1,4 @@
-package cams.view.components;
-
-import cams.view.base.Alert;
-import cams.view.base.Displayable;
+package cams.view.base;
 
 import java.util.Scanner;
 

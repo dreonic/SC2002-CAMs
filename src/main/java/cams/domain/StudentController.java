@@ -6,7 +6,7 @@ import cams.repliable.Enquiry;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+//done
 /**
  * The StudentController control class manages the interaction between the system and a student user.
  * It provides methods for registering, withdrawing from camps, and handling the current student user.
@@ -29,13 +29,13 @@ public class StudentController {
     /**
      * The current student associated with the controller.
      */
-    private Student student;
+    private Student currentStudent;
 
     /**
      * Private constructor to enforce singleton pattern.
      */
     private StudentController() {
-        student = null;
+        currentStudent = null;
     }
 
     /**
@@ -78,7 +78,7 @@ public class StudentController {
      * @return the current student
      */
     public Student getCurrentStudent() {
-        return student;
+        return currentStudent;
     }
 
     /**
@@ -87,7 +87,7 @@ public class StudentController {
      * @param student the student to set as the current student
      */
     public void setCurrentStudent(Student student) {
-        this.student = student;
+        this.currentStudent = student;
     }
 
     /**
@@ -98,7 +98,7 @@ public class StudentController {
      * @throws RuntimeException if there is a scheduling conflict or other registration issues
      */
     public void register(Camp camp, Boolean isCommittee) throws RuntimeException {
-        for (Camp registeredCamp : student.getCamps()) {
+        for (Camp registeredCamp : currentStudent.getCamps()) {
             String registeredCampName = registeredCamp.getCampInfo().getCampName();
             LocalDate startDate1 = registeredCamp.getCampDate().getStartDate(),
                     startDate2 = camp.getCampDate().getStartDate();
@@ -108,20 +108,20 @@ public class StudentController {
             }
         }
 
-        if (camp.getAttendees().contains(student)) {
+        if (camp.getAttendees().contains(currentStudent)) {
             throw new RuntimeException("Failed to register, current student already registered for this camp!");
         }
 
-        if(camp.getBlacklist().contains(student)) {
+        if(camp.getBlacklist().contains(currentStudent)) {
             throw new RuntimeException("Failed to register, current student already withdrew from this camp!");
         }
 
-        if (isCommittee && student.getCommitteeFor() != null) {
+        if (isCommittee && currentStudent.getCommitteeFor() != null) {
             throw new RuntimeException(
                     "Cannot register as committee! Current student is already a committee for another camp!");
         }
 
-        student.addCamp(camp);
+        currentStudent.addCamp(camp);
 
         if (isCommittee) {
             if(camp.getCommittee().size() == 10) {
@@ -130,17 +130,17 @@ public class StudentController {
             else {
                 List<Enquiry> enquiriesList = new ArrayList<Enquiry>(camp.getEnquiries());
                 for(Enquiry enquiry:enquiriesList) {
-                    if(enquiry.getStudent() == student) {
+                    if(enquiry.getStudent() == currentStudent) {
                         camp.removeEnquiry(enquiry);
-                        student.removeEnquiry(enquiry);
+                        currentStudent.removeEnquiry(enquiry);
                     }
                 }
-                student.setCommitteeFor(camp);
-                camp.addCommittee(student);
+                currentStudent.setCommitteeFor(camp);
+                camp.addCommittee(currentStudent);
             }
         } 
         else {
-            camp.addAttendee(student);
+            camp.addAttendee(currentStudent);
         }
     }
 
@@ -151,13 +151,13 @@ public class StudentController {
      * @throws RuntimeException if the student is a committee member or not registered for the camp
      */
     public void withdraw(Camp camp) {
-        if (student.getCommitteeFor() == camp) {
+        if (currentStudent.getCommitteeFor() == camp) {
             throw new RuntimeException("Committee members are not allowed to withdraw!");
         }
-        if (!student.getCamps().contains(camp)) {
+        if (!currentStudent.getCamps().contains(camp)) {
             throw new RuntimeException("Cannot withdraw! Student is not registered for this camp!");
         }
-        camp.removeAttendee(student);
-        student.removeCamp(camp);
+        camp.removeAttendee(currentStudent);
+        currentStudent.removeCamp(camp);
     }
 }

@@ -95,13 +95,6 @@ public class CampEditor {
     public void toggleVisibility() {
         camp.getCampInfo().setIsVisible(!camp.getCampInfo().getIsVisible());
     }
-
-    /**
-     * Retrieves the camp after the edits.
-     *
-     * @return The edited {@code Camp} object.
-     */
-    public Camp getEditedCamp() {
-        return camp;
-    }
 }
+
+ 

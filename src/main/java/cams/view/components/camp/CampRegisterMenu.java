@@ -3,6 +3,7 @@ package cams.view.components.camp;
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.StudentController;
+import cams.view.CommonElements;
 import cams.view.DisplayController;
 import cams.view.base.*;
 import cams.view.components.student.StudentMenu;

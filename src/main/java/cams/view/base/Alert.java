@@ -1,5 +1,6 @@
 package cams.view.base;
 
+import cams.view.CommonElements;
 import cams.view.DisplayController;
 
 import java.util.Scanner;
