@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 /**
  * The boundary class responsible for displaying a list of Camps the Student
- * has registered for. The Student will then be avle to select one of these Camps.
+ * has registered for. The Student will then be able to select one of these Camps.
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
