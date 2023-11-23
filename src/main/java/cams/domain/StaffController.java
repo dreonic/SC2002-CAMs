@@ -28,7 +28,7 @@ public class StaffController {
      * Retrieves the instance of the StaffController. If it does not exist,
      * a new instance is created.
      *
-     * @return The StaffController instance.
+     * @return the StaffController instance.
      */
     public static StaffController getInstance() {
         if (staffController == null) {
@@ -41,8 +41,8 @@ public class StaffController {
      * Retrieves the instance of the StaffController and sets the current staff user.
      * If the instance does not exist, a new instance is created.
      *
-     * @param staff The staff user to set as the current staff.
-     * @return The StaffController instance.
+     * @param staff the staff user to set as the current staff.
+     * @return the StaffController instance.
      */
     public static StaffController getInstance(Staff staff) {
         if (staffController == null) {

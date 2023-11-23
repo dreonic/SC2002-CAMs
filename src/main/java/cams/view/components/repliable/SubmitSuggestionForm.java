@@ -15,7 +15,25 @@ import cams.view.components.student.StudentCommitteeMenu;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying a {@code Form} which the {@code Student} can use to 
+ * submit a new {@code Suggestion} to the {@code Camp} they are committee member for.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class SubmitSuggestionForm extends Form {
+
+    /**
+     * Constructs the Submit Suggestion Form specifying the scanner to be used.
+     * 
+     * @param scanner
+     */
     public SubmitSuggestionForm(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();

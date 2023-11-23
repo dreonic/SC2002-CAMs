@@ -6,7 +6,7 @@ import java.util.*;
  * Base class for all user interface elements which requires user input and runs
  * an action after retrieving them. This base class enables displaying a prompt
  * alongside several input fields which obtains user input. Specific forms in
- * this application like <code>LoginForm</code> are implemented as extensions
+ * this application like {@code LoginForm} are implemented as extensions
  * from this base class.
  * <p>
  * To use this base form, extend from or construct this base class, set the
@@ -143,7 +143,7 @@ public class Form implements Displayable {
 
     /**
      * Adds a new user input field to the form. Input fields added to the form
-     * cannot be removed afterwards.
+     * cannot be removed afterward.
      *
      * @param input labelled form input field
      */
@@ -153,7 +153,7 @@ public class Form implements Displayable {
 
     /**
      * Retrieves the current values of all input fields inside this form as a map,
-     * where the key is the intput field/textbox ID and the value is its
+     * where the key is the input field/text box ID and the value is its
      * corresponding value.
      *
      * @return map of input field labels to values
@@ -168,7 +168,7 @@ public class Form implements Displayable {
     /**
      * Clears the standard output and displays the form title and the first user
      * input field initially. Waits and captures user input and displays the next
-     * user input field afterwards. Repeats this until there areno more input fields
+     * user input field afterward. Repeats this until there are no more input fields
      * left to display.
      */
     public void display() {

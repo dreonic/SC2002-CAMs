@@ -10,7 +10,25 @@ import de.vandermeer.asciithemes.u8.U8_Grids;
 
 import java.util.Scanner;
 
+/**
+ * The boundary class responsible for displaying menu options when
+ * a Student selects the camp they are a committee member for. 
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class StudentCommitteeMenu extends SelectionMenu {
+
+    /**
+     * Constructs the Student Committee Menu specifying the scanner to be used.
+     * 
+     * @param scanner
+     */
     public StudentCommitteeMenu(Scanner scanner) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();
@@ -68,7 +86,7 @@ public class StudentCommitteeMenu extends SelectionMenu {
 
         addItem(new ActionableItem("Generate Student List", new ItemAction() {
             public void execute() {
-                displayController.setNextDisplay(new StudentStudentListFilterMenu(scanner));
+                displayController.setNextDisplay(new CommitteeStudentListFilterMenu(scanner));
             }
         }));
 

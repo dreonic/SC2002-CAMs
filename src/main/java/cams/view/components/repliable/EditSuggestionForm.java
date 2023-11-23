@@ -15,7 +15,26 @@ import cams.view.components.student.CommitteeViewSuggestionMenu;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying a {@code Form} which the committee member 
+ * can use to edit the selected {@code Suggestion} they have submitted.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class EditSuggestionForm extends Form {
+
+    /**
+     * Constructs the Edit Suggestion Form specifying the scanner to be used and the {@code Suggestion} to be edited.
+     * 
+     * @param scanner
+     * @param suggestion
+     */
     public EditSuggestionForm(Scanner scanner, Suggestion suggestion) {
         super(scanner);
         CampController campController = CampController.getInstance();

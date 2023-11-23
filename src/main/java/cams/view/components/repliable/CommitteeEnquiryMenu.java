@@ -13,7 +13,26 @@ import cams.view.components.student.CommitteeViewEnquiryMenu;
 
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying menu options a committee member can select
+ * once they have selected a specific {@code Enquiry}.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class CommitteeEnquiryMenu extends SelectionMenu {
+
+    /**
+     * Constructs the Committee Enquiry Menu specifying the scanner to be used and a {@code Enquiry} to be replied. 
+     * 
+     * @param scanner
+     * @param enquiry
+     */
     public CommitteeEnquiryMenu(Scanner scanner, Enquiry enquiry) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();

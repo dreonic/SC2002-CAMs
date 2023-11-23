@@ -80,12 +80,17 @@ public class Student extends User {
     /**
      * Adds an enquiry to the set of enquiries made by the student.
      *
-     * @param enquiry The enquiry to be added.
+     * @param enquiry the enquiry to be added.
      */
     public void addEnquiry(Enquiry enquiry) {
         enquiries.add(enquiry);
     }
 
+    /**
+     * Removes an enquiry made by the student.
+     *
+     * @param enquiry the enquiry to be removed.
+     */
     public void removeEnquiry(Enquiry enquiry) {
         enquiries.remove(enquiry);
     }
@@ -93,7 +98,7 @@ public class Student extends User {
     /**
      * Gets the camp for which the student serves as a committee member.
      *
-     * @return The camp for which the student serves as a committee member.
+     * @return the camp for which the student serves as a committee member.
      */
     public Camp getCommitteeFor() {
         return committeeFor;
@@ -102,7 +107,7 @@ public class Student extends User {
     /**
      * Sets the camp for which the student serves as a committee member.
      *
-     * @param camp The camp for which the student serves as a committee member.
+     * @param camp the camp for which the student serves as a committee member.
      */
     public void setCommitteeFor(Camp camp) {
         committeeFor = camp;

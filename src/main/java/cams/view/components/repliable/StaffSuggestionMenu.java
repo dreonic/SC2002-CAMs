@@ -16,7 +16,26 @@ import cams.view.components.staff.StaffViewSuggestionMenu;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying a {@code Form} which the Staff
+ * can use to approve the selected {@code Suggestion}.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class StaffSuggestionMenu extends Form {
+
+    /**
+     * Constructs the Staff Suggestion Menu specifying the scanner to be used and the {@code Suggestion} to be approved.
+     * 
+     * @param scanner
+     * @param suggestion
+     */
     public StaffSuggestionMenu(Scanner scanner, Suggestion suggestion) {
         super(scanner);
         CampController campController = CampController.getInstance();

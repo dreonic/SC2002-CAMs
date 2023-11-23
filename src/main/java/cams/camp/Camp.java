@@ -83,7 +83,7 @@ public class Camp {
      * Retrieves the dates associated with the camp.
      *
      * @return The {@code CampDate} object containing start date, end date, and
-     * registration deadline.
+     *         registration deadline.
      */
     public CampDate getCampDate() {
         return campDate;
@@ -119,7 +119,7 @@ public class Camp {
     /**
      * Adds an enquiry to the set of enquiries for the camp.
      *
-     * @param enquiry The {@code Enquiry} to be added.
+     * @param enquiry the {@code Enquiry} to be added.
      */
     public void addEnquiry(Enquiry enquiry) {
         enquiries.add(enquiry);
@@ -128,7 +128,7 @@ public class Camp {
     /**
      * Removes an enquiry from the set of enquiries for the camp.
      *
-     * @param enquiry The {@code Enquiry} to be removed.
+     * @param enquiry the {@code Enquiry} to be removed.
      */
     public void removeEnquiry(Enquiry enquiry) {
         enquiries.remove(enquiry);
@@ -137,7 +137,7 @@ public class Camp {
     /**
      * Adds a suggestion to the set of suggestions for the camp.
      *
-     * @param suggestion The {@code Suggestion} to be added.
+     * @param suggestion the {@code Suggestion} to be added.
      */
     public void addSuggestion(Suggestion suggestion) {
         suggestions.add(suggestion);
@@ -146,52 +146,103 @@ public class Camp {
     /**
      * Removes a suggestion from the set of suggestions for the camp.
      *
-     * @param suggestion The {@code Suggestion} to be removed.
+     * @param suggestion the {@code Suggestion} to be removed.
      */
     public void removeSuggestion(Suggestion suggestion) {
         suggestions.remove(suggestion);
     }
 
+    /**
+     * Adds a new committee member for the camp.
+     *
+     * @param student the {@code Student} to be added as committee.
+     */
     public void addCommittee(Student student) {
         committee.put(student, 0);
     }
 
+    /**
+     * Adds a new committee member for the camp with a given starting point.
+     *
+     * @param student the {@code Student} to be added as committee.
+     * @param points  the {@code Student} the base points given to the committee.
+     */
     public void addCommittee(Student student, int points) {
         committee.put(student, points);
     }
 
+    /**
+     * Gets the committee list of the camp.
+     *
+     * @return the committee list of the camp.
+     */
     public Map<Student, Integer> getCommittee() {
         return this.committee;
     }
 
+    /**
+     * Gets the list of attendees for this camp.
+     *
+     * @return l list of attendees, or an empty list if there are none.
+     */
     public List<Student> getAttendees() {
         if (attendees == null)
             return new ArrayList<>();
         return new ArrayList<>(attendees);
     }
 
+    /**
+     * Increments the committee point for the specified student.
+     *
+     * @param student the student whose committee point needs to be incremented.
+     * @throws IllegalArgumentException if the student is not a committee member for
+     *                                  this camp.
+     */
     public void incrementCommitteePoint(Student student) throws IllegalArgumentException {
         if (committee.get(student) == null)
             throw new IllegalArgumentException("Student is not a committee for this camp!");
         committee.put(student, committee.get(student) + 1);
     }
 
+    /**
+     * Adds a student to the list of attendees for this camp.
+     *
+     * @param student the student to be added to the attendees list.
+     */
     public void addAttendee(Student student) {
         attendees.add(student);
     }
 
+    /**
+     * Removes a student from the list of attendees for this camp and adds them to
+     * the blacklist.
+     *
+     * @param student the student to be removed from the attendees list and added to
+     *                the blacklist.
+     */
     public void removeAttendee(Student student) {
         attendees.remove(student);
         blacklist.add(student);
     }
 
+    /**
+     * Gets the list of blacklisted students for this camp.
+     *
+     * @return a list of blacklisted students, or an empty list if there are none.
+     */
     public List<Student> getBlacklist() {
-        if(blacklist == null) 
+        if (blacklist == null)
             return new ArrayList<>();
         return new ArrayList<>(blacklist);
     }
 
+    /**
+     * Adds a student to the blacklist for this camp.
+     *
+     * @param student the student to be added to the blacklist.
+     */
     public void addBlacklist(Student student) {
         blacklist.add(student);
     }
+
 }

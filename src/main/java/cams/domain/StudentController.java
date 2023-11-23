@@ -59,7 +59,7 @@ public class StudentController {
     /**
      * Gets the current student associated with the controller.
      *
-     * @return The current student.
+     * @return the current student.
      */
     public Student getCurrentStudent() {
         return student;
