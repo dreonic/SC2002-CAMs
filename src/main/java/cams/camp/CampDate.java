@@ -69,6 +69,13 @@ public class CampDate {
         return registrationDeadline;
     }
 
+    /**
+     * Sets the date related data of the camp.
+     *
+     * @param startDate            The start date of the camp.
+     * @param endDate              The end date of the camp.
+     * @param registrationDeadline The registration deadline for the camp.
+     */
     public void setDates(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline)
             throws IllegalArgumentException {
         if (registrationDeadline.isAfter(startDate))
