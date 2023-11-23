@@ -17,7 +17,10 @@ import cams.view.components.student.StudentMenu;
 import java.util.Scanner;
 
 /**
- * User login interface.
+ * User login interface. Gets current user ID and its corresponding
+ * candidate password. Redirects to the corresponding user menu if
+ * a match is found. If no match is found, displays
+ * <code>LoginErrorAlert</code> and refresh the page.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -27,6 +30,7 @@ import java.util.Scanner;
  * @version 1.0
  * @since 2023-11-09
  */
+
 public class LoginForm extends Form {
     /**
      * Class constructor specifying the scanner to be used to receive user input.

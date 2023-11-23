@@ -13,15 +13,7 @@ import java.util.Scanner;
 
 /**
  * Gets current user's candidate password and changes it when a match
- * is found. Verifies candidate password with stored password and
- * replace old password with new password using
- * <code>changePassword()</code> from <code>currentUser()</code>.
- * 
- * Alerts user that the password was changed if successful, otherwise
- * alerts that wrong password was entered.
- * 
- * After completion, return to the corresponding current user account
- * type's user interface.
+ * is found.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -33,7 +25,17 @@ import java.util.Scanner;
  */
 
 public class ChangePasswordForm extends Form {
-
+    /**
+    * Verifies candidate password with stored password and
+    * replace old password with new password using
+    * <code>changePassword()</code> from <code>currentUser()</code>.
+    * 
+    * Alerts user that the password was changed if successful, otherwise
+    * alerts that wrong password was entered.
+    * 
+    * After completion, returns to the corresponding user type's interface.
+     * @param scanner
+     */
     public ChangePasswordForm(Scanner scanner) {
         super(CommonElements.getStatusBar("Change Password") + "Change your password:\n", scanner);
 
