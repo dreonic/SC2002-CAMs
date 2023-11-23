@@ -16,10 +16,10 @@ import java.util.Objects;
   * @version 1.0
   * @since 2023-11-23
 
-  * @param name
-  * @param userID
-  * @param faculty
-  * @param passwordHash
+  * @param name the name associated with a {@code User}
+  * @param userID the user ID associated with a {@code User}
+  * @param faculty the faculty associated with a {@code User}
+  * @param passwordHash the password hashed with BCrypt associated with a {@code User}
   */
 
 public class User {
@@ -28,11 +28,15 @@ public class User {
     private String passwordHash;
     private String faculty;
 
+    /**
+     * Class constructor for {@code User} class, initiating and formatting {@code User} attributes.
+     * 
+     * @param name
+     * @param userID
+     * @param faculty
+     * @param passwordHash
+     */
     public User(String name, String userID, String faculty, String passwordHash) {
-        /**
-         * Class constructor for {@code User} class, initiating and formatting
-         * {@code User} attributes.
-         */
         this.name = Objects.requireNonNull(name);
         if (userID.isBlank()) {
             throw new IllegalArgumentException("User ID must not be blank!");
@@ -44,60 +48,67 @@ public class User {
                 "password") : passwordHash;
     }
 
+    /**
+     * Gets userID of the current {@code User}
+     * 
+     * @return the {@code userID} string of associated with a {@code User}
+     */
     public String getUserID() {
-        /**
-         * Gets userID of the current {@code User}
-         * 
-         * @return the UserID string of associated with a {@code User}
-         */
         return userID;
     }
-
+    
+    /**
+     * Gets the hashed password of the current {@code User}
+     * 
+     * @return the hashed password associated with a {@code User}
+     */
     public String getHashedPassword() {
-        /**
-         * Gets the hashed password of the current {@code User}
-         * 
-         * @return the hashed password associated with a {@code User}
-         */
         return this.passwordHash;
     }
-
+    
+    /**
+     * Sets the password of the current {@code User} hashed with BCrypt
+     * 
+     * @param hashedPassword the updated password associated with a {@code User}
+     * hashed with BCrypt
+     */
     void setHashedPassword(String hashedPassword) {
-        /**
-         * Sets the password of the current {@code User} hashed with BCrypt
-         */
         this.passwordHash = hashedPassword;
     }
 
+    /**
+     * Gets the faculty of the current {@code User}
+     * 
+     * @return the faculty associated with a {@code User}
+     */
     public String getFaculty() {
-        /**
-         * Gets the faculty of the current {@code User}
-         * 
-         * @return the faculty associated with a {@code User}
-         */
         return this.faculty;
     }
 
+    /**
+     * Sets the {@code faculty} of the current {@code User}
+     * 
+     * @param faculty the updated {@code faculty} associated with a {@code User}
+     */
     public void setFaculty(String faculty) {
-        /**
-         * Sets the faculty of the current {@code User}
-         */
         this.faculty = Objects.requireNonNull(faculty).toUpperCase();
     }
 
+    /**
+     * Gets the {@code name} of the current {@code User}
+     * 
+     * @return the {@code name} associated with a {@code User}
+     */
     public String getName() {
-        /**
-         * Gets the name of the current {@code User}
-         * 
-         * @return the name associated with a {@code User}
-         */
         return this.name;
     }
 
+    /**
+     * Sets the {@code name} of the current {@code User}
+     * 
+     * @param name the updated {@code name} associated with a {@code User}
+     */
     public void setName(String name) {
-        /**
-         * Sets the name of the current {@code User}
-         */
         this.name = Objects.requireNonNull(name);
     }
 }
