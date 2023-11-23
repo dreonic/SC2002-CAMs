@@ -1,7 +1,7 @@
 package cams.view.components.camp;
 
-import cams.camp.CampFilterController;
 import cams.domain.Staff;
+import cams.filter.CampFilterController;
 import cams.filter.FilterStrategy;
 import cams.user.AuthController;
 import cams.user.User;

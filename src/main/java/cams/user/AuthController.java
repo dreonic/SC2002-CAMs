@@ -2,7 +2,7 @@ package cams.user;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import cams.camp.CampFilterController;
+import cams.filter.CampFilterController;
 
 /**
  * The AuthController control is responsible for facilitating {@code User} login, logout

@@ -1,6 +1,6 @@
 package cams.view.components.camp;
 
-import cams.camp.CampFilterController;
+import cams.filter.CampFilterController;
 import cams.filter.FilterByStaff;
 import cams.filter.FilterStrategy;
 import cams.user.UserController;

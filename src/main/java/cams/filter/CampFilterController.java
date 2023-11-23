@@ -1,10 +1,11 @@
-package cams.camp;
-
-import cams.filter.FilterStrategy;
+package cams.filter;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import cams.camp.Camp;
+import cams.camp.CampController;
 
 /**
  * The {@code CampFilterController} class manages filtering strategies for camps.

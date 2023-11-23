@@ -1,8 +1,8 @@
 package cams.view.components.camp;
 
 import cams.camp.Camp;
-import cams.camp.CampFilterController;
 import cams.domain.Student;
+import cams.filter.CampFilterController;
 import cams.filter.FilterStrategy;
 import cams.user.AuthController;
 import cams.user.User;
