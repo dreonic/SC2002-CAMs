@@ -6,6 +6,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The UserController control is responsible for facilitating access to {@code User}
+ * credentials. It stores user table and staff table.
+ * 
+ * It follows the Singleton pattern to ensure a single instance throughout the
+ * application.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
+
 public class UserController {
     private static UserController userController;
     private final Map<String, User> userTable;
@@ -19,6 +35,12 @@ public class UserController {
         initializeUserTable();
     }
 
+    /**
+     * Gets the singleton instance of {@code UserController} and initiates student and staff list
+     * from list file
+     * 
+     * @return the singleton instace of the {@code UserController}
+     */
     public static UserController getInstance() {
         if (userController == null) {
             userController = new UserController("student_list.xlsx", "staff_list.xlsx");
@@ -26,6 +48,12 @@ public class UserController {
         return userController;
     }
 
+    /**
+     * Gets the singleton instance of {@code UserController} and initiates student and staff list
+     * from passed parameters
+     * 
+     * @return the singleton instace of the {@code UserController}
+     */
     public static UserController getInstance(String studentPath, String staffPath) {
         if (userController == null) {
             userController = new UserController(studentPath, staffPath);
@@ -33,6 +61,9 @@ public class UserController {
         return userController;
     }
 
+    /**
+     * Closes the {@code UserController}, updating the user and staff list file
+     */
     public static void close() {
         UserSerializer.serialize(userController.getUserTable(), "student", userController.studentPath, userController.staffPath);
         UserSerializer.serialize(userController.getUserTable(), "staff", userController.studentPath, userController.staffPath);
@@ -49,15 +80,33 @@ public class UserController {
             addUser(user);
     }
 
+    /**
+     * Adds a {@code User} object to the corresponding table
+     * 
+     * @param user the user object associated with a {@code User}
+     * @throws IllegalArgumentException when a {@code User} with the same {@code userID}
+     * already exists
+     */
     public void addUser(User user) throws IllegalArgumentException {
         if (userTable.putIfAbsent(user.getUserID(), user) != null)
             throw new IllegalArgumentException("User with the same userID already exists!");
     }
 
+    /**
+     * Gets the {@code User} object corresponding to a {@code userID}
+     * 
+     * @param userID the userID associated with a {@code User}
+     * @return the {@code User} object corresponding to a {@code userID}
+     */
     public User getUser(String userID) {
         return userTable.get(userID.toUpperCase());
     }
 
+    /**
+     * Gets the {@code User} table containing hash map of users
+     * 
+     * @return {@code User} table containing hash map of users
+     */
     public Map<String, User> getUserTable() {
         return new HashMap<>(userTable);
     }
