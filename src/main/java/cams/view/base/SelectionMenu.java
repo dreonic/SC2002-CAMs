@@ -1,7 +1,7 @@
 package cams.view.base;
 
+import cams.view.CommonElements;
 import cams.view.DisplayController;
-import cams.view.components.InvalidAlert;
 
 import java.util.ArrayList;
 import java.util.List;
