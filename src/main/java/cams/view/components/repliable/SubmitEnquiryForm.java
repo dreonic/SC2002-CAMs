@@ -15,7 +15,25 @@ import cams.view.components.student.StudentMenu;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying a {@code Form} which the {@code Student}
+ * can use to submit a new {@code Enquiry} to a specific {@code Camp}.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class SubmitEnquiryForm extends Form {
+
+    /**
+     * Constructs the Submit Enquiry Form specifying the scanner to be used.
+     * 
+     * @param scanner
+     */
     public SubmitEnquiryForm(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();

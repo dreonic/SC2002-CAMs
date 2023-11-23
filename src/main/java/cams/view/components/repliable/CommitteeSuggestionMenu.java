@@ -1,7 +1,5 @@
 package cams.view.components.repliable;
 
-import java.util.Scanner;
-
 import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.repliable.Suggestion;
@@ -14,7 +12,28 @@ import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.student.CommitteeViewSuggestionMenu;
 
+import java.util.Scanner;
+
+/**
+ * The boundary class displaying menu options a committee member can select
+ * once they have selected a specific {@code Suggestion} they have submitted.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class CommitteeSuggestionMenu extends SelectionMenu {
+
+    /**
+     * Constructs the Committee Suggestion Menu specifying the scanner to be used and the {@code Suggestion} to be altered.
+     * 
+     * @param scanner
+     * @param suggestion
+     */
     public CommitteeSuggestionMenu(Scanner scanner, Suggestion suggestion) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();

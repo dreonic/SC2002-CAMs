@@ -49,13 +49,21 @@ import java.util.stream.Collectors;
  * The Excel file has a specific structure with headers and rows containing
  * the respective camp information.
  * </p>
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-09
  */
 public class CampSerializer {
     /**
      * Deserializes camp information from the specified Excel file path and updates
      * the {@code CampController} accordingly.
      *
-     * @param path The file path of the Excel file containing camp information.
+     * @param path the file path of the Excel file containing camp information.
      */
     public static List<Camp> deserialize(String path) throws RuntimeException {
         List<Camp> result = new ArrayList<>();
@@ -145,7 +153,7 @@ public class CampSerializer {
      * Serializes camp information to the specified Excel file path based on the
      * current state of the {@code CampController}.
      *
-     * @param path The file path where the camp information should be serialized to.
+     * @param path the file path where the camp information should be serialized to.
      */
     public static void serialize(Map<String, Camp> campTable, String path) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {

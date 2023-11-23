@@ -11,7 +11,25 @@ import cams.view.base.SelectionMenu;
 
 import java.util.Scanner;
 
+/**
+ * The boundary class responsible for displaying the options a Staff has
+ * when they wish to generate a list of students tied to the specified {@code Camp}.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class StaffStudentListFilterMenu extends SelectionMenu {
+
+    /**
+     * Construcs the Staff Student List Filter Menu specifying the scanner to be used.
+     * 
+     * @param scanner
+     */
     public StaffStudentListFilterMenu(Scanner scanner) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();

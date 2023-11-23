@@ -50,6 +50,12 @@ public class CampController {
         return campController;
     }
 
+    /**
+     * Returns the singleton instance of the {@code CampController}.
+     *  
+     * @param campPath the path where csv file of camp list is found.
+     * @return The {@code CampController} instance.
+     */
     public static CampController getInstance(String campPath) {
         if (campController == null) {
             campController = new CampController(campPath);
@@ -57,11 +63,17 @@ public class CampController {
         return campController;
     }
 
+    /**
+     * Closes the current camp controller and serializes the current camp data to the camp list csv.
+     */
     public static void close() {
         CampSerializer.serialize(campController.getCampTable(), campController.campPath);
         campController = null;
     }
 
+    /**
+     * Initializes the camp table by deserializing camp data from the camp list csv.
+     */
     private void initializeCampTable() {
         List<Camp> camps = CampSerializer.deserialize(campPath);
         for (Camp camp : camps)
@@ -169,10 +181,20 @@ public class CampController {
         return camp.getAttendees();
     }
 
+    /**
+     * Gets the current camp of the camp controller.
+     *
+     * @return the current {@code Camp} set for the controller.
+     */
     public Camp getCurrentCamp() {
         return currentCamp;
     }
 
+    /**
+     * Sets the current camp of the camp controller.
+     *
+     * @param camp the {@code Camp} to be set as the current camp of the controller.
+     */
     public void setCurrentCamp(Camp camp) {
         currentCamp = camp;
     }

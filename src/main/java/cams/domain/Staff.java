@@ -22,10 +22,10 @@ public class Staff extends User {
     /**
      * Constructs a Staff object with the specified details.
      *
-     * @param name         The name of the staff member.
-     * @param userID       The unique user identifier for the staff member.
-     * @param faculty      The faculty to which the staff member belongs.
-     * @param passwordHash The hashed password for authentication.
+     * @param name         the name of the staff member.
+     * @param userID       the unique user identifier for the staff member.
+     * @param faculty      the faculty to which the staff member belongs.
+     * @param passwordHash the hashed password for authentication.
      */
     public Staff(String name, String userID, String faculty, String passwordHash) {
         super(name, userID, faculty, passwordHash);
@@ -44,12 +44,17 @@ public class Staff extends User {
     /**
      * Adds a camp to the set of camps created by the staff member.
      *
-     * @param camp The camp to be added.
+     * @param camp the camp to be added.
      */
     public void addCamp(Camp camp) {
         campsCreated.add(camp);
     }
 
+    /**
+     * Removes a camp from the set of camps created by the staff member.
+     *
+     * @param camp the camp to be added.
+     */
     public void removeCamp(Camp camp) {
         campsCreated.remove(camp);
     }
