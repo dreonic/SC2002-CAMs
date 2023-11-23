@@ -11,9 +11,25 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying the form to add or set the date filter when viewing camps.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class FilterByDateForm extends FilterStrategyForm {
     private static FilterStrategy current;
 
+    /**
+     * Constructs the date filter form with the scanner used to obtain user input.
+     *
+     * @param scanner scanner for this form
+     */
     public FilterByDateForm(Scanner scanner) {
         super(new FilterByDate(), scanner);
 

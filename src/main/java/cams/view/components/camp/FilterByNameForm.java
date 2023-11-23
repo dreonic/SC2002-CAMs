@@ -9,9 +9,25 @@ import cams.view.base.TextBox;
 
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying the form to add or set the name filter when viewing camps.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class FilterByNameForm extends FilterStrategyForm {
     private static FilterStrategy current;
 
+    /**
+     * Constructs the name filter form with the scanner used to obtain user input.
+     *
+     * @param scanner scanner for this form
+     */
     public FilterByNameForm(Scanner scanner) {
         super(new FilterByName(), scanner);
 

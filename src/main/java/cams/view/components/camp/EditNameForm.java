@@ -6,16 +6,30 @@ import cams.camp.CampEditor;
 import cams.domain.Staff;
 import cams.domain.StaffController;
 import cams.view.DisplayController;
-import cams.view.base.Alert;
-import cams.view.base.CommonElements;
-import cams.view.base.Form;
-import cams.view.base.ItemAction;
-import cams.view.base.TextBox;
+import cams.view.base.*;
 
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying the form for editing camp name.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class EditNameForm extends Form {
+    /**
+     * Constructs the camp name editing form with the scanner used to obtain user input. Displays an
+     * alert to confirm successful name edit or to inform that the camp name is invalid because
+     * another camp already has the same name.
+     *
+     * @param scanner scanner for this form
+     */
     public EditNameForm(Scanner scanner) {
         super(scanner);
 

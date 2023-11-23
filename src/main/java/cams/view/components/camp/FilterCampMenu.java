@@ -17,7 +17,25 @@ import cams.view.components.student.StudentMenu;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying the menu to view camps and change the viewing filters. User can
+ * set and clear view filters before viewing the filtered camps.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class FilterCampMenu extends SelectionMenu {
+    /**
+     * Constructs the camp filter and view menu with the scanner used to obtain user input. Displays
+     * the current view filters set by the user.
+     *
+     * @param scanner scanner for this menu
+     */
     public FilterCampMenu(Scanner scanner) {
         super(scanner);
 

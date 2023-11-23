@@ -4,16 +4,29 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.camp.CampEditor;
 import cams.view.DisplayController;
-import cams.view.base.Alert;
-import cams.view.base.CommonElements;
-import cams.view.base.Form;
-import cams.view.base.ItemAction;
-import cams.view.base.TextBox;
+import cams.view.base.*;
 
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying the form for editing camp description.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class EditDescriptionForm extends Form {
+    /**
+     * Constructs the camp description editing form with the scanner used to obtain user input.
+     * Displays an alert to confirm successful description edit.
+     *
+     * @param scanner scanner for this form
+     */
     public EditDescriptionForm(Scanner scanner) {
         super(scanner);
 

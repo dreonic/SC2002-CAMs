@@ -13,7 +13,26 @@ import cams.view.base.SelectionMenu;
 
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying the menu to set camp viewing filters. The user can choose specific
+ * options within this menu to set criteria for specific filter strategies.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class SetFilterCampMenu extends SelectionMenu {
+    /**
+     * Constructs the filter setting menu with the scanner used to obtain user input. Displays the
+     * filter strategies that can be set by the user. If the current user is a staff, then the user
+     * group and visibility filter can be set.
+     *
+     * @param scanner scanner for this menu
+     */
     public SetFilterCampMenu(Scanner scanner) {
         super(scanner);
 

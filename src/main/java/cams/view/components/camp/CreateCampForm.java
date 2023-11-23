@@ -3,11 +3,7 @@ package cams.view.components.camp;
 import cams.camp.CampController;
 import cams.domain.StaffController;
 import cams.view.DisplayController;
-import cams.view.base.Alert;
-import cams.view.base.CommonElements;
-import cams.view.base.Form;
-import cams.view.base.ItemAction;
-import cams.view.base.TextBox;
+import cams.view.base.*;
 import cams.view.components.staff.StaffMenu;
 
 import java.time.LocalDate;
@@ -16,7 +12,26 @@ import java.time.format.DateTimeParseException;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying the form for a staff to provide initial camp details when
+ * creating a new camp.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class CreateCampForm extends Form {
+    /**
+     * Constructs the camp creation form with the scanner used to obtain user input. Validates
+     * input and displays an alert if any of the inputs are invalid. The date inputs are validated
+     * to match the dd-mm-yyyy format. The visibility of the camp is "n" only if the input is "n".
+     *
+     * @param scanner scanner for this form
+     */
     public CreateCampForm(Scanner scanner) {
         super(scanner);
 
@@ -72,7 +87,7 @@ public class CreateCampForm extends Form {
                             new StaffMenu(scanner),
                             scanner));
 
-                }  catch (IllegalArgumentException e) {
+                } catch (IllegalArgumentException e) {
                     displayController.setNextDisplay(new Alert(e.getMessage(), new StaffMenu(scanner), scanner));
                 }
             }

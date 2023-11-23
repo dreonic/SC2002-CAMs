@@ -9,7 +9,26 @@ import cams.view.components.student.StudentMenu;
 
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying the menu which allows a student to register for a camp either as an
+ * attendee or a committee.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class CampRegisterMenu extends SelectionMenu {
+    /**
+     * Constructs the camp registration menu with the scanner used to obtain user input. A
+     * student can either register as an attendee or a committee. Displays an alert if a student
+     * tries to register as a committee but is already a committee for another camp.
+     *
+     * @param scanner scanner for this menu
+     */
     public CampRegisterMenu(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();
