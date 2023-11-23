@@ -1,27 +1,44 @@
 package cams.user;
 
+import cams.domain.Student;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AuthControllerTest {
-    @BeforeAll
-    static void initializeControllers() {
-        AuthController.getInstance();
-        UserController.getInstance("test_student_list.xlsx", "test_staff_list.xlsx");
+    static void removeTestFiles() {
+        try {
+            Files.delete(Paths.get("test_staff_list.xlsx"));
+            Files.delete(Paths.get("test_student_list.xlsx"));
+            Files.delete(Paths.get("test_camp_list.xlsx"));
+            Files.delete(Paths.get("test_enquiry_list.xlsx"));
+            Files.delete(Paths.get("test_suggestion_list.xlsx"));
+        } catch (IOException ignored) {
+        }
     }
 
     @BeforeAll
+    static void initializeControllers() {
+        removeTestFiles();
+        AuthController.getInstance();
+        UserController.getInstance("test_student_list.xlsx", "test_staff_list.xlsx");
+        initializeUserTable();
+    }
+
     static void initializeUserTable() {
         UserController userController = UserController.getInstance();
-        userController.addUser(new User(
+        userController.addUser(new Student(
                 "Test User A", "testa", "Testing Faculty", null));
-        userController.addUser(new User(
+        userController.addUser(new Student(
                 "Test User B", "testb", "Testing Faculty", null));
-        userController.addUser(new User(
+        userController.addUser(new Student(
                 "Test User C", "testc", "Testing Faculty", null));
     }
 
@@ -29,6 +46,7 @@ public class AuthControllerTest {
     static void closeControllers() {
         UserController.close();
         AuthController.close();
+        removeTestFiles();
     }
 
     @Test

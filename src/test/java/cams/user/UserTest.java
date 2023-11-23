@@ -1,5 +1,6 @@
 package cams.user;
 
+import cams.domain.Student;
 import org.junit.jupiter.api.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -28,7 +29,7 @@ public class UserTest {
     @Test
     @DisplayName("Default user password is \"password\"")
     void defaultUserPasswordIsPassword() {
-        User user = new User("Test User", "test001", "Testing Faculty", null);
+        User user = new Student("Test User", "test001", "Testing Faculty", null);
         assertTrue(passwordEncoder.matches("password", user.getHashedPassword()));
     }
 
@@ -37,7 +38,7 @@ public class UserTest {
     void passwordHashedCorrectlyIfSpecified() {
         String password = "12345678";
         AuthController authController = AuthController.getInstance();
-        User user = new User("Test User", "test001", "Testing Faculty", passwordEncoder.encode(password));
+        User user = new Student("Test User", "test001", "Testing Faculty", passwordEncoder.encode(password));
         assertTrue(passwordEncoder.matches(password, user.getHashedPassword()));
     }
 
@@ -45,7 +46,7 @@ public class UserTest {
     @DisplayName("User ID is capitalized upon initialization")
     void userIDIsCapitalizedUponInitialization() {
         String userID = "tEst001";
-        User user = new User("Test User", userID, "Testing Faculty", null);
+        User user = new Student("Test User", userID, "Testing Faculty", null);
         assertEquals(userID.toUpperCase(), user.getUserID());
     }
 }
