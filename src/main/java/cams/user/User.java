@@ -1,6 +1,9 @@
 package cams.user;
 
+import java.util.List;
 import java.util.Objects;
+
+import cams.camp.Camp;
 
  /**
   * {@code User} entity is the base class for {@code Student} and
@@ -22,7 +25,7 @@ import java.util.Objects;
   * @param passwordHash the password hashed with BCrypt associated with a {@code User}
   */
 
-public class User {
+public abstract class User {
     private final String userID;
     private String name;
     private String passwordHash;
@@ -47,6 +50,27 @@ public class User {
         this.passwordHash = passwordHash == null ? authController.getPasswordEncoder().encode(
                 "password") : passwordHash;
     }
+
+    /**
+     * Gets a list of camps
+     *
+     * @return a list of camps
+     */
+    public abstract List<Camp> getCamps();
+
+    /**
+     * Adds a camp to the camps list
+     * 
+     * @param camp list of camps
+     */
+    public abstract void addCamp(Camp camp);
+    
+    /**
+     * Removes a camp from the set of camps
+     *
+     * @param camp the camp to be added
+     */
+    public abstract void removeCamp(Camp camp);
 
     /**
      * Gets userID of the current {@code User}

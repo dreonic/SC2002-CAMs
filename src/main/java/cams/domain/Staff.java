@@ -41,7 +41,7 @@ public class Staff extends User {
     }
 
     /**
-     * Returns a list of camps created by the staff member.
+     * Gets a list of camps created by the staff member.
      *
      * @return A list of camps created by the staff member.
      */
@@ -61,7 +61,7 @@ public class Staff extends User {
     /**
      * Removes a camp from the set of camps created by the staff member.
      *
-     * @param camp the camp to be added.
+     * @param camp the camp to be removed.
      */
     public void removeCamp(Camp camp) {
         campsCreated.remove(camp);
