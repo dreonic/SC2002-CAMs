@@ -31,7 +31,7 @@ public class StaffCampMenu extends SelectionMenu {
     /**
      * Constructs the Staff Camp Menu specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this menu
      */
     public StaffCampMenu(Scanner scanner) {
         super(scanner);

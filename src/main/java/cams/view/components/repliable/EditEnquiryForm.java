@@ -32,8 +32,8 @@ public class EditEnquiryForm extends Form {
     /**
      * Constructs the Edit Enquiry Form specifying the scanner to be used and the {@code Enquiry} to be edited.
      * 
-     * @param scanner
-     * @param enquiry
+     * @param scanner scanner for this form
+     * @param enquiry specified enquiry to be edited
      */
     public EditEnquiryForm(Scanner scanner, Enquiry enquiry) {
         super(scanner);

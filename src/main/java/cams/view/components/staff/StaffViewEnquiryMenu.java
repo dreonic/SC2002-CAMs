@@ -31,7 +31,7 @@ public class StaffViewEnquiryMenu extends SelectionMenu {
     /**
      * Constructs the Staff View Enquiry Menu specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this menu
      */
     public StaffViewEnquiryMenu(Scanner scanner) {
         super(scanner);

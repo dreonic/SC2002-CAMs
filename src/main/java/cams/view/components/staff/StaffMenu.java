@@ -32,7 +32,7 @@ public class StaffMenu extends SelectionMenu {
     /**
      * Constructs the Staff Menu specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this menu
      */
     public StaffMenu(Scanner scanner) {
         super(scanner);

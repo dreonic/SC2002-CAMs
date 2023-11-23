@@ -32,7 +32,7 @@ public class SubmitSuggestionForm extends Form {
     /**
      * Constructs the Submit Suggestion Form specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this form
      */
     public SubmitSuggestionForm(Scanner scanner) {
         super(scanner);
