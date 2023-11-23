@@ -1,7 +1,7 @@
 package cams.view.components.camp;
 
 import cams.filter.FilterStrategy;
-import cams.view.base.CommonElements;
+import cams.view.CommonElements;
 import cams.view.base.Form;
 
 import java.util.Scanner;

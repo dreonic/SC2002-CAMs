@@ -2,6 +2,7 @@ package cams.view.components.camp;
 
 import cams.camp.CampController;
 import cams.domain.StaffController;
+import cams.view.CommonElements;
 import cams.view.DisplayController;
 import cams.view.base.*;
 import cams.view.components.staff.StaffMenu;

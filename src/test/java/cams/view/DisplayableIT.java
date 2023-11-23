@@ -9,7 +9,6 @@ import cams.serializer.RepliableSerializer;
 import cams.user.AuthController;
 import cams.user.User;
 import cams.user.UserController;
-import cams.view.base.CommonElements;
 import cams.view.components.WelcomeMenu;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

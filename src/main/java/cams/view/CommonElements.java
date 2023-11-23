@@ -1,4 +1,4 @@
-package cams.view.base;
+package cams.view;
 
 /**
  * Utility class providing common text elements used by classes of the {@code view} package.

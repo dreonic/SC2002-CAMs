@@ -23,13 +23,13 @@ public class StaffController {
     /**
      * The current staff associated with the controller.
      */
-    private Staff staff;
+    private Staff currentStaff;
 
     /**
      * Private constructor to enforce singleton pattern.
      */
     private StaffController() {
-        staff = null;
+        currentStaff = null;
     }
 
     /**
@@ -71,15 +71,15 @@ public class StaffController {
      * @return the current staff
      */
     public Staff getCurrentStaff() {
-        return staff;
+        return currentStaff;
     }
 
     /**
      * Sets the current staff associated with the controller.
      *
-     * @param staff the staff to be set as the current staff
+     * @param currentStaff the staff to be set as the current staff
      */
-    public void setCurrentStaff(Staff staff) {
-        this.staff = staff;
+    public void setCurrentStaff(Staff currentStaff) {
+        this.currentStaff = currentStaff;
     }
 }

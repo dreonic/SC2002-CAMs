@@ -4,6 +4,7 @@ import cams.camp.Camp;
 import cams.camp.CampController;
 import cams.domain.Student;
 import cams.serializer.PerformanceReportSerializer;
+import cams.view.CommonElements;
 import cams.view.DisplayController;
 import cams.view.base.*;
 import cams.view.components.camp.EditCampMenu;

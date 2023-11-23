@@ -1,8 +1,8 @@
 package cams.view.components;
 
+import cams.view.CommonElements;
 import cams.view.DisplayController;
 import cams.view.base.ActionableItem;
-import cams.view.base.CommonElements;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.auth.LoginForm;

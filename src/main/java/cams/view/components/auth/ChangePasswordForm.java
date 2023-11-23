@@ -3,6 +3,7 @@ package cams.view.components.auth;
 import cams.domain.Staff;
 import cams.user.AuthController;
 import cams.user.User;
+import cams.view.CommonElements;
 import cams.view.DisplayController;
 import cams.view.base.*;
 import cams.view.components.staff.StaffMenu;
