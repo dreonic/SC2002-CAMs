@@ -36,8 +36,8 @@ public class ReplyEnquiryForm extends Form {
     /**
      * Constructs the Reply Enquiry Form specifying the scanner to be used and the {@code Enquiry} to be replied.
      * 
-     * @param scanner
-     * @param enquiry
+     * @param scanner scanner for this form
+     * @param enquiry specified enquiry to be replied
      */
     public ReplyEnquiryForm(Scanner scanner, Enquiry enquiry) {
         super(scanner);

@@ -14,7 +14,26 @@ import de.vandermeer.asciithemes.u8.U8_Grids;
 
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying the current camp information and its related actions for the user.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class CampMenu extends SelectionMenu {
+    /**
+     * Constructs the camp menu with the scanner used to obtain user input. Displays camp
+     * information and related actions of the current camp selected depending on the current user.
+     * If the current user is a student, displays an action to register for the camp and to submit
+     * an enquiry for the camp.
+     *
+     * @param scanner scanner for this menu
+     */
     public CampMenu(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();
@@ -52,10 +71,9 @@ public class CampMenu extends SelectionMenu {
         if (currentUser instanceof Student) {
             addItem(new ActionableItem("Register", new ItemAction() {
                 public void execute() {
-                    if(camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size() == 0) {
+                    if (camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size() == 0) {
                         displayController.setNextDisplay(new Alert("This camp is full!", new StudentMenu(scanner), scanner));
-                    }
-                    else {
+                    } else {
                         if (((Student) currentUser).getCamps().contains(camp)) {
                             displayController.setNextDisplay(new Alert("Already registered for this camp!", new StudentMenu(scanner), scanner));
                         } else {

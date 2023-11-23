@@ -31,7 +31,7 @@ public class StudentViewEnquiryMenu extends SelectionMenu {
     /**
      * Constructs the Student View Enquiry Menu specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this menu
      */
     public StudentViewEnquiryMenu(Scanner scanner) {
         super(scanner);

@@ -31,8 +31,8 @@ public class CommitteeSuggestionMenu extends SelectionMenu {
     /**
      * Constructs the Committee Suggestion Menu specifying the scanner to be used and the {@code Suggestion} to be altered.
      * 
-     * @param scanner
-     * @param suggestion
+     * @param scanner scanner for this menu
+     * @param suggestion specified suggestion to be altered
      */
     public CommitteeSuggestionMenu(Scanner scanner, Suggestion suggestion) {
         super(scanner);

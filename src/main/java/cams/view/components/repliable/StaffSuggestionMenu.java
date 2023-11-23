@@ -33,8 +33,8 @@ public class StaffSuggestionMenu extends Form {
     /**
      * Constructs the Staff Suggestion Menu specifying the scanner to be used and the {@code Suggestion} to be approved.
      * 
-     * @param scanner
-     * @param suggestion
+     * @param scanner scanner for this form
+     * @param suggestion specified suggestion to be approved
      */
     public StaffSuggestionMenu(Scanner scanner, Suggestion suggestion) {
         super(scanner);

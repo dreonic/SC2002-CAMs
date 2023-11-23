@@ -12,6 +12,14 @@ import java.util.Set;
 /**
  * The Student entity class represents a student user in the system. It extends the User class
  * and includes additional attributes related to camp registration and enquiries.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-09
  */
 public class Student extends User {
     /**

@@ -33,7 +33,7 @@ public class StudentMenu extends SelectionMenu {
     /**
      * Constructs the Student Menu specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this menu
      */
     public StudentMenu(Scanner scanner) {
         super(scanner);

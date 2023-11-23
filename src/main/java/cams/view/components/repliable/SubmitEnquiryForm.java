@@ -32,7 +32,7 @@ public class SubmitEnquiryForm extends Form {
     /**
      * Constructs the Submit Enquiry Form specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this form
      */
     public SubmitEnquiryForm(Scanner scanner) {
         super(scanner);

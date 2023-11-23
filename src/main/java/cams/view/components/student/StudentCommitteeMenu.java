@@ -27,7 +27,7 @@ public class StudentCommitteeMenu extends SelectionMenu {
     /**
      * Constructs the Student Committee Menu specifying the scanner to be used.
      * 
-     * @param scanner
+     * @param scanner scanner for this menu
      */
     public StudentCommitteeMenu(Scanner scanner) {
         super(scanner);

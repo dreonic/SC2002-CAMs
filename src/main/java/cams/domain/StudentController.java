@@ -8,11 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The StudentController class manages the interaction between the system and a student user.
+ * The StudentController control class manages the interaction between the system and a student user.
  * It provides methods for registering, withdrawing from camps, and handling the current student user.
+ * It follows the Singleton pattern to ensure a single instance throughout the application.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-09
  */
 public class StudentController {
+    /**
+     * The sole instance of the StaffController class.
+     */
     private static StudentController studentController;
+
+    /**
+     * The current student associated with the controller.
+     */
     private Student student;
 
     /**
@@ -25,7 +41,7 @@ public class StudentController {
     /**
      * Gets the singleton instance of StudentController.
      *
-     * @return The singleton instance of StudentController.
+     * @return the singleton instance of StudentController
      */
     public static StudentController getInstance() {
         if (studentController == null) {
@@ -37,8 +53,8 @@ public class StudentController {
     /**
      * Gets the singleton instance of StudentController with the specified student.
      *
-     * @param student The student to associate with the controller.
-     * @return The singleton instance of StudentController.
+     * @param student the student to associate with the controller
+     * @return the singleton instance of StudentController
      */
     @SuppressWarnings("UnusedReturnValue")
     public static StudentController getInstance(Student student) {
@@ -59,7 +75,7 @@ public class StudentController {
     /**
      * Gets the current student associated with the controller.
      *
-     * @return the current student.
+     * @return the current student
      */
     public Student getCurrentStudent() {
         return student;
@@ -68,7 +84,7 @@ public class StudentController {
     /**
      * Sets the current student associated with the controller.
      *
-     * @param student The student to set as the current student.
+     * @param student the student to set as the current student
      */
     public void setCurrentStudent(Student student) {
         this.student = student;
@@ -77,9 +93,9 @@ public class StudentController {
     /**
      * Registers the student for a camp, optionally as a committee member.
      *
-     * @param camp        The camp to register for.
-     * @param isCommittee A boolean indicating whether the student registers as a committee member.
-     * @throws RuntimeException If there is a scheduling conflict or other registration issues.
+     * @param camp        the camp to register for
+     * @param isCommittee a boolean indicating whether the student registers as a committee member
+     * @throws RuntimeException if there is a scheduling conflict or other registration issues
      */
     public void register(Camp camp, Boolean isCommittee) throws RuntimeException {
         for (Camp registeredCamp : student.getCamps()) {
@@ -131,8 +147,8 @@ public class StudentController {
     /**
      * Withdraws the student from a camp.
      *
-     * @param camp The camp to withdraw from.
-     * @throws RuntimeException If the student is a committee member or not registered for the camp.
+     * @param camp the camp to withdraw from
+     * @throws RuntimeException if the student is a committee member or not registered for the camp
      */
     public void withdraw(Camp camp) {
         if (student.getCommitteeFor() == camp) {
