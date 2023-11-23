@@ -30,7 +30,7 @@ public class StudentRegisteredCampMenu extends SelectionMenu {
         info.addRule();
         info.addRow("Description: ", camp.getCampInfo().getDescription());
         info.addRule();
-        info.addRow("Date: ", camp.getCampDate().getStartDate().toString() + " - " + camp.getCampDate().getEndDate().toString());
+        info.addRow("Date: ", camp.getCampDate().getStartDate().toString() + " to " + camp.getCampDate().getEndDate().toString());
         info.addRule();
         info.addRow("Available Slots: ", (camp.getCampInfo().getTotalSlots() - camp.getAttendees().size() - camp.getCommittee().size()));
         info.addRule();
