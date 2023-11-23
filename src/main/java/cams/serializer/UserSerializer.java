@@ -24,15 +24,23 @@ import java.util.Objects;
  *
  * <p>Users can be of two types: {@code Student} or {@code Staff}. The class supports the serialization and deserialization
  * of these users based on the specified user type.</p>
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-09
  */
 public class UserSerializer {
     /**
      * Deserializes user information from specified Excel files based on the specified user type.
      * The deserialized user information is then added to the {@link UserController} instance.
      *
-     * @param userType    The type of user to deserialize "student" or "staff".
-     * @param studentPath The path to the Excel file containing student information.
-     * @param staffPath   The path to the Excel file containing staff information.
+     * @param userType    the type of user to deserialize "student" or "staff".
+     * @param studentPath the path to the Excel file containing student information.
+     * @param staffPath   the path to the Excel file containing staff information.
      */
     public static List<User> deserialize(String userType, String studentPath, String staffPath) {
         String path = "student".equals(userType) ? studentPath : staffPath;
@@ -87,9 +95,9 @@ public class UserSerializer {
      * Serializes user information of the specified type {@code Student} or {@code Staff} into specified Excel files.
      * The generated Excel file includes details such as name, email, faculty, and hashed password.
      *
-     * @param userType    The type of user to serialize "student" or "staff".
-     * @param studentPath The path to the Excel file for storing student information.
-     * @param staffPath   The path to the Excel file for storing staff information.
+     * @param userType    the type of user to serialize "student" or "staff".
+     * @param studentPath the path to the Excel file for storing student information.
+     * @param staffPath   the path to the Excel file for storing staff information.
      */
     public static void serialize(Map<String, User> userTable, String userType, String studentPath, String staffPath) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {

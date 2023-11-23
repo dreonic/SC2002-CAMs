@@ -26,6 +26,14 @@ import java.io.File;
  * <p>
  * This class uses the Apache POI library for Excel handling.
  * </p>
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-09
  */
 public class StudentListSerializer {
     /**
@@ -40,9 +48,9 @@ public class StudentListSerializer {
      * information, "attendee" to exclude attendee information, or "none" to include
      * both.
      *
-     * @param camp        The camp for which student information is to be
+     * @param camp        the camp for which student information is to be
      *                    serialized.
-     * @param removeTable A string indicating which table(s) to exclude from the
+     * @param removeTable a string indicating which table(s) to exclude from the
      *                    output.
      *                    Valid values are "committee", "attendee", or "none" for
      *                    both.

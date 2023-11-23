@@ -22,15 +22,23 @@ import java.util.Set;
  * designed to handle {@code Enquiry} and {@code Suggestion} for a given specific {@code Camp}
  *
  * <p>This class uses the Apache POI library for Excel handling.</p>
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-09
  */
 public class RepliableSerializer {
     /**
      * Deserializes {@code Enquiry} or {@code Suggestion} data from Excel files based on the
      * specified repliable type and file paths.
      *
-     * @param repliableType  The type of repliable data to deserialize {@code Enquiry} or {@code Suggestion}.
-     * @param enquiryPath    The file path for the enquiry data Excel file.
-     * @param suggestionPath The file path for the suggestion data Excel file.
+     * @param repliableType  the type of repliable data to deserialize {@code Enquiry} or {@code Suggestion}.
+     * @param enquiryPath    the file path for the enquiry data Excel file.
+     * @param suggestionPath the file path for the suggestion data Excel file.
      */
     public static void deserialize(String repliableType, String enquiryPath, String suggestionPath) {
         try (FileInputStream fileIn = new FileInputStream(
@@ -83,9 +91,9 @@ public class RepliableSerializer {
     /**
      * Serializes {@code Enquiry} or {@code Suggestion} data to Excel files based on the specified repliable type and file paths.
      *
-     * @param repliableType  The type of repliable data to serialize {@code Enquiry} or {@code Suggestion}.
-     * @param enquiryPath    The file path for the enquiry data Excel file.
-     * @param suggestionPath The file path for the suggestion data Excel file.
+     * @param repliableType  the type of repliable data to serialize {@code Enquiry} or {@code Suggestion}.
+     * @param enquiryPath    the file path for the enquiry data Excel file.
+     * @param suggestionPath the file path for the suggestion data Excel file.
      */
     public static void serialize(String repliableType, String enquiryPath, String suggestionPath) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
