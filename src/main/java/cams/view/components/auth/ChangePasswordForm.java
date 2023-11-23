@@ -11,8 +11,31 @@ import cams.view.components.student.StudentMenu;
 import java.util.Map;
 import java.util.Scanner;
 
-public class ChangePasswordForm extends Form {
+/**
+ * Gets current user's candidate password and changes it when a match
+ * is found.
+ *
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-09
+ */
 
+public class ChangePasswordForm extends Form {
+    /**
+    * Verifies candidate password with stored password and
+    * replace old password with new password using
+    * <code>changePassword()</code> from <code>currentUser()</code>.
+    * 
+    * Alerts user that the password was changed if successful, otherwise
+    * alerts that wrong password was entered.
+    * 
+    * After completion, returns to the corresponding user type's interface.
+     * @param scanner
+     */
     public ChangePasswordForm(Scanner scanner) {
         super(CommonElements.getStatusBar("Change Password") + "Change your password:\n", scanner);
 
