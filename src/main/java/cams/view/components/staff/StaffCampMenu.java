@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 /**
  * The boundary class responsible for displaying menu 
- * options once the Staff has selected a Camp they created.
+ * options once the Staff has selected a {@code Camp} they created.
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

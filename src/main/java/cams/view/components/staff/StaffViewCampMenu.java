@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * The boundary class responsible for displaying a list of Camps the Staff
+ * The boundary class responsible for displaying a list of {@code Camp} the {@code Staff}
  * has created. The Staff will then be able to select one of these Camps.
  * 
  * @author Gillbert Susilo Wong

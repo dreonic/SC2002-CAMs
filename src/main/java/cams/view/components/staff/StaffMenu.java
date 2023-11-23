@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 /**
  * The boundary class displaying menu options for the Staff to select.
- * This serves as the homepage for Staff members.
+ * This serves as the homepage for {@code Staff} members.
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

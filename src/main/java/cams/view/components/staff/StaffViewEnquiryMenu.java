@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * The boundary class responsible for displaying a list of enquiries 
- * regarding the specified Camp they are in charge of.
+ * The boundary class responsible for displaying a list of {@code Enquiry} 
+ * regarding the specified {@code Camp} they are in charge of.
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

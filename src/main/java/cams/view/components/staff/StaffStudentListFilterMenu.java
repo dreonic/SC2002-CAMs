@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  * The boundary class responsible for displaying the options a Staff has
- * when they wish to generate a list of students tied to the specified Camp.
+ * when they wish to generate a list of students tied to the specified {@code Camp}.
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

@@ -18,7 +18,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying menu options a {@code Student} can select
+ * once they have selected a specific {@code Enquiry}.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class StudentEnquiryMenu extends SelectionMenu {
+
+    /**
+     * Constructs the Student Enquiry Menu specifying the scanner to be used and the {@code Enquiry} to be altered.
+     * 
+     * @param scanner
+     * @param enquiry
+     */
     public StudentEnquiryMenu(Scanner scanner, Enquiry enquiry) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();

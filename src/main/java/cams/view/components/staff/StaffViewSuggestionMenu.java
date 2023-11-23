@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * The boundary class responsible for displaying a list of suggestions 
- * regarding the specified Camp they are in charge of.
+ * The boundary class responsible for displaying a list of {@code Suggestion} 
+ * regarding the specified {@code Camp} they are in charge of.
  * 
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

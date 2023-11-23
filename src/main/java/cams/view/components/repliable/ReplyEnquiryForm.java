@@ -19,7 +19,26 @@ import cams.view.base.TextBox;
 import cams.view.components.staff.StaffViewEnquiryMenu;
 import cams.view.components.student.CommitteeViewEnquiryMenu;
 
+/**
+ * The boundary class displaying a {@code Form} which the Staff
+ * committee member can use to reply to the selected {@code Enquiry}.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class ReplyEnquiryForm extends Form {
+
+    /**
+     * Constructs the Reply Enquiry Form specifying the scanner to be used and the {@code Enquiry} to be replied.
+     * 
+     * @param scanner
+     * @param enquiry
+     */
     public ReplyEnquiryForm(Scanner scanner, Enquiry enquiry) {
         super(scanner);
         CampController campController = CampController.getInstance();
