@@ -13,7 +13,25 @@ import cams.view.base.SelectionMenu;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The boundary class responsible for displaying a list of Camps the Staff
+ * has created. The Staff will then be able to select one of these Camps.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class StaffViewCampMenu extends SelectionMenu {
+
+    /**
+     * Constructs the Staff View Camp Menu specifying the scanner to be used.
+     * 
+     * @param scanner
+     */
     public StaffViewCampMenu(Scanner scanner) {
         super(scanner);
         StaffController staffController = StaffController.getInstance();

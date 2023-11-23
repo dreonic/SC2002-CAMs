@@ -14,7 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The boundary class responsible for displaying a list of enquiries for a committee member to select.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class CommitteeViewEnquiryMenu extends SelectionMenu {
+    /**
+     * Constructs the Committee View Enquiry Menu specifying the scanner to be used.
+     * 
+     * @param scanner
+     */
     public CommitteeViewEnquiryMenu(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();

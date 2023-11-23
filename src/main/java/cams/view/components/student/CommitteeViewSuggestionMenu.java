@@ -16,7 +16,25 @@ import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
 import cams.view.components.repliable.CommitteeSuggestionMenu;
 
+/**
+ * The boundary class responsible for displaying a list of suggestions  
+ * the committee member has submitted for them to select.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class CommitteeViewSuggestionMenu extends SelectionMenu {
+
+    /**
+     * Constructs the Committee View Suggestion Menu specifying the scanner to be used.
+     * 
+     * @param scanner
+     */
     public CommitteeViewSuggestionMenu(Scanner scanner) {
         super(scanner);
         StudentController studentController = StudentController.getInstance();
