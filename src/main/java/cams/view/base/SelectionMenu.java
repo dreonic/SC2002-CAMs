@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Base class for all user interface elements with actionable selections. This
  * base class enables displaying a prompt alongside several selections with
  * distinct actions from which the user can choose one. Specific selection menus
- * in this application like <code>WelcomeMenu</code> are implemented as
+ * in this application like {@code WelcomeMenu} are implemented as
  * extensions from this base class.
  * <p>
  * To use this base selection menu, extend from or construct this base class,
@@ -140,7 +140,7 @@ public class SelectionMenu implements Displayable {
 
     /**
      * Adds a new actionable selection to the menu. Actionable selections added to
-     * the menu cannot be removed afterwards.
+     * the menu cannot be removed afterward.
      *
      * @param item actionable selection
      */
@@ -151,7 +151,7 @@ public class SelectionMenu implements Displayable {
     /**
      * Clears the standard output and displays menu prompt and selections to the
      * standard output. Waits and captures user selection choice and executes the
-     * action of the selected item afterwards.
+     * action of the selected item afterward.
      */
     public void display() {
         int choice = 0;

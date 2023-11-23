@@ -5,15 +5,15 @@ import cams.view.DisplayController;
 import java.util.Scanner;
 
 /**
- * Base class for all dismissable pop-up user interface elements. This base
+ * Base class for all dismissible pop-up user interface elements. This base
  * class enables displaying a pop-up with content which can be dismissed by
  * pressing the ENTER key. Once dismissed, the previous/calling
- * <code>Displayable</code> user interface element is displayed. Specific
- * alerts in this application like <code>InvalidAlert</code> are implemented as
+ * {@code Displayable} user interface element is displayed. Specific
+ * alerts in this application like {@code InvalidAlert} are implemented as
  * extensions from this base class.
  * <p>
  * To use this base alert, extend from or construct this base class with the
- * content and specify the previous <code>Displayable</code> which called this
+ * content and specify the previous {@code Displayable} which called this
  * alert.
  * Usage example by extension:
  *
@@ -88,7 +88,7 @@ public class Alert extends ActionableItem implements Displayable {
         System.out.println("\nPress ENTER to continue...");
         try {
             scanner.nextLine();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         runAction();
     }
