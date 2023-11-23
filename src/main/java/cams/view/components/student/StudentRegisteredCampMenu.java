@@ -11,7 +11,25 @@ import de.vandermeer.asciithemes.u8.U8_Grids;
 
 import java.util.Scanner;
 
+/**
+ * The boundary class responsible for displaying menu options a Student can select
+ * once they have selected a Camp they have registered for.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class StudentRegisteredCampMenu extends SelectionMenu {
+
+    /**
+     * Constructs the Student Registered Camp Menu specifying the scanner to be used.
+     * 
+     * @param scanner
+     */
     public StudentRegisteredCampMenu(Scanner scanner) {
         super(scanner);
         CampController campController = CampController.getInstance();

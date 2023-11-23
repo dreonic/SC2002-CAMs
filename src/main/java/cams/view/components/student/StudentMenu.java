@@ -16,7 +16,25 @@ import cams.view.components.camp.FilterCampMenu;
 
 import java.util.Scanner;
 
+/**
+ * The boundary class displaying menu options for the Student to select.
+ * This serves as the homepage for Students.
+ * 
+ * @author Gillbert Susilo Wong
+ * @author Juan Frederick
+ * @author Karl Devlin Chau
+ * @author Pascalis Pandey
+ * @author Trang Nguyen
+ * @version 1.0
+ * @since 2023-11-23
+ */
 public class StudentMenu extends SelectionMenu {
+
+    /**
+     * Constructs the Student Menu specifying the scanner to be used.
+     * 
+     * @param scanner
+     */
     public StudentMenu(Scanner scanner) {
         super(scanner);
         DisplayController displayController = DisplayController.getInstance();
