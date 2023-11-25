@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Java CI with Maven (Push)
 
 on:
   push:
@@ -33,10 +33,10 @@ jobs:
         run: cd app && mvn -B site --file pom.xml
 
       - name: Copy jar to bin directory
-        run: mkdir bin && cp app/target/SC2002-CAMs-1.0.jar bin/
+        run: mkdir -p bin && cp app/target/SC2002-CAMs-1.0.jar bin/
 
       - name: Copy Javadoc to javadoc directory
-        run: mkdir javadoc && cp -r app/target/site/apidocs/* javadoc/
+        run: mkdir -p javadoc && cp -r app/target/site/apidocs/* javadoc/
 
       - name: Commit to repository
         uses: stefanzweifel/git-auto-commit-action@v5
