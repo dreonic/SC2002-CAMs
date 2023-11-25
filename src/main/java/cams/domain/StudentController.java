@@ -9,9 +9,12 @@ import java.util.List;
 //done
 
 /**
- * The {@code StudentController} control class manages the interaction between the system and a student user.
- * It provides methods for registering, withdrawing from camps, and handling the current student user.
- * It follows the singleton pattern to ensure a single instance throughout the application.
+ * The {@code StudentController} control class manages the interaction between
+ * the system and a student user.
+ * It provides methods for registering, withdrawing from camps, and handling the
+ * current student user.
+ * It follows the singleton pattern to ensure a single instance throughout the
+ * application.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -52,7 +55,8 @@ public class StudentController {
     }
 
     /**
-     * Gets the singleton instance of {@code StudentController} with the specified student.
+     * Gets the singleton instance of {@code StudentController} with the specified
+     * student.
      *
      * @param student the student to associate with the controller
      * @return the singleton instance of {@code StudentController}
@@ -67,7 +71,8 @@ public class StudentController {
     }
 
     /**
-     * Closes the {@code StudentController, releasing the current student association.
+     * Closes the {@code StudentController}, releasing the current student
+     * association.
      */
     public static void close() {
         studentController = null;
@@ -95,8 +100,10 @@ public class StudentController {
      * Registers the student for a camp, optionally as a committee member.
      *
      * @param camp        the camp to register for
-     * @param isCommittee a boolean indicating whether the student registers as a committee member
-     * @throws RuntimeException if there is a scheduling conflict or other registration issues
+     * @param isCommittee a boolean indicating whether the student registers as a
+     *                    committee member
+     * @throws RuntimeException if there is a scheduling conflict or other
+     *                          registration issues
      */
     public void register(Camp camp, Boolean isCommittee) throws RuntimeException {
         for (Camp registeredCamp : currentStudent.getCamps()) {
@@ -104,8 +111,10 @@ public class StudentController {
             LocalDate startDate1 = registeredCamp.getCampDate().getStartDate(),
                     startDate2 = camp.getCampDate().getStartDate();
             LocalDate endDate1 = registeredCamp.getCampDate().getEndDate(), endDate2 = camp.getCampDate().getEndDate();
-            if (!(startDate1.isAfter(endDate2) || startDate2.isAfter(endDate1)) || startDate1.isEqual(endDate2) || startDate2.isEqual(endDate1)) {
-                throw new RuntimeException("Failed to register, conflicting camp schedule with " + registeredCampName + "!");
+            if (!(startDate1.isAfter(endDate2) || startDate2.isAfter(endDate1)) || startDate1.isEqual(endDate2)
+                    || startDate2.isEqual(endDate1)) {
+                throw new RuntimeException(
+                        "Failed to register, conflicting camp schedule with " + registeredCampName + "!");
             }
         }
 
@@ -147,7 +156,8 @@ public class StudentController {
      * Withdraws the student from a camp.
      *
      * @param camp the camp to withdraw from
-     * @throws RuntimeException if the student is a committee member or not registered for the camp
+     * @throws RuntimeException if the student is a committee member or not
+     *                          registered for the camp
      */
     public void withdraw(Camp camp) {
         if (currentStudent.getCommitteeFor() == camp) {
