@@ -26,9 +26,9 @@ public class CampDate {
     /**
      * Constructs a new {@code CampDate} object with the specified dates.
      *
-     * @param startDate            The start date of the camp.
-     * @param endDate              The end date of the camp.
-     * @param registrationDeadline The registration deadline for the camp.
+     * @param startDate            the start date of the camp
+     * @param endDate              the end date of the camp
+     * @param registrationDeadline the registration deadline for the camp
      */
     public CampDate(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline)
             throws IllegalArgumentException {
@@ -45,7 +45,7 @@ public class CampDate {
     /**
      * Retrieves the start date of the camp.
      *
-     * @return The start date.
+     * @return the start date
      */
     public LocalDate getStartDate() {
         return startDate;
@@ -54,7 +54,7 @@ public class CampDate {
     /**
      * Retrieves the end date of the camp.
      *
-     * @return The end date.
+     * @return the end date
      */
     public LocalDate getEndDate() {
         return endDate;
@@ -63,7 +63,7 @@ public class CampDate {
     /**
      * Retrieves the registration deadline for the camp.
      *
-     * @return The registration deadline.
+     * @return the registration deadline
      */
     public LocalDate getRegistrationDeadline() {
         return registrationDeadline;
@@ -72,9 +72,11 @@ public class CampDate {
     /**
      * Sets the date related data of the camp.
      *
-     * @param startDate            The start date of the camp.
-     * @param endDate              The end date of the camp.
-     * @param registrationDeadline The registration deadline for the camp.
+     * @param startDate            the start date of the camp
+     * @param endDate              the end date of the camp
+     * @param registrationDeadline the registration deadline for the camp
+     * @throws IllegalStateException when the registration deadline is after the start date or the
+     *                               start date is after the end date
      */
     public void setDates(LocalDate startDate, LocalDate endDate, LocalDate registrationDeadline)
             throws IllegalArgumentException {
@@ -82,7 +84,7 @@ public class CampDate {
             throw new IllegalArgumentException("Registration deadline cannot be after start date!");
         if (startDate.isAfter(endDate))
             throw new IllegalArgumentException("Start date cannot be after end date!");
-            
+
         this.startDate = startDate;
         this.endDate = endDate;
         this.registrationDeadline = registrationDeadline;

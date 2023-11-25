@@ -7,7 +7,7 @@ package cams.camp;
  * <p>
  * Instances of this class encapsulate the editable details of a camp.
  * These details can be retrieved and modified using getter and setter methods
- * accessed through {@code CampEditor}.
+ * accessed through {@link CampEditor}.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -28,12 +28,12 @@ public class CampInfo {
     /**
      * Constructs a new {@code CampInfo} object with the specified details.
      *
-     * @param campName       The name of the camp.
-     * @param location       The location of the camp.
-     * @param description    The description of the camp.
-     * @param totalSlots     The total available slots for the camp.
-     * @param committeeSlots The number of slots reserved for the committee.
-     * @param isVisible      Indicates whether the camp is visible.
+     * @param campName       the name of the camp
+     * @param location       the location of the camp
+     * @param description    the description of the camp
+     * @param totalSlots     the total available slots for the camp
+     * @param committeeSlots the number of slots reserved for the committee
+     * @param isVisible      indicates whether the camp is visible
      */
     public CampInfo(String campName, String location, String description,
                     int totalSlots, int committeeSlots, boolean isVisible) throws IllegalArgumentException {
@@ -59,7 +59,7 @@ public class CampInfo {
     /**
      * Retrieves the name of the camp.
      *
-     * @return The camp name.
+     * @return the camp name
      */
     public String getCampName() {
         return campName;
@@ -68,7 +68,7 @@ public class CampInfo {
     /**
      * Sets the name of the camp.
      *
-     * @param campName The new name for the camp.
+     * @param campName the new name for the camp
      */
     public void setCampName(String campName) {
         if (campName.isBlank()) {
@@ -80,7 +80,7 @@ public class CampInfo {
     /**
      * Retrieves the location of the camp.
      *
-     * @return The camp location.
+     * @return the camp location
      */
     public String getLocation() {
         return location;
@@ -89,7 +89,7 @@ public class CampInfo {
     /**
      * Sets the location of the camp.
      *
-     * @param location The new location for the camp.
+     * @param location the new location for the camp
      */
     public void setLocation(String location) {
         if (location.isBlank()) {
@@ -101,7 +101,7 @@ public class CampInfo {
     /**
      * Retrieves the description of the camp.
      *
-     * @return The camp description.
+     * @return the camp description
      */
     public String getDescription() {
         return description;
@@ -110,7 +110,7 @@ public class CampInfo {
     /**
      * Sets the description of the camp.
      *
-     * @param description The new description for the camp.
+     * @param description the new description for the camp
      */
     public void setDescription(String description) {
         if (description.isBlank()) {
@@ -122,7 +122,7 @@ public class CampInfo {
     /**
      * Retrieves the total available slots for the camp.
      *
-     * @return The total available slots.
+     * @return the total available slots
      */
     public int getTotalSlots() {
         return totalSlots;
@@ -131,7 +131,7 @@ public class CampInfo {
     /**
      * Sets the total available slots for the camp.
      *
-     * @param totalSlots The new total available slots.
+     * @param totalSlots the new total available slots
      */
     public void setTotalSlots(int totalSlots) {
         this.totalSlots = totalSlots;
@@ -140,7 +140,7 @@ public class CampInfo {
     /**
      * Retrieves the number of slots reserved for the committee.
      *
-     * @return The number of committee slots.
+     * @return the number of committee slots
      */
     public int getCommitteeSlots() {
         return committeeSlots;
@@ -149,7 +149,7 @@ public class CampInfo {
     /**
      * Sets the number of slots reserved for the committee.
      *
-     * @param committeeSlots The new number of committee slots.
+     * @param committeeSlots the new number of committee slots
      */
     public void setCommitteeSlots(int committeeSlots) {
         this.committeeSlots = committeeSlots;
@@ -158,7 +158,7 @@ public class CampInfo {
     /**
      * Retrieves the visibility status of the camp.
      *
-     * @return {@code true} if the camp is visible, {@code false} otherwise.
+     * @return {@code true} if the camp is visible, {@code false} otherwise
      */
     public boolean getIsVisible() {
         return isVisible;
@@ -168,7 +168,7 @@ public class CampInfo {
      * Sets the visibility status of the camp.
      *
      * @param isVisible {@code true} to make the camp visible, {@code false}
-     *                  otherwise.
+     *                  otherwise
      */
     public void setIsVisible(boolean isVisible) {
         this.isVisible = isVisible;

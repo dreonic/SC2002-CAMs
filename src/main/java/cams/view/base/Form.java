@@ -1,14 +1,15 @@
 package cams.view.base;
 
-import java.util.*;
-
 import cams.view.CommonElements;
+import cams.view.components.auth.LoginForm;
+
+import java.util.*;
 
 /**
  * Base class for all user interface elements which requires user input and runs
  * an action after retrieving them. This base class enables displaying a prompt
  * alongside several input fields which obtains user input. Specific forms in
- * this application like {@code LoginForm} are implemented as extensions
+ * this application like {@link LoginForm} are implemented as extensions
  * from this base class.
  * <p>
  * To use this base form, extend from or construct this base class, set the
@@ -98,7 +99,7 @@ public class Form implements Displayable {
         title = "";
         this.scanner = scanner;
         action = null;
-        inputs = new ArrayList<TextBox>();
+        inputs = new ArrayList<>();
     }
 
     /**
@@ -112,7 +113,7 @@ public class Form implements Displayable {
         this.title = title;
         this.scanner = scanner;
         action = null;
-        inputs = new ArrayList<TextBox>();
+        inputs = new ArrayList<>();
     }
 
     /**
@@ -161,7 +162,7 @@ public class Form implements Displayable {
      * @return map of input field labels to values
      */
     public Map<String, String> getValues() {
-        Map<String, String> res = new HashMap<String, String>();
+        Map<String, String> res = new HashMap<>();
         for (TextBox tb : inputs)
             res.put(tb.getId(), tb.getValue());
         return res;

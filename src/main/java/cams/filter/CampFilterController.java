@@ -1,11 +1,11 @@
 package cams.filter;
 
+import cams.camp.Camp;
+import cams.camp.CampController;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import cams.camp.Camp;
-import cams.camp.CampController;
 
 /**
  * The {@code CampFilterController} class manages filtering strategies for camps.
@@ -41,7 +41,7 @@ public class CampFilterController {
     /**
      * Returns the singleton instance of camp filter controller.
      *
-     * @return the singleton instance of camp filter controller.
+     * @return the singleton instance of camp filter controller
      */
     public static CampFilterController getInstance() {
         if (campFilterController == null) {
@@ -60,7 +60,7 @@ public class CampFilterController {
     /**
      * Gets a copy of the set of filter strategies associated with this controller.
      *
-     * @return a set of filter strategies.
+     * @return a set of filter strategies
      */
     public Set<FilterStrategy> getFilterStrategies() {
         return new HashSet<>(filterStrategies);
@@ -69,7 +69,7 @@ public class CampFilterController {
     /**
      * Adds a filter strategy to the set of filter strategies.
      *
-     * @param strategy the filter strategy to be added.
+     * @param strategy the filter strategy to be added
      */
     public void addFilterStrategy(FilterStrategy strategy) {
         filterStrategies.add(strategy);
@@ -78,7 +78,7 @@ public class CampFilterController {
     /**
      * Removes a filter strategy from the set of filter strategies.
      *
-     * @param strategy the filter strategy to be removed.
+     * @param strategy the filter strategy to be removed
      */
     public void removeFilterStrategy(FilterStrategy strategy) {
         filterStrategies.remove(strategy);
@@ -94,7 +94,7 @@ public class CampFilterController {
     /**
      * Gets a list of camps filtered based on the registered filter strategies.
      *
-     * @return a list of filtered camps.
+     * @return a list of filtered camps
      */
     public List<Camp> getFilteredCamps() {
         CampController campController = CampController.getInstance();

@@ -6,7 +6,7 @@ package cams.view.base;
  * displayed to the standard output.
  * <p>
  * This interface is implemented by base classes as generic user interface
- * elements like {@code Menu} and {@code Form}. More specific
+ * elements like {@link SelectionMenu} and {@link Form}. More specific
  * user interface components are implemented by either extension from these base
  * classes or association of these base classes.
  *

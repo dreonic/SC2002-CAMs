@@ -27,15 +27,12 @@ import java.util.Scanner;
 
 public class ChangePasswordForm extends Form {
     /**
-    * Verifies candidate password with stored password and
-    * replace old password with new password using
-    * <code>changePassword()</code> from <code>currentUser()</code>.
-    * 
-    * Alerts user that the password was changed if successful, otherwise
-    * alerts that wrong password was entered.
-    * 
-    * After completion, returns to the corresponding user type's interface.
-     * @param scanner
+     * Verifies candidate password with stored password and replace old password with new password.
+     * Alerts user that the password was changed if successful, otherwise alerts that the user ID or
+     * password was incorrect. After completion, returns to the corresponding user type's interface
+     * (student or staff).
+     *
+     * @param scanner scanner for this form
      */
     public ChangePasswordForm(Scanner scanner) {
         super(CommonElements.getStatusBar("Change Password") + "Change your password:\n", scanner);

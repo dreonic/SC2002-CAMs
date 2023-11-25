@@ -32,7 +32,7 @@ import java.util.Map;
  * <p>
  * This class uses the Apache POI library for Excel handling.
  * </p>
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -46,7 +46,7 @@ public class PerformanceReportSerializer {
      * Serializes the performance report for the specified camp to an Excel file.
      * The Excel file includes camp information and committee members' performance details.
      *
-     * @param camp the {@code Camp} for which the performance report is generated.
+     * @param camp the {@link Camp} for which the performance report is generated
      */
     public static void serialize(Camp camp) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
@@ -154,8 +154,7 @@ public class PerformanceReportSerializer {
                     "report/performance_report_" + camp.getCampInfo().getCampName() + ".xlsx")) {
                 workbook.write(fileOut);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
 }

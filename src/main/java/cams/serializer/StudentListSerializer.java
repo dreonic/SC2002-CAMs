@@ -8,12 +8,12 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
-import java.io.File;
 
 /**
  * The {@code StudentListSerializer} class provides a method to serialize the
@@ -26,7 +26,7 @@ import java.io.File;
  * <p>
  * This class uses the Apache POI library for Excel handling.
  * </p>
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -49,11 +49,11 @@ public class StudentListSerializer {
      * both.
      *
      * @param camp        the camp for which student information is to be
-     *                    serialized.
+     *                    serialized
      * @param removeTable a string indicating which table(s) to exclude from the
-     *                    output.
+     *                    output
      *                    Valid values are "committee", "attendee", or "none" for
-     *                    both.
+     *                    both
      */
     public static void serialize(Camp camp, String removeTable) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
@@ -202,8 +202,7 @@ public class StudentListSerializer {
                     "report/student_list_" + camp.getCampInfo().getCampName() + ".xlsx")) {
                 workbook.write(fileOut);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
 }

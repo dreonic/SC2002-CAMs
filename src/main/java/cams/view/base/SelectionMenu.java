@@ -2,6 +2,7 @@ package cams.view.base;
 
 import cams.view.CommonElements;
 import cams.view.DisplayController;
+import cams.view.components.WelcomeMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.Scanner;
  * Base class for all user interface elements with actionable selections. This
  * base class enables displaying a prompt alongside several selections with
  * distinct actions from which the user can choose one. Specific selection menus
- * in this application like {@code WelcomeMenu} are implemented as
+ * in this application like {@link WelcomeMenu} are implemented as
  * extensions from this base class.
  * <p>
  * To use this base selection menu, extend from or construct this base class,
@@ -104,7 +105,7 @@ public class SelectionMenu implements Displayable {
     public SelectionMenu(Scanner scanner) {
         prompt = "";
         this.scanner = scanner;
-        items = new ArrayList<ActionableItem>();
+        items = new ArrayList<>();
     }
 
     /**
@@ -117,7 +118,7 @@ public class SelectionMenu implements Displayable {
     public SelectionMenu(String prompt, Scanner scanner) {
         this.prompt = prompt;
         this.scanner = scanner;
-        items = new ArrayList<ActionableItem>();
+        items = new ArrayList<>();
     }
 
     /**

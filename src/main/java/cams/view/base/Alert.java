@@ -9,12 +9,12 @@ import java.util.Scanner;
  * Base class for all dismissible pop-up user interface elements. This base
  * class enables displaying a pop-up with content which can be dismissed by
  * pressing the ENTER key. Once dismissed, the previous/calling
- * {@code Displayable} user interface element is displayed. Specific
- * alerts in this application like {@code InvalidAlert} are implemented as
+ * {@link Displayable} user interface element is displayed. Specific
+ * alerts in this application like {@link InvalidAlert} are implemented as
  * extensions from this base class.
  * <p>
  * To use this base alert, extend from or construct this base class with the
- * content and specify the previous {@code Displayable} which called this
+ * content and specify the previous {@link Displayable} which called this
  * alert.
  * Usage example by extension:
  *

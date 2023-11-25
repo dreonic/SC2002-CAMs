@@ -85,6 +85,8 @@ public class TextBox implements Displayable {
      * where user input may want to be hidden is when asking for the user's
      * password.
      *
+     * @param id          id of this text box; mainly used to get this text box's value within a
+     *                    {@code Form}
      * @param label       text box label
      * @param inputHidden disables input echoing if true
      * @param scanner     scanner for this text box

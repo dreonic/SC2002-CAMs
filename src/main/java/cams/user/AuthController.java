@@ -1,15 +1,13 @@
 package cams.user;
 
+import cams.filter.CampFilterController;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import cams.filter.CampFilterController;
-
 /**
- * The AuthController control is responsible for facilitating {@code User} login, logout
- * and change password. It follows the Singleton pattern to ensure a single instance
+ * The {@code AuthController} control is responsible for facilitating {@link User} login, logout
+ * and change password. It follows the singleton pattern to ensure a single instance
  * throughout the application.
- * 
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -43,9 +41,9 @@ public class AuthController {
     }
 
     /**
-     * Gets the singleton isntance of AuthController
-     * 
-     * @return the singleton instace of the AuthController
+     * Gets the singleton instance of {@code AuthController}.
+     *
+     * @return the singleton instance of the {@code AuthController}
      */
     public static AuthController getInstance() {
         if (authController == null) {
@@ -55,7 +53,7 @@ public class AuthController {
     }
 
     /**
-     * Closes the AuthController, releasing the current user association.
+     * Closes the {@code AuthController}, releasing the current user association.
      */
     public static void close() {
         AuthController.authController = null;
@@ -63,7 +61,7 @@ public class AuthController {
 
     /**
      * Gets the password encoder to be used to hash user passwords
-     * 
+     *
      * @return the password encoder
      */
     public BCryptPasswordEncoder getPasswordEncoder() {
@@ -72,8 +70,8 @@ public class AuthController {
 
     /**
      * Validates the user attempting to access the system.
-     * 
-     * @param userID the userID associated with a {@code User}
+     *
+     * @param userID   the userID associated with a {@code User}
      * @param password the password associated with a {@code User}
      * @return the {@code User} accessing the system
      * @throws IllegalArgumentException when entered userID or password is incorrect
@@ -89,7 +87,7 @@ public class AuthController {
     }
 
     /**
-     * Sets the currentUser to null and exits the system.
+     * Sets the currentUser to {@code null} and exits the system.
      */
     public void logout() {
         currentUser = null;
@@ -98,7 +96,7 @@ public class AuthController {
 
     /**
      * Gets the current user associated with the controller.
-     * 
+     *
      * @return the current user
      */
     public User getCurrentUser() {
@@ -107,8 +105,8 @@ public class AuthController {
 
     /**
      * Changes the password associated with the current user.
-     * 
-     * @param userID the userID of the current User
+     *
+     * @param userID      the userID of the current user
      * @param oldPassword the old password to be changed
      * @param newPassword the new password to be set
      * @throws IllegalArgumentException when the "old password" entered is incorrect

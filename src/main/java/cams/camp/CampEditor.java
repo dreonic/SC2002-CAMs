@@ -1,15 +1,15 @@
 package cams.camp;
 
-import java.time.LocalDate;
-
 import cams.domain.Staff;
+
+import java.time.LocalDate;
 
 /**
  * The {@code CampEditor} class provides methods to edit various attributes of a
  * camp.
  * <p>
  * Instances of this class are used to modify the editable properties of a given
- * camp's {@code CampInfo},
+ * camp's {@link CampInfo},
  * such as its name, description, location, dates, and visibility.
  * The changes made through the editor can be retrieved using the
  * {@code getEditedCamp} method.
@@ -29,7 +29,7 @@ public class CampEditor {
     /**
      * Constructs a new {@code CampEditor} for the specified camp.
      *
-     * @param camp The camp to be edited.
+     * @param camp the camp to be edited
      */
     public CampEditor(Camp camp) {
         this.camp = camp;
@@ -39,7 +39,8 @@ public class CampEditor {
     /**
      * Edits the name of the camp.
      *
-     * @param name The new name for the camp.
+     * @param name  the new name for the camp
+     * @param staff staff who created the camp
      */
     public void editName(String name, Staff staff) {
         campController.deleteCamp(camp.getCampInfo().getCampName());
@@ -51,7 +52,7 @@ public class CampEditor {
     /**
      * Edits the description of the camp.
      *
-     * @param description The new description for the camp.
+     * @param description the new description for the camp
      */
     public void editDescription(String description) {
         camp.getCampInfo().setDescription(description);
@@ -60,7 +61,7 @@ public class CampEditor {
     /**
      * Edits the location of the camp.
      *
-     * @param location The new location for the camp.
+     * @param location the new location for the camp
      */
     public void editLocation(String location) {
         camp.getCampInfo().setLocation(location);
@@ -69,9 +70,9 @@ public class CampEditor {
     /**
      * Edits the registration deadline, start and end date of the camp.
      *
-     * @param startDate            The new start date for the camp
-     * @param endDate              The new end date for the camp
-     * @param registrationDeadline The new registration deadline for the camp
+     * @param startDate            the new start date for the camp
+     * @param endDate              the new end date for the camp
+     * @param registrationDeadline the new registration deadline for the camp
      * @throws IllegalArgumentException when registration deadline is after start
      *                                  date or start date is after end date
      */
@@ -83,7 +84,7 @@ public class CampEditor {
     /**
      * Edits the total slots available for the camp.
      *
-     * @param totalSlots The new total slots for the camp.
+     * @param totalSlots the new total slots for the camp
      */
     public void editTotalSlots(int totalSlots) {
         camp.getCampInfo().setTotalSlots(totalSlots);

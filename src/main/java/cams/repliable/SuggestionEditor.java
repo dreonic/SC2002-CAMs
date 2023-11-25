@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * The {@code SuggestionEditor} edits the suggestions listed in a specific camp.
- * It implements the basic functionalities of {@code RepliableEditorInterface}.
+ * It implements the basic functionalities of {@link RepliableEditorInterface}.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -20,24 +20,24 @@ import java.util.List;
  */
 public class SuggestionEditor implements RepliableEditorInterface {
     /**
-     * The camp assoiated with the repliable editor
+     * The camp associated with the repliable editor
      */
     private final Camp camp;
 
     /**
      * Constructs a new suggestion editor.
      *
-     * @param camp the camp where the suggestions are eidted from.
+     * @param camp the camp where the suggestions are edited from
      */
     public SuggestionEditor(Camp camp) {
         this.camp = camp;
     }
 
     /**
-     * Creates a new {@codeSuggestion} for the specified camp associated with the editor.
+     * Creates a new {@link Suggestion} for the specified camp associated with the editor.
      *
-     * @param content the content of the suggestion being created.
-     * @param student the student that created the suggestion.
+     * @param content the content of the suggestion being created
+     * @param student the student that created the suggestion
      */
     @Override
     public Repliable create(String content, Student student) {
@@ -49,8 +49,8 @@ public class SuggestionEditor implements RepliableEditorInterface {
     /**
      * Edits an {@code Suggestion} with new content.
      *
-     * @param repliable the suggestion being edited.
-     * @param newContent the new content to replace the old content of the suggestion.
+     * @param repliable  the suggestion being edited
+     * @param newContent the new content to replace the old content of the suggestion
      */
     @Override
     public void edit(Repliable repliable, String newContent) {
@@ -60,10 +60,10 @@ public class SuggestionEditor implements RepliableEditorInterface {
         }
     }
 
-     /**
+    /**
      * Deletes an {@code Suggestion}.
      *
-     * @param repliable the suggestion being deleted.
+     * @param repliable the suggestion being deleted
      */
     @Override
     public void delete(Repliable repliable) {
@@ -74,8 +74,8 @@ public class SuggestionEditor implements RepliableEditorInterface {
     /**
      * Approves a {@code Suggestion}.
      *
-     * @param repliable the suggestion being approved.
-     * @param replyMessage placeholder object to satisfy the interface.
+     * @param repliable    the suggestion being approved
+     * @param replyMessage placeholder object to satisfy the interface
      */
     @Override
     public void reply(Repliable repliable, Object replyMessage) {
@@ -87,8 +87,8 @@ public class SuggestionEditor implements RepliableEditorInterface {
 
     /**
      * Returns all the {@code Suggestion} in the specified camp.
-     * 
-     *  @return list of all suggestions in the camp.
+     *
+     * @return list of all suggestions in the camp
      */
     @Override
     public List<Repliable> view() {

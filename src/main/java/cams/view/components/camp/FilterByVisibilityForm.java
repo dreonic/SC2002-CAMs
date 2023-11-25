@@ -35,7 +35,7 @@ public class FilterByVisibilityForm extends FilterStrategyForm {
         CampFilterController filterController = CampFilterController.getInstance();
         DisplayController displayController = DisplayController.getInstance();
 
-        addInput(new TextBox("criteria", "Visibilty (Y/n)", scanner));
+        addInput(new TextBox("criteria", "Visibility (Y/n)", scanner));
 
         setAction(new ItemAction() {
             @Override

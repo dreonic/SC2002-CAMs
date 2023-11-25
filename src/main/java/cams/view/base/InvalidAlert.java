@@ -3,7 +3,7 @@ package cams.view.base;
 import java.util.Scanner;
 
 /**
- * Dismissable pop-up when user selects an invalid choice in a menu.
+ * Dismissible pop-up when user selects an invalid choice in a menu.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

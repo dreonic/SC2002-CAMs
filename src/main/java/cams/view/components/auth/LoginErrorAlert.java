@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  * Alerts user when no user ID and password combination is found
- * in the database. 
+ * in the database.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -20,11 +20,10 @@ import java.util.Scanner;
 
 public class LoginErrorAlert extends Alert {
     /**
-     * Displays invalid login credentials alert and redirects to the
-     * previous user interface.
-     * 
-     * @param previousDisplayable
-     * @param scanner
+     * Displays invalid login credentials alert and redirects to the previous user interface.
+     *
+     * @param previousDisplayable caller user interface element
+     * @param scanner             scanner for this alert
      */
     public LoginErrorAlert(Displayable previousDisplayable, Scanner scanner) {
         super("Incorrect user ID or password!", previousDisplayable, scanner);
