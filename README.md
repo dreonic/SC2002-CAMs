@@ -2,8 +2,8 @@
 
 # Camp Application and Management System (CAMs)
 
-![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white)
-![Tests](https://github.com/dreonic/SC2002-CAMs/actions/workflows/maven-pr.yml/badge.svg)
+![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=plastic&logo=openjdk&logoColor=white)
+![Build](https://github.com/dreonic/SC2002-CAMs/actions/workflows/maven-pr.yml/badge.svg)
 
 CAMS (Camp Application and Management System) is a Java Command Line Interface (CLI) application. It is made for staff and students to manage, view and register for camps within NTU. The app implements loosely coupled classes in multiple distinct packages. This makes our system easy to maintain, improve, and extendable.
 
