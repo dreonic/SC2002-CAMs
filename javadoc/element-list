@@ -1,0 +1,15 @@
+cams
+cams.camp
+cams.domain
+cams.filter
+cams.repliable
+cams.serializer
+cams.user
+cams.view
+cams.view.base
+cams.view.components
+cams.view.components.auth
+cams.view.components.camp
+cams.view.components.repliable
+cams.view.components.staff
+cams.view.components.student
