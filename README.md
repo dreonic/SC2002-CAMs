@@ -1,4 +1,4 @@
-![CAMs Logo](https://github.com/dreonic/SC2002-CAMs/assets/66062290/a7ab63cf-38d5-4abb-98d9-5cc952855aea)
+![CAMs Logo](https://github.com/dreonic/SC2002-CAMs/assets/66062290/8291ba8a-be45-4e54-9386-a067d2b68efe)
 
 # Camp Application and Management System (CAMs)
 
@@ -53,10 +53,13 @@ SC2002 Object Oriented Design & Programming SCSB Group 3:
 
 ## Running the Application
 
-To run the application using the bundled Java Archive (`jar` file), navigate to the bin folder and run the `jar` file. The [Java Runtime Environment](https://www.oracle.com/java/technologies/downloads/) (minimum version 17) is required to run this.
+To run the application using the bundled Java Archive (`jar` file), clone this repository to your machine, navigate to the 
+bin folder, and run the `jar` file. The [Java Runtime Environment](https://www.oracle.com/java/technologies/downloads/) 
+(minimum version 17) is required to run this.
 
 ```bash
-cd bin
+git clone https://github.com/dreonic/SC2002-CAMs.git
+cd SC2002-CAMs/bin
 java -jar SC2002-CAMs-1.0.jar
 ```
 
@@ -68,14 +71,14 @@ Open `javadoc/index.html` with your preferred browser.
 
 1. Install the [Java Development Kit](https://www.oracle.com/java/technologies/downloads/) (minimum version 17)
    and [Apache Maven](https://maven.apache.org/download.cgi).
-2. Clone this repository to your machine.
-3. Navigate to the application directory (`app/`).
+2. Clone this repository to your machine and navigate to the application directory (`app/`).
 
 ```bash
-cd app
+git clone https://github.com/dreonic/SC2002-CAMs.git
+cd SC2002-CAMs/app
 ```
 
-4. Clean existing builds, build the application, package the application into a Java Archive (`jar` file), and generate
+3. Clean existing builds, build the application, package the application into a Java Archive (`jar` file), and generate
    the documentation. All build outputs (`jar` and `class` files) are stored inside the target directory (`app/target/`). The
    Javadoc is generated at `app/target/site/apidocs/`.
 
@@ -83,10 +86,10 @@ cd app
 mvn clean package site
 ```
 
-5. Execute the application through the Java Archive (`jar` file).
+4. Execute the application through the Java Archive (`jar` file).
 
 ```bash
 java -jar target/SC2002-CAMs-1.0.jar
 ```
 
-6. View the Javadoc generated at `app/target/site/apidocs/index.html`.
+5. View the Javadoc generated at `app/target/site/apidocs/index.html`.
