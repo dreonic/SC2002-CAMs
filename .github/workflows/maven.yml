@@ -27,8 +27,15 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
+
       - name: Build with Maven
         run: cd app && mvn -B package --file pom.xml
+
+      - name: Copy jar to bin directory
+        run: cd .. && mkdir bin && cp app/target/SC2002-CAMs-1.0.jar bin/
+
+      - name: Copy Javadoc to javadoc directory
+        run: mkdir javadoc && cp -r app/target/site/apidocs/* javadoc/
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph
