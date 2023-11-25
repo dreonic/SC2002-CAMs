@@ -49,7 +49,7 @@ import java.util.stream.Collectors;
  * The Excel file has a specific structure with headers and rows containing
  * the respective camp information.
  * </p>
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -63,12 +63,13 @@ public class CampSerializer {
      * Deserializes camp information from the specified Excel file path and updates
      * the {@code CampController} accordingly.
      *
-     * @param path the file path of the Excel file containing camp information.
+     * @param path the file path of the Excel file containing camp information
+     * @return list of camps deserialized from the Excel file
      */
     public static List<Camp> deserialize(String path) throws RuntimeException {
         List<Camp> result = new ArrayList<>();
         try (FileInputStream fileIn = new FileInputStream(path);
-                Workbook workbook = new XSSFWorkbook(fileIn)) {
+             Workbook workbook = new XSSFWorkbook(fileIn)) {
             Sheet sheet = workbook.getSheetAt(0);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             UserController userController = UserController.getInstance();
@@ -113,7 +114,7 @@ public class CampSerializer {
                 String[] blacklist = args.get(12).split(", ");
 
                 for (String committeePoint : committees) {
-                    if(committeePoint.isBlank())
+                    if (committeePoint.isBlank())
                         continue;
                     String[] committeePointArr = committeePoint.split(": ");
                     String committee = committeePointArr[0];
@@ -153,7 +154,8 @@ public class CampSerializer {
      * Serializes camp information to the specified Excel file path based on the
      * current state of the {@code CampController}.
      *
-     * @param path the file path where the camp information should be serialized to.
+     * @param campTable the camp table input to be serialized into the Excel file
+     * @param path      the file path where the camp information should be serialized to
      */
     public static void serialize(Map<String, Camp> campTable, String path) {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
@@ -180,7 +182,7 @@ public class CampSerializer {
                     String commaSeparatedCommittee = String.join(", ",
                             new ArrayList<>(
                                     camp.getCommittee().entrySet().stream().map(
-                                            entryLambda -> entryLambda.getKey().getUserID() + ": " + entryLambda.getValue())
+                                                    entryLambda -> entryLambda.getKey().getUserID() + ": " + entryLambda.getValue())
                                             .collect(Collectors.toSet())));
                     String commaSeparatedAttendee = String.join(", ",
                             new ArrayList<>(

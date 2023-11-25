@@ -61,6 +61,9 @@ public class DisplayController {
         return displayController;
     }
 
+    /**
+     * Closes the {@code DisplayController}.
+     */
     public static void close() {
         displayController = null;
     }

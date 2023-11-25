@@ -20,15 +20,16 @@ public interface RepliableEditorInterface {
     /**
      * Creates a new repliable.
      *
-     * @param content the content of the repliable being created.
-     * @param student the student that created the repliable.
+     * @param content the content of the repliable being created
+     * @param student the student that created the repliable
+     * @return the created repliable
      */
     Repliable create(String content, Student student);
 
     /**
      * Edits a repliable.
      *
-     * @param repliable the repliable that is being edited.
+     * @param repliable  the repliable that is being edited.
      * @param newContent the new content that replaces the repliable's old content.
      */
     void edit(Repliable repliable, String newContent);
@@ -43,7 +44,7 @@ public interface RepliableEditorInterface {
     /**
      * Replies to a repliable with a reply message.
      *
-     * @param repliable the repliable that is being replied to.
+     * @param repliable    the repliable that is being replied to.
      * @param replyMessage the reply message.
      */
     void reply(Repliable repliable, Object replyMessage);

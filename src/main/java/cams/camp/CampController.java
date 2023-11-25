@@ -52,7 +52,7 @@ public class CampController {
 
     /**
      * Returns the singleton instance of the {@code CampController}.
-     *  
+     *
      * @param campPath the path where csv file of camp list is found.
      * @return The {@code CampController} instance.
      */
@@ -92,16 +92,16 @@ public class CampController {
     /**
      * Creates a new camp and adds it to the camp table.
      *
-     * @param campName             The name of the camp.
-     * @param location             The location of the camp.
-     * @param description          The description of the camp.
-     * @param startDate            The start date of the camp.
-     * @param endDate              The end date of the camp.
-     * @param registrationDeadline The registration deadline for the camp.
-     * @param totalSlots           The total available slots for the camp.
-     * @param isVisible            Indicates whether the camp is visible.
-     * @param userGroup            The user group associated with the camp.
-     * @param staffInCharge
+     * @param campName             The name of the camp
+     * @param location             The location of the camp
+     * @param description          The description of the camp
+     * @param startDate            The start date of the camp
+     * @param endDate              The end date of the camp
+     * @param registrationDeadline The registration deadline for the camp
+     * @param totalSlots           The total available slots for the camp
+     * @param isVisible            Indicates whether the camp is visible
+     * @param userGroup            The user group associated with the camp
+     * @param staffInCharge        the staff in charge of the camp
      */
     public void createCamp(
             String campName, String location, String description,
@@ -114,6 +114,11 @@ public class CampController {
         staffInCharge.addCamp(newCamp);
     }
 
+    /**
+     * Adds a new camp to the camp table.
+     *
+     * @param newCamp the new camp to be added
+     */
     public void createCamp(Camp newCamp) {
         campTable.put(newCamp.getCampInfo().getCampName().toLowerCase(), newCamp);
         newCamp.getStaffInCharge().addCamp(newCamp);
@@ -156,15 +161,15 @@ public class CampController {
         if (camp.getAttendees().isEmpty()) {
             camp.getStaffInCharge().removeCamp(camp);
             campTable.remove(name.toLowerCase());
-        }
-        else
+        } else
             throw new RuntimeException("Camp must have no attendees to be deleted!");
     }
 
     /**
      * Gets a performance report for all students in the camps.
      *
-     * @return A {@code HashMap} containing the performance report.
+     * @param campName name of the camp to obtain the performance report from
+     * @return a {@code HashMap} containing the performance report
      */
     public Map<Student, Integer> getPerformanceReport(String campName) {
         return new HashMap<>(
@@ -174,7 +179,8 @@ public class CampController {
     /**
      * Gets the attendance list for all students in the camps.
      *
-     * @return A {@code Set} containing the attendance list.
+     * @param campName name of the camp to obtain the attendance list from
+     * @return a {@code Set} containing the attendance list.
      */
     public List<Student> getAttendanceList(String campName) {
         Camp camp = getCamp(campName);

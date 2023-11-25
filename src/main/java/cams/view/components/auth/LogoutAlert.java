@@ -6,7 +6,7 @@ import cams.view.components.WelcomeMenu;
 import java.util.Scanner;
 
 /**
- * Alerts user that the account is logged out. 
+ * Alerts user that the account is logged out.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
@@ -19,8 +19,9 @@ import java.util.Scanner;
 
 public class LogoutAlert extends Alert {
     /**
-     * Displays logout successful alert and returns to welcome menu
-     * using <code>WelcomeMenu()</code>
+     * Displays logout successful alert and returns to welcome menu using {@code WelcomeMenu()}.
+     *
+     * @param scanner scanner for this alert
      */
     public LogoutAlert(Scanner scanner) {
         super("Logged out successfully.", new WelcomeMenu(scanner), scanner);

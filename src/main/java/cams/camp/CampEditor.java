@@ -1,8 +1,8 @@
 package cams.camp;
 
-import java.time.LocalDate;
-
 import cams.domain.Staff;
+
+import java.time.LocalDate;
 
 /**
  * The {@code CampEditor} class provides methods to edit various attributes of a
@@ -39,7 +39,8 @@ public class CampEditor {
     /**
      * Edits the name of the camp.
      *
-     * @param name The new name for the camp.
+     * @param name  the new name for the camp
+     * @param staff staff who created the camp
      */
     public void editName(String name, Staff staff) {
         campController.deleteCamp(camp.getCampInfo().getCampName());

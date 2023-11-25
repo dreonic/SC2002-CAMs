@@ -34,7 +34,7 @@ public class SuggestionEditor implements RepliableEditorInterface {
     }
 
     /**
-     * Creates a new {@codeSuggestion} for the specified camp associated with the editor.
+     * Creates a new {@code Suggestion} for the specified camp associated with the editor.
      *
      * @param content the content of the suggestion being created.
      * @param student the student that created the suggestion.
@@ -49,7 +49,7 @@ public class SuggestionEditor implements RepliableEditorInterface {
     /**
      * Edits an {@code Suggestion} with new content.
      *
-     * @param repliable the suggestion being edited.
+     * @param repliable  the suggestion being edited.
      * @param newContent the new content to replace the old content of the suggestion.
      */
     @Override
@@ -60,7 +60,7 @@ public class SuggestionEditor implements RepliableEditorInterface {
         }
     }
 
-     /**
+    /**
      * Deletes an {@code Suggestion}.
      *
      * @param repliable the suggestion being deleted.
@@ -74,7 +74,7 @@ public class SuggestionEditor implements RepliableEditorInterface {
     /**
      * Approves a {@code Suggestion}.
      *
-     * @param repliable the suggestion being approved.
+     * @param repliable    the suggestion being approved.
      * @param replyMessage placeholder object to satisfy the interface.
      */
     @Override
@@ -87,8 +87,8 @@ public class SuggestionEditor implements RepliableEditorInterface {
 
     /**
      * Returns all the {@code Suggestion} in the specified camp.
-     * 
-     *  @return list of all suggestions in the camp.
+     *
+     * @return list of all suggestions in the camp.
      */
     @Override
     public List<Repliable> view() {

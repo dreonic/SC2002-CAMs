@@ -19,6 +19,9 @@ import java.util.Scanner;
  * @since 2023-11-23
  */
 public class FilterStrategyForm extends Form {
+    /**
+     * The filter strategy context used for this form.
+     */
     protected FilterStrategy filterStrategy;
 
     /**

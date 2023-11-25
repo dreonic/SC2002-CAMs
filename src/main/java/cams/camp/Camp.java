@@ -66,6 +66,11 @@ public class Camp {
         this.committee = new HashMap<>();
     }
 
+    /**
+     * Retrieves the staff in charge of this camp.
+     *
+     * @return the staff in charge of this camp
+     */
     public Staff getStaffInCharge() {
         return staffInCharge;
     }
@@ -73,7 +78,7 @@ public class Camp {
     /**
      * Retrieves the information about the camp.
      *
-     * @return The {@code CampInfo} object containing details about the camp.
+     * @return the {@code CampInfo} object containing details about the camp.
      */
     public CampInfo getCampInfo() {
         return campInfo;
@@ -82,8 +87,7 @@ public class Camp {
     /**
      * Retrieves the dates associated with the camp.
      *
-     * @return The {@code CampDate} object containing start date, end date, and
-     *         registration deadline.
+     * @return the {@code CampDate} object containing start date, end date, and registration deadline.
      */
     public CampDate getCampDate() {
         return campDate;
@@ -92,7 +96,7 @@ public class Camp {
     /**
      * Retrieves the user group associated with the camp.
      *
-     * @return The user group name.
+     * @return the user group name.
      */
     public String getUserGroup() {
         return userGroup;
@@ -101,7 +105,7 @@ public class Camp {
     /**
      * Retrieves the set of enquiries associated with the camp.
      *
-     * @return A {@code Set} containing the enquiries for the camp.
+     * @return a {@code Set} containing the enquiries for the camp.
      */
     public Set<Enquiry> getEnquiries() {
         return new HashSet<>(enquiries);
@@ -110,7 +114,7 @@ public class Camp {
     /**
      * Retrieves the set of suggestions associated with the camp.
      *
-     * @return A {@code Set} containing the suggestions for the camp.
+     * @return a {@code Set} containing the suggestions for the camp.
      */
     public Set<Suggestion> getSuggestions() {
         return new HashSet<>(suggestions);
@@ -183,7 +187,7 @@ public class Camp {
     /**
      * Gets the list of attendees for this camp.
      *
-     * @return l list of attendees, or an empty list if there are none.
+     * @return the list of attendees, or an empty list if there are none.
      */
     public List<Student> getAttendees() {
         if (attendees == null)

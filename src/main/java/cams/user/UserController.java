@@ -6,13 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 //DONE
+
 /**
  * The UserController control is responsible for facilitating access to {@code User}
  * credentials. It stores user table and staff table.
- * 
+ * <p>
  * It follows the Singleton pattern to ensure a single instance throughout the
  * application.
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -38,8 +39,8 @@ public class UserController {
     /**
      * Gets the singleton instance of {@code UserController} and initiates student and staff list
      * from list file
-     * 
-     * @return the singleton instace of the {@code UserController}
+     *
+     * @return the singleton instance of the {@code UserController}
      */
     public static UserController getInstance() {
         if (userController == null) {
@@ -51,8 +52,10 @@ public class UserController {
     /**
      * Gets the singleton instance of {@code UserController} and initiates student and staff list
      * from passed parameters
-     * 
-     * @return the singleton instace of the {@code UserController}
+     *
+     * @param studentPath the path to the Excel file containing student information.
+     * @param staffPath   the path to the Excel file containing staff information.
+     * @return the singleton instance of the {@code UserController}
      */
     public static UserController getInstance(String studentPath, String staffPath) {
         if (userController == null) {
@@ -82,10 +85,10 @@ public class UserController {
 
     /**
      * Adds a {@code User} object to the corresponding table
-     * 
+     *
      * @param user the user object associated with a {@code User}
      * @throws IllegalArgumentException when a {@code User} with the same {@code userID}
-     * already exists
+     *                                  already exists
      */
     public void addUser(User user) throws IllegalArgumentException {
         if (userTable.putIfAbsent(user.getUserID(), user) != null)
@@ -94,7 +97,7 @@ public class UserController {
 
     /**
      * Gets the {@code User} object corresponding to a {@code userID}
-     * 
+     *
      * @param userID the userID associated with a {@code User}
      * @return the {@code User} object corresponding to a {@code userID}
      */
@@ -104,7 +107,7 @@ public class UserController {
 
     /**
      * Gets the {@code User} table containing hash map of users
-     * 
+     *
      * @return {@code User} table containing hash map of users
      */
     public Map<String, User> getUserTable() {
