@@ -3,7 +3,7 @@ package cams.repliable;
 import cams.domain.Student;
 
 /**
- * The {@code Repliable} is the base class for {@code Enquiry} and {@code Suggestion}.
+ * The {@code Repliable} is the base class for {@link Enquiry} and {@link Suggestion}.
  * It provides the basic functionality (methods and attributes) that a repliable should have.
  *
  * @author Gillbert Susilo Wong
@@ -23,7 +23,7 @@ public class Repliable {
     /**
      * Constructs a new repliable associated with a student.
      *
-     * @param student the student that created the repliable.
+     * @param student the student that created the repliable
      */
     public Repliable(Student student) {
         this.student = student;
@@ -32,7 +32,7 @@ public class Repliable {
     /**
      * Gets the student that created the repliable.
      *
-     * @return the student that created the repliable.
+     * @return the student that created the repliable
      */
     public Student getStudent() {
         return student;
@@ -41,7 +41,7 @@ public class Repliable {
     /**
      * Sets the student that created the repliable.
      *
-     * @param student the student that created the repliable.
+     * @param student the student that created the repliable
      */
     public void setStudent(Student student) {
         this.student = student;

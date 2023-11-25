@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The camp name filter class implementation of the {@code FilterStrategy} interface.
+ * The camp name filter class implementation of the {@link FilterStrategy} interface.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

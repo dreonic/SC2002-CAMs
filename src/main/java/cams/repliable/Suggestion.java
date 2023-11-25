@@ -4,7 +4,7 @@ import cams.domain.Student;
 
 /**
  * The {@code Suggestion} represents a suggestion made by a camp committee member.
- * It inherits the basic functionalities of {@code Repliable}.
+ * It inherits the basic functionalities of {@link Repliable}.
  * Each suggestion has a suggestion content and can be approved by the staff in charge of the camp.
  * The camp committee member is associated with this suggestion.
  *
@@ -30,8 +30,8 @@ public class Suggestion extends Repliable {
     /**
      * Constructs a new suggestion.
      *
-     * @param content the content of the suggestion.
-     * @param student the camp committee member that created the suggestion.
+     * @param content the content of the suggestion
+     * @param student the camp committee member that created the suggestion
      */
     public Suggestion(String content, Student student) {
         super(student);
@@ -42,7 +42,7 @@ public class Suggestion extends Repliable {
     /**
      * Gets the content of the suggestion.
      *
-     * @return content of suggestion.
+     * @return content of suggestion
      */
     public String getContent() {
         return content;
@@ -51,7 +51,7 @@ public class Suggestion extends Repliable {
     /**
      * Sets the content of the suggestion.
      *
-     * @param content the new content of the suggestion.
+     * @param content the new content of the suggestion
      */
     public void setContent(String content) {
         this.content = content;
@@ -60,7 +60,7 @@ public class Suggestion extends Repliable {
     /**
      * Gets the approval of the suggestion.
      *
-     * @return approval status of the suggestion.
+     * @return approval status of the suggestion
      */
     public boolean getIsApproved() {
         return isApproved;
@@ -69,7 +69,7 @@ public class Suggestion extends Repliable {
     /**
      * Sets the approval status of the suggestion.
      *
-     * @param isApproved the new approval status of the suggestion.
+     * @param isApproved the new approval status of the suggestion
      */
     public void setIsApproved(boolean isApproved) {
         this.isApproved = isApproved;

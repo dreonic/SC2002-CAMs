@@ -5,10 +5,9 @@ import cams.serializer.UserSerializer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-//DONE
 
 /**
- * The UserController control is responsible for facilitating access to {@code User}
+ * The UserController control is responsible for facilitating access to {@link User}
  * credentials. It stores user table and staff table.
  * <p>
  * It follows the Singleton pattern to ensure a single instance throughout the
@@ -53,8 +52,8 @@ public class UserController {
      * Gets the singleton instance of {@code UserController} and initiates student and staff list
      * from passed parameters
      *
-     * @param studentPath the path to the Excel file containing student information.
-     * @param staffPath   the path to the Excel file containing staff information.
+     * @param studentPath the path to the Excel file containing student information
+     * @param staffPath   the path to the Excel file containing staff information
      * @return the singleton instance of the {@code UserController}
      */
     public static UserController getInstance(String studentPath, String staffPath) {

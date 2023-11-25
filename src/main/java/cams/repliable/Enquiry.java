@@ -4,7 +4,7 @@ import cams.domain.Student;
 
 /**
  * The {@code Enquiry} class represents an inquiry made by a student.
- * It extends the {@code Repliable} class, inheriting functionality related to replies.
+ * It extends the {@link Repliable} class, inheriting functionality related to replies.
  * Each enquiry has a question and can have a corresponding reply.
  * The student making the inquiry is associated with this enquiry.
  *
@@ -30,8 +30,8 @@ public class Enquiry extends Repliable {
     /**
      * Constructs a new Enquiry object with the specified question and student.
      *
-     * @param question The question associated with this enquiry.
-     * @param student  The student making the enquiry.
+     * @param question the question associated with this enquiry
+     * @param student  the student making the enquiry
      */
     public Enquiry(String question, Student student) {
         super(student);
@@ -42,7 +42,7 @@ public class Enquiry extends Repliable {
     /**
      * Gets the question associated with this enquiry.
      *
-     * @return The question of this enquiry.
+     * @return the question of this enquiry
      */
     public String getQuestion() {
         return question;
@@ -51,7 +51,7 @@ public class Enquiry extends Repliable {
     /**
      * Sets the question associated with this enquiry.
      *
-     * @param question The new question for this enquiry.
+     * @param question the new question for this enquiry
      */
     public void setQuestion(String question) {
         this.question = question;
@@ -60,7 +60,7 @@ public class Enquiry extends Repliable {
     /**
      * Gets the reply to this enquiry.
      *
-     * @return The reply to this enquiry.
+     * @return the reply to this enquiry
      */
     public String getReply() {
         return reply;
@@ -69,7 +69,7 @@ public class Enquiry extends Repliable {
     /**
      * Sets the reply to this enquiry.
      *
-     * @param reply The new reply for this enquiry.
+     * @param reply the new reply for this enquiry
      */
     public void setReply(String reply) {
         this.reply = reply;

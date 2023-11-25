@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * The Staff entity class represents a staff member in the system, extending the User class.
- * Staff members have the ability to create and manage camps.
- * 
+ * The {@code Staff} entity class represents a staff member in the system, extending the {@link User}
+ * class. Staff members have the ability to create and manage camps.
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -30,10 +30,10 @@ public class Staff extends User {
     /**
      * Constructs a Staff object with the specified details.
      *
-     * @param name         the name of the staff member.
-     * @param userID       the unique user identifier for the staff member.
-     * @param faculty      the faculty to which the staff member belongs.
-     * @param passwordHash the hashed password for authentication.
+     * @param name         the name of the staff member
+     * @param userID       the unique user identifier for the staff member
+     * @param faculty      the faculty to which the staff member belongs
+     * @param passwordHash the hashed password for authentication
      */
     public Staff(String name, String userID, String faculty, String passwordHash) {
         super(name, userID, faculty, passwordHash);
@@ -43,7 +43,7 @@ public class Staff extends User {
     /**
      * Gets a list of camps created by the staff member.
      *
-     * @return A list of camps created by the staff member.
+     * @return a list of camps created by the staff member
      */
     public List<Camp> getCamps() {
         return new ArrayList<>(campsCreated);
@@ -52,7 +52,7 @@ public class Staff extends User {
     /**
      * Adds a camp to the set of camps created by the staff member.
      *
-     * @param camp the camp to be added.
+     * @param camp the camp to be added
      */
     public void addCamp(Camp camp) {
         campsCreated.add(camp);
@@ -61,9 +61,11 @@ public class Staff extends User {
     /**
      * Removes a camp from the set of camps created by the staff member.
      *
-     * @param camp the camp to be removed.
+     * @param camp the camp to be removed
      */
     public void removeCamp(Camp camp) {
         campsCreated.remove(camp);
     }
-;}
+
+    ;
+}

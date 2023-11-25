@@ -7,11 +7,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 //done
+
 /**
- * The StudentController control class manages the interaction between the system and a student user.
+ * The {@code StudentController} control class manages the interaction between the system and a student user.
  * It provides methods for registering, withdrawing from camps, and handling the current student user.
- * It follows the Singleton pattern to ensure a single instance throughout the application.
- * 
+ * It follows the singleton pattern to ensure a single instance throughout the application.
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -39,9 +40,9 @@ public class StudentController {
     }
 
     /**
-     * Gets the singleton instance of StudentController.
+     * Gets the singleton instance of {@code StudentController}.
      *
-     * @return the singleton instance of StudentController
+     * @return the singleton instance of {@code StudentController}
      */
     public static StudentController getInstance() {
         if (studentController == null) {
@@ -51,10 +52,10 @@ public class StudentController {
     }
 
     /**
-     * Gets the singleton instance of StudentController with the specified student.
+     * Gets the singleton instance of {@code StudentController} with the specified student.
      *
      * @param student the student to associate with the controller
-     * @return the singleton instance of StudentController
+     * @return the singleton instance of {@code StudentController}
      */
     @SuppressWarnings("UnusedReturnValue")
     public static StudentController getInstance(Student student) {
@@ -66,7 +67,7 @@ public class StudentController {
     }
 
     /**
-     * Closes the StudentController, releasing the current student association.
+     * Closes the {@code StudentController, releasing the current student association.
      */
     public static void close() {
         studentController = null;
@@ -112,7 +113,7 @@ public class StudentController {
             throw new RuntimeException("Failed to register, current student already registered for this camp!");
         }
 
-        if(camp.getBlacklist().contains(currentStudent)) {
+        if (camp.getBlacklist().contains(currentStudent)) {
             throw new RuntimeException("Failed to register, current student already withdrew from this camp!");
         }
 
@@ -124,13 +125,12 @@ public class StudentController {
         currentStudent.addCamp(camp);
 
         if (isCommittee) {
-            if(camp.getCommittee().size() == 10) {
+            if (camp.getCommittee().size() == 10) {
                 throw new RuntimeException("There are no remaining committee slots!");
-            }
-            else {
+            } else {
                 List<Enquiry> enquiriesList = new ArrayList<Enquiry>(camp.getEnquiries());
-                for(Enquiry enquiry:enquiriesList) {
-                    if(enquiry.getStudent() == currentStudent) {
+                for (Enquiry enquiry : enquiriesList) {
+                    if (enquiry.getStudent() == currentStudent) {
                         camp.removeEnquiry(enquiry);
                         currentStudent.removeEnquiry(enquiry);
                     }
@@ -138,8 +138,7 @@ public class StudentController {
                 currentStudent.setCommitteeFor(camp);
                 camp.addCommittee(currentStudent);
             }
-        } 
-        else {
+        } else {
             camp.addAttendee(currentStudent);
         }
     }

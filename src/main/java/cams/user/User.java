@@ -1,12 +1,14 @@
 package cams.user;
 
 import cams.camp.Camp;
+import cams.domain.Staff;
+import cams.domain.Student;
 
 import java.util.List;
 import java.util.Objects;
 
 /**
- * {@code User} entity is the base class for {@code Student} and {@code Staff}, facilitating the
+ * {@code User} entity is the base class for {@link Student} and {@link Staff}, facilitating the
  * storing of general {@code User} attributes {@code userID}, {@code name}, {@code passwordHash},
  * and {@code faculty}.
  *

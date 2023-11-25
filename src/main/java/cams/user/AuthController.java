@@ -4,8 +4,8 @@ import cams.filter.CampFilterController;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * The AuthController control is responsible for facilitating {@code User} login, logout
- * and change password. It follows the Singleton pattern to ensure a single instance
+ * The {@code AuthController} control is responsible for facilitating {@link User} login, logout
+ * and change password. It follows the singleton pattern to ensure a single instance
  * throughout the application.
  *
  * @author Gillbert Susilo Wong
@@ -41,9 +41,9 @@ public class AuthController {
     }
 
     /**
-     * Gets the singleton instance of AuthController
+     * Gets the singleton instance of {@code AuthController}.
      *
-     * @return the singleton instance of the AuthController
+     * @return the singleton instance of the {@code AuthController}
      */
     public static AuthController getInstance() {
         if (authController == null) {
@@ -53,7 +53,7 @@ public class AuthController {
     }
 
     /**
-     * Closes the AuthController, releasing the current user association.
+     * Closes the {@code AuthController}, releasing the current user association.
      */
     public static void close() {
         AuthController.authController = null;
@@ -87,7 +87,7 @@ public class AuthController {
     }
 
     /**
-     * Sets the currentUser to null and exits the system.
+     * Sets the currentUser to {@code null} and exits the system.
      */
     public void logout() {
         currentUser = null;
@@ -106,7 +106,7 @@ public class AuthController {
     /**
      * Changes the password associated with the current user.
      *
-     * @param userID      the userID of the current User
+     * @param userID      the userID of the current user
      * @param oldPassword the old password to be changed
      * @param newPassword the new password to be set
      * @throws IllegalArgumentException when the "old password" entered is incorrect

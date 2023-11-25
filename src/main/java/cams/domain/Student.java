@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * The Student entity class represents a student user in the system. It extends the User class
- * and includes additional attributes related to camp registration and enquiries.
- * 
+ * The {@code Student} entity class represents a student user in the system. It extends the {@link User }
+ * class and includes additional attributes related to camp registration and enquiries.
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -38,10 +38,10 @@ public class Student extends User {
     /**
      * Constructs a new Student object with the specified attributes.
      *
-     * @param name         The name of the student.
-     * @param userID       The unique user ID of the student.
-     * @param faculty      The faculty to which the student belongs.
-     * @param passwordHash The hashed password of the student.
+     * @param name         the name of the student
+     * @param userID       the unique user ID of the student
+     * @param faculty      the faculty to which the student belongs
+     * @param passwordHash the hashed password of the student
      */
     public Student(String name, String userID, String faculty, String passwordHash) {
         super(name, userID, faculty, passwordHash);
@@ -52,7 +52,7 @@ public class Student extends User {
     /**
      * Gets a list of camps registered by the student.
      *
-     * @return A list of camps registered by the student.
+     * @return a list of camps registered by the student
      */
     public List<Camp> getCamps() {
         return new ArrayList<>(campsRegistered);
@@ -61,7 +61,7 @@ public class Student extends User {
     /**
      * Adds a camp to the set of camps registered by the student.
      *
-     * @param camp The camp to be added.
+     * @param camp the camp to be added
      */
     public void addCamp(Camp camp) {
         campsRegistered.add(camp);
@@ -70,7 +70,7 @@ public class Student extends User {
     /**
      * Removes a camp from the set of camps registered by the student.
      *
-     * @param camp The camp to be removed.
+     * @param camp the camp to be removed
      */
     public void removeCamp(Camp camp) {
         campsRegistered.remove(camp);
@@ -79,7 +79,7 @@ public class Student extends User {
     /**
      * Gets a list of enquiries made by the student.
      *
-     * @return A list of enquiries made by the student.
+     * @return a list of enquiries made by the student
      */
     public List<Enquiry> getEnquiries() {
         return new ArrayList<>(enquiries);
@@ -88,7 +88,7 @@ public class Student extends User {
     /**
      * Adds an enquiry to the set of enquiries made by the student.
      *
-     * @param enquiry the enquiry to be added.
+     * @param enquiry the enquiry to be added
      */
     public void addEnquiry(Enquiry enquiry) {
         enquiries.add(enquiry);
@@ -97,7 +97,7 @@ public class Student extends User {
     /**
      * Removes an enquiry made by the student.
      *
-     * @param enquiry the enquiry to be removed.
+     * @param enquiry the enquiry to be removed
      */
     public void removeEnquiry(Enquiry enquiry) {
         enquiries.remove(enquiry);
@@ -106,7 +106,7 @@ public class Student extends User {
     /**
      * Gets the camp for which the student serves as a committee member.
      *
-     * @return the camp for which the student serves as a committee member.
+     * @return the camp for which the student serves as a committee member
      */
     public Camp getCommitteeFor() {
         return committeeFor;
@@ -115,7 +115,7 @@ public class Student extends User {
     /**
      * Sets the camp for which the student serves as a committee member.
      *
-     * @param camp the camp for which the student serves as a committee member.
+     * @param camp the camp for which the student serves as a committee member
      */
     public void setCommitteeFor(Camp camp) {
         committeeFor = camp;

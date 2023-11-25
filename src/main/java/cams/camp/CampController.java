@@ -41,7 +41,7 @@ public class CampController {
     /**
      * Returns the singleton instance of the {@code CampController}.
      *
-     * @return The {@code CampController} instance.
+     * @return the {@code CampController} instance
      */
     public static CampController getInstance() {
         if (campController == null) {
@@ -53,8 +53,8 @@ public class CampController {
     /**
      * Returns the singleton instance of the {@code CampController}.
      *
-     * @param campPath the path where csv file of camp list is found.
-     * @return The {@code CampController} instance.
+     * @param campPath the path where csv file of camp list is found
+     * @return the {@code CampController} instance
      */
     public static CampController getInstance(String campPath) {
         if (campController == null) {
@@ -64,7 +64,7 @@ public class CampController {
     }
 
     /**
-     * Closes the current camp controller and serializes the current camp data to the camp list csv.
+     * Closes the current camp controller and serializes the current camp data an Excel file.
      */
     public static void close() {
         CampSerializer.serialize(campController.getCampTable(), campController.campPath);
@@ -72,7 +72,7 @@ public class CampController {
     }
 
     /**
-     * Initializes the camp table by deserializing camp data from the camp list csv.
+     * Initializes the camp table by deserializing camp data from an Excel file.
      */
     private void initializeCampTable() {
         List<Camp> camps = CampSerializer.deserialize(campPath);
@@ -83,7 +83,7 @@ public class CampController {
     /**
      * Retrieves the whole camp table.
      *
-     * @return The camp table {@code HashMap} containing all created camps
+     * @return The camp table {@code Map} containing all created camps
      */
     public Map<String, Camp> getCampTable() {
         return campTable;
@@ -92,15 +92,15 @@ public class CampController {
     /**
      * Creates a new camp and adds it to the camp table.
      *
-     * @param campName             The name of the camp
-     * @param location             The location of the camp
-     * @param description          The description of the camp
-     * @param startDate            The start date of the camp
-     * @param endDate              The end date of the camp
-     * @param registrationDeadline The registration deadline for the camp
-     * @param totalSlots           The total available slots for the camp
-     * @param isVisible            Indicates whether the camp is visible
-     * @param userGroup            The user group associated with the camp
+     * @param campName             the name of the camp
+     * @param location             the location of the camp
+     * @param description          the description of the camp
+     * @param startDate            the start date of the camp
+     * @param endDate              the end date of the camp
+     * @param registrationDeadline the registration deadline for the camp
+     * @param totalSlots           the total available slots for the camp
+     * @param isVisible            indicates whether the camp is visible
+     * @param userGroup            the user group associated with the camp
      * @param staffInCharge        the staff in charge of the camp
      */
     public void createCamp(
@@ -127,7 +127,7 @@ public class CampController {
     /**
      * Retrieves an array of all camps in the camp table.
      *
-     * @return An array of {@code Camp} objects.
+     * @return a list of {@link Camp} objects
      */
     public List<Camp> getAllCamps() {
         List<Camp> campList = new ArrayList<>();
@@ -140,9 +140,9 @@ public class CampController {
     /**
      * Retrieves a specific camp by name.
      *
-     * @param name The name of the camp to retrieve.
-     * @return The {@code Camp} object with the specified name, or {@code null} if
-     * not found.
+     * @param name the name of the camp to retrieve
+     * @return the {@code Camp} object with the specified name, or {@code null} if
+     * not found
      */
     public Camp getCamp(String name) {
         return campTable.get(name.toLowerCase());
@@ -151,7 +151,7 @@ public class CampController {
     /**
      * Deletes a camp with the specified name from the camp table.
      *
-     * @param name The name of the camp to delete.
+     * @param name the name of the camp to delete
      */
     public void deleteCamp(String name) throws RuntimeException {
         Camp camp = campTable.get(name.toLowerCase());
@@ -169,7 +169,7 @@ public class CampController {
      * Gets a performance report for all students in the camps.
      *
      * @param campName name of the camp to obtain the performance report from
-     * @return a {@code HashMap} containing the performance report
+     * @return a {@code Map} containing the performance report
      */
     public Map<Student, Integer> getPerformanceReport(String campName) {
         return new HashMap<>(
@@ -180,7 +180,7 @@ public class CampController {
      * Gets the attendance list for all students in the camps.
      *
      * @param campName name of the camp to obtain the attendance list from
-     * @return a {@code Set} containing the attendance list.
+     * @return a {@code Set} containing the attendance list
      */
     public List<Student> getAttendanceList(String campName) {
         Camp camp = getCamp(campName);
@@ -190,7 +190,7 @@ public class CampController {
     /**
      * Gets the current camp of the camp controller.
      *
-     * @return the current {@code Camp} set for the controller.
+     * @return the current {@code Camp} set for the controller
      */
     public Camp getCurrentCamp() {
         return currentCamp;
@@ -199,7 +199,7 @@ public class CampController {
     /**
      * Sets the current camp of the camp controller.
      *
-     * @param camp the {@code Camp} to be set as the current camp of the controller.
+     * @param camp the {@code Camp} to be set as the current camp of the controller
      */
     public void setCurrentCamp(Camp camp) {
         currentCamp = camp;

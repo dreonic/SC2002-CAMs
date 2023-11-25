@@ -2,7 +2,7 @@ package cams.view.base;
 
 /**
  * Base class for user interface elements with distinct actions. This base class
- * provides other classes, mainly {@code SelectionMenu}, to display choices
+ * provides other classes, mainly {@link SelectionMenu}, to display choices
  * each with their own content and action.
  *
  * @author Gillbert Susilo Wong

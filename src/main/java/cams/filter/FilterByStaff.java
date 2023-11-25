@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The camp staff in charge visibility filter class implementation of the {@code FilterStrategy} interface.
+ * The camp staff in charge visibility filter class implementation of the {@link FilterStrategy} interface.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

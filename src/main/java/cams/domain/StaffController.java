@@ -1,10 +1,10 @@
 package cams.domain;
 
 /**
- * The StaffController control class is responsible for managing the current staff user
- * in the system. It follows the Singleton pattern to ensure a single instance
- * throughout the application.
- * 
+ * The {@code StaffController} control class is responsible for managing the current staff user
+ * in the system. It follows the singleton pattern to ensure a single instance throughout the
+ * application.
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -33,9 +33,9 @@ public class StaffController {
     }
 
     /**
-     * Gets the singleton instance of StaffController.
+     * Gets the singleton instance of {@code StaffController}.
      *
-     * @return the singleton instance of StaffController
+     * @return the singleton instance of {@code StaffController}
      */
     public static StaffController getInstance() {
         if (staffController == null) {
@@ -45,10 +45,10 @@ public class StaffController {
     }
 
     /**
-     * Gets the singleton instance of StaffController with the specified staff.
+     * Gets the singleton instance of {@code StaffController} with the specified staff.
      *
      * @param staff the staff to associate with the controller
-     * @return the singleton instance of StaffController
+     * @return the singleton instance of {@code StaffController}
      */
     public static StaffController getInstance(Staff staff) {
         if (staffController == null) {
@@ -59,7 +59,7 @@ public class StaffController {
     }
 
     /**
-     * Closes the StaffController, releasing the current staff association.
+     * Closes the {@code StaffController}, releasing the current staff association.
      */
     public static void close() {
         staffController = null;

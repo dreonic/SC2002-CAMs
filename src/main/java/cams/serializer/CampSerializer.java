@@ -1,6 +1,7 @@
 package cams.serializer;
 
 import cams.camp.Camp;
+import cams.camp.CampController;
 import cams.camp.CampDate;
 import cams.camp.CampInfo;
 import cams.domain.Staff;
@@ -28,13 +29,13 @@ import java.util.stream.Collectors;
  * exiting the program).
  *
  * <p>
- * The serialization process converts a collection of {@code Camp} objects into
+ * The serialization process converts a collection of {@link Camp} objects into
  * an Excel
  * file, while deserialization reads data from an Excel file and creates
  * corresponding
  * {@code Camp} objects and establishes the required associations with
- * {@code Staff}
- * and {@code Student}.
+ * {@link Staff}
+ * and {@link Student}.
  * </p>
  *
  * <p>
@@ -61,7 +62,7 @@ import java.util.stream.Collectors;
 public class CampSerializer {
     /**
      * Deserializes camp information from the specified Excel file path and updates
-     * the {@code CampController} accordingly.
+     * the {@link CampController} accordingly.
      *
      * @param path the file path of the Excel file containing camp information
      * @return list of camps deserialized from the Excel file
@@ -240,8 +241,7 @@ public class CampSerializer {
             try (FileOutputStream fileOut = new FileOutputStream(path)) {
                 workbook.write(fileOut);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
 }

@@ -22,7 +22,7 @@ import java.util.Objects;
  * including both students and staff, into and from Excel files. The class uses the Apache POI library
  * for Excel handling.
  *
- * <p>Users can be of two types: {@code Student} or {@code Staff}. The class supports the serialization and deserialization
+ * <p>Users can be of two types: {@link Student} or {@link Staff}. The class supports the serialization and deserialization
  * of these users based on the specified user type.</p>
  *
  * @author Gillbert Susilo Wong
@@ -146,8 +146,7 @@ public class UserSerializer {
                     "student".equals(userType) ? studentPath : staffPath)) {
                 workbook.write(fileOut);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
 }
