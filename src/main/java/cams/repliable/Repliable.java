@@ -4,7 +4,7 @@ import cams.domain.Student;
 
 /**
  * The {@code Repliable} is the base class for {@code Enquiry} and {@code Suggestion}.
- * It proides the basic functionality (methods and attributes) that a repliable should have.
+ * It provides the basic functionality (methods and attributes) that a repliable should have.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

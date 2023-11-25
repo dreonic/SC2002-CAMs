@@ -46,7 +46,7 @@ public class DisplayController {
     }
 
     /**
-     * Instantiates and initializes singleton with inital user interface element. This user
+     * Instantiates and initializes singleton with initial user interface element. This user
      * interface element will be displayed first upon calling <code>displayCurrent</code> unless
      * overridden by the setter <code>setNextDisplay</code> before first call.
      *

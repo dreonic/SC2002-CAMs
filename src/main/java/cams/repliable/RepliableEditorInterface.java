@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * The {@code RepliableEditorInterface} is the interface for {@code EnquiryEditor} and {@code SuggestionEditor}.
- * It proides the basic functionality (methods and attributes) that a repliable editor should have.
+ * It provides the basic functionality (methods and attributes) that a repliable editor should have.
  *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick

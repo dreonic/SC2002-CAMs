@@ -27,7 +27,7 @@ public class SuggestionEditor implements RepliableEditorInterface {
     /**
      * Constructs a new suggestion editor.
      *
-     * @param camp the camp where the suggestions are eidted from.
+     * @param camp the camp where the suggestions are edited from.
      */
     public SuggestionEditor(Camp camp) {
         this.camp = camp;

@@ -26,7 +26,7 @@ public class UserControllerTest {
     }
 
     @BeforeAll
-    static void initalizeControllers() {
+    static void initializeControllers() {
         removeTestFiles();
         AuthController.getInstance();
         UserController.getInstance("test_student_list.xlsx", "test_staff_list.xlsx");

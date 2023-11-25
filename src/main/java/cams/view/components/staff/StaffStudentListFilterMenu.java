@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * The boundary class responsible for displaying the options a Staff has
  * when they wish to generate a list of students tied to the specified {@code Camp}.
- * 
+ *
  * @author Gillbert Susilo Wong
  * @author Juan Frederick
  * @author Karl Devlin Chau
@@ -26,8 +26,8 @@ import java.util.Scanner;
 public class StaffStudentListFilterMenu extends SelectionMenu {
 
     /**
-     * Construcs the Staff Student List Filter Menu specifying the scanner to be used.
-     * 
+     * Constructs the Staff Student List Filter Menu specifying the scanner to be used.
+     *
      * @param scanner scanner for this menu
      */
     public StaffStudentListFilterMenu(Scanner scanner) {
