@@ -1,5 +1,7 @@
 # Camp Application and Management System (CAMs)
 
+![ss_2023-11-25_22-38-49](https://github.com/dreonic/SC2002-CAMs/assets/66062290/b407e699-0bf9-4938-8e73-8bb518f354c6)
+
 **CAMs** is an application for staff and students to manage, view and register for
 camps within NTU. The application will act as a centralized hub for all staff and
 students.
