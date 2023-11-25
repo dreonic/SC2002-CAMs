@@ -2,6 +2,9 @@
 
 # Camp Application and Management System (CAMs)
 
+![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white)
+![Tests](https://github.com/dreonic/SC2002-CAMs/actions/workflows/maven-pr.yml/badge.svg)
+
 CAMS (Camp Application and Management System) is a Java Command Line Interface (CLI) application. It is made for staff and students to manage, view and register for camps within NTU. The app implements loosely coupled classes in multiple distinct packages. This makes our system easy to maintain, improve, and extendable.
 
 It utilizes entity, controller, and boundary (ECB) class stereotypes. Users of the app access through menus which are boundary classes. It requests data from managers, which acts as controller classes. Managers implement logic and perform error checking and exception catching to guarantee that the app works properly. The data is fetched from entity classes, which store the data. Abstractions demonstrated enable easy modification and extension.
@@ -74,7 +77,7 @@ cd app
 
 4. Clean existing builds, build the application, package the application into a Java Archive (`jar` file), and generate
    the documentation. All build outputs (`jar` and `class` files) are stored inside the target directory (`app/target/`). The
-Javadoc is generated at `app/target/site/apidocs/`.
+   Javadoc is generated at `app/target/site/apidocs/`.
 
 ```bash
 mvn clean package site
