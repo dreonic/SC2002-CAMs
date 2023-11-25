@@ -2,7 +2,7 @@
 
 # Camp Application and Management System (CAMs)
 
-![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=plastic&logo=openjdk&logoColor=white)
+![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white)
 ![Build](https://github.com/dreonic/SC2002-CAMs/actions/workflows/maven-pr.yml/badge.svg)
 
 CAMS (Camp Application and Management System) is a Java Command Line Interface (CLI) application. It is made for staff and students to manage, view and register for camps within NTU. The app implements loosely coupled classes in multiple distinct packages. This makes our system easy to maintain, improve, and extendable.
@@ -12,12 +12,12 @@ It utilizes entity, controller, and boundary (ECB) class stereotypes. Users of t
 # Group Members
 
 SC2002 Object Oriented Design & Programming SCSB Group 3:
-| Name                 | Email                    | GitHub Profile                                                                                                                                            |
-| -------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Gillbert Susilo Wong | gillbert001@e.ntu.edu.sg | [![GitHub](https://img.shields.io/badge/gillwong-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/gillwong)               |
-| Juan Frederick       |                          | [![GitHub](https://img.shields.io/badge/dreonic-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/dreonic)                 |
-| Karl Devlin Chau     |                          | [![GitHub](https://img.shields.io/badge/devlinchau-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/devlinchau)           |
-| Pascalis Pandey      |                          | [![GitHub](https://img.shields.io/badge/pascalpandey-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/pascalpandey)       |
+| Name                 | Email                    |                                                                      GitHub Profile                                                                       |
+| -------------------- | ------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Gillbert Susilo Wong | gillbert001@e.ntu.edu.sg |        [![GitHub](https://img.shields.io/badge/gillwong-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/gillwong)        |
+| Juan Frederick       |                          |         [![GitHub](https://img.shields.io/badge/dreonic-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/dreonic)         |
+| Karl Devlin Chau     |                          |      [![GitHub](https://img.shields.io/badge/devlinchau-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/devlinchau)      |
+| Pascalis Pandey      |                          |    [![GitHub](https://img.shields.io/badge/pascalpandey-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/pascalpandey)    |
 | Trang Nguyen         |                          | [![GitHub](https://img.shields.io/badge/quynhtrangsolar-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/quynhtrangsolar) |
 
 ## Directory Layout
@@ -44,7 +44,7 @@ SC2002 Object Oriented Design & Programming SCSB Group 3:
 │   └── ...
 ├── report/
 │   ├── Report.pdf                      # Report document
-│   ├── cams package class diagram.png  # UML class diagrams
+│   ├── SC2002-CAMs.png                 # UML class diagrams
 │   ├── view package class diagram.png  #
 │   └── SC2002-CAMs.vpp                 # Visual Paradigm 17.1 project
 ├── .gitignore
