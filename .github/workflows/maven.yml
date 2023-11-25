@@ -34,6 +34,9 @@ jobs:
       - name: Copy jar to bin directory
         run: mkdir bin && cp app/target/SC2002-CAMs-1.0.jar bin/
 
+      - name: Build site with Maven
+        run: cd app && mvn -B site --file pom.xml
+
       - name: Copy Javadoc to javadoc directory
         run: mkdir javadoc && cp -r app/target/site/apidocs/* javadoc/
 
