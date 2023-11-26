@@ -70,6 +70,11 @@ a user is `password`. Application data will be saved when exiting; it will not b
 
 Open `javadoc/index.html` or open [this repository's GitHub Pages](https://dreonic.github.io/SC2002-CAMs/) with your preferred browser.
 
+## Reading the Report
+
+The report and UML class diagrams are available at `report/`. The Visual Paradigm (version 17.1) project file, which contains all the 
+class diagrams categorized by package, is also included for reference.
+
 ## Building & Running from Source
 
 1. Install the [Java Development Kit](https://www.oracle.com/java/technologies/downloads/) (minimum version 17)
