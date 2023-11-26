@@ -34,7 +34,7 @@ public abstract class User {
      * @param faculty      the faculty associated with a {@code User}
      * @param passwordHash the password hashed with BCrypt associated with a {@code User}
      */
-    public User(String name, String userID, String faculty, String passwordHash) {
+    protected User(String name, String userID, String faculty, String passwordHash) {
         this.name = Objects.requireNonNull(name);
         if (userID.isBlank()) {
             throw new IllegalArgumentException("User ID must not be blank!");

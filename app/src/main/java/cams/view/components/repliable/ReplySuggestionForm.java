@@ -28,15 +28,15 @@ import java.util.Scanner;
  * @version 1.0
  * @since 2023-11-23
  */
-public class StaffSuggestionMenu extends Form {
+public class ReplySuggestionForm extends Form {
 
     /**
-     * Constructs the Staff Suggestion Menu specifying the scanner to be used and the {@code Suggestion} to be approved.
+     * Constructs the Suggestion Reply Form specifying the scanner to be used and the {@code Suggestion} to be approved.
      * 
      * @param scanner scanner for this form
      * @param suggestion specified suggestion to be approved
      */
-    public StaffSuggestionMenu(Scanner scanner, Suggestion suggestion) {
+    public ReplySuggestionForm(Scanner scanner, Suggestion suggestion) {
         super(scanner);
         CampController campController = CampController.getInstance();
         Camp camp = campController.getCurrentCamp();

@@ -1,3 +1,7 @@
 /.vscode
 /.idea
 /bin/*.xlsx
+
+/*.xlsx
+/target
+dependency-reduced-pom.xml
