@@ -9,7 +9,7 @@ CAMS (Camp Application and Management System) is a Java Command Line Interface (
 
 It utilizes entity, controller, and boundary (ECB) class stereotypes. Users of the app access through menus which are boundary classes. It requests data from managers, which acts as controller classes. Managers implement logic and perform error checking and exception catching to guarantee that the app works properly. The data is fetched from entity classes, which store the data. Abstractions demonstrated enable easy modification and extension.
 
-# Group Members
+## Group Members
 
 SC2002 Object Oriented Design & Programming SCSB Group 3:
 | Name                   | Email                    |                                                                      GitHub Profile                                                                       |
