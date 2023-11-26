@@ -9,7 +9,7 @@ import cams.view.base.ActionableItem;
 import cams.view.base.Alert;
 import cams.view.base.ItemAction;
 import cams.view.base.SelectionMenu;
-import cams.view.components.repliable.StaffSuggestionMenu;
+import cams.view.components.repliable.ReplySuggestionForm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class StaffViewSuggestionMenu extends SelectionMenu {
                     if (suggestion.getIsApproved()) {
                         displayController.setNextDisplay(new Alert("Suggestion already approved!", new StaffViewSuggestionMenu(scanner), scanner));
                     } else {
-                        displayController.setNextDisplay(new StaffSuggestionMenu(scanner, suggestion));
+                        displayController.setNextDisplay(new ReplySuggestionForm(scanner, suggestion));
                     }
                 }
             }));
