@@ -65,7 +65,7 @@ java -jar SC2002-CAMs-1.0.jar
 
 ## Accessing the Javadoc
 
-Open `javadoc/index.html` with your preferred browser.
+Open `javadoc/index.html` or open [this repository's GitHub Pages](https://dreonic.github.io/SC2002-CAMs/) with your preferred browser.
 
 ## Building & Running from Source
 
