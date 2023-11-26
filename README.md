@@ -12,13 +12,13 @@ It utilizes entity, controller, and boundary (ECB) class stereotypes. Users of t
 # Group Members
 
 SC2002 Object Oriented Design & Programming SCSB Group 3:
-| Name                 | Email                    |                                                                      GitHub Profile                                                                       |
-| -------------------- | ------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Gillbert Susilo Wong | gillbert001@e.ntu.edu.sg |        [![GitHub](https://img.shields.io/badge/gillwong-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/gillwong)        |
-| Juan Frederick       | juan0012@e.ntu.edu.sg    |         [![GitHub](https://img.shields.io/badge/dreonic-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/dreonic)         |
-| Karl Devlin Chau     | karl0009@e.ntu.edu.sg    |      [![GitHub](https://img.shields.io/badge/devlinchau-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/devlinchau)      |
-| Pascalis Pandey      | pascalis001@e.ntu.edu.sg |    [![GitHub](https://img.shields.io/badge/pascalpandey-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/pascalpandey)    |
-| Nguyen Thi Quynh Trang        |     trang005@e.ntu.edu.sg              | [![GitHub](https://img.shields.io/badge/quynhtrangsolar-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/quynhtrangsolar) |
+| Name                   | Email                    |                                                                      GitHub Profile                                                                       |
+| ---------------------- | ------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Gillbert Susilo Wong   | gillbert001@e.ntu.edu.sg |        [![GitHub](https://img.shields.io/badge/gillwong-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/gillwong)        |
+| Juan Frederick         | juan0012@e.ntu.edu.sg    |         [![GitHub](https://img.shields.io/badge/dreonic-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/dreonic)         |
+| Karl Devlin Chau       | karl0009@e.ntu.edu.sg    |      [![GitHub](https://img.shields.io/badge/devlinchau-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/devlinchau)      |
+| Pascalis Pandey        | pascalis001@e.ntu.edu.sg |    [![GitHub](https://img.shields.io/badge/pascalpandey-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/pascalpandey)    |
+| Nguyen Thi Quynh Trang | trang005@e.ntu.edu.sg    | [![GitHub](https://img.shields.io/badge/quynhtrangsolar-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/quynhtrangsolar) |
 
 ## Directory Layout
 
@@ -62,6 +62,9 @@ git clone https://github.com/dreonic/SC2002-CAMs.git
 cd SC2002-CAMs/bin
 java -jar SC2002-CAMs-1.0.jar
 ```
+
+The initial student and staff list bundled inside the Java Archive can be seen at `app/src/main/resources/`. The default password for 
+a user is `password`. Application data will be saved when exiting; it will not be saved if closed unexpectedly.
 
 ## Accessing the Javadoc
 
