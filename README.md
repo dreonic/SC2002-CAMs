@@ -15,9 +15,9 @@ SC2002 Object Oriented Design & Programming SCSB Group 3:
 | Name                 | Email                    |                                                                      GitHub Profile                                                                       |
 | -------------------- | ------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | Gillbert Susilo Wong | gillbert001@e.ntu.edu.sg |        [![GitHub](https://img.shields.io/badge/gillwong-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/gillwong)        |
-| Juan Frederick       |                          |         [![GitHub](https://img.shields.io/badge/dreonic-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/dreonic)         |
-| Karl Devlin Chau     |                          |      [![GitHub](https://img.shields.io/badge/devlinchau-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/devlinchau)      |
-| Pascalis Pandey      |                          |    [![GitHub](https://img.shields.io/badge/pascalpandey-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/pascalpandey)    |
+| Juan Frederick       | juan0012@e.ntu.edu.sg    |         [![GitHub](https://img.shields.io/badge/dreonic-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/dreonic)         |
+| Karl Devlin Chau     | karl0009@e.ntu.edu.sg    |      [![GitHub](https://img.shields.io/badge/devlinchau-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/devlinchau)      |
+| Pascalis Pandey      | pascalis001@e.ntu.edu.sg |    [![GitHub](https://img.shields.io/badge/pascalpandey-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/pascalpandey)    |
 | Trang Nguyen         |                          | [![GitHub](https://img.shields.io/badge/quynhtrangsolar-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/quynhtrangsolar) |
 
 ## Directory Layout
